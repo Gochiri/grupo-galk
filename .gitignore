@@ -32,3 +32,6 @@ output/
 
 # OMC orchestration state (not part of the CLI)
 .omc/
+
+# Claude Code local settings (machine-local, do not commit)
+.claude/settings.local.json
