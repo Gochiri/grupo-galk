@@ -1,0 +1,500 @@
+{
+ "add_contact_tag": {
+  "source": "ALERTA - Pago por verificar",
+  "example": {
+   "id": "4473f27f-e68b-42fc-a866-fc2ca1ec0f10",
+   "order": 0,
+   "attributes": {
+    "tags": [
+     "pago-por-verificar"
+    ]
+   },
+   "name": "Add Tag",
+   "type": "add_contact_tag",
+   "next": "9afb5421-ac63-4d9f-b602-64642462ed49"
+  }
+ },
+ "task-notification": {
+  "source": "ALERTA - Pago por verificar",
+  "example": {
+   "id": "9afb5421-ac63-4d9f-b602-64642462ed49",
+   "stepIndex": 1,
+   "order": 1,
+   "attributes": {
+    "title": "⚠️ VERIFICAR PAGO - cliente envió comprobante o mencionó pago",
+    "body": "<p style=\"margin:0px; padding-left: 0px!important;\">El cliente envió un comprobante o mencionó un pago (yape/plin/voucher/boleta). Verificar el pago en la cuenta real ANTES de confirmar. Si el pago es correcto: mover la oportunidad a etapa \"Pagó\" y actualizar el Value con el monto real pagado.</p>",
+    "assignedTo": "contact.assigned_user",
+    "dueDate": {
+     "duration": 1,
+     "unit": "days",
+     "time": 1783548000000,
+     "skipWeekends": false
+    },
+    "type": "task_notification",
+    "__customInputs__": {}
+   },
+   "name": "Add task",
+   "type": "task-notification",
+   "workflowsActionType": "INTERNAL",
+   "parentKey": "4473f27f-e68b-42fc-a866-fc2ca1ec0f10",
+   "next": "d6d8f6a8-6839-4a90-ac89-cd16ccd1c5be"
+  }
+ },
+ "internal_notification": {
+  "source": "ALERTA - Pago por verificar",
+  "example": {
+   "id": "d6d8f6a8-6839-4a90-ac89-cd16ccd1c5be",
+   "order": 2,
+   "attributes": {
+    "type": "notification",
+    "notification": {
+     "type": "send_notification",
+     "body": "{{contact.name}} ({{contact.phone}}) envió comprobante de pago. Verificar y confirmar.",
+     "title": "💰 Pago por verificar",
+     "redirectPage": "conversation",
+     "selectedUser": "w7Lzp83UoLfgFb9s8H8w",
+     "userType": "user"
+    }
+   },
+   "name": "Internal Notification",
+   "type": "internal_notification",
+   "parentKey": "9afb5421-ac63-4d9f-b602-64642462ed49"
+  }
+ },
+ "update_contact_field": {
+  "source": "CAMPOS 01 - Melamina",
+  "example": {
+   "id": "7429116d-85c3-4ead-8e03-b534b480ee93",
+   "order": 0,
+   "attributes": {
+    "type": "update_contact_field",
+    "actionType": "update_field_data",
+    "fields": [
+     {
+      "field": "nYT0gdgfPunY3aYwqDMx",
+      "value": "Melamina",
+      "title": "SERVICIO_IDENTIFICADO",
+      "type": "string",
+      "date": ""
+     }
+    ]
+   },
+   "name": "Update contact field",
+   "type": "update_contact_field",
+   "next": "52ab95b1-1784-40ff-8324-cf6edd9b8b43"
+  }
+ },
+ "if_else": {
+  "source": "FICHA - Drywall",
+  "example": {
+   "id": "0cb2a010-3f0a-437b-9774-263ceaa15e7a",
+   "order": 0,
+   "attributes": {
+    "currentRecipeType": "CUSTOM",
+    "branches": [
+     {
+      "id": "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+      "name": "Branch",
+      "segments": [
+       {
+        "__segmentId": "b88571c6-3b9f-447d-8ce0-ce3d2aeeb273",
+        "operator": "or",
+        "conditions": [
+         {
+          "conditionType": "contact_detail",
+          "conditionSubType": "tags",
+          "conditionOperator": "index-of-true",
+          "conditionValue": [
+           "wa: +51979338376"
+          ],
+          "__conditionId": "e5407b4d-e363-4937-bb6f-13387b4fc198",
+          "ifElseNodeId": "",
+          "__customFieldType__": "standard",
+          "isWait": false,
+          "nestedDropdownTypes": [
+           "inboundWebhookRequest",
+           "sheet",
+           "datetime_formatter",
+           "custom_webhook",
+           "array_functions",
+           "ivr_gather",
+           "ivr_connect_call",
+           "custom_code",
+           "ai_agent",
+           "task-notification",
+           "whatsapp_referral"
+          ],
+          "allowIsOperatorTypes": [
+           "contact_reply",
+           "inboundWebhookRequest",
+           "custom_webhook",
+           "custom_code",
+           "ai_agent",
+           "contact_detail",
+           "array_functions",
+           "appointment",
+           "service_booking",
+           "rental_booking",
+           "whatsapp_referral"
+          ]
+         }
+        ]
+       },
+       {
+        "__segmentId": "2e9b32ff-bc45-4486-b63f-fd62a7ef9476",
+        "operator": "or",
+        "conditions": [
+         {
+          "conditionType": "contact_detail",
+          "conditionSubType": "tags",
+          "conditionOperator": "index-of-true",
+          "conditionValue": [
+           "wa: +51974386585"
+          ],
+          "__conditionId": "94deb3d4-6c5a-4466-b6c7-121cd37e1f2d",
+          "ifElseNodeId": "",
+          "__customFieldType__": "standard",
+          "isWait": false,
+          "nestedDropdownTypes": [
+           "inboundWebhookRequest",
+           "sheet",
+           "datetime_formatter",
+           "custom_webhook",
+           "array_functions",
+           "ivr_gather",
+           "ivr_connect_call",
+           "custom_code",
+           "ai_agent",
+           "task-notification",
+           "whatsapp_referral"
+          ],
+          "allowIsOperatorTypes": [
+           "contact_reply",
+           "inboundWebhookRequest",
+           "custom_webhook",
+           "custom_code",
+           "ai_agent",
+           "contact_detail",
+           "array_functions",
+           "appointment",
+           "service_booking",
+           "rental_booking",
+           "whatsapp_referral"
+          ]
+         }
+        ]
+       },
+       {
+        "__segmentId": "1a997422-2601-4f1b-89f5-303121dfb18b",
+        "operator": "or",
+        "conditions": [
+         {
+          "conditionType": "contact_detail",
+          "conditionSubType": "tags",
+          "conditionOperator": "index-of-true",
+          "conditionValue": [
+           "wa: +51964364799"
+          ],
+          "__conditionId": "c4a934dc-1dfd-43ce-933f-0e819b67411e",
+          "ifElseNodeId": "",
+          "__customFieldType__": "standard",
+          "isWait": false,
+          "nestedDropdownTypes": [
+           "inboundWebhookRequest",
+           "sheet",
+           "datetime_formatter",
+           "custom_webhook",
+           "array_functions",
+           "ivr_gather",
+           "ivr_connect_call",
+           "custom_code",
+           "ai_agent",
+           "task-notification",
+           "whatsapp_referral"
+          ],
+          "allowIsOperatorTypes": [
+           "contact_reply",
+           "inboundWebhookRequest",
+           "custom_webhook",
+           "custom_code",
+           "ai_agent",
+           "contact_detail",
+           "array_functions",
+           "appointment",
+           "service_booking",
+           "rental_booking",
+           "whatsapp_referral"
+          ]
+         }
+        ]
+       },
+       {
+        "__segmentId": "1f4ed75b-9072-45a1-a80a-6cadf1fcd76e",
+        "operator": "or",
+        "conditions": [
+         {
+          "conditionType": "contact_detail",
+          "conditionSubType": "tags",
+          "conditionOperator": "index-of-true",
+          "conditionValue": [
+           "wa: +51956359766"
+          ],
+          "__conditionId": "0556d8cc-20ec-4df7-b864-120beaddf149",
+          "ifElseNodeId": "",
+          "__customFieldType__": "standard",
+          "isWait": false,
+          "nestedDropdownTypes": [
+           "inboundWebhookRequest",
+           "sheet",
+           "datetime_formatter",
+           "custom_webhook",
+           "array_functions",
+           "ivr_gather",
+           "ivr_connect_call",
+           "custom_code",
+           "ai_agent",
+           "task-notification",
+           "whatsapp_referral"
+          ],
+          "allowIsOperatorTypes": [
+           "contact_reply",
+           "inboundWebhookRequest",
+           "custom_webhook",
+           "custom_code",
+           "ai_agent",
+           "contact_detail",
+           "array_functions",
+           "appointment",
+           "service_booking",
+           "rental_booking",
+           "whatsapp_referral"
+          ]
+         }
+        ]
+       },
+       {
+        "__segmentId": "a0b7c828-f97e-4bee-aac2-341019b3e491",
+        "operator": "or",
+        "conditions": [
+         {
+          "conditionType": "contact_detail",
+          "conditionSubType": "tags",
+          "conditionOperator": "index-of-true",
+          "conditionValue": [
+           "wa: +51940177398"
+          ],
+          "__conditionId": "d02eafef-d62f-4e6a-8406-cef9f5beb805",
+          "ifElseNodeId": "",
+          "__customFieldType__": "standard",
+          "isWait": false,
+          "nestedDropdownTypes": [
+           "inboundWebhookRequest",
+           "sheet",
+           "datetime_formatter",
+           "custom_webhook",
+           "array_functions",
+           "ivr_gather",
+           "ivr_connect_call",
+           "custom_code",
+           "ai_agent",
+           "task-notification",
+           "whatsapp_referral"
+          ],
+          "allowIsOperatorTypes": [
+           "contact_reply",
+           "inboundWebhookRequest",
+           "custom_webhook",
+           "custom_code",
+           "ai_agent",
+           "contact_detail",
+           "array_functions",
+           "appointment",
+           "service_booking",
+           "rental_booking",
+           "whatsapp_referral"
+          ]
+         }
+        ]
+       }
+      ],
+      "operator": "and",
+      "showErrors": false,
+      "branchNameError": "Branch name cannot be empty!"
+     }
+    ],
+    "operator": "and",
+    "if": true,
+    "conditionName": "Condition",
+    "version": 2,
+    "noneBranchName": "None"
+   },
+   "name": "yes",
+   "type": "if_else",
+   "cat": "conditions",
+   "next": [
+    "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+    "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76"
+   ],
+   "comments": [],
+   "nodeType": "condition-node"
+  }
+ },
+ "sms": {
+  "source": "FICHA - Drywall",
+  "example": {
+   "id": "a7fe4430-400e-44b9-ba92-e621f80c1174",
+   "parent": "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+   "order": 0,
+   "attributes": {
+    "template_id": "3GsR3kDVCOKStAxEq72x",
+    "attachments": []
+   },
+   "name": "SMS",
+   "type": "sms",
+   "next": "385ff512-1101-4c6d-98f2-96a76748c92d",
+   "parentKey": "3638a167-9ffc-47cd-8b5c-0557343ae7c3"
+  }
+ },
+ "whatsapp_v2": {
+  "source": "FICHA - Drywall",
+  "example": {
+   "id": "a58ae7cd-14cf-444d-b24e-ba8f04d9fa64",
+   "parent": "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76",
+   "order": 0,
+   "attributes": {
+    "template_id": "1596544212169540",
+    "toggle_branch": false,
+    "from_phone_number": "1138517799350419",
+    "media_url": "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0fed70834e617c689aa1.jpeg",
+    "message": "¡Hola! 😊 Somos *GRUPO GALK* 🤝\n\nGracias por tu interés en nuestro *TALLER PRESENCIAL DE DRYWALL – 100% PRÁCTICO* 🏗️\n\nAprende a construir muros, techos y estructuras como un profesional 💪\n\n🔨 *NIVEL BÁSICO – Drywall desde cero:* perfiles y rieles, montaje de muros y divisiones, planchado, cinta para juntas, acabados y falso cielo raso\n⚡ *NIVEL AVANZADO – Construcción profesional:* cálculo técnico, estructuras metálicas, techos acústicos y con pendientes, viguetas y tijerales\n\n🕐 Duración: 16 horas (4 días) cada nivel\n📍 Sedes: SURCO · LOS OLIVOS · AREQUIPA\n\n🧾 Incluye: herramientas y materiales, certificación a nombre de Grupo Galk, grupo privado de WhatsApp y asesoría personalizada\n\n✨ *Indícanos la sede más cercana para enviarte horarios y PROMOCIONES* ✨\n🔴 SEDE LIMA: SURCO o LOS OLIVOS\n🔴 SEDE CIUDAD AREQUIPA\n\n⚠️ Cupos limitados.\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4da7e82467f0ff08fed87d.jpeg",
+    "type": "whatsapp_v2",
+    "__customInputs__": {},
+    "cat": "",
+    "convertToMultipath": false,
+    "transitions": [],
+    "__name__": "WhatsApp"
+   },
+   "name": "WhatsApp",
+   "type": "whatsapp_v2",
+   "cat": "",
+   "next": "4638e45d-32ea-4379-aaf5-e7f7ac1fe0db",
+   "workflowsActionType": "INTERNAL",
+   "parentKey": "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76"
+  }
+ },
+ "wait": {
+  "source": "HORARIOS - Drywall",
+  "example": {
+   "id": "1b52e53e-08d7-418e-aec2-7e2387a35924",
+   "parentKey": "3c865446-db64-46e4-a6e9-cb928c37d621",
+   "parent": "3c865446-db64-46e4-a6e9-cb928c37d621",
+   "type": "wait",
+   "name": "Wait",
+   "attributes": {
+    "type": "time",
+    "startAfter": {
+     "type": "minutes",
+     "value": 2,
+     "when": "after"
+    },
+    "name": "Wait",
+    "cat": "",
+    "timePeriodInputMode": "standard",
+    "unitInputMode": "standard",
+    "isHybridAction": true,
+    "hybridActionType": "wait",
+    "convertToMultipath": false,
+    "transitions": []
+   },
+   "order": 0,
+   "cat": "",
+   "next": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c"
+  }
+ },
+ "create_opportunity": {
+  "source": "WF1 | IA Califica el Lead",
+  "example": {
+   "id": "74dd86c5-c9b4-45f0-a771-a7f3738720e9",
+   "parent": "dfbba96f-fa9d-4952-9ef5-f304173cd0f4",
+   "order": 2,
+   "attributes": {
+    "fields": [],
+    "type": "create_opportunity",
+    "pipeline_id": "95f7TlUen51QyUax2pji",
+    "pipeline_stage_id": "12641513-0ac1-40ea-972a-0b7761b55f50",
+    "opportunity_name": "{{contact.name}} {{contact.servicio_identificado}}",
+    "opportunity_source": "{{contact.origen_lead}}",
+    "monetary_value": "{{contact.precio_curso}}",
+    "opportunity_status": "open"
+   },
+   "name": "Create or update opportunity",
+   "type": "create_opportunity",
+   "parentKey": "a2866574-822f-4b17-96d9-6b7db60b2d44"
+  }
+ },
+ "assign_user": {
+  "source": "WF2 | Round Robin → Asignar Asesor",
+  "example": {
+   "id": "bbf9f347-39d5-4777-a564-a86c893aea55",
+   "parent": "ca33b69a-c1b3-43b0-89d9-4860eb22fc65",
+   "order": 0,
+   "attributes": {
+    "only_unassigned_contact": true,
+    "total_index": 1,
+    "traffic_split": "equally",
+    "traffic_weightage": {
+     "cRNnOExeNFPOoqvwC99z": 1
+    },
+    "traffic_index": [
+     {
+      "id": "cRNnOExeNFPOoqvwC99z",
+      "indexes": [
+       1
+      ]
+     }
+    ],
+    "user_list": [
+     "cRNnOExeNFPOoqvwC99z"
+    ],
+    "type": "assign_user"
+   },
+   "name": "Assign to user",
+   "type": "assign_user",
+   "next": "1241449b-ad1a-4bd0-bc23-2ce9b1d43e8e",
+   "parentKey": "ca33b69a-c1b3-43b0-89d9-4860eb22fc65"
+  }
+ },
+ "add_notes": {
+  "source": "WF3 | Notificación al Asesor",
+  "example": {
+   "type": "add_notes",
+   "id": "ac182945-2959-4af0-abf2-0003ac5bbd42",
+   "name": "Send WhatsApp Notification to Assigned User",
+   "next": "c72c080c-6e78-450c-9478-31f6aeee0f14",
+   "attributes": {
+    "html": "Notificación enviada al usuario asignado vía WhatsApp:<br>🔔 Nuevo lead: {{contact.name}}<br>Canal: {{contact.attribution.medium}}",
+    "title": "Notificación WhatsApp al usuario asignado",
+    "color": "#D3F8DF"
+   },
+   "order": 1,
+   "parentKey": "a6f59685-c230-48a2-b6e1-21bf5727b427"
+  }
+ },
+ "remove_contact_tag": {
+  "source": "WF5 | Reasignación Automática",
+  "example": {
+   "id": "eddc29b3-65f5-4dd9-a0ec-8dd21406ba02",
+   "order": 3,
+   "attributes": {
+    "tags": [
+     "asesor-notificado",
+     "sin-contacto"
+    ],
+    "type": "remove_contact_tag"
+   },
+   "name": "Remove Tag",
+   "type": "remove_contact_tag",
+   "parentKey": "4cb5cb7f-fb41-4eac-b345-d6892295c102"
+  }
+ }
+}
