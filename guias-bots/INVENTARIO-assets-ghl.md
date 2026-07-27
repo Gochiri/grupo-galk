@@ -47,7 +47,7 @@
 | Tag | Lo usa | Para qué |
 |---|---|---|
 | `enviar-ficha` | bots → SP05 | dispara el envío de la ficha |
-| `lead-calificado` | bots → SP06 | dispara calificación + round robin |
+| `galk-bot-calificado` | bots → SP06 | dispara calificación + round robin ⚠️ **NO usar `lead-calificado`**: lo usa el WF1 de Francisco, publicado y vivo |
 | `bot-silenciado` | SP06 | marca que el asesor tomó la conversación |
 | `origen-meta` | LS01 | lead entrado por CTWA |
 | `recuperacion-enviada` | SP08 | ya se le mandó plantilla fuera de ventana |
@@ -90,7 +90,8 @@
 
 ## Workflows construidos (draft)
 - **SP05** `ae78625c-8f91-4af1-a7b0-3be0b2e4a667` — árbol 24 ramas, trigger tag `enviar-ficha`
-- **SP06** `84811c16-30d8-4c08-a05d-0c12fa46567d` — calificación + round robin, trigger tag `lead-calificado`
+- **SP06** `84811c16-30d8-4c08-a05d-0c12fa46567d` — calificación + round robin, trigger tag `galk-bot-calificado`
+- **WF-NORM** `e97e101e-4f92-4fc4-8ad4-72d4f2907a95` — normaliza texto→dropdown (sin trigger aún)
 
 ---
 
