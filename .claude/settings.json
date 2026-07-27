@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/home/user/grupo-galk/.venv/bin/python:*)",
+      "Bash(.venv/bin/python:*)",
+      "Bash(./arranque.sh)",
+      "Bash(./install.sh)",
+      "Bash(./ghl:*)"
+    ]
+  }
+}
