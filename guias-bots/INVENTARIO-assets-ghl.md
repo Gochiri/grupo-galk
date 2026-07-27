@@ -94,8 +94,30 @@
 
 ---
 
+## ⚠️ Campos gemelos TEXT para los bots (limitación de GHL)
+
+**Las acciones de Conversation AI NO pueden escribir en campos dropdown (SINGLE_OPTIONS).**
+Por eso cada dropdown que escribe un bot tiene un gemelo de texto. El bot escribe el gemelo y
+el workflow **WF-NORM** (`e97e101e-4f92-4fc4-8ad4-72d4f2907a95`, draft) lo normaliza al dropdown real.
+
+| El bot escribe (TEXT) | Key | WF-NORM lo vuelca en (dropdown) |
+|---|---|---|
+| Familia de interés (bot) | `contact.familia_de_inters_bot` | `contact.familia_de_inters` |
+| Modalidad (bot) | `contact.modalidad_bot` | `contact.modalidad` |
+| Sede (bot) | `contact.sede_bot` | `contact.sede` |
+| Pack x2 (bot) | `contact.pack_x2_bot` | `contact.pack_x2` |
+
+**No necesitan gemelo:**
+- `contact.curso_de_inters` y `contact.horario_de_inters` → ya son TEXT, el bot los escribe directo.
+- `contact.calificado`, `contact.fuente`, `contact.comprobante_recibido`, `contact.comprobante_validado`,
+  `contact.razn_de_prdida` → son dropdowns pero los escriben **workflows**, que sí pueden.
+
+⚠️ WF-NORM está **sin trigger**: hay que agregarlo en la UI (Contact Changed sobre los 4 campos `(bot)`, re-enrollment ON).
+
+---
+
 ## ✅ Conclusión
-**No falta ningún asset para armar los 4 bots.** Todo lo que las acciones necesitan referenciar
+**No falta ningún asset para armar los 4 bots** (incluidos los 4 gemelos TEXT). Todo lo que las acciones necesitan referenciar
 (campos, tags, custom values) ya existe en la subcuenta.
 
 Lo único pendiente es **contenido**, no estructura: las URLs de las fichas y los datos operativos
