@@ -85,6 +85,28 @@
 
 ---
 
+## Carpetas de workflows en GHL — prefijo `GALK 2.0 ·`
+
+Todos los workflows del sistema nuevo viven bajo carpetas con el mismo prefijo, así se agrupan
+solas y se distinguen de los 40 heredados de Francisco (que quedan sueltos, sin tocar).
+Espejean las listas de ClickUp.
+
+| Carpeta en GHL | folder_id | Contiene |
+|---|---|---|
+| GALK 2.0 · 01 Setup y Normalización | `af354b55-6cf2-44e8-a062-da45855f7175` | (reservada) |
+| GALK 2.0 · 02 Bots (soporte) | `8ee1efb2-0d13-4914-adf5-ce0a6af8eab5` | WF-NORM |
+| GALK 2.0 · 03 Lead Sources | `3faaac69-576d-4da5-a1b0-d07e8663080f` | LS01, LS02, LS03 |
+| GALK 2.0 · 04 Sales Pipeline | `3dc6be37-5389-4385-9806-36722ba042ef` | SP05, SP06, SP08 |
+| GALK 2.0 · 05 Pagos y Cierres | `f878823d-6f59-45c6-98ca-f8db3bcba0ae` | SP09–SP12 |
+| GALK 2.0 · 06 Post-venta | `602e83a7-e61e-4f66-a55e-ff0a3bf2daaf` | AP01–AP04 |
+| GALK 2.0 · 07 Reviews y Recompra | `70a3618c-aaf7-497a-93b6-b7b667dee677` | PS01–PS03 |
+
+Los IDs están en `scripts_ghl/carpetas_ghl.json`. Para reubicar workflows nuevos:
+`.venv/bin/python scripts_ghl/organizar_carpetas.py` (idempotente, ya sabe a qué carpeta va cada prefijo).
+
+> ⚠️ Al mover un workflow por API, el PUT **exige `version` y reescribe el objeto**: hay que
+> reenviar `workflowData` o se pierden los nodos. El script ya lo hace.
+
 ## Pipeline "Ventas GALK" — `Pm48HGVyRbd5TAZDrKQS`
 9 etapas: Nuevo Lead · En conversación (bot) · Ficha enviada · Calificado · Asignado a asesor · Datos de pago enviados · Pago en validación · Matriculado · Perdido.
 
