@@ -1,0 +1,356 @@
+[
+ {
+  "id": "0cb2a010-3f0a-437b-9774-263ceaa15e7a",
+  "order": 0,
+  "attributes": {
+   "currentRecipeType": "CUSTOM",
+   "branches": [
+    {
+     "id": "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+     "name": "Branch",
+     "segments": [
+      {
+       "__segmentId": "b88571c6-3b9f-447d-8ce0-ce3d2aeeb273",
+       "operator": "or",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "wa: +51979338376"
+         ],
+         "__conditionId": "e5407b4d-e363-4937-bb6f-13387b4fc198",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification",
+          "whatsapp_referral"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking",
+          "whatsapp_referral"
+         ]
+        }
+       ]
+      },
+      {
+       "__segmentId": "2e9b32ff-bc45-4486-b63f-fd62a7ef9476",
+       "operator": "or",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "wa: +51974386585"
+         ],
+         "__conditionId": "94deb3d4-6c5a-4466-b6c7-121cd37e1f2d",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification",
+          "whatsapp_referral"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking",
+          "whatsapp_referral"
+         ]
+        }
+       ]
+      },
+      {
+       "__segmentId": "1a997422-2601-4f1b-89f5-303121dfb18b",
+       "operator": "or",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "wa: +51964364799"
+         ],
+         "__conditionId": "c4a934dc-1dfd-43ce-933f-0e819b67411e",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification",
+          "whatsapp_referral"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking",
+          "whatsapp_referral"
+         ]
+        }
+       ]
+      },
+      {
+       "__segmentId": "1f4ed75b-9072-45a1-a80a-6cadf1fcd76e",
+       "operator": "or",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "wa: +51956359766"
+         ],
+         "__conditionId": "0556d8cc-20ec-4df7-b864-120beaddf149",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification",
+          "whatsapp_referral"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking",
+          "whatsapp_referral"
+         ]
+        }
+       ]
+      },
+      {
+       "__segmentId": "a0b7c828-f97e-4bee-aac2-341019b3e491",
+       "operator": "or",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "wa: +51940177398"
+         ],
+         "__conditionId": "d02eafef-d62f-4e6a-8406-cef9f5beb805",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification",
+          "whatsapp_referral"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking",
+          "whatsapp_referral"
+         ]
+        }
+       ]
+      }
+     ],
+     "operator": "and",
+     "showErrors": false,
+     "branchNameError": "Branch name cannot be empty!"
+    }
+   ],
+   "operator": "and",
+   "if": true,
+   "conditionName": "Condition",
+   "version": 2,
+   "noneBranchName": "None"
+  },
+  "name": "yes",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": [
+   "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+   "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76"
+  ],
+  "comments": [],
+  "nodeType": "condition-node"
+ },
+ {
+  "id": "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+  "parent": "0cb2a010-3f0a-437b-9774-263ceaa15e7a",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Branch",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "a7fe4430-400e-44b9-ba92-e621f80c1174",
+  "sibling": [
+   "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "0cb2a010-3f0a-437b-9774-263ceaa15e7a"
+ },
+ {
+  "id": "a7fe4430-400e-44b9-ba92-e621f80c1174",
+  "parent": "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+  "order": 0,
+  "attributes": {
+   "template_id": "3GsR3kDVCOKStAxEq72x",
+   "attachments": []
+  },
+  "name": "SMS",
+  "type": "sms",
+  "next": "385ff512-1101-4c6d-98f2-96a76748c92d",
+  "parentKey": "3638a167-9ffc-47cd-8b5c-0557343ae7c3"
+ },
+ {
+  "id": "385ff512-1101-4c6d-98f2-96a76748c92d",
+  "parent": "3638a167-9ffc-47cd-8b5c-0557343ae7c3",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "ficha-drywall-enviada"
+   ]
+  },
+  "name": "Add Tag",
+  "type": "add_contact_tag",
+  "parentKey": "a7fe4430-400e-44b9-ba92-e621f80c1174"
+ },
+ {
+  "id": "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76",
+  "parent": "0cb2a010-3f0a-437b-9774-263ceaa15e7a",
+  "order": 1,
+  "attributes": {
+   "else": true
+  },
+  "name": "None",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "a58ae7cd-14cf-444d-b24e-ba8f04d9fa64",
+  "sibling": [
+   "3638a167-9ffc-47cd-8b5c-0557343ae7c3"
+  ],
+  "comments": [],
+  "nodeType": "branch-no",
+  "parentKey": "0cb2a010-3f0a-437b-9774-263ceaa15e7a"
+ },
+ {
+  "id": "a58ae7cd-14cf-444d-b24e-ba8f04d9fa64",
+  "parent": "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76",
+  "order": 0,
+  "attributes": {
+   "template_id": "1596544212169540",
+   "toggle_branch": false,
+   "from_phone_number": "1138517799350419",
+   "media_url": "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0fed70834e617c689aa1.jpeg",
+   "message": "¡Hola! 😊 Somos *GRUPO GALK* 🤝\n\nGracias por tu interés en nuestro *TALLER PRESENCIAL DE DRYWALL – 100% PRÁCTICO* 🏗️\n\nAprende a construir muros, techos y estructuras como un profesional 💪\n\n🔨 *NIVEL BÁSICO – Drywall desde cero:* perfiles y rieles, montaje de muros y divisiones, planchado, cinta para juntas, acabados y falso cielo raso\n⚡ *NIVEL AVANZADO – Construcción profesional:* cálculo técnico, estructuras metálicas, techos acústicos y con pendientes, viguetas y tijerales\n\n🕐 Duración: 16 horas (4 días) cada nivel\n📍 Sedes: SURCO · LOS OLIVOS · AREQUIPA\n\n🧾 Incluye: herramientas y materiales, certificación a nombre de Grupo Galk, grupo privado de WhatsApp y asesoría personalizada\n\n✨ *Indícanos la sede más cercana para enviarte horarios y PROMOCIONES* ✨\n🔴 SEDE LIMA: SURCO o LOS OLIVOS\n🔴 SEDE CIUDAD AREQUIPA\n\n⚠️ Cupos limitados.\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4da7e82467f0ff08fed87d.jpeg",
+   "type": "whatsapp_v2",
+   "__customInputs__": {},
+   "cat": "",
+   "convertToMultipath": false,
+   "transitions": [],
+   "__name__": "WhatsApp"
+  },
+  "name": "WhatsApp",
+  "type": "whatsapp_v2",
+  "cat": "",
+  "next": "4638e45d-32ea-4379-aaf5-e7f7ac1fe0db",
+  "workflowsActionType": "INTERNAL",
+  "parentKey": "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76"
+ },
+ {
+  "id": "4638e45d-32ea-4379-aaf5-e7f7ac1fe0db",
+  "parent": "3b6bb856-aeb9-4319-9e3c-122b9ae6ea76",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "ficha-drywall-enviada"
+   ]
+  },
+  "name": "Add Tag",
+  "type": "add_contact_tag",
+  "parentKey": "a58ae7cd-14cf-444d-b24e-ba8f04d9fa64"
+ }
+]

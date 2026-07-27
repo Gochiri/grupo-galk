@@ -1,0 +1,513 @@
+[
+ {
+  "id": "27b482b2-a0da-4060-a2a4-9ee5a135b6c5",
+  "order": 0,
+  "attributes": {
+   "currentRecipeType": "CUSTOM",
+   "branches": [
+    {
+     "id": "3c865446-db64-46e4-a6e9-cb928c37d621",
+     "name": "Branch",
+     "segments": [
+      {
+       "__segmentId": "83eb650b-8974-4729-933f-069d3a544a20",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "ficha-drywall-enviada"
+         ],
+         "__conditionId": "05afba35-ac06-44e1-a36f-e4aa4ea19532",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ],
+     "operator": "and",
+     "showErrors": false,
+     "branchNameError": "Branch name cannot be empty!"
+    }
+   ],
+   "operator": "and",
+   "if": true,
+   "conditionName": "Condition",
+   "version": 2,
+   "noneBranchName": "None"
+  },
+  "name": "yes",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": [
+   "3c865446-db64-46e4-a6e9-cb928c37d621",
+   "efd9e025-49ce-45e0-82a9-db3c5c6443e2"
+  ],
+  "comments": [],
+  "nodeType": "condition-node"
+ },
+ {
+  "id": "3c865446-db64-46e4-a6e9-cb928c37d621",
+  "parent": "27b482b2-a0da-4060-a2a4-9ee5a135b6c5",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Branch",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "1b52e53e-08d7-418e-aec2-7e2387a35924",
+  "sibling": [
+   "efd9e025-49ce-45e0-82a9-db3c5c6443e2"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "27b482b2-a0da-4060-a2a4-9ee5a135b6c5"
+ },
+ {
+  "id": "1b52e53e-08d7-418e-aec2-7e2387a35924",
+  "parentKey": "3c865446-db64-46e4-a6e9-cb928c37d621",
+  "parent": "3c865446-db64-46e4-a6e9-cb928c37d621",
+  "type": "wait",
+  "name": "Wait",
+  "attributes": {
+   "type": "time",
+   "startAfter": {
+    "type": "minutes",
+    "value": 2,
+    "when": "after"
+   },
+   "name": "Wait",
+   "cat": "",
+   "timePeriodInputMode": "standard",
+   "unitInputMode": "standard",
+   "isHybridAction": true,
+   "hybridActionType": "wait",
+   "convertToMultipath": false,
+   "transitions": []
+  },
+  "order": 0,
+  "cat": "",
+  "next": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c"
+ },
+ {
+  "id": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c",
+  "parent": "3c865446-db64-46e4-a6e9-cb928c37d621",
+  "order": 1,
+  "attributes": {
+   "currentRecipeType": "CUSTOM",
+   "branches": [
+    {
+     "id": "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+     "name": "Surco",
+     "segments": [
+      {
+       "__segmentId": "9bd78054-9899-448c-b775-fe61716e135f",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "zPCWyRNcxfpIh1OIFUKh",
+         "conditionOperator": "contain",
+         "conditionValue": "surco",
+         "__conditionId": "15f94220-158b-4242-b3e7-a2cf078909f9",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ],
+     "operator": "and",
+     "showErrors": false,
+     "branchNameError": "Branch name cannot be empty!"
+    },
+    {
+     "id": "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+     "name": "Los Olivos ",
+     "segments": [
+      {
+       "__segmentId": "b417490a-29e6-43c2-bbf6-bf4aeb3a024e",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "zPCWyRNcxfpIh1OIFUKh",
+         "conditionOperator": "contain",
+         "conditionValue": "olivos",
+         "__conditionId": "1b282554-a6ab-42bc-b308-1896bc7067c1",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ],
+     "operator": "and",
+     "showErrors": false,
+     "branchNameError": "Branch name cannot be empty!"
+    },
+    {
+     "id": "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+     "name": "Arequipa",
+     "segments": [
+      {
+       "__segmentId": "06af29fc-3a0e-44ef-9573-355ea6b7480b",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "zPCWyRNcxfpIh1OIFUKh",
+         "conditionOperator": "contain",
+         "conditionValue": "arequipa",
+         "__conditionId": "325bf069-751a-4acc-8076-fd57e3054876",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ],
+     "operator": "and",
+     "showErrors": false,
+     "branchNameError": "Branch name cannot be empty!"
+    }
+   ],
+   "operator": "and",
+   "if": true,
+   "conditionName": "Condition",
+   "version": 2,
+   "noneBranchName": "None"
+  },
+  "name": "yes",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": [
+   "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+   "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+   "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+   "25478fca-9ac8-405c-974b-d1f8d98b6751"
+  ],
+  "comments": [],
+  "nodeType": "condition-node",
+  "parentKey": "1b52e53e-08d7-418e-aec2-7e2387a35924"
+ },
+ {
+  "id": "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+  "parent": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c",
+  "order": 2,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "4ac65e82-7d67-4d41-bc38-839d3b3e4c89",
+  "sibling": [
+   "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+   "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+   "25478fca-9ac8-405c-974b-d1f8d98b6751"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c"
+ },
+ {
+  "id": "4ac65e82-7d67-4d41-bc38-839d3b3e4c89",
+  "parentKey": "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+  "parent": "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+  "type": "whatsapp_v2",
+  "name": "WhatsApp",
+  "attributes": {
+   "template_id": "1056649216717639",
+   "toggle_branch": false,
+   "from_phone_number": "1138517799350419",
+   "media_url": "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a507bc3292d7384f102a126.jpeg",
+   "message": "¡Aquí tienes los horarios y fechas de inicio actualizados! 👇 ¿Cuál opción te acomoda mejor? 😊\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4fd8166be4d327c8d4fd48.jpeg",
+   "type": "whatsapp_v2",
+   "__customInputs__": {},
+   "cat": "",
+   "convertToMultipath": false,
+   "transitions": [],
+   "__name__": "WhatsApp"
+  },
+  "order": 0,
+  "cat": "",
+  "workflowsActionType": "INTERNAL",
+  "next": "48af9751-1393-48cc-8e38-6cf3887c1ec5"
+ },
+ {
+  "id": "48af9751-1393-48cc-8e38-6cf3887c1ec5",
+  "parent": "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "flyer-horarios-enviado"
+   ]
+  },
+  "name": "Add Tag",
+  "type": "add_contact_tag",
+  "parentKey": "4ac65e82-7d67-4d41-bc38-839d3b3e4c89"
+ },
+ {
+  "id": "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+  "parent": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c",
+  "order": 2,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Los Olivos ",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "bd153645-b3dd-4f7d-9aba-c919f1a0be43",
+  "sibling": [
+   "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+   "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+   "25478fca-9ac8-405c-974b-d1f8d98b6751"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c"
+ },
+ {
+  "id": "bd153645-b3dd-4f7d-9aba-c919f1a0be43",
+  "parentKey": "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+  "parent": "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+  "type": "whatsapp_v2",
+  "name": "WhatsApp",
+  "attributes": {
+   "template_id": "1056649216717639",
+   "toggle_branch": false,
+   "from_phone_number": "1138517799350419",
+   "media_url": "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a507bc3708c41d4df6128ea.jpeg",
+   "message": "¡Aquí tienes los horarios y fechas de inicio actualizados! 👇 ¿Cuál opción te acomoda mejor? 😊\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4fd8166be4d327c8d4fd48.jpeg",
+   "type": "whatsapp_v2",
+   "__customInputs__": {},
+   "cat": "",
+   "convertToMultipath": false,
+   "transitions": [],
+   "__name__": "WhatsApp"
+  },
+  "order": 0,
+  "cat": "",
+  "workflowsActionType": "INTERNAL",
+  "next": "8a8083a9-272d-4ed3-9dca-e33546b4e3e1"
+ },
+ {
+  "id": "8a8083a9-272d-4ed3-9dca-e33546b4e3e1",
+  "parent": "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "flyer-horarios-enviado"
+   ]
+  },
+  "name": "Add Tag",
+  "type": "add_contact_tag",
+  "parentKey": "bd153645-b3dd-4f7d-9aba-c919f1a0be43"
+ },
+ {
+  "id": "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+  "parent": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c",
+  "order": 2,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Arequipa",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "f6dfef63-b9be-4827-b990-2aaa2f8b71e4",
+  "sibling": [
+   "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+   "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+   "25478fca-9ac8-405c-974b-d1f8d98b6751"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c"
+ },
+ {
+  "id": "f6dfef63-b9be-4827-b990-2aaa2f8b71e4",
+  "parentKey": "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+  "parent": "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+  "type": "whatsapp_v2",
+  "name": "WhatsApp",
+  "attributes": {
+   "template_id": "1056649216717639",
+   "toggle_branch": false,
+   "from_phone_number": "1138517799350419",
+   "media_url": "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a507bc39c9b37b5fdf59369.jpeg",
+   "message": "¡Aquí tienes los horarios y fechas de inicio actualizados! 👇 ¿Cuál opción te acomoda mejor? 😊\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4fd8166be4d327c8d4fd48.jpeg",
+   "type": "whatsapp_v2",
+   "__customInputs__": {},
+   "cat": "",
+   "convertToMultipath": false,
+   "transitions": [],
+   "__name__": "WhatsApp"
+  },
+  "order": 0,
+  "cat": "",
+  "workflowsActionType": "INTERNAL",
+  "next": "38e03093-9d05-42e4-b919-3676eaea3aea"
+ },
+ {
+  "id": "38e03093-9d05-42e4-b919-3676eaea3aea",
+  "parent": "4331eaf5-db93-4455-9013-c8e5a638e2c6",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "flyer-horarios-enviado"
+   ]
+  },
+  "name": "Add Tag",
+  "type": "add_contact_tag",
+  "parentKey": "f6dfef63-b9be-4827-b990-2aaa2f8b71e4"
+ },
+ {
+  "id": "25478fca-9ac8-405c-974b-d1f8d98b6751",
+  "parent": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c",
+  "order": 2,
+  "attributes": {
+   "else": true
+  },
+  "name": "None",
+  "type": "if_else",
+  "cat": "conditions",
+  "sibling": [
+   "b34ecc75-5938-402c-9a76-351abcfbfdd7",
+   "5e5b40b0-3e40-40a3-a936-f61df5a7a0c6",
+   "4331eaf5-db93-4455-9013-c8e5a638e2c6"
+  ],
+  "comments": [],
+  "nodeType": "branch-no",
+  "parentKey": "bb1c4350-d2f4-4dac-a999-68f1c34fa18c"
+ },
+ {
+  "id": "efd9e025-49ce-45e0-82a9-db3c5c6443e2",
+  "parent": "27b482b2-a0da-4060-a2a4-9ee5a135b6c5",
+  "order": 1,
+  "attributes": {
+   "else": true
+  },
+  "name": "None",
+  "type": "if_else",
+  "cat": "conditions",
+  "sibling": [
+   "3c865446-db64-46e4-a6e9-cb928c37d621"
+  ],
+  "comments": [],
+  "nodeType": "branch-no",
+  "parentKey": "27b482b2-a0da-4060-a2a4-9ee5a135b6c5"
+ }
+]
