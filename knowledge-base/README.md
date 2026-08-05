@@ -1,17 +1,20 @@
 # Knowledge Bases — Bots Conversation AI (Grupo GALK)
 
-## ⚠️ Sube los .txt, no los .csv
+## ⚠️ Sube los `.md`, no los `.csv` ni `.txt`
+
+El diálogo de Knowledge Base de GHL **solo acepta PDF, DOC, DOCX y MD**. Los `.txt` los
+rechaza ("Subida fallida"). Por eso los archivos buenos son los `.md`:
 
 | Archivo | Bot | Se sube en |
 |---|---|---|
-| **`KB-BOT-01-talleres.txt`** | BOT-01 Talleres | Settings → AI Agents → BOT-01 → Knowledge Base |
-| **`KB-BOT-02-software.txt`** | BOT-02 Software | ídem en BOT-02 |
-| **`KB-BOT-03-gestion.txt`** | BOT-03 Gestión | ídem en BOT-03 |
+| **`KB-BOT-01-talleres.md`** | BOT-01 Talleres | Settings → AI Agents → BOT-01 → Knowledge Base |
+| **`KB-BOT-02-software.md`** | BOT-02 Software | ídem en BOT-02 |
+| **`KB-BOT-03-gestion.md`** | BOT-03 Gestión | ídem en BOT-03 |
 
 Los `.csv` quedan como respaldo estructurado. **La KB busca de forma semántica**: responde
 mucho mejor con texto redactado (temario, FAQ, reglas en prosa) que con filas de tabla.
 
-Los `.txt` incluyen temarios, duraciones y qué incluye cada curso — datos **extraídos de los
+Los `.md` incluyen temarios, duraciones y qué incluye cada curso — datos **extraídos de los
 workflows FICHA que Francisco tiene vivos en la subcuenta**, o sea los textos reales que hoy
 se le envían al cliente.
 
