@@ -1,5 +1,22 @@
 # Knowledge Bases — Bots Conversation AI (Grupo GALK)
 
+## ⚠️ Sube los .txt, no los .csv
+
+| Archivo | Bot | Se sube en |
+|---|---|---|
+| **`KB-BOT-01-talleres.txt`** | BOT-01 Talleres | Settings → AI Agents → BOT-01 → Knowledge Base |
+| **`KB-BOT-02-software.txt`** | BOT-02 Software | ídem en BOT-02 |
+| **`KB-BOT-03-gestion.txt`** | BOT-03 Gestión | ídem en BOT-03 |
+
+Los `.csv` quedan como respaldo estructurado. **La KB busca de forma semántica**: responde
+mucho mejor con texto redactado (temario, FAQ, reglas en prosa) que con filas de tabla.
+
+Los `.txt` incluyen temarios, duraciones y qué incluye cada curso — datos **extraídos de los
+workflows FICHA que Francisco tiene vivos en la subcuenta**, o sea los textos reales que hoy
+se le envían al cliente.
+
+---
+
 3 CSVs, uno por bot especialista. Se suben en **Settings → AI Agents → [bot] → Knowledge Base**.
 
 | CSV | Bot | Cursos |
