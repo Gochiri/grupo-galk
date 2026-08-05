@@ -236,14 +236,20 @@ Panel **Timing & Pacing**:
 
 ## PASO 8 · Response Behavior (rápido)
 
-| Ajuste | Valor |
-|---|---|
-| Enable Response Style Settings | ON (opcional, según tono) |
-| Responder a Imágenes | OFF |
-| Responder a Notas de voz | OFF |
+Está en la misma columna de paneles, justo debajo de *Timing & Pacing*.
 
-> Imágenes y voz solo funcionan en Auto-Pilot y agregan latencia. Se pueden encender más
-> adelante, cuando el bot ya esté validado.
+| Ajuste | Valor | Por qué |
+|---|---|---|
+| Enable Response Style Settings | **OFF** | El tono ya vive en el `## Personality` del prompt. Encenderlo agrega una segunda capa de estilo que compite con el prompt |
+| Responder a Imágenes | **OFF** | Solo funciona en Auto-Pilot y agrega latencia |
+| Responder a Notas de voz | **OFF** | Ídem, y transcribir audio suma segundos por mensaje |
+
+> Los tres valen igual para los 4 bots. Imágenes y voz se pueden encender más adelante,
+> cuando el bot ya esté validado y haya pasado a Auto-Pilot.
+>
+> Si dirección insiste en encender **Response Style Settings**, usa: tono amigable/cercano ·
+> largo corto (1-3 líneas) · emojis moderados. Y relee el prompt después: si el panel
+> contradice una regla del prompt (ej. "una pregunta por mensaje"), **gana el panel**.
 
 ---
 
