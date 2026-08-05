@@ -166,44 +166,28 @@ def construir_templates(spec):
     return [header] + nodes + [none_node]
 
 
-def harvest():
-    """FASE 1 — vuelca los triggers de workflows vivos para copiar el schema exacto.
+CARPETA = "af354b55-6cf2-44e8-a062-da45855f7175"   # GALK 2.0 · 01 Setup y Normalización
 
-    No tenemos el schema de `triggers` documentado: los dumps que hay en el repo solo
-    guardaron `workflowData.templates`. Sin esto no se puede crear un trigger a ciegas.
+
+def crear_trigger(wid, campo_bot_key, titulo, target_action_id):
+    """Trigger 'Contact Changed' sobre el campo (bot).
+
+    Schema cosechado de 'WF3 | Notificación al Asesor', el único contact_changed vivo
+    de la subcuenta. Los triggers NO viajan dentro del objeto workflow: van en
+    `POST /workflow/{loc}/trigger` y se leen con `GET .../trigger?workflowId=`.
+    Para un campo custom, `field` es el ID del campo (no el fieldKey).
     """
-    wfs = c.request("GET", f"/workflow/{LOC}")
-    if not wfs or (isinstance(wfs, dict) and wfs.get("_error")):
-        sys.exit(f"ABORT: la API interna no responde (¿token de Firebase caducado?) -> {wfs}")
-    lista = wfs if isinstance(wfs, list) else wfs.get("workflows", [])
-    muestras = []
-    for w in lista:
-        if w.get("type") == "directory":
-            continue
-        d = c.request("GET", f"/workflow/{LOC}/{w['id']}")
-        trg = (d or {}).get("triggers") or []
-        # nos interesan los que disparan por cambio de campo del contacto
-        if any("contact" in json.dumps(t).lower() for t in trg):
-            muestras.append({"workflow": w.get("name"), "triggers": trg})
-        if len(muestras) >= 3:
-            break
-    out = ROOT / "scripts_ghl" / "trigger_schema_sample.json"
-    out.write_text(json.dumps(muestras, ensure_ascii=False, indent=2))
-    print(json.dumps(muestras, ensure_ascii=False, indent=2)[:4000])
-    print(f"\nGuardado en {out}")
-    print("\nSiguiente paso: rellenar construir_trigger() con este schema y correr --apply.")
-
-
-def construir_trigger(campo_bot_id):
-    """FASE 2 — trigger 'Contact Changed' sobre el campo (bot) de este workflow.
-
-    PENDIENTE: completar con el schema real que devuelva --harvest. No lo inventamos:
-    un trigger mal formado hace que el PUT devuelva 400 'corrupted type', que es
-    exactamente el error que ya nos costó SP05.
-    """
-    raise NotImplementedError(
-        "Corre primero --harvest y pega aquí el schema real del trigger."
-    )
+    body = {"status": "draft", "workflowId": wid, "schedule_config": {},
+            "conditions": [{"operator": "has-changed", "field": fid(campo_bot_key),
+                            "title": titulo, "type": "text"}],
+            "type": "contact_changed", "masterType": "highlevel",
+            "name": f"{titulo} cambió", "allowMultiple": "no",
+            "actions": [{"workflow_id": wid, "type": "add_to_workflow"}],
+            "active": True, "triggersChanged": True, "location_id": LOC,
+            "targetActionId": target_action_id,
+            "advanceCanvasMeta": {"position": {"x": 57.5, "y": -73}}}
+    r = c.request("POST", f"/workflow/{LOC}/trigger", body)
+    return r.get("id") if isinstance(r, dict) else None
 
 
 def apply():
@@ -211,38 +195,42 @@ def apply():
     if not wfs or (isinstance(wfs, dict) and wfs.get("_error")):
         sys.exit(f"ABORT: la API interna no responde (¿token de Firebase caducado?) -> {wfs}")
     lista = wfs if isinstance(wfs, list) else wfs.get("workflows", [])
-    carpeta = next((w["id"] for w in lista
-                    if w.get("type") == "directory" and w.get("name") == "SP · Pipeline de Ventas (NUEVO)"),
-                   None)
     existentes = {w.get("name"): w["id"] for w in lista if w.get("type") != "directory"}
 
     for spec in WORKFLOWS:
         nombre = spec["nombre"]
-        if nombre in existentes:                      # idempotencia (§3)
-            print(f"SKIP (ya existe): {nombre}")
-            continue
         templates = construir_templates(spec)
-        wf = c.request("POST", f"/workflow/{LOC}", {"name": nombre, "parentId": carpeta})
-        wid = wf.get("id") if isinstance(wf, dict) else None
-        if not wid:
-            print(f"ERROR creando {nombre}: {wf}")
-            continue
-        body = {"name": nombre, "version": 1, "workflowData": {"templates": templates},
-                "triggers": [construir_trigger(fid(spec["campo_bot"]))]}
-        put = c.request("PUT", f"/workflow/{LOC}/{wid}", body)
+        wid = existentes.get(nombre)
+        if not wid:                                    # idempotencia (§3): no duplica
+            wf = c.request("POST", f"/workflow/{LOC}", {"name": nombre, "parentId": CARPETA})
+            wid = wf.get("id") if isinstance(wf, dict) else None
+            if not wid:
+                print(f"ERROR creando {nombre}: {wf}")
+                continue
+
+        # OJO: el PUT reescribe el objeto entero. Si no reenvías workflowData, pierdes
+        # los nodos — el error que ya costó SP05.
+        put = c.request("PUT", f"/workflow/{LOC}/{wid}",
+                        {"name": nombre, "version": 1, "parentId": CARPETA,
+                         "workflowData": {"templates": templates}})
         ok = bool(put and not (isinstance(put, dict) and put.get("_error")))
+
         d = c.request("GET", f"/workflow/{LOC}/{wid}") or {}
+        first = ((d.get("workflowData") or {}).get("templates") or [{}])[0].get("id")
+        trg = c.request("GET", f"/workflow/{LOC}/trigger?workflowId={wid}") or []
+        if not trg:
+            crear_trigger(wid, spec["campo_bot"], spec["titulo"] + " (bot)", first)
+            trg = c.request("GET", f"/workflow/{LOC}/trigger?workflowId={wid}") or []
+
         n_nodos = len((d.get("workflowData") or {}).get("templates") or [])
-        n_trg = len(d.get("triggers") or [])
-        print(f"{'OK ' if ok else 'ERR'} {nombre}  id={wid}  nodos={n_nodos}  triggers={n_trg}")
-        if n_trg == 0:
-            print("   ⚠️  SIN TRIGGER — el workflow no se dispara con nada. Revisar.")
+        print(f"{'OK ' if ok else 'ERR'} {nombre}")
+        print(f"      id={wid}  nodos={n_nodos}  triggers={len(trg)}  status={d.get('status') or 'draft'}")
+        if not trg:
+            print("      ⚠️  SIN TRIGGER — no se dispara con nada.")
 
 
 if __name__ == "__main__":
-    if "--harvest" in sys.argv:
-        harvest()
-    elif "--apply" in sys.argv:
+    if "--apply" in sys.argv:
         apply()
     else:
         print(__doc__)
