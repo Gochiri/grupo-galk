@@ -91,10 +91,13 @@ Todos los workflows del sistema nuevo viven bajo carpetas con el mismo prefijo, 
 solas y se distinguen de los 40 heredados de Francisco (que quedan sueltos, sin tocar).
 Espejean las listas de ClickUp.
 
+> La carpeta `02 Bots (soporte)` se borró el 5-ago: su único contenido era el WF-NORM v1,
+> que quedó obsoleto al partirse en WF-NORM-1..4. **La numeración salta del 01 al 03 a propósito** —
+> renumerar obligaría a reescribir cada referencia del repo y de ClickUp a cambio de nada funcional.
+
 | Carpeta en GHL | folder_id | Contiene |
 |---|---|---|
-| GALK 2.0 · 01 Setup y Normalización | `af354b55-6cf2-44e8-a062-da45855f7175` | (reservada) |
-| GALK 2.0 · 02 Bots (soporte) | `8ee1efb2-0d13-4914-adf5-ce0a6af8eab5` | WF-NORM |
+| GALK 2.0 · 01 Setup y Normalización | `af354b55-6cf2-44e8-a062-da45855f7175` | WF-NORM-1 … WF-NORM-4 |
 | GALK 2.0 · 03 Lead Sources | `3faaac69-576d-4da5-a1b0-d07e8663080f` | LS01, LS02, LS03 |
 | GALK 2.0 · 04 Sales Pipeline | `3dc6be37-5389-4385-9806-36722ba042ef` | SP05, SP06, SP08 |
 | GALK 2.0 · 05 Pagos y Cierres | `f878823d-6f59-45c6-98ca-f8db3bcba0ae` | SP09–SP12 |

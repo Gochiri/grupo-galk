@@ -183,7 +183,10 @@ def crear_trigger(wid, campo_bot_key, titulo, target_action_id):
             "type": "contact_changed", "masterType": "highlevel",
             "name": f"{titulo} cambió", "allowMultiple": "no",
             "actions": [{"workflow_id": wid, "type": "add_to_workflow"}],
-            "active": True, "triggersChanged": True, "location_id": LOC,
+            # active=False A PROPÓSITO. Mandar active:True aquí PUBLICA el workflow,
+            # aunque el body diga status:draft. Así se publicaron los 4 WF-NORM sin
+            # querer el 5-ago. Regla 2 del proyecto: nada se publica sin revisión humana.
+            "active": False, "triggersChanged": True, "location_id": LOC,
             "targetActionId": target_action_id,
             "advanceCanvasMeta": {"position": {"x": 57.5, "y": -73}}}
     r = c.request("POST", f"/workflow/{LOC}/trigger", body)

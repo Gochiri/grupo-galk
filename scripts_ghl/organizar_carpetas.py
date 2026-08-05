@@ -15,7 +15,6 @@ c=InternalGHLClient(TokenManager(), LOC)
 REG=ROOT/"scripts_ghl/carpetas_ghl.json"
 CARPETAS=[
  "GALK 2.0 · 01 Setup y Normalización",
- "GALK 2.0 · 02 Bots (soporte)",
  "GALK 2.0 · 03 Lead Sources",
  "GALK 2.0 · 04 Sales Pipeline",
  "GALK 2.0 · 05 Pagos y Cierres",
@@ -24,8 +23,7 @@ CARPETAS=[
 ]
 # a qué carpeta va cada workflow (por prefijo del nombre)
 DESTINO={
- "WF-NORM": "GALK 2.0 · 02 Bots (soporte)",
- "SP05":    "GALK 2.0 · 04 Sales Pipeline",
+ "WF-NORM": "SP05":    "GALK 2.0 · 04 Sales Pipeline",
  "SP06":    "GALK 2.0 · 04 Sales Pipeline",
  "SP08":    "GALK 2.0 · 04 Sales Pipeline",
  "LS01":    "GALK 2.0 · 03 Lead Sources",
