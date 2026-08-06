@@ -18,7 +18,23 @@ import sys, pathlib
 ROOT = pathlib.Path("/home/user/grupo-galk")
 sys.path.insert(0, str(ROOT / "scripts_ghl"))
 import wf_lib
-from wf_lib import C, LOC, nid, n_update
+from wf_lib import C, LOC, nid
+
+
+def n_clear(nodo_id, claves, nxt="", name="Vaciar datos de interés"):
+    """Acción 'Borrar datos de campo' — NO 'Actualizar datos de campo'.
+
+    En la UI el desplegable TIPO DE ACCIÓN tiene dos opciones y hay que elegir la
+    segunda. Mandar `update_field_data` con value="" deja el nodo en error: actualizar
+    exige un valor. La que vacía de verdad es `clear_field_data`.
+    """
+    fs = [{"field": wf_lib.FID(k), "title": wf_lib.TITLE(k),
+           "type": "date" if wf_lib._cf[k]["dataType"] == "DATE" else "string"}
+          for k in claves]
+    return {"id": nodo_id, "order": 0,
+            "attributes": {"type": "update_contact_field",
+                           "actionType": "clear_field_data", "fields": fs},
+            "name": name, "type": "update_contact_field", "next": nxt}
 
 NOMBRE = "WF-SWITCH | Limpiar interés al cambiar de familia"
 CARPETA = "af354b55-6cf2-44e8-a062-da45855f7175"      # GALK 2.0 · 01 Setup y Normalización
@@ -47,7 +63,7 @@ def main():
     wid = next((w["id"] for w in lista if w.get("name") == NOMBRE), None)
 
     n1 = nid()
-    templates = [n_update(n1, [(k, "") for k in CAMPOS], name="Vaciar datos de interés")]
+    templates = [n_clear(n1, CAMPOS)]
 
     if not wid:                                        # idempotencia (§3)
         wf = C.request("POST", f"/workflow/{LOC}", {"name": NOMBRE, "parentId": CARPETA})
