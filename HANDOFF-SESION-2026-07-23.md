@@ -114,10 +114,28 @@ Precios confirmados del §4 puestos; **precios de "Avanzado" y duraciones marcad
 ### Esquema de nodos de workflow (errores que costaron tiempo)
 - `whatsapp_v2` **requiere** `"workflowsActionType": "INTERNAL"` — sin eso: *"action has a corrupted type"*.
 - `if_else` requiere `"cat": "conditions"` y `nodeType`: `condition-node` (header, `next` = **lista** de branch ids), `branch-yes` (entrada de cada rama, con `sibling` = ids de las otras), `branch-no` (rama None).
-- `internal_notification` no lleva `next`/`parent`, solo `parentKey`.
+- `internal_notification` **sí acepta `next`** (esta nota decía lo contrario y estaba mal; SP06 lo usa y funciona). Para notificar a alguien concreto: `userType: "specific_user"` + `selectedUser`.
 - Método fiable: **leer un workflow existente de la misma subcuenta y copiar el esquema** (`scripts_ghl/harvest_node_schemas.py`, `dump_ficha.py`). Los 12 tipos presentes: add_contact_tag, add_notes, assign_user, create_opportunity, if_else, internal_notification, remove_contact_tag, sms, task-notification, update_contact_field, wait, whatsapp_v2.
 - `create_opportunity` en realidad es **"create or update opportunity"** → sirve para mover de etapa (lleva `pipeline_id` + `pipeline_stage_id` + `opportunity_status`).
 - **No hay ejemplos** en la subcuenta de: webhook/CAPI ni de mover etapa (el pipeline heredado nunca avanza etapas).
+
+#### Añadido 5-ago (todo verificado contra la subcuenta)
+- **Los triggers NO viajan dentro del objeto workflow.** El GET devuelve `triggers: null` siempre — viven aparte:
+  `GET /workflow/{loc}/trigger?workflowId={wid}` · `POST /workflow/{loc}/trigger` · `PUT /workflow/{loc}/trigger/{id}`.
+  Por eso el WF-NORM v1 nació muerto: el script solo PUTeaba `workflowData` y nunca creó trigger.
+- ⚠️ **Mandar `"active": true` al crear un trigger PUBLICA el workflow**, aunque el body diga `status: "draft"`.
+  Siempre `active: false` (viola la regla 2 del proyecto). Así se publicaron los 4 WF-NORM sin querer.
+- En un trigger `contact_changed` sobre un campo custom, `field` es el **ID** del campo, no el `fieldKey`.
+- `update_contact_field` tiene **dos** `actionType`: `update_field_data` (Actualizar datos de campo) y
+  **`clear_field_data`** (Borrar datos de campo). Para vaciar hay que usar el segundo — mandar el primero con
+  `value: ""` deja el nodo en error. Los `fields` de `clear_field_data` van **sin** `value` ni `date`.
+- Operadores de `if_else` que existen en esta subcuenta: `contain`, `index-of-true`, `is`, `has_value`, `has_no_value`.
+  **`has_value` / `has_no_value` van SIN clave `conditionValue`.**
+- **Las ramas de un `if_else` son excluyentes**: gana la primera que matchea y el resto ni se evalúa. Un solo
+  if_else no puede normalizar 4 campos — hace falta un workflow por campo (ver WF-NORM-1..4).
+- OR dentro de una rama = **varios `segments`** con `operator: "or"`, una condición cada uno.
+- `wait` en minutos: `{"type": "minutes", "value": N, "when": "after"}`.
+- El PUT **reescribe el objeto entero**: hay que reenviar `workflowData` y el `version` actual, o se pierden los nodos.
 
 ### Bots
 **Conversation AI NO es un flujo de nodos** (eso es Agent Studio). Es un agente con: Model (GPT 4.1) + Business Name + **Prompt** (`## Personality` / `## Goal` / `## Instructions`) + **Actions** (Appointment Booking, Trigger a Workflow, Contact Info, Stop Bot, Human Handover, **Transfer Bot**, **Auto Followup**) + **Knowledge Base Triggers** + **Response Behavior** + **Timing & Pacing** (incluye *sleep when Manual/Workflow Message*) + **Summary Settings** + pestaña **Deploy**.
