@@ -15,6 +15,15 @@
               los 6 cross-transfers que faltan
 ```
 
+## ⚠️ Límite del panel: 10–500 caracteres
+
+La **Condición de activación** no acepta más de 500 caracteres. Las de abajo están medidas y
+entran todas (entre 337 y 417). Si las editas, cuenta antes.
+
+Debajo de la condición hay un campo **Frases de Ejemplo**: son frases que **dispararían** la
+transferencia. Sirven para descargar la condición de casuística — las de abajo ya vienen
+elegidas. Ojo: van solo frases que **sí** deben transferir, nunca contraejemplos.
+
 ---
 
 ## ⚠️ Antes de configurar: el bloqueante
@@ -28,8 +37,9 @@ califica con el curso de la otra familia.
 
 Por eso existe **`WF-SWITCH | Limpiar interés al cambiar de familia`**
 (`f72ee2f3-e29d-4894-883b-2aae4a7005a8`, draft, carpeta 01). Vacía los 10 campos de interés
-—`Familia`, `Modalidad`, `Sede`, `Pack x2`, sus 4 gemelos `(bot)`, `Curso` y `Horario`— para que
-el bot receptor arranque limpio. **No toca** nombre, teléfono, correo ni la atribución de Meta.
+—`Familia`, `Modalidad`, `Sede`, `Pack x2`, sus 4 gemelos `(bot)`, `Curso` y `Horario`— con la
+acción **Borrar datos de campo**, para que el bot receptor arranque limpio. **No toca** nombre,
+teléfono, correo ni la atribución de Meta.
 
 Los dropdown se vacían **antes** que los `(bot)`: si fuera al revés, WF-NORM vería cambiar el
 campo `(bot)` y volvería a escribir el dropdown que acabamos de limpiar.
@@ -57,66 +67,56 @@ Es el par de mayor riesgo de bucle:
 | **Gestión y Supervisión de Melamina (G2)** | online, gestionar proyectos y equipos | BOT-03 |
 
 Los dos dicen "melamina". Si las condiciones no lo distinguen, BOT-01 manda a BOT-03, BOT-03
-lee "melamina" y lo devuelve a BOT-01, y así. Por eso las condiciones de ese par están
-redactadas por **intención** (¿quiere hacerlo con sus manos o quiere dirigir a otros?), nunca
-por la palabra suelta.
-
----
-
-## Regla anti-bucle (va en los 6 escenarios)
-
-Cada `Trigger Condition` termina con esta frase. Cópiala tal cual:
-
-```
-Transfiere SOLO si la persona abandona el interés anterior y quiere otra cosa. Si solo lo
-menciona de paso, compara dos cursos, o pregunta si existen otros, respóndele que sí existen
-y sigue tú con el tema original. Si ya te transfirieron a ti en esta conversación, no
-devuelvas a la persona al bot que te la pasó.
-```
+lee "melamina" y lo devuelve a BOT-01, y así. Por eso las condiciones de ese par llevan un
+`Ojo:` que separa por **intención** (¿hacerlo con sus manos o dirigir a otros?), nunca por la
+palabra suelta.
 
 ---
 ---
 
 # BOT-01 · Talleres Prácticos
 
-**Actions → + Setup Your Actions → Transfer Bot** → `+ New Bot Transfer` (dos veces).
+**Actions → + Setup Your Actions → Transfer Bot** → `Nueva transferencia de bot` (dos veces).
 `Enable Scenario` = **ON** en los dos.
 
 ## Escenario A — hacia Software
 
 | Campo | Valor |
 |---|---|
-| Action name | `Transfer a Software` |
-| Select Bot to Transfer to | **BOT-02 Software GALK** |
+| Nombre de la acción | `Transfer a Software` |
+| Seleccione el bot al que desea transferir | **BOT-02 Software GALK** |
 
-**Trigger Condition:**
+**Condición de activación** · 337 car.
 ```
-Cuando la persona deja de interesarse por los talleres presenciales y lo que quiere es aprender
-un programa de diseño en computadora: SketchUp, renders, Revit, BIM, AutoCAD, planos en 2D o
-diseño de mobiliario para fabricación. Transfiere SOLO si la persona abandona el interés
-anterior y quiere otra cosa. Si solo lo menciona de paso, compara dos cursos, o pregunta si
-existen otros, respóndele que sí existen y sigue tú con el tema original. Si ya te transfirieron
-a ti en esta conversación, no devuelvas a la persona al bot que te la pasó.
+La persona deja los talleres y ahora quiere aprender un programa de diseño: SketchUp, renders, Revit, BIM, AutoCAD, planos 2D o diseño de mobiliario. Transfiere solo si abandona el interés anterior. Si solo lo menciona, compara o pregunta si existe, confírmale que sí y sigue con tu tema. No devuelvas a la persona al bot que te la pasó.
+```
+
+**Frases de Ejemplo**
+```
+mejor quiero aprender AutoCAD
+cambié de opinión, me interesa Revit
+ya no el taller, quiero el de SketchUp
+quiero el curso de renders
 ```
 
 ## Escenario B — hacia Gestión
 
 | Campo | Valor |
 |---|---|
-| Action name | `Transfer a Gestión` |
-| Select Bot to Transfer to | **BOT-03 Gestión GALK** |
+| Nombre de la acción | `Transfer a Gestión` |
+| Seleccione el bot al que desea transferir | **BOT-03 Gestión GALK** |
 
-**Trigger Condition:**
+**Condición de activación** · 417 car.
 ```
-Cuando la persona deja de interesarse por el taller práctico y lo que quiere es gestionar o
-dirigir proyectos, no fabricar con sus manos: diseño y gestión de cocinas, obra interiorista,
-espacios comerciales o supervisión de proyectos de melamina. Ojo con la melamina: el taller de
-melamina es práctico y lo llevas tú; el curso de supervisión de melamina es de gestión, es
-online y va con el otro asesor. Si la persona quiere aprender a fabricar los muebles, se queda
-contigo. Transfiere SOLO si la persona abandona el interés anterior y quiere otra cosa. Si solo
-lo menciona de paso, compara dos cursos, o pregunta si existen otros, respóndele que sí existen
-y sigue tú con el tema original. Si ya te transfirieron a ti en esta conversación, no devuelvas
-a la persona al bot que te la pasó.
+La persona deja el taller práctico y ahora quiere dirigir proyectos, no fabricar con sus manos: cocinas, obra interiorista, espacios comerciales o supervisión de melamina. Ojo: si quiere aprender a fabricar muebles de melamina, se queda contigo. Transfiere solo si abandona el interés anterior; si solo lo menciona o compara, confírmale que existe y sigue con tu tema. No devuelvas a la persona al bot que te la pasó.
+```
+
+**Frases de Ejemplo**
+```
+mejor quiero el de gestión de cocinas
+ya no el taller, quiero supervisar proyectos
+me interesa obra interiorista
+quiero el curso de espacios comerciales
 ```
 
 ---
@@ -127,34 +127,40 @@ a la persona al bot que te la pasó.
 
 | Campo | Valor |
 |---|---|
-| Action name | `Transfer a Talleres` |
-| Select Bot to Transfer to | **BOT-01 Talleres GALK** |
+| Nombre de la acción | `Transfer a Talleres` |
+| Seleccione el bot al que desea transferir | **BOT-01 Talleres GALK** |
 
-**Trigger Condition:**
+**Condición de activación** · 357 car.
 ```
-Cuando la persona deja de interesarse por los cursos de software y lo que quiere es un taller
-práctico presencial, trabajando con herramientas y materiales: melamina, drywall, electricidad
-o domótica. Transfiere SOLO si la persona abandona el interés anterior y quiere otra cosa. Si
-solo lo menciona de paso, compara dos cursos, o pregunta si existen otros, respóndele que sí
-existen y sigue tú con el tema original. Si ya te transfirieron a ti en esta conversación, no
-devuelvas a la persona al bot que te la pasó.
+La persona deja los cursos de software y ahora quiere un taller práctico presencial, con herramientas y materiales incluidos: melamina, drywall, electricidad o domótica. Transfiere solo si abandona el interés anterior. Si solo lo menciona, compara o pregunta si existe, confírmale que sí y sigue con tu tema. No devuelvas a la persona al bot que te la pasó.
+```
+
+**Frases de Ejemplo**
+```
+mejor quiero el taller de melamina
+ya no, prefiero algo presencial con herramientas
+quiero aprender drywall
+me interesa el de electricidad
 ```
 
 ## Escenario B — hacia Gestión
 
 | Campo | Valor |
 |---|---|
-| Action name | `Transfer a Gestión` |
-| Select Bot to Transfer to | **BOT-03 Gestión GALK** |
+| Nombre de la acción | `Transfer a Gestión` |
+| Seleccione el bot al que desea transferir | **BOT-03 Gestión GALK** |
 
-**Trigger Condition:**
+**Condición de activación** · 337 car.
 ```
-Cuando la persona deja de interesarse por aprender un programa de diseño y lo que quiere es
-gestionar o dirigir proyectos: diseño y gestión de cocinas, obra interiorista, espacios
-comerciales o supervisión de proyectos de melamina. Transfiere SOLO si la persona abandona el
-interés anterior y quiere otra cosa. Si solo lo menciona de paso, compara dos cursos, o pregunta
-si existen otros, respóndele que sí existen y sigue tú con el tema original. Si ya te
-transfirieron a ti en esta conversación, no devuelvas a la persona al bot que te la pasó.
+La persona deja el software y ahora quiere gestionar o dirigir proyectos: cocinas, obra interiorista, espacios comerciales o supervisión de melamina. Transfiere solo si abandona el interés anterior. Si solo lo menciona, compara o pregunta si existe, confírmale que sí y sigue con tu tema. No devuelvas a la persona al bot que te la pasó.
+```
+
+**Frases de Ejemplo**
+```
+mejor quiero el de gestión de cocinas
+me interesa obra interiorista
+quiero el de espacios comerciales
+ya no el software, quiero supervisión de melamina
 ```
 
 ---
@@ -165,36 +171,40 @@ transfirieron a ti en esta conversación, no devuelvas a la persona al bot que t
 
 | Campo | Valor |
 |---|---|
-| Action name | `Transfer a Talleres` |
-| Select Bot to Transfer to | **BOT-01 Talleres GALK** |
+| Nombre de la acción | `Transfer a Talleres` |
+| Seleccione el bot al que desea transferir | **BOT-01 Talleres GALK** |
 
-**Trigger Condition:**
+**Condición de activación** · 411 car.
 ```
-Cuando la persona deja de interesarse por los cursos de gestión y lo que quiere es un taller
-práctico presencial para trabajar con sus propias manos, con herramientas y materiales:
-melamina, drywall, electricidad o domótica. Ojo con la melamina: si la persona quiere aprender
-a fabricar muebles, ese es el taller práctico y va con el otro asesor; si quiere dirigir el
-proyecto y supervisar a otros, se queda contigo. Transfiere SOLO si la persona abandona el
-interés anterior y quiere otra cosa. Si solo lo menciona de paso, compara dos cursos, o pregunta
-si existen otros, respóndele que sí existen y sigue tú con el tema original. Si ya te
-transfirieron a ti en esta conversación, no devuelvas a la persona al bot que te la pasó.
+La persona deja los cursos de gestión y ahora quiere un taller práctico presencial, para trabajar con sus propias manos: melamina, drywall, electricidad o domótica. Ojo: si quiere dirigir el proyecto y supervisar a otros, se queda contigo. Transfiere solo si abandona el interés anterior; si solo lo menciona o compara, confírmale que existe y sigue con tu tema. No devuelvas a la persona al bot que te la pasó.
+```
+
+**Frases de Ejemplo**
+```
+mejor quiero el taller de melamina
+quiero aprender a fabricar muebles con mis manos
+me interesa drywall
+quiero el de electricidad
 ```
 
 ## Escenario B — hacia Software
 
 | Campo | Valor |
 |---|---|
-| Action name | `Transfer a Software` |
-| Select Bot to Transfer to | **BOT-02 Software GALK** |
+| Nombre de la acción | `Transfer a Software` |
+| Seleccione el bot al que desea transferir | **BOT-02 Software GALK** |
 
-**Trigger Condition:**
+**Condición de activación** · 346 car.
 ```
-Cuando la persona deja de interesarse por los cursos de gestión y lo que quiere es aprender a
-usar un programa de diseño en computadora: SketchUp, renders, Revit, BIM, AutoCAD, planos en 2D
-o diseño de mobiliario para fabricación. Transfiere SOLO si la persona abandona el interés
-anterior y quiere otra cosa. Si solo lo menciona de paso, compara dos cursos, o pregunta si
-existen otros, respóndele que sí existen y sigue tú con el tema original. Si ya te transfirieron
-a ti en esta conversación, no devuelvas a la persona al bot que te la pasó.
+La persona deja los cursos de gestión y ahora quiere aprender un programa de diseño: SketchUp, renders, Revit, BIM, AutoCAD, planos 2D o diseño de mobiliario. Transfiere solo si abandona el interés anterior. Si solo lo menciona, compara o pregunta si existe, confírmale que sí y sigue con tu tema. No devuelvas a la persona al bot que te la pasó.
+```
+
+**Frases de Ejemplo**
+```
+mejor quiero aprender SketchUp
+me interesa AutoCAD
+quiero el de Revit
+ya no gestión, quiero hacer renders
 ```
 
 ---
@@ -206,14 +216,12 @@ a ti en esta conversación, no devuelvas a la persona al bot que te la pasó.
 
 | Campo | Valor |
 |---|---|
-| Action name | `Limpiar interés al cambiar de familia` |
+| Nombre de la acción | `Limpiar interés al cambiar de familia` |
 | Workflow a disparar | `WF-SWITCH | Limpiar interés al cambiar de familia` |
 
-**Cuándo ejecutar:**
+**Cuándo ejecutar** · 250 car.
 ```
-Justo antes de transferir a la persona a otro asesor especialista porque cambió de familia de
-curso. Ejecuta esto primero y transfiere después. No lo ejecutes si la persona sigue en el mismo
-tipo de curso, ni cuando la transfieres a un asesor humano.
+Justo antes de transferir a la persona a otro asesor especialista porque cambió de familia de curso. Ejecuta esto primero y transfiere después. No lo ejecutes si la persona sigue en el mismo tipo de curso, ni cuando la transfieres a un asesor humano.
 ```
 
 ---
@@ -229,12 +237,18 @@ maneja, y transfiere. Si solo lo menciona de paso o está comparando, confírmal
 retoma tu tema.
 ```
 
+Esto no tiene límite de caracteres — el prompt es texto libre. Por eso la casuística larga vive
+aquí y la condición del transfer se queda corta.
+
 ---
 
 ## Orden de armado
 
-1. Los 3 bots creados y con sus prompts (si no, el desplegable de *Select Bot to Transfer to*
-   sale vacío).
+1. Los 3 bots creados y con sus prompts (si no, el desplegable de *Seleccione el bot al que
+   desea transferir* sale vacío).
 2. `Trigger a Workflow → WF-SWITCH` en los 3.
-3. Los 6 escenarios de Transfer Bot.
+3. Los 6 escenarios de Transfer Bot con sus frases de ejemplo.
 4. QA de los 3 puntos de arriba, con foco en el ping-pong BOT-01 ↔ BOT-03.
+
+> Las 3 condiciones de **BOT-00** ya estaban dentro del límite (109, 115 y 144 caracteres) —
+> no hay que tocarlas. Pero conviene agregarles también sus Frases de Ejemplo.
