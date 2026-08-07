@@ -69,12 +69,12 @@
 | Custom Value | Lo usa | Quién lo llena |
 |---|---|---|
 | Yape - Número | SP09 | cliente |
-| Plin - Número | SP09 | cliente |
-| Link de pago con tarjeta | SP09 | cliente |
+| ~~Plin - Número~~ | — | **NO SE USA** — GALK no maneja Plin (5-ago) |
+| Link de pago con tarjeta | — | **NO SE USA como valor fijo** — se genera a pedido |
 | Dirección sede Surco | AP01 | cliente |
 | Dirección sede Los Olivos | AP01 | cliente |
 | Dirección sede Arequipa | AP01 | cliente |
-| Link Zoom clases online | AP01 | cliente |
+| Link Zoom clases online | — | **NO SE USA** — se comparte en el grupo de clase |
 | Link reseña Google Surco | PS01 | cliente |
 | Link reseña Google Los Olivos | PS01 | cliente |
 | Link reseña Google Arequipa | PS01 | cliente |

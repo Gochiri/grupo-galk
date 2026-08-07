@@ -73,7 +73,7 @@ Desde Cero + Avanzado del mismo taller, para la misma persona: *S/890*, se reser
 
 ### Medios de pago
 
-Yape, Plin y tarjeta. No ofrezcas cuotas ni financiamiento: eso lo ve un asesor humano.
+Yape (a nombre de Grupo GALK) o tarjeta con link de pago que se genera a pedido. NO existe Plin, nunca lo menciones. No ofrezcas cuotas ni financiamiento: eso lo ve un asesor humano.
 
 ### Reglas que NO puedes romper
 
@@ -145,7 +145,7 @@ En el camino le envías la ficha del curso.
 
 ### Medios de pago
 
-Yape, Plin y tarjeta. No ofrezcas cuotas: eso lo ve un asesor humano.
+Yape (a nombre de Grupo GALK) o tarjeta con link de pago que se genera a pedido. NO existe Plin, nunca lo menciones. No ofrezcas cuotas ni financiamiento: eso lo ve un asesor humano.
 
 ### Reglas que NO puedes romper
 
@@ -210,7 +210,7 @@ En el camino le envías la ficha del curso.
 
 ### Medios de pago
 
-Yape, Plin y tarjeta. No ofrezcas cuotas: eso lo ve un asesor humano.
+Yape (a nombre de Grupo GALK) o tarjeta con link de pago que se genera a pedido. NO existe Plin, nunca lo menciones. No ofrezcas cuotas ni financiamiento: eso lo ve un asesor humano.
 
 ### Reglas que NO puedes romper
 

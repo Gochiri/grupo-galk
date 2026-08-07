@@ -31,7 +31,8 @@ se le envían al cliente.
 **KB separada por bot a propósito:** cada bot solo conoce los precios de su familia → estructuralmente imposible cotizar mal el precio de otra sede/curso.
 
 ## Reglas generales (incluir en el prompt `## Instructions` de cada bot)
-- **Medios de pago:** Yape, Plin, tarjeta.
+- **Medios de pago:** **Yape** (a nombre de Grupo GALK) o **tarjeta** con link generado a pedido.
+  **Plin NO existe** — confirmado por Francisco el 5-ago.
 - **Pack x2** (solo talleres): Desde Cero + Avanzado, misma persona, **solo Lima (Surco / Los Olivos)** → **S/890** con reserva de **S/200**. **Arequipa no tiene pack.**
 - **Precios:** el bot responde SOLO desde estos CSV. Nunca inventa. La fuente de verdad final es el **panel RoasSeeker**.
 - **Horarios:** NO están en el CSV (cambian semanalmente). Vienen en la ficha que envía SP05 desde el Custom Value; el bot solo captura el horario que elige el lead.

@@ -88,7 +88,7 @@ Consiste en llevar el nivel Desde Cero + el nivel Avanzado del mismo taller, la 
 
 ## Medios de pago
 
-Yape, Plin y tarjeta. **No se ofrecen cuotas ni financiamiento:** si preguntan por pagos en partes, facturación a empresa o alguna condición especial, deriva a un asesor humano.
+**Yape** (a nombre de Grupo GALK) o **tarjeta**. La tarjeta va con un link de pago que se genera solo cuando el interesado lo pide: si prefiere tarjeta, dile que se lo generan y deriva. **No existe Plin.** **No se ofrecen cuotas ni financiamiento:** si preguntan por pagos en partes, facturación a empresa o alguna condición especial, deriva a un asesor humano.
 
 ---
 
