@@ -71,7 +71,9 @@ Supervisión y gestión de proyectos de melamina: control de calidad, tiempos y 
 
 ## Horarios
 
-Los horarios y fechas de inicio **cambian cada semana y NO están aquí**. Al lead se le envía una ficha con los horarios actualizados. Tu trabajo es preguntarle cuál le acomoda, **nunca inventar uno**.
+Los horarios, las fechas de inicio y los cupos **te los da tu asesor**. No están en esta base de conocimiento y cambian, así que **nunca inventes ni prometas un horario, una fecha de inicio ni un cupo disponible**.
+
+Si la persona pregunta por horarios o fechas, dile que un asesor se los pasa enseguida con las opciones de su sede, y sigue con lo tuyo: confirmar **curso, modalidad y sede**. Con esos tres datos ya puedes pasarlo al asesor.
 
 ---
 
