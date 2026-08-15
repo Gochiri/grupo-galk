@@ -243,6 +243,65 @@ No es una regresión — con `assigned_to` pasaba lo mismo y peor, porque el due
 nunca. Se decide aparte: recalificar implica mover la oportunidad hacia atrás y volver a pasar por
 el round robin.
 
+---
+
+## 6. La cadena completa funcionó — 15-ago, contacto `6qYKCW0WI79XLV245V17`
+
+Con WF-MOD publicado y el prompt v3 endurecido pegado, el flujo corrió entero por primera vez.
+Verificado por API, no por la UI:
+
+```
+Familia de interés (bot)  = Talleres
+Curso de interés          = Melamina Desde Cero    ✅
+Modalidad (bot)           = Presencial
+Modalidad                 = Presencial             ✅
+Sede (bot)                = Surco
+Sede                      = Surco                  ✅
+Calificado                = Sí
+Asesor asignado (nuevo)   = Oliver Guerrero
+tags: … bot-silenciado, asesor-notificado
+Oportunidad: Nuevo Lead → Calificado → Asignado a asesor
+```
+
+Y el bot se comportó: presentó antes del precio, **preguntó el nivel**, dijo S/525, contestó
+16 horas sin traducirlas a semanas, mandó las fechas al asesor sin cerrar, y solo se despidió
+cuando ya tenía nivel y sede. Los tres bloques nuevos del prompt hicieron su trabajo.
+
+### 6.1 · `Familia de interés` (el canónico) sigue vacío
+
+`Familia de interés (bot)` = Talleres, pero el dropdown `Familia de interés` quedó en blanco.
+Pasó igual en el contacto anterior, así que es sistemático, no casualidad.
+
+WF-NORM-1 está bien por dentro: publicado, trigger `Familia de interés (bot) has-changed`, rama
+`contain 'taller'` → escribe `Familia de interés = Talleres`. Sus hermanos con la misma estructura
+sí funcionaron (`Modalidad` y `Sede` quedaron normalizadas). La diferencia es **cuándo** se dispara:
+NORM-1 depende de un campo que escribe BOT-00 en el primer segundo de vida del contacto, mientras
+que NORM-2 y NORM-3 dependen de campos que escribe BOT-01 más tarde.
+
+No bloquea nada hoy — ningún workflow lee ese campo —, pero deja la segmentación coja.
+**Siguiente paso:** abrir *Historial de inscripciones* de WF-NORM-1 y ver si el contacto llegó a
+inscribirse. Eso distingue "el trigger nunca disparó" de "disparó y la rama no matcheó", que se
+arreglan de formas distintas.
+
+### 6.2 · El nodo Round Robin marcó Error
+
+En el registro de ejecución el nodo *Round Robin (6 asesores)* sale en rojo, y aun así el lead
+terminó con dueño. Los 7 usuarios de la lista existen, lo verifiqué.
+
+Lo más probable es que sea **un artefacto de la prueba**: al contacto se le asignó un usuario a
+mano antes de empezar (para que el plugin de SMS pudiera responder), y el round robin de GHL falla
+cuando el contacto ya tiene dueño. Si es eso, en producción no pasa, porque el lead entra sin
+asignar.
+
+El flujo siguió igual y salió bien porque `{{user.name}}` resolvió al dueño que ya estaba. Vale la
+pena notar que **el diseño aguantó**: si no hubiera habido dueño previo y el round robin fallaba,
+el if/else de "Asesor asignado" habría mandado el lead a la rama de fallo — avisar a Lucía, tag
+`asignacion-fallida` y **sin** silenciar al bot. Que es justamente para lo que se construyó.
+
+Confirmarlo cuesta 10 segundos: clic en el nodo rojo del registro y leer el mensaje de error.
+Hay que hacerlo antes de mandar tráfico real, porque el round robin es la asignación de todos los
+leads.
+
 **La lección de arquitectura:** ninguna condición escrita en lenguaje natural dentro de un bot es
 una garantía. El workflow es la última línea de defensa y no debe confiar en quien lo llama.
 
