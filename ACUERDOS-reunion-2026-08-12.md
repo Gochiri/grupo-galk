@@ -410,17 +410,20 @@ grandes, y los tres apuntan a que hoy no debería estar corriendo:
    mandaría la ficha más de una vez.
 
 **Decidido:** se deja la fontanería armada ahora y el contenido se carga al final, de una sola
-pasada. Aplicado con `scripts_ghl/preparar_sp05.py`, SP05 sigue publicado (78 → 79 nodos):
+pasada. Aplicado con `scripts_ghl/preparar_sp05.py`, SP05 sigue publicado (78 → 102 nodos):
 
 | Arreglo | Qué hace |
 |---|---|
 | 3 triggers `contact_changed` | entra por los datos, no por el turno del bot — mata la carrera |
-| tag `ficha-enviada` en la guarda + nodo que lo pone | con 3 triggers, sin marcador la ficha saldría 3 veces |
+| tag `ficha-enviada` en la guarda | con 3 triggers, sin marcador la ficha saldría 3 veces |
+| 24 nodos que ponen el tag, uno **al final de cada rama** | el tag significa "sí salió", no "pasó por aquí" |
 | los 24 mensajes sin *"¿qué horario te acomoda mejor?"* | contradecía §D1, y una pregunta lanzada desde un workflow **compite con el bot** |
 | el trigger viejo `enviar-ficha` reapuntado a la guarda | entraba directo al árbol, saltándose la guarda y el marcador |
 
-El tag se pone **antes** del árbol, así que un curso que no matchee ninguna de las 24 ramas queda
-marcado sin haber recibido nada. Es el caso raro y el precio de no meter 24 nodos más.
+El primer intento puso un solo marcador **antes** del árbol, que es más barato pero miente: un
+curso que no matchee ninguna de las 24 ramas quedaba marcado sin haber recibido nada. Se corrigió
+a 24 marcadores, uno detrás del `Remove Tag` con el que termina cada rama. Verificado: las 24
+ramas terminan marcando, cero marcadores antes del árbol.
 
 Para **reenviar una ficha a mano**: quitar primero el tag `ficha-enviada` y luego poner
 `enviar-ficha`. Si no, la guarda corta.

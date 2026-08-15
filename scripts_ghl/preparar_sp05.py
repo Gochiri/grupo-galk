@@ -17,12 +17,10 @@ LOS TRES ARREGLOS
    canónico: el último dato en llegar es el que enrola.
 
 2. **Marcador de "ya enviada".** Con tres triggers, sin marcador, la ficha saldría hasta tres
-   veces. Se agrega un nodo que pone el tag `ficha-enviada` justo después de la guarda, y el
-   tag se suma a la guarda. Primera pasada envía, las demás cortan.
-
-   Ojo: el tag se pone **antes** del árbol, así que si un curso no matchea ninguna de las 24
-   ramas el contacto queda marcado sin haber recibido nada. Es el caso raro y el precio de no
-   meter 24 nodos más; si algún día molesta, se mueve el tag al final de cada rama.
+   veces. Se agrega el tag `ficha-enviada` a la guarda y un nodo que lo pone **detrás de cada
+   uno de los 24 envíos de WhatsApp**, no antes del árbol. Así el tag significa lo que dice:
+   si un curso no matchea ninguna rama, el contacto no queda marcado como que recibió algo
+   que nunca salió. Cuesta 24 nodos y los vale.
 
 3. **Fuera la pregunta por el horario.** Los 24 mensajes decían *"¿qué horario te acomoda
    mejor?"*, que es del flujo viejo — el cliente decidió que los horarios los da el asesor
@@ -85,18 +83,38 @@ def main():
         rama["name"] = "No enviar (ya enviada o faltan datos)"
         cambios.append(f"guarda + tag '{TAG}'")
 
-    # 2 · nodo que pone el tag, entre la guarda y el árbol de 24 ramas
-    ya = next((n for n in tpl if n.get("type") == "add_contact_tag"
-               and TAG in ((n.get("attributes") or {}).get("tags") or [])), None)
-    if not ya:
-        marcador = nid()
-        tpl.append({**wf_lib.n_tag(marcador, [TAG], nxt=arbol["id"],
-                                   parent=none_guarda["id"]),
-                    "name": "Marcar ficha enviada"})
-        none_guarda["next"] = marcador
-        arbol["parent"] = marcador
-        arbol["parentKey"] = marcador
-        cambios.append("nodo 'Marcar ficha enviada'")
+    # 2a · si quedó un marcador colgado ANTES del árbol (diseño viejo), se saca y se relinkea
+    viejo = next((n for n in tpl if n.get("type") == "add_contact_tag"
+                  and TAG in ((n.get("attributes") or {}).get("tags") or [])
+                  and n.get("parentKey") == none_guarda["id"]), None)
+    if viejo:
+        tpl = [n for n in tpl if n["id"] != viejo["id"]]
+        none_guarda["next"] = arbol["id"]
+        arbol.pop("parent", None)
+        arbol.pop("parentKey", None)
+        cambios.append("marcador movido: ya no va antes del árbol")
+
+    # 2b · un marcador al FINAL de cada rama que envía, para que el tag signifique "sí salió".
+    # Cada rama es: branch -> whatsapp_v2 -> remove_contact_tag. El marcador va detrás del
+    # último nodo de la cadena, no detrás del WhatsApp.
+    byid = {n["id"]: n for n in tpl}
+    marcados = {n.get("parentKey") for n in tpl if n.get("type") == "add_contact_tag"
+                and TAG in ((n.get("attributes") or {}).get("tags") or [])}
+    nuevos, n_marc = [], 0
+    for wa in [n for n in tpl if n.get("type") == "whatsapp_v2"]:
+        if wa.get("parentKey") in marcados:                     # idempotencia (§3)
+            continue
+        ultimo, saltos = wa, 0
+        while isinstance(ultimo.get("next"), str) and ultimo["next"] and saltos < 10:
+            ultimo = byid[ultimo["next"]]; saltos += 1
+        m = nid()
+        nuevos.append({**wf_lib.n_tag(m, [TAG], parent=wa.get("parentKey")),
+                       "name": "Marcar ficha enviada"})
+        ultimo["next"] = m
+        n_marc += 1
+    tpl += nuevos
+    if n_marc:
+        cambios.append(f"{n_marc} marcadores al final de cada rama")
 
     # 3 · fuera la pregunta por el horario
     n_msg = 0
@@ -152,6 +170,19 @@ def main():
           f"{' OR '.join(et(c) for c in b['segments'][0]['conditions'])}")
     print(f"  mensajes con la pregunta vieja: "
           f"{sum(1 for n in vt if MSG_VIEJO in ((n.get('attributes') or {}).get('message') or ''))}")
+    vbyid = {n["id"]: n for n in vt}
+    marc = {n["id"] for n in vt if n.get("type") == "add_contact_tag"
+            and TAG in ((n.get("attributes") or {}).get("tags") or [])}
+    ok = 0
+    for wa in [n for n in vt if n.get("type") == "whatsapp_v2"]:
+        cur, s = wa, 0
+        while isinstance(cur.get("next"), str) and cur["next"] and s < 10:
+            cur = vbyid[cur["next"]]; s += 1
+        ok += cur["id"] in marc
+    print(f"  envíos: {sum(1 for n in vt if n.get('type') == 'whatsapp_v2')} · "
+          f"ramas que terminan marcando: {ok} · "
+          f"marcadores antes del árbol: "
+          f"{sum(1 for n in vt if n['id'] in marc and n.get('parentKey') == none_guarda['id'])}")
     for t in C.request("GET", f"/workflow/{LOC}/trigger?workflowId={WID}") or []:
         print(f"  [{t.get('type'):16}] {str(t.get('name')):26} active={t.get('active')} "
               f"entrada={'OK' if t.get('targetActionId') == g['id'] else 'ROTA'}")
