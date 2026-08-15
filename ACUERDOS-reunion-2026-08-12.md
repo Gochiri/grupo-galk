@@ -360,15 +360,16 @@ La persona dijo *"el avanzado"* y la extracción guardó literalmente eso. Rompe
 
 No se puede arreglar con un workflow: con `Familia = Talleres` y `Curso = Avanzado` es imposible
 saber si es melamina o drywall. **Hay que arreglarlo en la extracción**, en el campo *Qué
-actualizar* de la acción Contact Info de BOT-01:
+actualizar* de la acción Contact Info de BOT-01 — **422 caracteres**, dentro del tope de 500:
 
-> El taller que quiere llevar la persona. Escribe **exactamente** uno de estos cinco, tal cual:
-> Melamina Desde Cero · Melamina Avanzado · Drywall Desde Cero · Drywall Avanzado · Electricidad
-> y Domótica.
-> Si la persona solo dice el nivel ("el avanzado", "desde cero", "el básico"), **complétalo con el
-> taller del que se venía hablando** en la conversación. Nunca guardes solo "Avanzado" ni solo
-> "Desde Cero": sin el nombre del taller el dato no sirve.
-> Si todavía no está claro de qué taller habla, deja el campo vacío.
+> El taller que quiere la persona. Escribe exactamente uno de estos cinco: Melamina Desde Cero,
+> Melamina Avanzado, Drywall Desde Cero, Drywall Avanzado, Electricidad y Domótica. Si solo dice
+> el nivel ("el avanzado", "desde cero"), complétalo con el taller del que se venía hablando.
+> Nunca guardes solo "Avanzado" ni solo "Desde Cero": sin el taller el dato no sirve. Si aún no
+> sabes de qué taller habla, deja el campo vacío.
+
+La primera versión que se entregó tenía **506 caracteres** y GHL la rechazó. Es la segunda vez que
+pasa, así que el límite quedó documentado en `CLAUDE.md` §3 y en el handoff §2.
 
 ### 6.2 · El nodo Round Robin marcó Error
 

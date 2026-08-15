@@ -111,6 +111,25 @@ Precios confirmados del §4 puestos; **precios de "Avanzado" y duraciones marcad
 | opportunities/pipelines | ❌ 401 |
 | custom-fields | ❌ 401 |
 
+### ⚠️ Límites de caracteres en la UI de los bots
+
+Ya costó dos veces: los 6 Transfer Bot (iban en ~640) y la descripción del campo *Curso de
+interés* (iba en 506, se pasó por 6). GHL rechaza al guardar y no siempre dice por qué.
+
+| Campo | Límite | Verificado |
+|---|---|---|
+| Transfer Bot → *Condición de activación* | **10–500** | 11-ago |
+| Contact Info → *Qué actualizar en el campo* | **500** | 15-ago |
+| Prompt del bot (Personality/Goal/Instructions) | sin problema con ~6.000 | 12-ago |
+| Knowledge Base (archivo `.md`) | sin límite práctico | 05-ago |
+
+La regla está también en `CLAUDE.md` §3 para que se aplique sin que nadie la recuerde: **contar
+los caracteres antes de entregar cualquier texto que se pegue en un campo de bot**, y entregar el
+conteo junto al texto.
+
+Dónde meter lo que no cabe: la casuística larga va en *Frases de Ejemplo* (Transfer Bot) o en el
+prompt; en el campo corto se deja solo la regla.
+
 ### ⚠️ El trigger guarda por qué nodo entra el contacto (`targetActionId`)
 
 El error más caro de todos, porque **es silencioso**. Cada trigger guarda un `targetActionId`:

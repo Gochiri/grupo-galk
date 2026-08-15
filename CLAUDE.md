@@ -43,6 +43,28 @@ La subcuenta tiene ~10.900 contactos y ~2.370 oportunidades **reales**. Cuidado.
 - **Workflows siempre como DRAFT.** Nunca publicar sin que un humano lo revise en la UI.
 - **Prohibido hardcodear URLs de fichas** en workflows: usar `{{custom_values.ficha_...}}`.
 - Antes de crear algo, consulta los IDs ya existentes en el handoff (§1).
+- **Todo PUT de `workflowData` rompe el trigger.** El trigger guarda `targetActionId` (el nodo por
+  el que entra el contacto) y vive en otro endpoint, así que al regenerar nodos queda apuntando a
+  uno que ya no existe: el workflow **no se ejecuta y no avisa**. Correr después
+  `scripts_ghl/reparar_targetaction.py --aplicar`.
+
+### ⚠️ Límite de 500 caracteres en los campos de texto de los bots
+
+**Cada vez que escribas texto para pegar en la UI de un bot, cuéntalo antes de entregarlo.**
+No hay que recordárselo a nadie: si el texto pasa de 500, GHL lo rechaza al guardar.
+
+| Campo | Límite |
+|---|---|
+| Transfer Bot → *Condición de activación* | **10–500** |
+| Contact Info → *Qué actualizar en el campo* | **500** |
+| Otros campos de texto de acciones de bot | asumir **500** mientras no se compruebe otra cosa |
+
+No aplica al **prompt** del bot (Personality / Goal / Instructions), que admite mucho más, ni a
+las Knowledge Base.
+
+Si no cabe: la casuística larga va en *Frases de Ejemplo* (Transfer Bot) o en el prompt; en el
+campo corto se deja solo la regla. **Entrega siempre el conteo junto al texto**, y si andas cerca
+del tope, una versión corta de respaldo.
 
 ## 4. Qué se puede hacer por API y qué no
 
