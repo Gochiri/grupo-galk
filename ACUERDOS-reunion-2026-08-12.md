@@ -307,6 +307,69 @@ pegados encima.
 La regla quedó anotada en el handoff §2: **todo script que haga PUT de `workflowData` tiene que
 reapuntar el trigger después**, y conviene pasar el auditor tras cada reconstrucción.
 
+---
+
+## 7. La guarda funcionó, pero faltaba el reintento — contacto `sY28puGtTWNbotsatp6j`
+
+Tercera prueba. WF-NORM-1 ya normaliza (`Familia de interés = Talleres` ✅), pero el lead se
+perdió igual:
+
+```
+Curso de interés = Avanzado        ← mal, debería ser "Melamina Avanzado"
+Modalidad        = Presencial      ✅
+Sede             = Los Olivos      ✅
+Calificado       = (vacío)         ← SP06 entró y NO calificó
+Asesor asignado  = (vacío)
+```
+
+### 7.1 · SP06 entró antes de que existieran los datos
+
+La única puerta viva de SP06 era la acción del bot, y el bot la dispara **en el mismo turno** en
+que *Contact Info* extrae el dato. Llegó antes de que `Sede` se escribiera: SP06 entró, la guarda
+vio el campo vacío, cortó. Segundos después la sede sí se guardó, pero **ya no había quien
+reintentara**.
+
+La guarda hizo lo correcto. Lo que faltaba era el reintento.
+
+**Arreglado** (`scripts_ghl/triggers_sp06_por_datos.py`): SP06 ahora entra **por los datos**, con
+tres triggers `contact_changed`, uno por campo canónico. El último dato en llegar es el que enrola
+al contacto, y para entonces los tres existen. La guarda sostiene el diseño y hace que entrar de
+más salga gratis:
+
+| Cuándo entra | Qué hace la guarda |
+|---|---|
+| cambió un campo y faltan otros | corta, sin efecto |
+| llegó el último de los tres | **califica** |
+| cualquier cambio posterior | `Calificado` ya tiene valor → corta |
+
+**Faltan dos cosas de UI, y sin ellas esto no sirve:**
+
+1. **Activar el reingreso** en SP06 → Configuración. Si un contacto solo puede entrar una vez, el
+   primer campo que cambie gasta el turno y los otros dos ya no lo enrolan.
+2. **Quitar la acción "Marcar lead calificado" del bot.** Es la que compite con los triggers y la
+   que mete la carrera. El orden importa: los triggers ya están, así que ahora sí se puede quitar
+   sin dejar a SP06 sin puerta.
+
+### 7.2 · El bot escribió "Avanzado" en vez de "Melamina Avanzado"
+
+La persona dijo *"el avanzado"* y la extracción guardó literalmente eso. Rompe cosas:
+
+* **WF-MOD no matchea con ninguna de sus 9 ramas** — se salvó de milagro porque `Modalidad (bot)`
+  también decía Presencial y WF-NORM-2 lo normalizó. Pura redundancia.
+* SP05 y cualquier reporte por curso quedan inservibles.
+
+No se puede arreglar con un workflow: con `Familia = Talleres` y `Curso = Avanzado` es imposible
+saber si es melamina o drywall. **Hay que arreglarlo en la extracción**, en el campo *Qué
+actualizar* de la acción Contact Info de BOT-01:
+
+> El taller que quiere llevar la persona. Escribe **exactamente** uno de estos cinco, tal cual:
+> Melamina Desde Cero · Melamina Avanzado · Drywall Desde Cero · Drywall Avanzado · Electricidad
+> y Domótica.
+> Si la persona solo dice el nivel ("el avanzado", "desde cero", "el básico"), **complétalo con el
+> taller del que se venía hablando** en la conversación. Nunca guardes solo "Avanzado" ni solo
+> "Desde Cero": sin el nombre del taller el dato no sirve.
+> Si todavía no está claro de qué taller habla, deja el campo vacío.
+
 ### 6.2 · El nodo Round Robin marcó Error
 
 En el registro de ejecución el nodo *Round Robin (6 asesores)* sale en rojo, y aun así el lead
