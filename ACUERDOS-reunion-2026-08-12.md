@@ -173,3 +173,53 @@ directamente en el dropdown — los workflows sí pueden escribir dropdowns, los
 Sigue en **draft**. Para probarlo: publicarlo, usar un contacto **nuevo** (Contact Info solo llena
 campos vacíos) y etiquetarlo `equipo-interno` — no `pruebas demo`, que no filtra nada y deja que
 corran encima los 33 triggers vivos de Francisco.
+
+---
+
+## 5. SP06 se disparaba con los campos vacíos (arreglado el 15-ago)
+
+En la prueba del 15-ago el evento *Flujo de trabajo activado → SP06* apareció en la conversación
+aunque los tres campos estaban vacíos. La causa no es SP06: es **quién lo llama**.
+
+BOT-01 tiene una acción *Trigger a Workflow* llamada "Marcar lead calificado" con esta condición
+de inicio escrita a mano:
+
+> *"Cuando ya tengas guardados los tres datos: curso, modalidad y sede. No antes. Si falta alguno,
+> no ejecutes: sigue conversando hasta completarlos."*
+
+Esa frase **no es una validación, es texto que interpreta el modelo**. El bot creyó tener los datos
+porque él mismo los había dicho en su mensaje — pero *Contact Info* extrae de lo que dice la
+persona, no de lo que escribe el bot. Y la acción usa `add_to_workflow`, así que entra por la
+puerta de atrás: se salta el trigger propio de SP06 (`Tag Added: galk-bot-calificado`).
+
+**No hubo daño de pura casualidad.** SP06 arrancaba con un if/else que corta si el contacto ya
+tiene asesor, y WF2 de Francisco ya le había asignado uno a las 10:09. Se cumplió esa rama y SP06
+murió ahí. La prueba es que `Calificado` quedó vacío, y ese es el primer nodo de la rama buena.
+
+En un contacto limpio (`equipo-interno`, sin los workflows viejos encima) esa guarda no se cumple
+y SP06 corre entero: `Calificado = Sí`, oportunidad creada y movida a Asignado, notificación al
+asesor y **bot silenciado**. Un lead sin curso, sin sede y sin modalidad en la bandeja de un
+vendedor, y el bot mudo para arreglarlo.
+
+**Arreglo aplicado** (`scripts_ghl/guardia_sp06.py`, SP06 sigue publicado, mismos 18 nodos): la
+guarda de entrada pasa de `and` a `or` y se le suman los tres campos.
+
+```
+NO calificar si:  ya tiene asesor
+              O   Curso de interés está vacío
+              O   Modalidad está vacía
+              O   Sede está vacía
+```
+
+Se comprueban los campos **canónicos**, no los gemelos de texto del bot, así que la guarda también
+verifica que WF-NORM y WF-MOD ya corrieron antes de dar el lead por bueno.
+
+**La lección de arquitectura:** ninguna condición escrita en lenguaje natural dentro de un bot es
+una garantía. El workflow es la última línea de defensa y no debe confiar en quien lo llama.
+
+Conviene además apretar el texto de la acción en la UI, aunque sea la capa blanda:
+
+> Ejecuta SOLO si los tres campos del contacto ya tienen valor guardado: Curso de interés,
+> Modalidad y Sede. No te bases en lo que tú escribiste en la conversación, sino en que la persona
+> te haya dicho el nivel exacto del curso y la sede con sus propias palabras. Si falta cualquiera
+> de los tres, NO ejecutes: sigue conversando hasta completarlos.
