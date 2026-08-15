@@ -201,18 +201,47 @@ y SP06 corre entero: `Calificado = Sí`, oportunidad creada y movida a Asignado,
 asesor y **bot silenciado**. Un lead sin curso, sin sede y sin modalidad en la bandeja de un
 vendedor, y el bot mudo para arreglarlo.
 
-**Arreglo aplicado** (`scripts_ghl/guardia_sp06.py`, SP06 sigue publicado, mismos 18 nodos): la
-guarda de entrada pasa de `and` a `or` y se le suman los tres campos.
+### El primer intento de guarda no servía
+
+La v1 metió los tres campos en el if/else de entrada, que ya traía `assigned_to has_value`. Pero
+ese if/else **ya no cortaba**: tenía colgado un nodo `Go to` que salta a "Calificado = Sí + Fecha",
+o sea a la misma cadena que la rama else. Las dos ramas terminaban en el mismo sitio.
+
+Y el `Go to` estaba bien puesto, por una razón real: el plugin de pruebas que conecta WhatsApp por
+SMS **solo funciona si el contacto tiene un usuario asignado** — si no, da error al responder. En
+pruebas *todos* los contactos tienen asesor, así que `assigned_to has_value` se cumplía siempre y
+SP06 moría antes de empezar. El `Go to` era el parche. Se quita solo cuando se conecte la API
+oficial de WhatsApp.
+
+### El arreglo bueno (v2)
+
+La guarda mezclaba dos cosas distintas:
+
+* **"faltan datos"** → tiene que cortar SIEMPRE, sin excepción
+* **"ya tiene asesor"** → anti-reproceso, pero choca de frente con el plugin
+
+Así que se cambia el marcador de anti-reproceso: en vez de `assigned_to` —que el plugin llena de
+entrada— se usa **`Calificado`**, que es lo primero que escribe SP06 cuando de verdad procesa un
+lead. El plugin no lo toca, así que el `Go to` deja de hacer falta y se eliminó.
+
+**Aplicado** (`scripts_ghl/guardia_sp06.py`, SP06 sigue publicado, de 19 a 18 nodos):
 
 ```
-NO calificar si:  ya tiene asesor
+NO calificar si:  Calificado ya tiene valor      (ya se procesó)
               O   Curso de interés está vacío
               O   Modalidad está vacía
               O   Sede está vacía
 ```
 
-Se comprueban los campos **canónicos**, no los gemelos de texto del bot, así que la guarda también
-verifica que WF-NORM y WF-MOD ya corrieron antes de dar el lead por bueno.
+Un solo nodo de condición, sin anidar nada, y la rama vuelve a ser un callejón sin salida. Se
+comprueban los campos **canónicos**, no los gemelos de texto del bot, así que la guarda verifica
+de paso que WF-NORM y WF-MOD ya corrieron antes de dar el lead por bueno.
+
+**Pendiente conocido:** WF-SWITCH limpia los 10 campos de interés al cambiar de familia pero no
+limpia `Calificado`, así que un lead ya calificado que cambia de familia no se puede recalificar.
+No es una regresión — con `assigned_to` pasaba lo mismo y peor, porque el dueño no se limpia
+nunca. Se decide aparte: recalificar implica mover la oportunidad hacia atrás y volver a pasar por
+el round robin.
 
 **La lección de arquitectura:** ninguna condición escrita en lenguaje natural dentro de un bot es
 una garantía. El workflow es la última línea de defensa y no debe confiar en quien lo llama.
