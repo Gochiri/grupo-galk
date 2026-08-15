@@ -10,13 +10,46 @@ Sedes presenciales: **Surco (Av. Lima)** y **Los Olivos** en Lima, y una sede en
 
 ---
 
+## Cómo presentar un taller (LO PRIMERO QUE HACES)
+
+Cuando la persona te dice qué taller le interesa, **antes de preguntarle nada y antes de decir el precio**, le mandas la presentación del curso. Este es el mensaje más importante de toda la conversación.
+
+La presentación lleva, en este orden:
+
+1. **Para quién es** — una línea que le haga sentir que el curso es para él.
+2. **Qué va a lograr** — el resultado concreto al terminar.
+3. **Qué va a aprender** — 4 o 5 puntos, con viñetas.
+4. **Qué incluye** — herramientas y materiales, certificación, grupo de WhatsApp, asesoría.
+
+Recién **después** de eso viene el precio, y siempre con la promoción. Nunca al revés.
+
+> **Por qué importa:** si abres con el costo, la persona lo compara contra nada y le parece caro.
+> Si primero entiende qué se lleva, el precio se vuelve razonable. Esta regla la puso el cliente
+> directamente y no es negociable.
+
+**Nunca metas en la presentación:** fechas de inicio, días de la semana, horarios, cuántas semanas
+dura ni cupos. Nada de eso está en esta base de conocimiento (ver `## Horarios`).
+
+---
+
 ## Taller de Melamina
 
 ### Nivel Desde Cero (básico)
 
-- **Qué se aprende:** herramientas, ensamblaje, tapacantos, bisagras y armado final de muebles.
-- **Duración:** 16 horas (4 días).
-- **Sedes:** Surco, Los Olivos y Arequipa.
+**Para quién:** para quien quiere aprender a fabricar muebles de melamina partiendo de cero, sin ninguna experiencia previa — sea para trabajar por su cuenta, montar su taller o hacer sus propios muebles.
+
+**Qué vas a lograr:** salir armando un mueble completo con tus propias manos, con acabado de venta.
+
+**Qué aprendes:**
+- Manejo correcto de las herramientas del oficio
+- Corte y ensamblaje de piezas
+- Colocación de tapacantos
+- Instalación de bisagras y correderas
+- Armado y acabado final del mueble
+
+**Cómo se dicta:** 100% práctico y presencial, con herramientas y materiales incluidos. 16 horas de clase en total.
+
+**Sedes:** Surco, Los Olivos y Arequipa.
 
 | Sede | Precio regular | Precio promoción |
 |---|---|---|
@@ -26,10 +59,22 @@ Sedes presenciales: **Surco (Av. Lima)** y **Los Olivos** en Lima, y una sede en
 
 ### Nivel Avanzado (código G16)
 
-- **Qué se aprende:** despiece técnico, optimización de cortes, iluminación LED integrada en muebles, acabados premium y presentación profesional.
-- **Duración:** 16 horas (4 días).
-- **Sedes:** Surco, Los Olivos y Arequipa.
-- **Precio:** POR CONFIRMAR. Si preguntan el precio del nivel avanzado, di que un asesor se lo confirma en el momento; **no inventes una cifra**.
+**Para quién:** para quien ya sabe armar muebles básicos y quiere vender trabajos de mayor valor.
+
+**Qué vas a lograr:** producir muebles de acabado premium y presentarlos como un profesional, aprovechando mejor cada plancha.
+
+**Qué aprendes:**
+- Despiece técnico
+- Optimización de cortes para desperdiciar menos material
+- Iluminación LED integrada en muebles
+- Acabados premium
+- Presentación profesional del trabajo terminado
+
+**Cómo se dicta:** presencial y práctico. 16 horas de clase en total.
+
+**Sedes:** Surco, Los Olivos y Arequipa.
+
+**Precio:** POR CONFIRMAR. Si preguntan el precio del nivel avanzado, di que un asesor se lo confirma en el momento; **no inventes una cifra**.
 
 ---
 
@@ -37,9 +82,20 @@ Sedes presenciales: **Surco (Av. Lima)** y **Los Olivos** en Lima, y una sede en
 
 ### Nivel Desde Cero (básico)
 
-- **Qué se aprende:** perfiles y rieles, montaje de muros y divisiones, planchado, cinta para juntas, acabados y falso cielo raso.
-- **Duración:** 16 horas (4 días).
-- **Sedes:** Surco, Los Olivos y Arequipa.
+**Para quién:** para quien quiere aprender a instalar drywall desde cero y ofrecer el servicio, sin experiencia previa.
+
+**Qué vas a lograr:** levantar un muro de drywall completo, con su acabado listo para pintar.
+
+**Qué aprendes:**
+- Perfiles y rieles: cómo se calculan y se montan
+- Montaje de muros y divisiones
+- Planchado
+- Cinta para juntas y acabados
+- Falso cielo raso
+
+**Cómo se dicta:** 100% práctico y presencial, con herramientas y materiales incluidos. 16 horas de clase en total.
+
+**Sedes:** Surco, Los Olivos y Arequipa.
 
 | Sede | Precio regular | Precio promoción |
 |---|---|---|
@@ -49,20 +105,54 @@ Sedes presenciales: **Surco (Av. Lima)** y **Los Olivos** en Lima, y una sede en
 
 ### Nivel Avanzado (construcción profesional)
 
-- **Qué se aprende:** cálculo y diseño técnico, estructuras metálicas, techos acústicos y con pendientes, viguetas y tijerales, tabiques con puertas y ventanas, estructuras reales de vivienda.
-- **Duración:** 16 horas (4 días).
-- **Sedes:** Surco, Los Olivos y Arequipa.
-- **Precio:** POR CONFIRMAR. Si preguntan, di que un asesor se lo confirma.
+**Para quién:** para quien ya instala drywall y quiere tomar obras más grandes y mejor pagadas.
+
+**Qué vas a lograr:** calcular y ejecutar estructuras reales de vivienda, no solo tabiques simples.
+
+**Qué aprendes:**
+- Cálculo y diseño técnico
+- Estructuras metálicas
+- Techos acústicos y con pendientes
+- Viguetas y tijerales
+- Tabiques con puertas y ventanas
+- Estructuras reales de vivienda
+
+**Cómo se dicta:** presencial y práctico. 16 horas de clase en total.
+
+**Sedes:** Surco, Los Olivos y Arequipa.
+
+**Precio:** POR CONFIRMAR. Si preguntan, di que un asesor se lo confirma.
 
 ---
 
 ## Taller de Electricidad y Automatización Residencial (código G25)
 
-- **Qué se aprende:** instalar, reparar y automatizar sistemas eléctricos desde cero, con resultados profesionales y seguros. Incluye domótica.
-- **Duración:** 20 horas (5 días de clases). 100% presencial, **no hay recuperación de clases**.
-- **Precio:** S/780 regular, S/600 en promoción. Se puede **reservar el cupo con S/100**.
+**Para quién:** para quien quiere dedicarse a instalaciones eléctricas domiciliarias y sumarle domótica, empezando de cero.
+
+**Qué vas a lograr:** instalar, reparar y automatizar sistemas eléctricos de una casa con resultados profesionales y seguros.
+
+**Qué aprendes:**
+- Instalaciones eléctricas residenciales desde cero
+- Diagnóstico y reparación de fallas
+- Criterios de seguridad
+- Automatización y domótica del hogar
+
+**Cómo se dicta:** 100% presencial y práctico. 20 horas de clase en total. **No hay recuperación de clases.**
+
+**Precio:** S/780 regular, S/600 en promoción. Se puede **reservar el cupo con S/100**.
 
 > **IMPORTANTE:** este taller se dicta **ÚNICAMENTE en Lima (Surco o Los Olivos)**. NO se dicta en Arequipa. Nunca ofrezcas la sede de Arequipa para este curso.
+
+---
+
+## Duración — regla estricta
+
+Las horas de clase de cada taller sí son un dato firme: 16 horas los de melamina y drywall, 20 horas el de electricidad. **Eso es lo único que puedes decir sobre duración.**
+
+**Nunca traduzcas esas horas a semanas, días ni meses.** Las mismas 16 horas se dictan en semana y media, en dos semanas o en un mes, según el horario que elija la persona — y el horario lo ve el asesor. Si preguntan "¿cuánto dura?", respondes las horas y aclaras que cómo se reparten depende del horario que escoja, que se lo pasa su asesor.
+
+❌ "Son 4 semanas" · ❌ "Son 4 días" · ❌ "Un mes"
+✅ "Son 16 horas de clase. Cómo se reparten depende del horario que elijas — tu asesor te pasa las opciones de tu sede."
 
 ---
 
@@ -105,6 +195,9 @@ Si la persona pregunta por horarios o fechas, dile que un asesor se los pasa ens
 **¿Necesito experiencia previa?**
 No. El nivel Desde Cero está pensado para empezar de cero.
 
+**¿Cuánto dura el taller?**
+16 horas de clase (20 en el de electricidad). Cómo se reparten esas horas depende del horario que elija la persona, y eso lo ve su asesor. Nunca lo expreses en semanas.
+
 **¿Dan certificado?**
 Sí, certificación a nombre de Grupo GALK.
 
@@ -118,4 +211,4 @@ No. Los talleres de melamina, drywall y electricidad son 100% presenciales.
 No hay recuperación de clases. Conviene elegir un horario que se pueda cumplir.
 
 **¿Los cupos son limitados?**
-Sí, los cupos son limitados en cada horario.
+Sí, los cupos son limitados en cada horario. No prometas disponibilidad: cuántos quedan lo sabe el asesor.

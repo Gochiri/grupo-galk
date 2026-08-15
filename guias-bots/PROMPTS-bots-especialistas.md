@@ -1,4 +1,10 @@
-# Prompts de los bots especialistas (BOT-01 / BOT-02 / BOT-03)
+# Prompts de los bots especialistas (BOT-01 / BOT-02 / BOT-03) — VERSIÓN VIEJA
+
+> ⛔ **Obsoletos desde el 12-ago-2026.** Los vigentes son
+> **`guias-bots/PROMPTS-bots-v3.md`**.
+>
+> Estos describen el flujo de 4 datos con envío de ficha con horarios, que el cliente descartó:
+> los horarios los da el asesor. Se conservan solo como referencia histórica.
 
 > Se pegan completos en el cuadro de texto de la pestaña **Build**, borrando antes el texto
 > de ejemplo que trae GHL. Las secciones `## Personality`, `## Goal` e `## Instructions` van

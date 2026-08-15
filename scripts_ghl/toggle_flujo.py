@@ -1,5 +1,9 @@
 """Cambia entre el flujo DEMO (asesor da horarios) y el ORIGINAL (bot manda ficha).
 
+⚠️ 12-ago-2026: el cliente confirmó que los horarios los da el asesor. El modo `original`
+   ya no se va a usar; el script queda por si acaso. Ver ACUERDOS-reunion-2026-08-12.md.
+
+
     .venv/bin/python scripts_ghl/toggle_flujo.py demo      # 3 datos, asesor da horarios
     .venv/bin/python scripts_ghl/toggle_flujo.py original  # 4 datos, bot manda ficha
 

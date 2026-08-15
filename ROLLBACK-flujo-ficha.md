@@ -1,6 +1,17 @@
 # Qué se cambió para la demo y cómo volver atrás
 
-> El cambio "el asesor da los horarios" es **provisional** hasta que el cliente lo confirme.
+> ## 🟢 DECISIÓN TOMADA — 12-ago-2026: no hay rollback
+>
+> Lucía lo confirmó en la reunión: *"lo que es horarios sí sería bueno que obviamente lo maneje el
+> vendedor, porque nosotros cambiamos horarios una vez a la semana"*. El modo demo se queda.
+>
+> Este documento pasa a ser **histórico**. Se conserva porque describe exactamente qué se tocó, y
+> porque BOT-02 y BOT-03 **todavía están en el flujo viejo de 4 datos** y hay que pasarlos al nuevo
+> usando la tabla de §"Lo manual" al revés. Ver `ACUERDOS-reunion-2026-08-12.md`.
+>
+> Los prompts vigentes son los de `guias-bots/PROMPTS-bots-v3.md`.
+
+> El cambio "el asesor da los horarios" era **provisional** hasta que el cliente lo confirmara.
 > Aquí está todo lo que se tocó y cómo revertirlo. Nada de esto es destructivo.
 
 ## Lo automático — un comando
