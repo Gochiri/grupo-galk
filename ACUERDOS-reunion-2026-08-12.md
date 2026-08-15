@@ -433,6 +433,53 @@ Para **reenviar una ficha a mano**: quitar primero el tag `ficha-enviada` y lueg
 - el `template_id` y el `from_phone_number`, hoy los placeholders de `wf_lib`
 - las imágenes de Francisco (§D3)
 
+---
+
+## 9. El reingreso apagado — contacto `5NpaZkeAeQTgWKJY1EJv`
+
+Cuarta prueba, y la primera en que **SP06 sale perfecto de punta a punta**:
+
+```
+Curso de interés = Melamina Avanzado   ← "el avanzado" ya se completa solo
+Modalidad        = Presencial
+Sede             = Los Olivos
+Calificado       = Sí   ·   Asesor asignado = Oliver Guerrero
+tags: bot-silenciado
+```
+
+La descripción del campo Contact Info arregló lo de "Avanzado" pelado, y el trigger por datos hizo
+el reintento que faltaba.
+
+**SP05 en cambio no envió**, con la misma estructura y los mismos triggers. Comparando los dos
+objetos de workflow enteros por API, la única diferencia era una clave:
+
+```
+SP06 → allowMultiple = true      ← Oliver lo activó en Configuración
+SP05 → allowMultiple = false
+```
+
+`allowMultiple` es el **"Permitir reingreso"** de la pestaña Configuración, y **viene apagado**.
+Con eso el contacto entra al workflow **una vez en su vida**. SP05 entró temprano —cuando `Sede`
+todavía estaba vacía—, la guarda cortó, y cuando la sede llegó el trigger ya no pudo volver a
+enrolarlo. Gastó su único turno.
+
+No es un bug de GHL ni el flujo viejo ejecutándose: el registro dice *"versión 9"*, que es la
+actual, y la rama que tomó dice *"Tags incluye ficha-enviada or…"*, que es la guarda nueva. Corrió
+el flujo bueno; simplemente no pudo reintentar.
+
+### Lo que se activó
+
+SP05, y de paso los **6 normalizadores**, que lo tenían apagado y nadie lo había notado:
+WF-NORM-1..4, WF-MOD y WF-SWITCH. Eso significaba que **un lead que cambia de curso se quedaba con
+la modalidad y la sede de la primera pasada** — justo el caso "desde cero → el avanzado" que
+estamos probando. Sus escrituras son idempotentes, así que reingresar no cuesta nada.
+
+**No** se activó en los que hacen algo hacia afuera al entrar (AP02, AP04, SP10-B, SP11, SP12,
+PS01, PS01-B, PS02): ahí reingresar significa repetir el efecto, y primero necesitan su propio
+marcador de "ya hecho", como el `ficha-enviada` de SP05. Se revisan uno por uno cuando les toque.
+
+Queda en `CLAUDE.md` §3 y en el handoff §2, con `scripts_ghl/permitir_reingreso.py` de auditor.
+
 ### 6.2 · El nodo Round Robin marcó Error
 
 En el registro de ejecución el nodo *Round Robin (6 asesores)* sale en rojo, y aun así el lead

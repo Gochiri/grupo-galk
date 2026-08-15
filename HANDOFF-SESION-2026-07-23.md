@@ -154,13 +154,34 @@ Usar siempre **`wf_lib.cond_trigger_campo(field_key)`**, que arma la condición 
 `type` por el `dataType`. Auditor: `scripts_ghl/reparar_condiciones_trigger.py` (en seco por
 defecto, `--aplicar` para escribir).
 
+### ⚠️ `allowMultiple` — el reingreso viene apagado
+
+En el objeto del workflow, `allowMultiple` es el "Permitir reingreso" de la pestaña
+Configuración. **Viene en `false`**, y con eso un contacto entra al workflow **una sola vez en su
+vida**: si en esa pasada la guarda corta, no hay segunda oportunidad aunque el trigger vuelva a
+dispararse.
+
+Así se encontró: SP06 y SP05, misma estructura y mismos triggers, y SP06 calificaba mientras SP05
+no enviaba nada. Al comparar los dos objetos entero, la única diferencia era esa clave.
+
+Lo necesitan en `true` los que dependen de reintentar: guardas que cortan cuando faltan datos, y
+normalizadores que recalculan (WF-NORM-1..4, WF-MOD, WF-SWITCH — si no, un lead que cambia de curso
+se queda con la modalidad y la sede de la primera pasada).
+
+**No** activarlo en los que hacen algo hacia afuera al entrar —recordatorios, cierres, matrícula—
+sin ponerles antes un marcador de "ya hecho", tipo el `ficha-enviada` de SP05.
+
+Se puede escribir por API mandándolo en el PUT del workflow. Auditor:
+`scripts_ghl/permitir_reingreso.py`.
+
 ### ⚠️ Publicado ≠ funcionando
 
-Tres cosas tienen que cumplirse a la vez, y cada una falla por su cuenta y en silencio:
+Cuatro cosas tienen que cumplirse a la vez, y cada una falla por su cuenta y en silencio:
 
 1. `workflow.status == "published"`
 2. cada trigger con `active == True`
 3. el `targetActionId` del trigger apuntando a un nodo que existe
+4. `allowMultiple == true` si el workflow depende de reintentar
 
 Al 15-ago hay dos publicados con el trigger inactivo, o sea inertes: **SP08** y **SP12**.
 

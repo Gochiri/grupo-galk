@@ -53,6 +53,11 @@ La subcuenta tiene ~10.900 contactos y ~2.370 oportunidades **reales**. Cuidado.
   Auditor: `scripts_ghl/reparar_condiciones_trigger.py --aplicar`.
 - **Un workflow publicado con el trigger inactivo no hace nada.** Al terminar, verificar
   `status == published` **y** `active == True` en cada trigger.
+- **`allowMultiple` (Reingreso) viene apagado y con eso el contacto entra UNA vez en su vida.**
+  Cualquier workflow que dependa de reintentar —guardas que cortan si faltan datos,
+  normalizadores que recalculan— lo necesita en `true`. No activarlo en los que hacen algo hacia
+  afuera al entrar (recordatorios, cierres, matrícula): ahí hay que poner un marcador de "ya
+  hecho" primero. Auditor: `scripts_ghl/permitir_reingreso.py`.
 
 ### ⚠️ Límite de 500 caracteres en los campos de texto de los bots
 
