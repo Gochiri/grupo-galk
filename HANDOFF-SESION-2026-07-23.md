@@ -130,6 +130,40 @@ conteo junto al texto.
 Dónde meter lo que no cabe: la casuística larga va en *Frases de Ejemplo* (Transfer Bot) o en el
 prompt; en el campo corto se deja solo la regla.
 
+### ⚠️ La condición de un trigger `contact_changed` tiene un formato que no es obvio
+
+La UI de GHL guarda **tres** cosas para referenciar un campo custom:
+
+```json
+{"operator": "has-changed",
+ "field": "contact.<ID>",        ← con prefijo
+ "title": "Curso de interés",
+ "type":  "string" | "select",   ← string para TEXT, select para SINGLE_OPTIONS
+ "id":    "<ID>"}                ← el mismo ID, sin prefijo
+```
+
+Si `field` va con el ID pelado o falta la clave `id`, el trigger **se guarda igual** y el API lo
+devuelve tal cual — pero en la UI el desplegable del campo aparece en **"Seleccionar"** y el
+trigger **no dispara**. Otro fallo silencioso.
+
+Nacieron mal 8 triggers nuestros. El más caro fue **WF-MOD**, que por eso nunca corrió: la
+`Modalidad` la venía llenando WF-NORM-2 desde el gemelo de texto. También WF-NORM-4, SP12, AP02,
+AP04, PS01, PS01-B y PS02.
+
+Usar siempre **`wf_lib.cond_trigger_campo(field_key)`**, que arma la condición bien y elige el
+`type` por el `dataType`. Auditor: `scripts_ghl/reparar_condiciones_trigger.py` (en seco por
+defecto, `--aplicar` para escribir).
+
+### ⚠️ Publicado ≠ funcionando
+
+Tres cosas tienen que cumplirse a la vez, y cada una falla por su cuenta y en silencio:
+
+1. `workflow.status == "published"`
+2. cada trigger con `active == True`
+3. el `targetActionId` del trigger apuntando a un nodo que existe
+
+Al 15-ago hay dos publicados con el trigger inactivo, o sea inertes: **SP08** y **SP12**.
+
 ### ⚠️ El trigger guarda por qué nodo entra el contacto (`targetActionId`)
 
 El error más caro de todos, porque **es silencioso**. Cada trigger guarda un `targetActionId`:

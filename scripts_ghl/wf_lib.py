@@ -37,6 +37,25 @@ def cond_field(key, val, op="contain"):
             "conditionValue":val,"__conditionId":nid(),"ifElseNodeId":"","__customFieldType__":"standard",
             "isWait":False,"nestedDropdownTypes":NESTED,"allowIsOperatorTypes":ALLOWIS}
 
+_TIPO_TRIGGER = {"SINGLE_OPTIONS": "select", "MULTIPLE_OPTIONS": "select",
+                 "CHECKBOX": "select", "RADIO": "select", "TEXT": "string",
+                 "LARGE_TEXT": "string", "TEXTBOX_LIST": "string"}
+
+def cond_trigger_campo(key, operador="has-changed"):
+    """Condición de un trigger `contact_changed` sobre un campo custom.
+
+    ⚠️ El formato importa y no es obvio. La UI de GHL guarda TRES cosas:
+        field = "contact.<ID>"   ← con prefijo; con el ID pelado el selector sale VACÍO
+        id    = "<ID>"           ← el mismo ID, sin prefijo
+        type  = string | select  ← según el dataType del campo
+    Si falta el prefijo o falta `id`, el trigger se guarda pero en la UI el desplegable
+    del campo aparece en "Seleccionar" y **no dispara**. Silencioso, como siempre.
+    Verificado el 15-ago comparando un trigger hecho a mano contra los creados por script.
+    """
+    f = _cf[key]
+    return {"operator": operador, "field": f"contact.{f['id']}", "title": f["name"],
+            "type": _TIPO_TRIGGER.get(f["dataType"], "text"), "id": f["id"]}
+
 def cond_tag(tag):
     return {"conditionType":"contact_detail","conditionSubType":"tags","conditionOperator":"index-of-true",
             "conditionValue":[tag],"__conditionId":nid(),"ifElseNodeId":"","__customFieldType__":"standard",

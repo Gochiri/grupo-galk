@@ -371,6 +371,49 @@ actualizar* de la acción Contact Info de BOT-01 — **422 caracteres**, dentro 
 La primera versión que se entregó tenía **506 caracteres** y GHL la rechazó. Es la segunda vez que
 pasa, así que el límite quedó documentado en `CLAUDE.md` §3 y en el handoff §2.
 
+---
+
+## 8. Dos hallazgos del 15-ago por la tarde
+
+### 8.1 · Los triggers creados por script no seleccionaban el campo
+
+Oliver lo vio en la UI: el desplegable del campo aparecía en **"Seleccionar"**, vacío, aunque el
+trigger tuviera nombre y estuviera activo. Los tres de SP06 los rearmó a mano — y eso dio la
+referencia para encontrar el formato bueno.
+
+La UI guarda `field: "contact.<ID>"` **más** una clave `id` con el ID pelado. Los scripts
+guardaban solo `field: "<ID>"`. Se guarda igual, el API lo devuelve igual, y **no dispara**.
+
+**8 triggers nuestros nacieron así.** El más caro: **WF-MOD nunca corrió**. La `Modalidad` la
+venía llenando WF-NORM-2 desde el gemelo de texto del bot, no WF-MOD. Los otros: WF-NORM-4, SP12,
+AP02, AP04, PS01, PS01-B y PS02 — casi todos en draft, así que no habían hecho daño todavía.
+
+Arreglado con `scripts_ghl/reparar_condiciones_trigger.py`. Y para que no vuelva a pasar, el
+formato quedó encapsulado en `wf_lib.cond_trigger_campo()`, con la regla en `CLAUDE.md` §3.
+
+De paso, dos publicados con el trigger **inactivo**, o sea inertes: **SP08** y **SP12**.
+
+### 8.2 · SP05 tiene la misma carrera que SP06 — pero antes hay que decidir qué hace
+
+El registro de ejecución muestra que SP05 entró y se cortó en su guarda
+(`Curso vacío OR Sede vacía OR Modalidad vacía`), igual que SP06: el bot lo llama con
+`add_to_workflow` en el mismo turno en que se extraen los datos.
+
+**Pero arreglarle la carrera ahora sería arreglar lo que no es.** SP05 tiene tres problemas más
+grandes, y los tres apuntan a que hoy no debería estar corriendo:
+
+1. **Los 24 custom values de ficha están vacíos.** Los 24. Aunque SP05 corriera perfecto, mandaría
+   los 24 mensajes de WhatsApp con el link en blanco.
+2. **La copia es del flujo viejo.** El mensaje dice *"¿qué horario te acomoda mejor?"* — justo lo
+   que el cliente descartó: los horarios los da el asesor.
+3. **No tiene marcador de "ya enviado"**, así que en cuanto se le pongan triggers por datos
+   mandaría la ficha más de una vez.
+
+Antes de tocarlo hay que decidir **para qué sirve SP05 ahora**. La opción que encaja con lo que
+pidió Lucía es convertirlo en el envío de **1–2 imágenes por curso** (§D3), y en ese caso lo que
+necesita es: las imágenes cargadas, la copia reescrita sin horarios, un tag de "ya enviado" y
+recién entonces los triggers por datos. Es un rediseño, no un parche.
+
 ### 6.2 · El nodo Round Robin marcó Error
 
 En el registro de ejecución el nodo *Round Robin (6 asesores)* sale en rojo, y aun así el lead

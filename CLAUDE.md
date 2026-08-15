@@ -47,6 +47,12 @@ La subcuenta tiene ~10.900 contactos y ~2.370 oportunidades **reales**. Cuidado.
   el que entra el contacto) y vive en otro endpoint, así que al regenerar nodos queda apuntando a
   uno que ya no existe: el workflow **no se ejecuta y no avisa**. Correr después
   `scripts_ghl/reparar_targetaction.py --aplicar`.
+- **Triggers `contact_changed`: usar `wf_lib.cond_trigger_campo()`, nunca armar la condición a
+  mano.** El campo va como `contact.<ID>` **y** repetido en la clave `id`. Con el ID pelado el
+  trigger se guarda, pero en la UI el desplegable queda en "Seleccionar" y **no dispara**.
+  Auditor: `scripts_ghl/reparar_condiciones_trigger.py --aplicar`.
+- **Un workflow publicado con el trigger inactivo no hace nada.** Al terminar, verificar
+  `status == published` **y** `active == True` en cada trigger.
 
 ### ⚠️ Límite de 500 caracteres en los campos de texto de los bots
 
