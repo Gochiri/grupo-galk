@@ -409,10 +409,26 @@ grandes, y los tres apuntan a que hoy no debería estar corriendo:
 3. **No tiene marcador de "ya enviado"**, así que en cuanto se le pongan triggers por datos
    mandaría la ficha más de una vez.
 
-Antes de tocarlo hay que decidir **para qué sirve SP05 ahora**. La opción que encaja con lo que
-pidió Lucía es convertirlo en el envío de **1–2 imágenes por curso** (§D3), y en ese caso lo que
-necesita es: las imágenes cargadas, la copia reescrita sin horarios, un tag de "ya enviado" y
-recién entonces los triggers por datos. Es un rediseño, no un parche.
+**Decidido:** se deja la fontanería armada ahora y el contenido se carga al final, de una sola
+pasada. Aplicado con `scripts_ghl/preparar_sp05.py`, SP05 sigue publicado (78 → 79 nodos):
+
+| Arreglo | Qué hace |
+|---|---|
+| 3 triggers `contact_changed` | entra por los datos, no por el turno del bot — mata la carrera |
+| tag `ficha-enviada` en la guarda + nodo que lo pone | con 3 triggers, sin marcador la ficha saldría 3 veces |
+| los 24 mensajes sin *"¿qué horario te acomoda mejor?"* | contradecía §D1, y una pregunta lanzada desde un workflow **compite con el bot** |
+| el trigger viejo `enviar-ficha` reapuntado a la guarda | entraba directo al árbol, saltándose la guarda y el marcador |
+
+El tag se pone **antes** del árbol, así que un curso que no matchee ninguna de las 24 ramas queda
+marcado sin haber recibido nada. Es el caso raro y el precio de no meter 24 nodos más.
+
+Para **reenviar una ficha a mano**: quitar primero el tag `ficha-enviada` y luego poner
+`enviar-ficha`. Si no, la guarda corta.
+
+**Lo que falta y es puro contenido**, para hacer al final en una pasada:
+- los **24 custom values de ficha**, hoy vacíos
+- el `template_id` y el `from_phone_number`, hoy los placeholders de `wf_lib`
+- las imágenes de Francisco (§D3)
 
 ### 6.2 · El nodo Round Robin marcó Error
 
