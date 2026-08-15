@@ -278,10 +278,34 @@ sí funcionaron (`Modalidad` y `Sede` quedaron normalizadas). La diferencia es *
 NORM-1 depende de un campo que escribe BOT-00 en el primer segundo de vida del contacto, mientras
 que NORM-2 y NORM-3 dependen de campos que escribe BOT-01 más tarde.
 
-No bloquea nada hoy — ningún workflow lee ese campo —, pero deja la segmentación coja.
-**Siguiente paso:** abrir *Historial de inscripciones* de WF-NORM-1 y ver si el contacto llegó a
-inscribirse. Eso distingue "el trigger nunca disparó" de "disparó y la rama no matcheó", que se
-arreglan de formas distintas.
+*Historial de inscripciones* de WF-NORM-1: **"No se han encontrado inscripciones"**. Ningún
+contacto entró nunca. Y no es que el bot no escribiera el campo — `Familia de interés (bot)` dice
+`Talleres`, leído por API.
+
+**Causa encontrada — y afectaba a 5 workflows, no a uno.** Cada trigger guarda un
+`targetActionId`: el nodo por el que el contacto entra. Los triggers viven en un endpoint aparte
+y **el PUT del workflow no los toca**, así que cada vez que un script reconstruyó los nodos —y
+todos generan IDs nuevos— el trigger se quedó apuntando al nodo viejo. Dispara, no encuentra por
+dónde entrar, y no pasa nada. Sin error, sin inscripción, sin rastro en *Registros de ejecución*.
+
+| Workflow | Estado | Qué implicaba |
+|---|---|---|
+| **WF-NORM-1** | publicado | `Familia de interés` nunca se normalizaba |
+| **WF-SWITCH** | publicado | cambiar de familia **nunca limpiaba** el interés viejo |
+| **SP06** | publicado | su trigger por tag estaba muerto; corría solo porque el bot lo llama con `add_to_workflow` |
+| **AP01** | draft | — |
+| **PS01-B** | draft | — |
+
+**Arreglado** con `scripts_ghl/reparar_targetaction.py`: recalcula el nodo de entrada (el único
+sin `parent` y al que nadie apunta con `next`) y reapunta el trigger, respetando `active` y el
+estado de cada workflow. Los cinco tenían un único candidato. Re-escaneado después: limpio.
+
+El de WF-SWITCH era el más peligroso de los cinco y nadie lo había notado: un lead que empieza
+preguntando por talleres y termina en software se quedaba con el curso y la sede del taller
+pegados encima.
+
+La regla quedó anotada en el handoff §2: **todo script que haga PUT de `workflowData` tiene que
+reapuntar el trigger después**, y conviene pasar el auditor tras cada reconstrucción.
 
 ### 6.2 · El nodo Round Robin marcó Error
 

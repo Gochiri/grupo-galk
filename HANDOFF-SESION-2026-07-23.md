@@ -111,6 +111,24 @@ Precios confirmados del §4 puestos; **precios de "Avanzado" y duraciones marcad
 | opportunities/pipelines | ❌ 401 |
 | custom-fields | ❌ 401 |
 
+### ⚠️ El trigger guarda por qué nodo entra el contacto (`targetActionId`)
+
+El error más caro de todos, porque **es silencioso**. Cada trigger guarda un `targetActionId`:
+el nodo por el que el contacto entra al workflow. Los triggers viven en un endpoint aparte
+(`/workflow/{loc}/trigger`) y **el PUT del workflow no los toca**. Como todos los scripts
+regeneran los IDs de nodo con `nid()`, cada reconstrucción deja el trigger apuntando a un nodo
+que ya no existe. El trigger dispara, no encuentra por dónde entrar y no pasa nada: ni error,
+ni inscripción, ni rastro en *Registros de ejecución*. Solo *Historial de inscripciones* vacío.
+
+Pasó en 5 workflows a la vez (detectado el 15-ago con WF-NORM-1, que llevaba días sin correr).
+
+**Regla:** todo script que haga PUT de `workflowData` tiene que reapuntar el trigger después.
+`scripts_ghl/reparar_targetaction.py` lo audita entero y lo arregla — correr sin argumentos
+para ver, con `--aplicar` para escribir. Conviene pasarlo después de cada reconstrucción.
+
+⚠️ Al reenviar un trigger hay que respetar su `active`: mandar `active: True` **publica el
+workflow**, aunque el body diga `status: draft`.
+
 ### Esquema de nodos de workflow (errores que costaron tiempo)
 - `whatsapp_v2` **requiere** `"workflowsActionType": "INTERNAL"` — sin eso: *"action has a corrupted type"*.
 - `if_else` requiere `"cat": "conditions"` y `nodeType`: `condition-node` (header, `next` = **lista** de branch ids), `branch-yes` (entrada de cada rama, con `sibling` = ids de las otras), `branch-no` (rama None).
