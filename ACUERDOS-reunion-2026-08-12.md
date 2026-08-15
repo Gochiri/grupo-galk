@@ -95,12 +95,32 @@ que exista una fecha de inicio en el contacto. Falta decidir:
 2. ¿Quién escribe la **fecha de inicio del grupo** en el contacto? Es el ancla de los recordatorios.
 3. "Adelanto" no existe hoy como estado. ¿Se agrega una etapa o un campo?
 
-### P2 · Precios y promociones vigentes
+### P2 · Dos precios que faltan y una duración sin fuente
 
-Lucía corrigió un precio en vivo pero no dio la lista buena. Las promociones además *"varían,
-siempre están haciendo un cambio"* (Francisco 30:45). Hay que:
-- Validar la tabla de precios completa de los 3 bots contra lo que ella maneja hoy.
-- Definir quién y cada cuánto actualiza la promoción vigente.
+**Decidido el 15-ago:** el bot **sí da precios**, con la promoción, después de presentar el
+producto. Las actualizaciones mensuales de promociones las gestiona Francisco; nosotros
+entregamos la estructura y el contenido se mueve dentro de ella. No se vuelve a abrir el tema.
+
+Con eso cerrado, quedan tres datos por conseguir. Auditados contra los 3 catálogos el 15-ago:
+
+**Precios — 12 de 14 cursos completos.** Faltan:
+
+| Curso | Falta |
+|---|---|
+| Melamina Avanzado (G16) | precio regular y promo, las 3 sedes |
+| Drywall Avanzado | precio regular y promo, las 3 sedes |
+
+Son justo los dos donde el bot tiene más chance de inventar, porque tiene alrededor todo para
+deducirlos: Melamina Desde Cero promo = S/525 y Pack x2 (desde cero + avanzado) = S/890. Restar y
+contestar "S/365" es exactamente lo que un modelo hace con confianza. Por eso el prompt v3 los
+nombra explícitamente como POR CONFIRMAR en vez de omitirlos, y prohíbe calcular: un hueco
+silencioso se rellena, uno nombrado no.
+
+**Duración — sin fuente.** La KB dice 16 horas (melamina y drywall) y 20 horas (electricidad),
+pero los 3 catálogos dicen `por confirmar` en los 14 cursos. Ese 16 fue de donde salió el "cuatro
+semanas" que Lucía corrigió en vivo; ella rechazó las semanas pero nunca confirmó las horas.
+Si el número no es firme, lo más limpio es que el bot tampoco dé duración y la mande al asesor,
+igual que los horarios.
 
 ### P3 · Contenido real de los cursos de BOT-02 y BOT-03
 
