@@ -524,17 +524,29 @@ Después de corregir el `userType` (§11), lo guardado en SP06 es **idéntico by
 WF3 de Francisco: `"userType": "assign"` con `assignedOwners: ["contact_owner"]`. Y aun así el
 desplegable *PARA TIPO DE USUARIO* aparece **vacío** en la UI.
 
-Dos posibilidades, indistinguibles desde la API:
+**Resuelto el 17-ago: el formato ya estaba bien, engañaba la vista.** Oliver lo seleccionó a mano
+—la opción se llama **"Propietarios asignados"**— y la UI escribió exactamente lo mismo que ya
+había: el JSON siguió en v25, sin cambios. Y confirmó que WF3 tiene esa misma opción marcada.
 
-1. La UI espera un valor distinto de `"assign"` para resolver el desplegable.
-2. **WF3 también sale vacío y su notificación tampoco llega nunca.** Dábamos por bueno que WF3
-   notificaba, pero lo único comprobado fue el tag `asesor-notificado` — y un tag no prueba que
-   llegara un aviso. Puede que en esta subcuenta nunca haya llegado una notificación interna.
+El desplegable aparecía vacío porque estaba abriendo el nodo **desde el registro de ejecución**,
+que no resuelve ese campo — igual que solo pinta el trigger por el que entró el contacto. Para
+auditar configuración hay que abrir el nodo desde *Creador*. Queda anotado en el handoff §2.
 
-Se resuelve como se resolvió el formato de los triggers: **configurarlo a mano en la UI y leer el
-JSON que escribe**, y con esa forma corregir los 4 nodos que tenemos (SP06 ×2, SP09, AP01).
-Falta también descartar lo obvio: que el usuario tenga las notificaciones internas activadas en su
-perfil.
+### Lo único que sigue abierto: si el aviso llega
+
+Antes del arreglo el valor era `assigned_user`, inválido, así que esas notificaciones **nunca
+salieron** — eso es seguro. Después del arreglo la config es correcta y la corrida de las 11:33
+ya fue sobre la v25 arreglada.
+
+Quedan dos causas posibles, ninguna del nodo:
+
+1. **Las notificaciones internas de GHL van a la campanita**, no a WhatsApp ni al correo. A email o
+   push solo si el usuario lo tiene activado en su perfil.
+2. **El usuario las tiene apagadas** (*Configuración → Mi perfil → Notificaciones*).
+
+Forma limpia de descartar que sea nuestro: **WF3 de Francisco lleva semanas corriendo sobre leads
+reales con esta misma configuración**. Si tampoco llegaron nunca esos avisos, el problema es de
+entrega o de preferencias del usuario, no de cómo construimos el nodo.
 
 ### Lo que queda ya no es lógica
 

@@ -176,6 +176,21 @@ la forma**: es la única fuente fiable, la doc oficial no cubre el esquema inter
 Helper: `wf_lib.n_notif()` ya emite la forma correcta (con `usuario` → concreto, sin él → dueño del
 contacto). Auditor: `scripts_ghl/reparar_validacion_nodos.py` (en seco por defecto, `--aplicar`).
 
+En la UI, `userType: "assign"` se llama **"Propietarios asignados"**. Confirmado el 17-ago
+seleccionándolo a mano: el JSON que escribe la UI es idéntico al del helper.
+
+### ⚠️ La vista *Registros de ejecución* no pinta toda la configuración
+
+Dos cosas que ahí aparecen vacías o incompletas y llevan a diagnósticos falsos:
+
+* **Solo dibuja el trigger por el que entró el contacto**, no todos los del workflow. Los demás se
+  ven en *Creador*.
+* **No resuelve el desplegable de tipo de usuario** de `internal_notification`: sale en
+  "Seleccionar tipo de usuario" aunque el nodo esté bien configurado.
+
+Regla: para auditar configuración, **abrir el nodo desde *Creador***, nunca desde el registro de
+ejecución. El registro sirve para ver qué camino tomó una corrida, no cómo está armado el nodo.
+
 ### ⚠️ `allowMultiple` — el reingreso viene apagado
 
 En el objeto del workflow, `allowMultiple` es el "Permitir reingreso" de la pestaña
