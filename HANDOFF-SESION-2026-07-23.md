@@ -154,6 +154,28 @@ Usar siempre **`wf_lib.cond_trigger_campo(field_key)`**, que arma la condición 
 `type` por el `dataType`. Auditor: `scripts_ghl/reparar_condiciones_trigger.py` (en seco por
 defecto, `--aplicar` para escribir).
 
+### ⚠️ Nodos que GHL rechaza al guardar — y que además no funcionaban
+
+GHL valida el PUT nodo por nodo y devuelve **un solo error por vez**, así que cada uno tapa al
+siguiente. Aparecen como `Action validation failed`. Los encontrados el 17-ago:
+
+| Nodo | Clave | Malo | Bueno |
+|---|---|---|---|
+| `create_opportunity` | `monetary_value` | ausente | `"{{contact.precio_cotizado}}"` |
+| `internal_notification` | `userType` | `assigned_user` | `"assign"` + `assignedOwners: ["contact_owner"]` |
+| `internal_notification` | `userType` | `specific_user` | `"user"` + `selectedUser: "<userId>"` |
+
+**Lo grave no es el guardado.** Un `userType` inválido **no avisa a nadie**: las notificaciones al
+asesor de SP06 y SP09 nunca llegaron. Lo que sí llegaba era el aviso de WF3 de Francisco, que es
+otro workflow — y eso lo disimuló durante semanas.
+
+Los formatos buenos salieron de WF3 y de ALERTA de Francisco, que están hechos en la UI. Cuando un
+nodo no pase la validación, **buscar un workflow de Francisco con ese mismo tipo de nodo y copiar
+la forma**: es la única fuente fiable, la doc oficial no cubre el esquema interno.
+
+Helper: `wf_lib.n_notif()` ya emite la forma correcta (con `usuario` → concreto, sin él → dueño del
+contacto). Auditor: `scripts_ghl/reparar_validacion_nodos.py` (en seco por defecto, `--aplicar`).
+
 ### ⚠️ `allowMultiple` — el reingreso viene apagado
 
 En el objeto del workflow, `allowMultiple` es el "Permitir reingreso" de la pestaña

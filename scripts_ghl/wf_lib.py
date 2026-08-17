@@ -95,9 +95,26 @@ def n_wa(nodo_id, mensaje, nxt="", parent=None, media=None, name="WhatsApp"):
     if parent: n.update({"parent":parent,"parentKey":parent})
     return n
 
-def n_notif(nodo_id, titulo, cuerpo, usuario=None, tipo_user="assigned_user", parent=None):
-    notif={"type":"send_notification","body":cuerpo,"title":titulo,"redirectPage":"conversation","userType":tipo_user}
-    if usuario: notif["selectedUser"]=usuario
+def n_notif(nodo_id, titulo, cuerpo, usuario=None, tipo_user=None, parent=None):
+    """Notificación interna.
+
+    ⚠️ `userType` solo acepta dos valores, y no son los que suenan lógicos. Verificado el
+    17-ago contra WF3 y ALERTA de Francisco, hechos en la UI:
+
+        al dueño del contacto  -> userType="assign", assignedOwners=["contact_owner"]
+        a un usuario concreto  -> userType="user",   selectedUser="<userId>"
+
+    Lo que usábamos —`assigned_user` y `specific_user`— GHL lo rechaza:
+    *"User Type has an invalid value. Please choose a valid option."* Y no falla solo al
+    guardar: **una notificación con userType inválido no avisa a nadie**.
+
+    Se pasa `usuario` para el caso concreto; sin `usuario` va al dueño del contacto.
+    """
+    notif={"type":"send_notification","body":cuerpo,"title":titulo,"redirectPage":"conversation"}
+    if usuario:
+        notif.update({"userType":"user","selectedUser":usuario})
+    else:
+        notif.update({"userType":"assign","assignedOwners":["contact_owner"]})
     n={"id":nodo_id,"order":0,"attributes":{"type":"notification","notification":notif},
        "name":"Internal Notification","type":"internal_notification"}
     if parent: n["parentKey"]=parent
