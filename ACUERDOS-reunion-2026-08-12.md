@@ -546,7 +546,29 @@ El desplegable aparecía vacío porque estaba abriendo el nodo **desde el regist
 que no resuelve ese campo — igual que solo pinta el trigger por el que entró el contacto. Para
 auditar configuración hay que abrir el nodo desde *Creador*. Queda anotado en el handoff §2.
 
-### Lo único que sigue abierto: si el aviso llega
+### El aviso sí llega — cerrado el 17-ago
+
+Verificado en la campana de GHL. Llegó como *Personalizado Notificación* y con los **seis campos
+dinámicos resueltos**, que es algo que nunca se había comprobado: si alguno estuviera mal escrito
+saldría el `{{...}}` en crudo.
+
+```
+🎯 Lead perfilado — pásale horarios
+Lead perfilado y listo para cerrar: PRUEBAS DEMO (+52 449 638 8070)
+🪵 Melamina Desde Cero · Presencial · Arequipa
+Vino de: Meta Ads
+Entra a la conversación y pásale los horarios y fechas disponibles de su sede.
+```
+
+Dónde aterriza, para no volver a buscarlo: **el ícono de campana** de la barra superior derecha,
+pestaña *Alerta*. No es WhatsApp ni correo. A email o push llega solo si el usuario lo activa en
+su perfil, y el push de la app de LeadConnector es el que de verdad avisa en el celular.
+
+Ojo con la expectativa: **el aviso no es el mecanismo importante.** Lo que hace que un asesor
+atienda el lead es que la conversación le quede asignada en su bandeja y la oportunidad aparezca
+en su columna del pipeline. La notificación es un empujón extra, no un punto único de fallo.
+
+### Historial: por qué costó tanto
 
 Antes del arreglo el valor era `assigned_user`, inválido, así que esas notificaciones **nunca
 salieron** — eso es seguro. Después del arreglo la config es correcta y la corrida de las 11:33
