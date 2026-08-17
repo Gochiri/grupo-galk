@@ -512,13 +512,29 @@ Tres cosas que el bot hizo bien y que no eran obvias:
 
 El primer mensaje de BOT-00 salió con la bienvenida nueva.
 
-### Pendiente de confirmar
+### El silenciado sí funciona — cerrado el 17-ago
 
-El bot siguió respondiendo después de que la oportunidad pasara a *Asignado a asesor*. El tag
-`bot-silenciado` está puesto, así que lo más probable es que esos dos mensajes ya fueran en camino
-cuando el silenciado aterrizó. Se confirma escribiéndole otra cosa al contacto: si no contesta,
-funcionó; si contesta, hay que revisar el nodo `update_conversation_ai_status` de SP06, porque el
-sentido de esa etapa es que el humano tome la conversación.
+En la corrida de las 11:33 (contacto `ub0yX9ioTibRwSuc3gud`) **el bot se detuvo**. Así que
+`assignedEmployeeId: "keep-same"` resuelve al bot correcto y los dos mensajes de la corrida
+anterior iban en camino cuando aterrizó el silenciado. No hace falta el if/else por familia.
+
+### Lo que sigue abierto: la notificación al asesor no llega
+
+Después de corregir el `userType` (§11), lo guardado en SP06 es **idéntico byte a byte** a lo de
+WF3 de Francisco: `"userType": "assign"` con `assignedOwners: ["contact_owner"]`. Y aun así el
+desplegable *PARA TIPO DE USUARIO* aparece **vacío** en la UI.
+
+Dos posibilidades, indistinguibles desde la API:
+
+1. La UI espera un valor distinto de `"assign"` para resolver el desplegable.
+2. **WF3 también sale vacío y su notificación tampoco llega nunca.** Dábamos por bueno que WF3
+   notificaba, pero lo único comprobado fue el tag `asesor-notificado` — y un tag no prueba que
+   llegara un aviso. Puede que en esta subcuenta nunca haya llegado una notificación interna.
+
+Se resuelve como se resolvió el formato de los triggers: **configurarlo a mano en la UI y leer el
+JSON que escribe**, y con esa forma corregir los 4 nodos que tenemos (SP06 ×2, SP09, AP01).
+Falta también descartar lo obvio: que el usuario tenga las notificaciones internas activadas en su
+perfil.
 
 ### Lo que queda ya no es lógica
 
