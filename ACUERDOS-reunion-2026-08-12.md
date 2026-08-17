@@ -526,7 +526,21 @@ desplegable *PARA TIPO DE USUARIO* aparece **vacío** en la UI.
 
 **Resuelto el 17-ago: el formato ya estaba bien, engañaba la vista.** Oliver lo seleccionó a mano
 —la opción se llama **"Propietarios asignados"**— y la UI escribió exactamente lo mismo que ya
-había: el JSON siguió en v25, sin cambios. Y confirmó que WF3 tiene esa misma opción marcada.
+había en el nodo del ramal bueno. Y confirmó que WF3 tiene esa misma opción marcada.
+
+⚠️ **Pero al guardar se aplicó a los dos nodos y el de fallo perdió a Lucía.** Ese aviso NO puede
+ir al dueño del contacto: existe precisamente porque el round robin no asignó a nadie, así que no
+hay dueño. Avisar a "propietarios asignados" ahí es avisar a nadie, y el lead se queda calificado,
+sin dueño y sin que nadie se entere — la pérdida silenciosa que ese ramal existe para evitar.
+
+Restituido con `scripts_ghl/notif_sp06_destinatarios.py`, que fija el destinatario de cada aviso e
+identifica el ramal por estructura (el nodo que apunta al tag `asignacion-fallida`), no por el
+título, para que siga funcionando si se reescriben los textos:
+
+```
+rama "Asesor asignado"  ->  userType "assign", assignedOwners ["contact_owner"]
+rama None (falló)       ->  userType "user",   selectedUser  Lucía
+```
 
 El desplegable aparecía vacío porque estaba abriendo el nodo **desde el registro de ejecución**,
 que no resuelve ese campo — igual que solo pinta el trigger por el que entró el contacto. Para
