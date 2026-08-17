@@ -480,6 +480,55 @@ marcador de "ya hecho", como el `ficha-enviada` de SP05. Se revisan uno por uno 
 
 Queda en `CLAUDE.md` §3 y en el handoff §2, con `scripts_ghl/permitir_reingreso.py` de auditor.
 
+---
+
+## 10. Talleres cerrado — 17-ago, contacto `UsuhSAWG8R8hk4Cahabs`
+
+Cadena completa verificada por API, de la primera palabra del lead al asesor asignado:
+
+```
+Familia de interés = Talleres              ← WF-NORM-1
+Curso de interés   = Melamina Desde Cero
+Modalidad (bot)    = (vacío)
+Modalidad          = Presencial            ← WF-MOD
+Sede (bot)         = Arequipa
+Sede               = Arequipa              ← WF-NORM-3
+Calificado         = Sí · Asesor asignado = Oliver Guerrero
+tags: ficha-enviada · bot-silenciado       ← SP05 y SP06 completos
+Oportunidad: Nuevo Lead → Calificado → Asignado a asesor
+```
+
+**`Modalidad (bot)` vacío con `Modalidad` lleno es la prueba directa de que WF-MOD corrió.** En
+las pruebas anteriores el gemelo de texto tenía valor y no se podía distinguir si el canónico lo
+escribía WF-MOD o WF-NORM-2. Aquí el bot no capturó la modalidad y el canónico se llenó igual:
+solo WF-MOD puede hacer eso. Confirma el arreglo del formato del trigger (§8.1).
+
+Tres cosas que el bot hizo bien y que no eran obvias:
+
+* **No ofreció el Pack x2 a un lead de Arequipa**, que es la trampa que veníamos cuidando.
+* Interpretó *"estoy cerca de Arequipa"* → Arequipa y **recalculó el precio a S/400 sobre S/575**,
+  el de esa sede, no el de Lima.
+* La duración salió como *"16 horas de clase (cómo se reparten depende del horario que elijas)"*.
+
+El primer mensaje de BOT-00 salió con la bienvenida nueva.
+
+### Pendiente de confirmar
+
+El bot siguió respondiendo después de que la oportunidad pasara a *Asignado a asesor*. El tag
+`bot-silenciado` está puesto, así que lo más probable es que esos dos mensajes ya fueran en camino
+cuando el silenciado aterrizó. Se confirma escribiéndole otra cosa al contacto: si no contesta,
+funcionó; si contesta, hay que revisar el nodo `update_conversation_ai_status` de SP06, porque el
+sentido de esa etapa es que el humano tome la conversación.
+
+### Lo que queda ya no es lógica
+
+| Pendiente | Bloquea |
+|---|---|
+| 24 custom values de ficha + plantilla WABA + imágenes | nada, es la pasada final de contenido |
+| BOT-02 y BOT-03 al esquema de 3 datos | software y gestión |
+| Contenido real de los 8 cursos de software y gestión | Francisco / Lucía (§P3) |
+| Matriculados: quién escribe la fecha de inicio | AP01–AP04 (§P1) |
+
 ### 6.2 · El nodo Round Robin marcó Error
 
 En el registro de ejecución el nodo *Round Robin (6 asesores)* sale en rojo, y aun así el lead
