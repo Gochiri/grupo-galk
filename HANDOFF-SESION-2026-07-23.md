@@ -333,3 +333,22 @@ Contaminación de snapshot intacta (workout, Bakery, Dunder Mifflin…) → pend
 
 ## 8. SIGUIENTE PASO SUGERIDO
 Construir por API el resto de workflows deterministas reutilizando el método validado (leer esquema de nodo existente → adaptar → crear draft → verificar): **LS01** (captura Meta + atribución), **SP09–SP12** (pagos y cierres), **AP01–AP04**, **PS01–PS03**. Los bots quedan para UI/Playwright.
+
+---
+
+## IDs de los 4 bots de Conversation AI
+
+No hay endpoint que los liste (probados públicos e internos, todos 404). Salen del URL al abrir
+cada uno en *Agentes de IA*. Se necesitan para los nodos `update_conversation_ai_status`, que
+guardan el ID pelado en `assignedEmployeeId`.
+
+| Bot | ID |
+|---|---|
+| BOT-00 Secretaria GALK | `FvWG0eZkzx5AutuN79Jo` |
+| BOT-01 Talleres GALK | `L9hj6kGF7Ie73EhRzgqD` |
+| BOT-02 Software GALK | `6vDo80qswCZgzWEIxXRC` |
+| BOT-03 Gestión GALK | `XgOF49jSPGEI7tqRvM0k` |
+| *(bot heredado de Francisco)* | `d3SigGiEfOxEGQVtUZsm` |
+
+⚠️ El campo del nodo se llama *Change assigned Conversation AI bot*: poner un ID ahí **no solo
+enciende el bot, le reasigna la conversación**. Con `keep-same` respeta al que ya la tenía.
