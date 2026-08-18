@@ -663,3 +663,34 @@ dispararían. Solo se captura **`Curso de interés`**; `Modalidad` la pone WF-MO
 ⚠️ La descripción del campo obliga a escribir **"Gestión y Supervisión de Melamina"** completo.
 Si el bot guardara solo "Melamina", la rama de Supervisión de WF-MOD no matchearía y el lead
 quedaría marcado **Presencial**, clasificado como taller.
+
+---
+
+## 12. Cross-transfer cerrado — 18-ago, contacto `vG0EjO39DMCeMgOoflYe`
+
+El nodo "Vaciar datos de interés" construido por API era un **no-op silencioso**: le faltaban
+las claves `value: ""` y `date: ""` por campo y el `type` correcto (`select` para dropdowns).
+GHL lo guardaba bien, la UI lo mostraba bien, y en ejecución filtraba los campos incompletos y
+escribía `customFields: []` — lo probó el ojito del registro de auditoría. Cuarto gotcha del
+mismo patrón; la regla queda en el handoff: **los atributos de un nodo se clonan de uno hecho
+en la UI, no se fabrican.**
+
+Con el nodo recreado a mano por Oliver (y su trigger reapuntado, que quedó colgando del nodo
+borrado), la re-prueba completa del switch pre-calificación salió limpia:
+
+```
+sketchup → "mejor quiero el taller de melamina" → desde cero → los olivos
+
+Curso de interés = Melamina Desde Cero   ← limpiado y re-capturado, ya no SketchUp
+Modalidad        = Presencial · Sede = Los Olivos
+Calificado       = Sí · asesor asignado · ficha-enviada
+```
+
+**Matiz pendiente (menor):** `Familia de interés` queda vacía tras un switch — WF-SWITCH la
+limpia y nadie la re-escribe, porque BOT-00 solo la captura en su turno inicial. No rompe SP05
+ni SP06; deja coja la segmentación de los leads que cambiaron de familia. Mejora propuesta:
+que WF-MOD escriba también la Familia al deducir la modalidad (ya conoce el curso).
+
+**Recordatorio del caso que sigue abierto:** el switch *después* de calificar no se
+re-procesa (`Calificado` no se limpia, a propósito). Salida en producción: ese lead ya tiene
+asesor humano asignado mirando la conversación.
