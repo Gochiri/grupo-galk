@@ -27,9 +27,18 @@ def n_clear(nodo_id, claves, nxt="", name="Vaciar datos de interés"):
     En la UI el desplegable TIPO DE ACCIÓN tiene dos opciones y hay que elegir la
     segunda. Mandar `update_field_data` con value="" deja el nodo en error: actualizar
     exige un valor. La que vacía de verdad es `clear_field_data`.
+
+    ⚠️ Y cada campo NECESITA las claves `value: ""` y `date: ""` aunque vayan vacías, con
+    el `type` correcto (`select` para SINGLE_OPTIONS). Sin eso el nodo se guarda bien, se
+    ve bien en la UI, y en EJECUCIÓN GHL filtra los campos incompletos y escribe
+    `customFields: []` — un no-op silencioso. Descubierto el 18-ago: WF-SWITCH corría
+    "Finished" sin borrar nada; la forma buena se clonó del nodo hecho a mano en la UI.
     """
-    fs = [{"field": wf_lib.FID(k), "title": wf_lib.TITLE(k),
-           "type": "date" if wf_lib._cf[k]["dataType"] == "DATE" else "string"}
+    def tipo(k):
+        dt = wf_lib._cf[k]["dataType"]
+        return {"DATE": "date", "SINGLE_OPTIONS": "select"}.get(dt, "string")
+    fs = [{"field": wf_lib.FID(k), "value": "", "title": wf_lib.TITLE(k),
+           "type": tipo(k), "date": ""}
           for k in claves]
     return {"id": nodo_id, "order": 0,
             "attributes": {"type": "update_contact_field",
