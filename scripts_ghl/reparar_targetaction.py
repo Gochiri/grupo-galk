@@ -65,17 +65,12 @@ def main():
         d = C.request("GET", f"/workflow/{LOC}/{w['id']}") or {}
         tpl = (d.get("workflowData") or {}).get("templates") or []
         ids = {n["id"] for n in tpl}
-        # la raíz real: sin parent y sin nadie que la apunte con next
-        apunt = set()
-        for n in tpl:
-            nx = n.get("next")
-            apunt.update(nx if isinstance(nx, list) else ([nx] if nx else []))
-        raices = {n["id"] for n in tpl if not n.get("parent") and n["id"] not in apunt}
         for t in trs:
             tgt = t.get("targetActionId")
-            # roto si: no existe, está vacío (None entra por aquí), o existe pero ya no
-            # es la raíz (quedó DENTRO del flujo tras mover nodos — visto en LS01 el 18-ago)
-            if tgt not in raices:
+            # OJO: targetActionId=None es VÁLIDO — significa "entrada por defecto". Decenas
+            # de triggers de Francisco funcionan así en producción. Solo es un bug cuando
+            # apunta a un ID que YA NO EXISTE (nodos regenerados por un PUT).
+            if tgt and tgt not in ids:
                 rotos.append((w, d, tpl, t))
 
     if not rotos:
