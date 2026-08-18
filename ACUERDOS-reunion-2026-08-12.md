@@ -621,3 +621,45 @@ Conviene además apretar el texto de la acción en la UI, aunque sea la capa bla
 > Modalidad y Sede. No te bases en lo que tú escribiste en la conversación, sino en que la persona
 > te haya dicho el nivel exacto del curso y la sede con sus propias palabras. Si falta cualquiera
 > de los tres, NO ejecutes: sigue conversando hasta completarlos.
+
+---
+
+## 11. Preparando BOT-02 y BOT-03 — 17-ago
+
+### 11.1 · El agujero de la sede en online
+
+La guarda de SP06 exige Curso, Modalidad y Sede. En talleres siempre hay sede porque son
+presenciales, y por eso talleres funcionó a la primera. Pero en **software online y en todo
+gestión no hay sede que capturar**: el lead nunca dice "no aplica", *Contact Info* no tiene nada
+que extraer y `Sede` se queda vacía para siempre.
+
+Sin arreglarlo, **ningún lead de BOT-02 online ni de BOT-03 habría llegado jamás al asesor**.
+Mismo agujero que tenía `Modalidad` antes de WF-MOD, un escalón más abajo.
+
+**`WF-SEDE | Sede No aplica cuando es online`** (`35977571-c05a-40a8-a1a5-391f114e4d5e`): si
+`Modalidad` = Online y `Sede` está vacía → escribe **No aplica**. La condición de "vacía" evita
+pisar una sede real si alguien pasa de presencial a online.
+
+### 11.2 · La trampa de la melamina en SP05 — descartada
+
+Se sospechaba que "Gestión y Supervisión de Melamina" pudiera caer en una rama del taller de
+melamina y recibir la ficha equivocada. **Auditado el árbol de 24 ramas: no pasa.** Las ramas de
+taller piden `"melamina desde cero"` o `"melamina avanzado"`, nunca "melamina" suelta, así que el
+curso de gestión solo matchea la rama 24 (`contiene "supervisi"`).
+
+De paso quedó documentado contra qué campo compara cada familia:
+
+| Familia | Condiciones de la rama |
+|---|---|
+| Talleres (1–14) | `Curso de interés` + **`Sede`** |
+| Software (15–20) | `Curso de interés` + **`Modalidad`** |
+| Gestión (21–24) | solo `Curso de interés` |
+
+### 11.3 · BOT-03 lleva un solo Contact Info
+
+En gestión todo es online y sin sede, así que el lead nunca los dice y esas extracciones nunca
+dispararían. Solo se captura **`Curso de interés`**; `Modalidad` la pone WF-MOD y `Sede` WF-SEDE.
+
+⚠️ La descripción del campo obliga a escribir **"Gestión y Supervisión de Melamina"** completo.
+Si el bot guardara solo "Melamina", la rama de Supervisión de WF-MOD no matchearía y el lead
+quedaría marcado **Presencial**, clasificado como taller.
