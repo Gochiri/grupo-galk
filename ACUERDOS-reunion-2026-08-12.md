@@ -694,3 +694,55 @@ que WF-MOD escriba también la Familia al deducir la modalidad (ya conoce el cur
 **Recordatorio del caso que sigue abierto:** el switch *después* de calificar no se
 re-procesa (`Calificado` no se limpia, a propósito). Salida en producción: ese lead ya tiene
 asesor humano asignado mirando la conversación.
+
+---
+
+## 13. BOT-03 probado — 18-ago, contacto `bdbAXQO5PqDgbWEmTsAV` (pruebas 7, 8 y 10 apiladas)
+
+Oliver corrió las tres pruebas sobre un solo contacto, sin borrar entre una y otra. Verificado
+por API al final:
+
+```
+tags: equipo-interno · pruebas demo · origen-meta · ficha-enviada · bot-silenciado
+Calificado = Sí · Asesor asignado (nuevo) = Oliver Guerrero
+Campos de interés (Familia/Curso/Modalidad/Sede, bot y canónicos) = TODOS vacíos
+```
+
+### 13.1 · Prueba 7 — Supervisión de Melamina: PASÓ
+
+El caso trampa del módulo. El bot presentó el curso aclarando explícitamente que **no es el
+taller práctico de fabricación**, dio la promo correcta (S/298) y el lead quedó
+**Modalidad = Online, Sede = No aplica** — nunca lo marcó Presencial, que era el riesgo del
+§11.3. WF-MOD y WF-SEDE hicieron su parte.
+
+**Matiz (no rompió nada):** `Curso de interés` se guardó como `"supervisión de melamina"` —
+las palabras literales del lead — en vez del nombre exacto `"Gestión y Supervisión de
+Melamina"` que exige la descripción del Contact Info. Funcionó de rebote: la rama de WF-MOD
+matchea `contiene "Supervisión"` sin distinguir mayúsculas, y la rama 24 de SP05 usa
+`contiene "supervisi"`. Pero el dato queda feo para reportes y es un descuido del bot frente a
+su instrucción. Vigilarlo en próximas pruebas; si se repite, reforzar la descripción del campo.
+
+### 13.2 · Prueba 8 — ping-pong de familia: PASÓ
+
+Cambio gestión → taller de melamina: transfirió a BOT-01 con la presentación correcta del
+taller, sin rebotes en bucle, y **el nodo "Vaciar datos de interés" (el que Oliver rehizo a
+mano en la UI, §12) volvió a funcionar**: la API confirma todos los campos de interés vacíos
+tras el switch. `Calificado = Sí` persiste — es el caso conocido del §12, a propósito.
+
+### 13.3 · Prueba 10 — "¿lo puedo llevar presencial?": PASÓ
+
+Transferencia BOT-01 → BOT-03 y respuesta correcta: solo online en vivo por Zoom, sin versión
+presencial ni sede en Surco. No inventó sede ni cedió ante la insistencia.
+
+### 13.4 · Observación transversal: el Transfer Bot despierta conversaciones silenciadas
+
+El bot siguió contestando (05:47–05:50) aun con el tag `bot-silenciado` puesto: cada acción de
+Transfer Bot **reasigna y activa** el bot destino, lo que revive una conversación que SP05/SP06
+ya habían silenciado. En producción el impacto es menor — el lead calificado ya tiene asesor
+humano asignado mirando — pero queda anotado como caso borde conocido, junto con el de
+`Calificado` que no se limpia.
+
+La prueba 9 (esquive de temario) quedó sin correr — opcional.
+
+**Con esto, BOT-03 queda cerrado (pruebas 6, 7, 8 y 10 pasadas) y el ciclo de pruebas de los
+tres bots de familia está completo.**
