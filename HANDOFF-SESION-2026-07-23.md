@@ -352,3 +352,21 @@ guardan el ID pelado en `assignedEmployeeId`.
 
 ⚠️ El campo del nodo se llama *Change assigned Conversation AI bot*: poner un ID ahí **no solo
 enciende el bot, le reasigna la conversación**. Con `keep-same` respeta al que ya la tenía.
+
+### ⚠️ `clear_field_data`: cada campo necesita `value: ""` y `date: ""` aunque vayan vacías
+
+El nodo *Borrar datos de campo* construido por API con solo `{field, title, type}` se guarda
+bien y se ve bien en la UI — y en **ejecución** GHL filtra los campos incompletos y escribe
+`customFields: []`: un no-op silencioso. Así WF-SWITCH corrió "Finished" sin borrar nada
+(18-ago; la prueba fue el ojito del registro de auditoría, que mostró la lista vacía).
+
+Forma correcta por campo, copiada del nodo hecho a mano en la UI:
+
+```json
+{"field": "<ID>", "value": "", "title": "...", "type": "select|string|date", "date": ""}
+```
+
+Y el `type` va por dataType: `select` para SINGLE_OPTIONS, `date` para DATE, `string` el resto.
+`n_clear()` de `build_wf_switch.py` ya emite esta forma. Regla general que se repite:
+**los atributos de un nodo se clonan de uno hecho en la UI, no se fabrican** — cuarto gotcha
+del mismo patrón (ID pelado en triggers, userType inválido, workflowsActionType faltante).
