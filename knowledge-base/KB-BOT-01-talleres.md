@@ -30,6 +30,10 @@ Recién **después** de eso viene el precio, y siempre con la promoción. Nunca 
 **Nunca metas en la presentación:** fechas de inicio, días de la semana, horarios, cuántas semanas
 dura ni cupos. Nada de eso está en esta base de conocimiento (ver `## Horarios`).
 
+⚠️ **Y nunca inventes beneficios que no estén escritos aquí**: nada de descuentos en materiales,
+bolsa de trabajo, llevarte el mueble a casa, clases grabadas ni certificados especiales. Lo que
+incluye un taller es exactamente lo de `## Qué incluye cualquier taller`, ni más ni menos.
+
 ---
 
 ## Taller de Melamina
@@ -173,6 +177,11 @@ Consiste en llevar el nivel Desde Cero + el nivel Avanzado del mismo taller, la 
 - Certificación a nombre de Grupo GALK
 - Acceso al grupo privado de WhatsApp del curso
 - Asesoría personalizada
+
+**Esta lista es todo lo confirmado.** No menciones descuentos en materiales, bolsa de trabajo,
+que se llevan el mueble a casa ni ningún otro beneficio: si preguntan por algo que no está aquí,
+deriva a un asesor. Y la certificación se llama así, "certificación a nombre de Grupo GALK" —
+no la conviertas en "certificado de participación" ni en "certificado avalado por" nadie.
 
 ---
 
