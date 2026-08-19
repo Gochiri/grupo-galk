@@ -56,24 +56,31 @@ if revertir:
     print(f"restaurados {n_rest} nodos WhatsApp desde el backup")
 else:
     wa = [n for n in tpl if n["type"] == "whatsapp_v2"]
-    ya = [n for n in tpl if n["type"] == "sms"]
-    print(f"whatsapp_v2: {len(wa)} · sms ya convertidos: {len(ya)}")
+    print(f"whatsapp_v2: {len(wa)} · sms ya convertidos: {sum(n['type']=='sms' for n in tpl)}")
     if wa and not BACKUP.exists():
         BACKUP.write_text(json.dumps(wa, ensure_ascii=False, indent=1))
         print(f"backup de {len(wa)} nodos WhatsApp -> {BACKUP.name}")
+    # mapa id -> nodo WhatsApp original (para re-correr sobre nodos ya convertidos)
+    orig = {n["id"]: n for n in json.loads(BACKUP.read_text())} if BACKUP.exists() else {}
     con_img = sin_img = 0
     for n in tpl:
-        if n["type"] != "whatsapp_v2":
+        if n["type"] == "whatsapp_v2":
+            base = n
+        elif n["type"] == "sms" and n["id"] in orig:
+            base = orig[n["id"]]
+        else:
             continue
-        cvkey = n["attributes"].get("media_url", "").replace("{{custom_values.", "").replace("}}", "")
+        cvkey = base["attributes"].get("media_url", "").replace("{{custom_values.", "").replace("}}", "")
         url = imagen_para(cvkey)
-        att = [url] if url else []
         con_img += bool(url); sin_img += not url
+        msg = base["attributes"].get("message") or "¡Aquí tienes la información de tu curso! 👇"
+        # el gateway WaAutoReply convierte la línea "image - <url>" en imagen real
+        # (así lo hacía Francisco por este mismo plugin); attachments ejecuta [null].
+        if url:
+            msg = f"{msg}\n\nimage - {url}"
         n["type"] = "sms"
         n["name"] = n["name"].replace("Ficha:", "Ficha SMS:")
-        n["attributes"] = {"template_id": "", "body": n["attributes"].get("message")
-                           or "¡Aquí tienes la información de tu curso! 👇",
-                           "attachments": att}
+        n["attributes"] = {"template_id": "", "body": msg, "attachments": []}
         n.pop("workflowsActionType", None)  # clave de whatsapp_v2, no del nodo sms de la UI
     print(f"a convertir: {con_img} con imagen · {sin_img} sin imagen (software/gestión, pendiente Francisco)")
 
@@ -81,9 +88,12 @@ if not (aplicar or revertir):
     print("(dry-run: nada escrito — usa --aplicar)")
     sys.exit(0)
 
+# ⚠️ allowMultiple SIEMPRE en el body: el PUT resetea a False cualquier campo
+# raíz omitido (aprendido el 19-ago: este mismo script dejó SP05 sin reingreso).
 r = c.request("PUT", f"/workflow/{LOC}/{WID}",
               {"name": det.get("name"), "version": det.get("version"),
                "parentId": det.get("parentId"), "status": det.get("status"),
+               "allowMultiple": True,  # SP05 requiere reingreso, ver permitir_reingreso.py
                "workflowData": {"templates": tpl}})
 print("PUT:", "OK" if r and not (isinstance(r, dict) and r.get("_error")) else r)
 

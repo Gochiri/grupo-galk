@@ -37,8 +37,14 @@ from wf_lib import C, LOC
 SOLO_MIRAR = "--aplicar" not in sys.argv
 
 # Escrituras idempotentes: volver a entrar solo recalcula lo mismo.
+# SP05 y SP06 también van: sus guardas de entrada (`ficha-enviada` / `Calificado`)
+# hacen el reingreso seguro, y SIN reingreso se rompen — entran una vez con datos
+# incompletos, la guarda los saca, y ya nunca pueden volver (visto el 19-ago con
+# el PUT que reseteó allowMultiple de SP05: el lead calificaba y la ficha no salía).
+# Prefijos con " |" para no arrastrar variantes (SP06.1 | CAPI reenvía un evento
+# de conversión hacia afuera: reingreso ahí = evento duplicado, NO va).
 CON_REINGRESO = ("WF-NORM-1", "WF-NORM-2", "WF-NORM-3", "WF-NORM-4",
-                 "WF-MOD", "WF-SWITCH")
+                 "WF-MOD", "WF-SWITCH", "SP05 |", "SP06 |")
 
 
 def main():
