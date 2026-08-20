@@ -4,11 +4,14 @@
 > secuencia de ficha (SP05 v2) debe reproducir TAL CUAL: texto de apertura → 4 imágenes en
 > orden → texto final. Ver `ACUERDOS-reunion-2026-08-19.md` §1 para la estructura.
 
-## Mensaje 1 · Apertura (verbatim de Lucía)
+## Mensaje 1 · Apertura
+
+El original de Lucía decía "Soy Camila" — nombre de vendedora. **Decisión 20-ago (Oliver):
+nombre unificado del bot en todas las fichas: Valeria.** Texto final a usar:
 
 ```
 💬 ¡Hola! ¿Cuál es tu nombre? 😊
-Soy Camila de Grupo GALK y tengo una oportunidad especial para ti 🎉
+Soy Valeria de Grupo GALK y tengo una oportunidad especial para ti 🎉
 
 Aprende una habilidad muy demandada con nuestro G25 Taller de Electricidad y Automatización Residencial ⚡💡
 Un curso *100% práctico*, ideal para comenzar desde cero y desarrollar competencias reales en instalaciones eléctricas y automatización.
@@ -52,25 +55,30 @@ reunión 19-ago, 39:13):
 ¿Te interesa en Surco, Los Olivos o Provincia Arequipa? 😊
 ```
 
-## Hallazgos y conflictos a resolver ANTES de armar
+## Hallazgos y decisiones (cerrados el 20-ago con Oliver)
 
-1. **"Yape o Plin" en la imagen 4 y nuestra KB dice "No existe Plin".** La ficha oficial
-   manda: hay que corregir las 3 KB y los prompts (medios de pago: Yape o Plin al 986 780 351,
-   BCP, BBVA, Interbank — o al menos que el bot no niegue Plin).
-2. **La imagen 1 dice "5 días presenciales"** — contradice la regla D3 del 12-ago ("la imagen
-   no lleva fechas ni duración", la puso el propio cliente) y nuestra regla de "solo horas".
-   El cliente manda: se acepta tal cual, pero queda registrado el cambio de criterio. La KB
-   del bot sigue con la regla de horas para el TEXTO conversacional.
-3. **"Ofertas vigentes hasta el 24 de agosto"** en el texto de apertura: es contenido
-   perecedero. Si va literal en la plantilla WABA, cada cambio de fecha/precio = re-aprobación
-   de Meta (~1 día). Recomendación: plantilla con **variables** ({{fecha}}, {{precio}}) para
-   que Francisco actualice mensualmente sin re-aprobar.
-4. **La secuencia se presenta como "Camila de Grupo GALK"** — persona con nombre. Los prompts
-   v4 de los bots deben hablar como Camila (o al menos no contradecirla) para que el lead no
-   note el cambio de "voz".
+1. **Plin — RESUELTO: se deja tal cual.** El cliente dijo expresamente el 5-ago que GALK no
+   maneja Plin (consta en `INVENTARIO-assets-ghl.md`), y su ficha oficial dice "Yape o Plin".
+   Info contradictoria del propio cliente → la ficha se envía como la mandaron y la KB no se
+   toca; es responsabilidad del cliente unificar su info.
+2. **"5 días presenciales" en la imagen 1 — aceptado tal cual** (las imágenes son del
+   cliente). La KB del bot sigue con la regla de horas para el texto conversacional.
+3. **"Ofertas vigentes hasta el 24 de agosto" — se queda literal.** El mantenimiento mensual
+   de plantillas es de Francisco (actualizar texto y re-aprobar). La idea de variables
+   {{fecha}}/{{precio}} se le puede proponer, pero la implementa él si la quiere.
+4. **Nombre unificado del bot: Valeria** (decisión Oliver 20-ago). Los textos de todas las
+   fichas reemplazan el nombre de vendedora (Camila, Rosa...) por Valeria, y el prompt de
+   BOT-00 la presenta así (ver `BOT-00-guia-armado.md` · Personality).
 5. **La apertura ya pide el nombre** y el mensaje final condiciona los horarios a confirmarlo.
    El BOT-00 deja de preguntar nombre en este camino; el bot de familia que se enciende tras
    la ficha debe capturar nombre + sede de la respuesta.
+6. ⚠️ **CONFLICTO ABIERTO — Arequipa:** la ficha G25 ofrece sede Arequipa (con dirección:
+   Calle José Santos Chocano 249, Umacollo) pero KB-01 dice "este taller se dicta ÚNICAMENTE
+   en Lima... NO se dicta en Arequipa. Nunca ofrezcas Arequipa para este curso". Si se deja
+   así, la ficha ofrece Arequipa y acto seguido el bot la niega — a diferencia del Plin, esto
+   choca de frente en la MISMA conversación (la pregunta final es "¿Surco, Los Olivos o
+   Provincia Arequipa?"). Pendiente decidir: actualizar KB-01 (ficha manda) o confirmar con
+   el cliente.
 6. **Políticas nuevas para las KB** (salen de la imagen 4, el bot debe saberlas para responder
    dudas sin inventar): sin devoluciones de reserva; mínimo 10 alumnos (si no, se reprograma
    hasta en 1-3 oportunidades); no se permite cambio de curso tras confirmar inscripción;
