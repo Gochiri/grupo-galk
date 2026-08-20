@@ -13,25 +13,33 @@
 | 20-ago | Prompt de talleres: línea de electricidad cambiada a "se dicta en las tres sedes" |
 | 20-ago | Implementación por canal: agente de Francisco excluye `pruebas demo` en el 645; BOT-00 lo incluye. LS01 dispara por etiqueta en cualquier canal |
 | 20-ago | **PRUEBA E2E DE LA SECUENCIA POR WHATSAPP OFICIAL: PASÓ** — apertura + 4 imágenes + pregunta, bot pausado, BOT-01 despertó, calificación y asignación completas |
+| 20-ago | Prompts v4 pegados (BOT-00 y BOT-01), captura de Horario eliminada del 01, captura de Nivel agregada |
+| 20-ago | **PRUEBA 2 CON PROMPTS V4: PASÓ — PILOTO DE TALLERES CERRADO** — BOT-00 una línea, sin re-presentación, nivel en su campo (Avanzado), calificación completa |
 
 ## ⬜ Pendiente de Oliver
 
-1. **Pegar los prompts v4** (`guias-bots/PROMPTS-bots-v4.md`): BOT-00 y BOT-01 completos.
-2. **Ajustar acciones de BOT-01**: eliminar la captura de "Horario de interés" (atrapaba el
-   nivel) y agregar la de "Nivel de interés (bot)" con su texto de 219 caracteres.
-3. **Re-subir las 3 Bases de Conocimiento** a sus bots y verificar que cada una quede
+1. **Re-subir las 3 Bases de Conocimiento** a sus bots y verificar que cada una quede
    **asociada** (no solo subida). KB-01 ya está en v4 en el repo; KB-02/03 sin cambios nuevos.
+2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
+   mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
+   "¿cuánto dura?").
+3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
+   apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
+   bloqueante para replicar la secuencia a las otras áreas.
 4. Corregir con **Francisco** el Pack de drywall: texto dice S/850, imagen de reserva dice
    S/890.
 
-## ⬜ Pendiente de Claude (cuando Oliver dé luz verde para construir)
+## ⬜ Pendiente de Claude
 
-1. SP05 v2 "secuencia de ficha": árbol por curso, 6 mensajes por rama, activar bot de
-   familia al final, WF-SWITCH quita `ficha-enviada`.
-2. Reactivar captura de `Curso de interés` en BOT-00 (instrucciones para Oliver).
-3. Prompts v4 (bots de familia sin presentación; voz de Valeria) + KB v4 (códigos G13/G24/
-   G28, precio G16 S/525, requisitos de seguridad por taller, direcciones de sedes).
-4. Custom values remodelados por curso (4 imágenes + textos).
+1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
+   RAMAS del script y re-correr) + prompts v4 de BOT-02/03 + KB v4 de ambos.
+2. Definir con el cliente la pregunta final de los cursos online (no hay sede) — pregunta
+   abierta №2 del 19-ago.
+3. Pasada final de contenido/limpieza: custom values de ficha viejos (24, ya sin uso),
+   plantillas WABA solo si hicieran falta mensajes iniciados por la empresa (los flujos
+   actuales son de sesión abierta y no las requieren), SP05 v1 archivado.
+4. Go-live talleres cuando el cliente diga: quitar filtro `pruebas demo` de LS01 y de los
+   canales, apuntar pauta al 645, decidir agente default del 645.
 
 ## 🔒 Bloqueado por el cliente / Francisco
 
