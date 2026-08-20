@@ -166,7 +166,8 @@ def main():
     if not BACKUP.exists():
         BACKUP.write_text(json.dumps(v1, ensure_ascii=False, indent=1))
         print(f"backup v1: {len(v1)} nodos -> {BACKUP.name}")
-    ya_v2 = any("Supervision" in (n.get("name") or "") for n in v1)
+    ya_v2 = (any(n["id"] == "84d3ebf4-7b4f-48d2-949f-697513061b01" for n in v1)
+             and any("Supervision" in (n.get("name") or "") for n in v1))
     if ya_v2:
         print("SP05 ya es v2 (idempotencia §3). Nada que hacer."); return
 
@@ -174,88 +175,74 @@ def main():
     print("clones OK · apagar:", json.dumps(apagar_attrs, ensure_ascii=False)[:120])
     print("           activar:", json.dumps(activar_attrs, ensure_ascii=False)[:120])
 
-    # ---- guarda de entrada: salir si ficha-enviada o curso vacío ----
-    hdr_id, out_id, tree_id, none_id = nid(), nid(), nid(), nid()
-    guard_branch = {"id": out_id, "name": "No enviar (ya enviada o sin curso)",
-        "segments": [{"__segmentId": nid(), "operator": "or", "conditions": [
-            {"conditionType": "contact_detail", "conditionSubType": "tags",
-             "conditionOperator": "index-of-true", "conditionValue": ["ficha-enviada"],
-             "__conditionId": nid(), "ifElseNodeId": "", "__customFieldType__": "standard", "isWait": False},
-            {"conditionType": "contact_detail", "conditionSubType": CURSO_ID,
-             "conditionOperator": "has_no_value",
-             "__conditionId": nid(), "ifElseNodeId": "", "__customFieldType__": "standard", "isWait": False},
-        ]}]}
-    nodes = []
-    hdr = {"id": hdr_id, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
-           "operator": "and", "branches": [guard_branch]}, "name": "yes", "type": "if_else",
-           "cat": "conditions", "next": ""}
-    out_node = {"id": out_id, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
-        "operator": "and", "branches": []}, "name": "No enviar (ya enviada o sin curso)",
-        "type": "if_else", "nodeType": "branch-yes", "cat": "conditions", "sibling": [],
-        "parent": hdr_id, "parentKey": hdr_id, "next": ""}      # rama de salida: FIN
-    guard_none = {"id": tree_id, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
-        "operator": "and", "branches": []}, "name": "None", "type": "if_else",
-        "nodeType": "branch-no", "cat": "conditions", "sibling": [out_id],
-        "parent": hdr_id, "parentKey": hdr_id, "next": ""}
-    out_node["sibling"] = [tree_id]
+    # ---- esqueleto: se reutilizan los nodos estructurales del v1 (convención que SÍ renderiza) ----
+    v1_full = json.loads(BACKUP.read_text())
+    by_id = {n["id"]: n for n in v1_full}
+    guard_hdr = json.loads(json.dumps(by_id["84d3ebf4-7b4f-48d2-949f-697513061b01"]))
+    g_yes    = json.loads(json.dumps(by_id["759bd187-862b-48b6-b5e4-4af8d9dc8097"]))
+    g_no     = json.loads(json.dumps(by_id["ce095b41-b3f0-4dc9-8831-daa00f2aa357"]))
+    tree_hdr = json.loads(json.dumps(by_id["a9eef63b-1e23-4716-801d-ed2ee6162aed"]))
+    v1_none  = [n for n in v1_full if n.get("nodeType") == "branch-no" and n.get("parent") == tree_hdr["id"]][0]
+    none_nd  = json.loads(json.dumps(v1_none))
 
-    # ---- árbol por curso colgado del None de la guarda ----
+    # guarda: dejar solo las condiciones ficha-enviada + curso vacío
+    seg = guard_hdr["attributes"]["branches"][0]["segments"][0]
+    seg["conditions"] = [c for c in seg["conditions"]
+                         if c.get("conditionSubType") == "tags"
+                         or (c.get("conditionSubType") == CURSO_ID and c.get("conditionOperator") == "has_no_value")]
+    guard_hdr["attributes"]["branches"][0]["name"] = "No enviar (ya enviada o sin curso)"
+    g_yes["name"] = "No enviar (ya enviada o sin curso)"
+    assert len(seg["conditions"]) == 2, seg["conditions"]
+
+    # árbol: ramas nuevas por curso
     branch_ids = {nombre: nid() for nombre, *_ in RAMAS}
-    tree_hdr_id = nid()
     tree_branches = []
     for nombre, conds, _, _ in RAMAS:
         tree_branches.append({"id": branch_ids[nombre], "name": nombre,
             "segments": [{"__segmentId": nid(), "operator": "or",
                           "conditions": [cond_curso(v) for v in conds]}]})
-    tree_hdr = {"id": tree_hdr_id, "order": 0, "attributes": {"if": False,
-        "conditionName": "Condition", "operator": "and", "branches": tree_branches},
-        "name": "yes", "type": "if_else", "cat": "conditions",
-        "parent": tree_id, "parentKey": tree_id, "next": ""}
-    guard_none["next"] = tree_hdr_id
+    tree_hdr["attributes"]["branches"] = tree_branches
+    tree_hdr["next"] = list(branch_ids.values()) + [none_nd["id"]]
+    none_nd["sibling"] = list(branch_ids.values())
+    none_nd["next"] = ""          # software/gestión: salida silenciosa
 
-    grupo = list(branch_ids.values()) + [none_id]
+    nodes = []
+    grupo = list(branch_ids.values()) + [none_nd["id"]]
     for nombre, conds, apertura, imgs in RAMAS:
         bid = branch_ids[nombre]
         sib = [x for x in grupo if x != bid]
-        if apertura is None:      # rama atrapadora: sale sin enviar nada
-            nodes.append({"id": bid, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
-                "operator": "and", "branches": []}, "name": nombre, "type": "if_else",
-                "nodeType": "branch-yes", "cat": "conditions", "sibling": sib,
-                "parent": tree_hdr_id, "parentKey": tree_hdr_id, "next": ""})
-            continue
-        ids = [nid() for _ in range(9)]
-        nodes.append({"id": bid, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
+        rama = {"id": bid, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
             "operator": "and", "branches": []}, "name": nombre, "type": "if_else",
             "nodeType": "branch-yes", "cat": "conditions", "sibling": sib,
-            "parent": tree_hdr_id, "parentKey": tree_hdr_id, "next": ids[0]})
-        # 1 apagar bot
-        nodes.append({"id": ids[0], "order": 0, "attributes": json.loads(json.dumps(apagar_attrs)),
-            "name": "Bot en pausa (secuencia)", "type": "update_conversation_ai_status",
-            "workflowsActionType": "INTERNAL", "parent": bid, "parentKey": bid, "next": ids[1]})
-        # 2 apertura
-        nodes.append(n_sms(ids[1], apertura, f"Secuencia ficha: {nombre}", nxt=ids[2], parent=ids[0]))
-        # 3-6 imágenes
+            "parent": tree_hdr["id"], "parentKey": tree_hdr["id"], "next": ""}
+        if apertura is None:      # rama atrapadora (Supervisión): sale sin enviar nada
+            nodes.append(rama); continue
+        ids = [nid() for _ in range(9)]
+        rama["next"] = ids[0]
+        nodes.append(rama)
+        def chain(idx, nodo):     # convención v1: parent = LA RAMA, encadenado por next
+            nodo.update({"id": ids[idx], "order": 0, "parent": bid, "parentKey": bid,
+                         "next": ids[idx + 1] if idx < 8 else ""})
+            nodes.append(nodo)
+        chain(0, {"attributes": json.loads(json.dumps(apagar_attrs)),
+                  "name": "Bot en pausa (secuencia)", "type": "update_conversation_ai_status",
+                  "workflowsActionType": "INTERNAL"})
+        chain(1, {"attributes": {"template_id": "", "body": apertura, "attachments": []},
+                  "name": f"Secuencia ficha: {nombre}", "type": "sms"})
         for i, (cap, mid) in enumerate(imgs):
-            body = f"{cap}\n\nimage - {CDN % mid}"
-            nodes.append(n_sms(ids[2 + i], body, f"Imagen {i+1}: {nombre}", nxt=ids[3 + i], parent=ids[1 + i]))
-        # 7 pregunta final
-        nodes.append(n_sms(ids[6], FINAL_MSG, f"Pregunta de sede: {nombre}", nxt=ids[7], parent=ids[5]))
-        # 8 marcador
-        nodes.append({"id": ids[7], "order": 0, "attributes": {"tags": ["ficha-enviada"]},
-            "name": "Marcar ficha-enviada", "type": "add_contact_tag",
-            "parent": ids[6], "parentKey": ids[6], "next": ids[8]})
-        # 9 activar BOT-01
-        nodes.append({"id": ids[8], "order": 0, "attributes": json.loads(json.dumps(activar_attrs)),
-            "name": "Activar BOT-01 Talleres", "type": "update_conversation_ai_status",
-            "workflowsActionType": "INTERNAL", "parent": ids[7], "parentKey": ids[7], "next": ""})
-    # None del árbol: software/gestión — salida silenciosa hasta tener su contenido
-    nodes.append({"id": none_id, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
-        "operator": "and", "branches": []}, "name": "None", "type": "if_else",
-        "nodeType": "branch-no", "cat": "conditions", "sibling": list(branch_ids.values()),
-        "parent": tree_hdr_id, "parentKey": tree_hdr_id, "next": ""})
+            chain(2 + i, {"attributes": {"template_id": "", "body": f"{cap}\n\nimage - {CDN % mid}",
+                          "attachments": []}, "name": f"Imagen {i+1}: {nombre}", "type": "sms"})
+        chain(6, {"attributes": {"template_id": "", "body": FINAL_MSG, "attachments": []},
+                  "name": f"Pregunta de sede: {nombre}", "type": "sms"})
+        chain(7, {"attributes": {"tags": ["ficha-enviada"]}, "name": "Marcar ficha-enviada",
+                  "type": "add_contact_tag"})
+        chain(8, {"attributes": json.loads(json.dumps(activar_attrs)),
+                  "name": "Activar BOT-01 Talleres", "type": "update_conversation_ai_status",
+                  "workflowsActionType": "INTERNAL"})
 
-    tpl = [hdr, out_node, guard_none, tree_hdr] + nodes
-    print(f"v2: {len(tpl)} nodos · 3 ramas x 9 + guarda + árbol")
+    hdr_id = guard_hdr["id"]      # los triggers ya apuntan aquí
+    tpl = [guard_hdr, g_yes, g_no, tree_hdr, none_nd] + nodes
+    print(f"v2: {len(tpl)} nodos (esqueleto v1 + 3 ramas x 9 + atrapadora)")
     if not aplicar:
         print("(dry-run — usa --aplicar)"); return
 
