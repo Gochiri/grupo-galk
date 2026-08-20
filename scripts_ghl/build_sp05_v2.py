@@ -39,6 +39,37 @@ BOT01 = "L9hj6kGF7Ie73EhRzgqD"          # BOT-01 Talleres
 CURSO_ID = "bjDW7b9QoRiFWL5d578w"        # ID del campo Curso de interés (el de los triggers)
 BACKUP = ROOT / "scripts_ghl" / "sp05_v1_backup.json"
 CDN = "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/%s.jpeg"
+WA_PHONE = "1138517799350419"            # número oficial conectado (termina en 645), del molde de la UI
+
+# nombre y tamaño exacto de cada imagen del media store (para whatsapp_media)
+MEDIA = {
+ "6a4b0fed70834e617c689aa1": ("Melamina-1.jpeg", 214198),
+ "6a4b0fed1bf938e5479bed61": ("Melamina-2.jpeg", 217826),
+ "6a4b0fed8a69aa2441919a1a": ("Melamina-3.jpeg", 295127),
+ "6a4b0fed8a69aa2441919a14": ("Melamina-4.jpeg", 233140),
+ "6a4da7e82467f0ff08fed87d": ("Drywall-1.jpeg", 261582),
+ "6a4da7f02467f0ff08ff12a5": ("Drywall-2.jpeg", 224894),
+ "6a4da7f01e3d535c0821a6ae": ("Drywall-3.jpeg", 256058),
+ "6a4da7f02d9cf805155950d4": ("Drywall-4.jpeg", 249634),
+ "6a51b6b1eada8c1f450813db": ("Electricidad-3.jpeg", 233765),
+ "6a51b6b19c9b37b5fd3f5d4a": ("Electricidad-2.jpeg", 260773),
+ "6a51b6b10e67afc013822d3f": ("Electricidad-1.jpeg", 258571),
+ "6a51b6b1eada8c1f450813d7": ("Electricidad-4.jpeg", 232372),
+}
+
+def wa_texto_attrs(mensaje):
+    """whatsapp_v2 free-form: claves del MOLDE TEXTO de la UI, multipath apagado como en v1."""
+    return {"template_id": "0", "toggle_branch": False, "from_phone_number": WA_PHONE,
+            "snippet_id": "", "message": mensaje, "type": "whatsapp_v2",
+            "__customInputs__": {}, "cat": "", "convertToMultipath": False,
+            "transitions": [], "__name__": "WhatsApp"}
+
+def wa_media_attrs(media_id, caption):
+    """whatsapp_media: claves del MOLDE IMAGEN de la UI, con la URL del propio storage."""
+    nombre, size = MEDIA[media_id]
+    return {"__dynamicAttachments__": {}, "from_number_id": WA_PHONE, "media_type": "image",
+            "media_url": [{"name": nombre, "url": CDN % media_id, "size": size}],
+            "media_caption": caption, "type": "whatsapp_media", "__customInputs__": {}}
 
 def nid(): return str(uuid.uuid4())
 
@@ -167,7 +198,8 @@ def main():
         BACKUP.write_text(json.dumps(v1, ensure_ascii=False, indent=1))
         print(f"backup v1: {len(v1)} nodos -> {BACKUP.name}")
     ya_v2 = (any(n["id"] == "84d3ebf4-7b4f-48d2-949f-697513061b01" for n in v1)
-             and any("Supervision" in (n.get("name") or "") for n in v1))
+             and any(n["type"] == "whatsapp_media" for n in v1)
+             and not any(n["type"] == "sms" for n in v1))
     if ya_v2:
         print("SP05 ya es v2 (idempotencia §3). Nada que hacer."); return
 
@@ -227,13 +259,14 @@ def main():
         chain(0, {"attributes": json.loads(json.dumps(apagar_attrs)),
                   "name": "Bot en pausa (secuencia)", "type": "update_conversation_ai_status",
                   "workflowsActionType": "INTERNAL"})
-        chain(1, {"attributes": {"template_id": "", "body": apertura, "attachments": []},
-                  "name": f"Secuencia ficha: {nombre}", "type": "sms"})
+        chain(1, {"attributes": wa_texto_attrs(apertura), "name": f"Secuencia ficha: {nombre}",
+                  "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
         for i, (cap, mid) in enumerate(imgs):
-            chain(2 + i, {"attributes": {"template_id": "", "body": f"{cap}\n\nimage - {CDN % mid}",
-                          "attachments": []}, "name": f"Imagen {i+1}: {nombre}", "type": "sms"})
-        chain(6, {"attributes": {"template_id": "", "body": FINAL_MSG, "attachments": []},
-                  "name": f"Pregunta de sede: {nombre}", "type": "sms"})
+            chain(2 + i, {"attributes": wa_media_attrs(mid, cap),
+                          "name": f"Imagen {i+1}: {nombre}", "type": "whatsapp_media",
+                          "workflowsActionType": "INTERNAL"})
+        chain(6, {"attributes": wa_texto_attrs(FINAL_MSG), "name": f"Pregunta de sede: {nombre}",
+                  "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
         chain(7, {"attributes": {"tags": ["ficha-enviada"]}, "name": "Marcar ficha-enviada",
                   "type": "add_contact_tag"})
         chain(8, {"attributes": json.loads(json.dumps(activar_attrs)),
