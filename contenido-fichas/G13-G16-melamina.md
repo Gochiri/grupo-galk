@@ -35,14 +35,22 @@ Este taller es una gran oportunidad para aprender desde cero a trabajar con mela
 
 | # | Contenido | Archivo en `FICHAS WHATSAPP/Melamina` | URL CDN |
 |---|---|---|---|
-| 1 | Portada: "Taller de Armado de Muebles en Melamina", incluye herramientas+materiales+beneficios GALK, "4 días presenciales / 100% prácticas", respaldo Xcort·Vesto·Afix·Italock's·Makita, sedes Lima (Surco, Los Olivos) y provincia (Arequipa) | ⚠️ pendiente | ⚠️ pendiente |
-| 2 | Temario: dirigido a, 4 módulos del taller presencial de 16 horas (introducción → armado final), direcciones de las 3 sedes (incl. Arequipa: Calle José Santos Chocano 249 Umacollo), marcas | ⚠️ pendiente | ⚠️ pendiente |
-| 3 | Motivacional: sin experiencia previa, **"Contamos con dos niveles según tu experiencia: G13 desde cero a intermedio · G16 avanzado"**, descuento al llevar los dos niveles (G13+G16) | ⚠️ pendiente | ⚠️ pendiente |
-| 4 | Reserva y pagos: reserva S/100, 2 talleres S/200 (**Pack de S/890**), resto hasta 2 días antes, políticas (sin devoluciones, mínimo 10 alumnos, reprogramación 1-3, sin cambio de curso), cuentas BCP/BBVA/Interbank/Yape o Plin | ⚠️ pendiente | ⚠️ pendiente |
+| 1 | Portada: "Taller de Armado de Muebles en Melamina", incluye herramientas+materiales+beneficios GALK, "4 días presenciales / 100% prácticas", respaldo Xcort·Vesto·Afix·Italock's·Makita, sedes Lima (Surco, Los Olivos) y provincia (Arequipa) | `Melamina-1.jpeg` | `.../6a4b0fed70834e617c689aa1.jpeg` |
+| 2 | Temario: dirigido a, 4 módulos del taller presencial de 16 horas (introducción → armado final), direcciones de las 3 sedes (incl. Arequipa: Calle José Santos Chocano 249 Umacollo), marcas | `Melamina-2.jpeg` | `.../6a4b0fed1bf938e5479bed61.jpeg` |
+| 3 | Motivacional: "No necesitas experiencia, solo ganas de aprender", **"dos niveles según tu experiencia: G13 desde cero a intermedio · G16 avanzado"**, descuento al llevar los dos (G13+G16) | `Melamina-3.jpeg` | `.../6a4b0fed8a69aa2441919a1a.jpeg` |
+| 4 | Reserva y pagos: reserva S/100, 2 talleres S/200 (**Pack de S/890**), resto hasta 2 días antes, políticas (sin devoluciones, mínimo 10 alumnos, reprogramación 1-3, sin cambio de curso), cuentas BCP/BBVA/Interbank/Yape o Plin | `Melamina-4.jpeg` ⚠️ | `.../6a4b0fed8a69aa2441919a14.jpeg` |
 
-⚠️ **Mapeo archivo↔número pendiente de Oliver** (la carpeta Melamina del store tiene
-`Melamina-1..4` y `Melamina-1..4 Avanzado`; al ser la ficha unificada hay que confirmar
-cuáles 4 de las 8 son estas y en qué orden — Oliver quedó de responderlo).
+✅ Mapeo 1-3 confirmado por Oliver (20-ago). ⚠️ `Melamina-4` como "Reserva tu taller" está
+ASUMIDO — fue el único archivo que faltó en su listado; confirmar.
+
+### Set Avanzado (no va en la ficha unificada; útil para remarketing — contenidos según Oliver)
+
+| Archivo | Contenido | URL CDN |
+|---|---|---|
+| `Melamina-1 Avanzado` | "Taller avanzado de armado de muebles en melamina" | `.../6a4b0ffb6f5641e105b96f55.jpeg` |
+| `Melamina-2 Avanzado` | "Ya armas muebles pero quieres que se vean como los de un profesional" | `.../6a4b0ffb6f5641e105b96f51.jpeg` |
+| `Melamina-3 Avanzado` | "Domina la melamina como un verdadero experto" | `.../6a4b0ffb70834e617c689b3b.jpeg` |
+| `Melamina-4 Avanzado` | "Reserva tu taller" | `.../6a4b0ffb8a69aa2441919a94.jpeg` |
 
 ### Textos cortos por imagen (BORRADOR — pendiente de aprobar con Lucía)
 
