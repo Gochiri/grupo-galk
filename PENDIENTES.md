@@ -20,8 +20,7 @@
 
 0. ~~PIT~~ ✅ (20-ago: nuevo PIT recibido, .env recreado, brochures subidos, ramas
    SketchUp y Revit ACTIVAS en SP05)
-0b. **Pegar el prompt v4 de BOT-02** (está en `PROMPTS-bots-v4.md`) — antes de probar
-   cualquier curso de software.
+0b. ~~Prompt v4 de BOT-02~~ ✅ (20-ago: pegado, confirmado por Oliver)
 0c. ~~PDFs de Revit~~ ✅ (20-ago: eran el mismo archivo — Francisco lo envió dos veces por
    error; la rama queda con 1 PDF. Si apareciera un segundo documento real, se agrega)
 0d. **Confirmar orden del cierre de Revit**: hoy va pregunta de modalidad → duración/reserva
