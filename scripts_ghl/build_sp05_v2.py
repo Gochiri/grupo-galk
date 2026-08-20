@@ -98,8 +98,12 @@ FINAL_MSG = """✨ Una vez que me confirmes tu nombre, te envío los horarios y 
 ¿Te interesa en Surco, Los Olivos o Provincia Arequipa? 😊"""
 
 # (nombre, condiciones "contains" sobre Curso de interés, apertura, [(caption, media_id) x4])
+# La rama Supervisión va PRIMERA y sin nodos: "Gestión y Supervisión de Melamina" contiene
+# "melamina" y sin esta atrapadora se llevaría la ficha del taller. Sale sin enviar nada
+# (su ficha de gestión llega después).
 RAMAS = [
-    ("Melamina", ["melamina desde cero", "melamina avanzado"], APERTURA_MELA, [
+    ("Supervision (gestion, sin ficha aun)", ["supervisi"], None, []),
+    ("Melamina", ["melamina"], APERTURA_MELA, [
         ("🪚 Así se vive el taller — 100% práctico y presencial", "6a4b0fed70834e617c689aa1"),
         ("📚 Temario completo: las 16 horas, paso a paso",          "6a4b0fed1bf938e5479bed61"),
         ("💪 Dos niveles: G13 desde cero a intermedio · G16 avanzado", "6a4b0fed8a69aa2441919a1a"),
@@ -162,7 +166,7 @@ def main():
     if not BACKUP.exists():
         BACKUP.write_text(json.dumps(v1, ensure_ascii=False, indent=1))
         print(f"backup v1: {len(v1)} nodos -> {BACKUP.name}")
-    ya_v2 = any(n.get("name") == "Secuencia ficha: Melamina" for n in v1)
+    ya_v2 = any("Supervision" in (n.get("name") or "") for n in v1)
     if ya_v2:
         print("SP05 ya es v2 (idempotencia §3). Nada que hacer."); return
 
@@ -212,8 +216,14 @@ def main():
     grupo = list(branch_ids.values()) + [none_id]
     for nombre, conds, apertura, imgs in RAMAS:
         bid = branch_ids[nombre]
-        ids = [nid() for _ in range(9)]
         sib = [x for x in grupo if x != bid]
+        if apertura is None:      # rama atrapadora: sale sin enviar nada
+            nodes.append({"id": bid, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
+                "operator": "and", "branches": []}, "name": nombre, "type": "if_else",
+                "nodeType": "branch-yes", "cat": "conditions", "sibling": sib,
+                "parent": tree_hdr_id, "parentKey": tree_hdr_id, "next": ""})
+            continue
+        ids = [nid() for _ in range(9)]
         nodes.append({"id": bid, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
             "operator": "and", "branches": []}, "name": nombre, "type": "if_else",
             "nodeType": "branch-yes", "cat": "conditions", "sibling": sib,
