@@ -15,6 +15,8 @@
 | 20-ago | **PRUEBA E2E DE LA SECUENCIA POR WHATSAPP OFICIAL: PASÓ** — apertura + 4 imágenes + pregunta, bot pausado, BOT-01 despertó, calificación y asignación completas |
 | 20-ago | Prompts v4 pegados (BOT-00 y BOT-01), captura de Horario eliminada del 01, captura de Nivel agregada |
 | 20-ago | **PRUEBA 2 CON PROMPTS V4: PASÓ — PILOTO DE TALLERES CERRADO** — BOT-00 una línea, sin re-presentación, nivel en su campo (Avanzado), calificación completa |
+| 20-ago | Condiciones v4 de los 3 Transfer Bot pegadas + captura de Curso v4.1 (3 áreas) pegada + ejemplo SketchUp corregido |
+| 20-ago | **PRUEBA SKETCHUP: PASÓ — APROBADA POR OLIVER** — secuencia completa por WhatsApp con **PDF entregado** (primera validación de documento), curso capturado, pregunta de modalidad enviada. El patrón texto+imágenes+PDF+activación de bots queda 100% validado |
 
 ## ⬜ Pendiente de Oliver
 
