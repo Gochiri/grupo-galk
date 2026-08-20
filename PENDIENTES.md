@@ -22,9 +22,10 @@
    SketchUp y Revit ACTIVAS en SP05)
 0b. **Pegar el prompt v4 de BOT-02** (está en `PROMPTS-bots-v4.md`) — antes de probar
    cualquier curso de software.
-0c. **Aclarar 2 cosas de Revit**: ① los "2 PDFs" llegaron como el mismo archivo duplicado —
-   ¿hay un segundo PDF distinto o es uno solo? · ② ¿la pregunta de modalidad va antes del
-   mensaje de duración (como llegó) o al final?
+0c. ~~PDFs de Revit~~ ✅ (20-ago: eran el mismo archivo — Francisco lo envió dos veces por
+   error; la rama queda con 1 PDF. Si apareciera un segundo documento real, se agrega)
+0d. **Confirmar orden del cierre de Revit**: hoy va pregunta de modalidad → duración/reserva
+   (tal como llegó). ¿La pregunta debería ir al final?
 1. ~~**Re-subir las 3 Bases de Conocimiento**~~ ✅ (20-ago: KB-01 v4 subida 3:20 PM;
    KB-02/03 ya estaban al día — confirmado por Oliver)
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
