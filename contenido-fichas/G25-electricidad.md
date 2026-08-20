@@ -4,10 +4,12 @@
 > secuencia de ficha (SP05 v2) debe reproducir TAL CUAL: texto de apertura → 4 imágenes en
 > orden → texto final. Ver `ACUERDOS-reunion-2026-08-19.md` §1 para la estructura.
 
-## Mensaje 1 · Apertura
+## Mensaje 1 · Apertura (v2, recibida el 20-ago — REEMPLAZA a la primera)
 
-El original de Lucía decía "Soy Camila" — nombre de vendedora. **Decisión 20-ago (Oliver):
-nombre unificado del bot en todas las fichas: Valeria.** Texto final a usar:
+Diferencia única con la v1: "Ofertas vigentes **hasta el 24 de agosto**" pasó a "Ofertas
+vigentes **por tiempo limitado**" — el cliente mismo la hizo perenne, lo que resuelve el
+problema de la fecha perecedera en la plantilla WABA (hallazgo 3). Nombre de vendedora
+reemplazado por **Valeria**. Texto final a usar:
 
 ```
 💬 ¡Hola! ¿Cuál es tu nombre? 😊
@@ -16,7 +18,7 @@ Soy Valeria de Grupo GALK y tengo una oportunidad especial para ti 🎉
 Aprende una habilidad muy demandada con nuestro G25 Taller de Electricidad y Automatización Residencial ⚡💡
 Un curso *100% práctico*, ideal para comenzar desde cero y desarrollar competencias reales en instalaciones eléctricas y automatización.
 
-📌 Ofertas vigentes hasta el 24 de agosto:
+📌 Ofertas vigentes por tiempo limitado:
 ✅ S/600 – separa tu vacante con S/100
 
 📍*Sedes:* Lima-Surco (Calle Aldabas 559) o Los Olivos (Av. Antunes de Mayolo 822). Provincia-Arequipa (Calle José Santos Chocano 249– Umacollo)
