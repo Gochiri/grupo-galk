@@ -1,0 +1,4190 @@
+[
+ {
+  "id": "84d3ebf4-7b4f-48d2-949f-697513061b01",
+  "order": 0,
+  "attributes": {
+   "currentRecipeType": "CUSTOM",
+   "branches": [
+    {
+     "id": "759bd187-862b-48b6-b5e4-4af8d9dc8097",
+     "name": "No enviar (ya enviada o faltan datos)",
+     "segments": [
+      {
+       "__segmentId": "75a49b9f-b66f-4b02-9d28-c61a13667007",
+       "operator": "or",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "tags",
+         "conditionOperator": "index-of-true",
+         "conditionValue": [
+          "ficha-enviada"
+         ],
+         "__conditionId": "48b98a19-5a65-4dd3-87b6-12e27b86d96b",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "has_no_value",
+         "__conditionId": "6cd55e4b-aa08-42a7-9e25-a55003e18311",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "has_no_value",
+         "__conditionId": "0df05d1a-3544-48fd-9dbf-08b9de60caf2",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "has_no_value",
+         "__conditionId": "7505f765-d271-4227-b09e-7ae65c6e30f2",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ],
+     "operator": "or",
+     "showErrors": false,
+     "branchNameError": "¡El nombre de la rama no puede estar vacío!"
+    }
+   ],
+   "operator": "and",
+   "if": true,
+   "conditionName": "Condition",
+   "version": 2,
+   "noneBranchName": "None"
+  },
+  "name": "yes",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": [
+   "759bd187-862b-48b6-b5e4-4af8d9dc8097",
+   "ce095b41-b3f0-4dc9-8831-daa00f2aa357"
+  ],
+  "comments": [],
+  "nodeType": "condition-node"
+ },
+ {
+  "id": "759bd187-862b-48b6-b5e4-4af8d9dc8097",
+  "parent": "84d3ebf4-7b4f-48d2-949f-697513061b01",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Branch",
+  "type": "if_else",
+  "cat": "conditions",
+  "sibling": [
+   "ce095b41-b3f0-4dc9-8831-daa00f2aa357"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "84d3ebf4-7b4f-48d2-949f-697513061b01"
+ },
+ {
+  "id": "ce095b41-b3f0-4dc9-8831-daa00f2aa357",
+  "parent": "84d3ebf4-7b4f-48d2-949f-697513061b01",
+  "order": 1,
+  "attributes": {
+   "else": true
+  },
+  "name": "None",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "sibling": [
+   "759bd187-862b-48b6-b5e4-4af8d9dc8097"
+  ],
+  "comments": [],
+  "nodeType": "branch-no",
+  "parentKey": "84d3ebf4-7b4f-48d2-949f-697513061b01"
+ },
+ {
+  "id": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 0,
+  "attributes": {
+   "currentRecipeType": "CUSTOM",
+   "branches": [
+    {
+     "id": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+     "name": "Melamina DC Surco",
+     "segments": [
+      {
+       "__segmentId": "48a4ee0f-899b-43aa-902c-a55bc4ff3e92",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "melamina desde cero",
+         "__conditionId": "9794a46b-b012-43d1-9a5a-1e38e43236bc",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "surco",
+         "__conditionId": "9efd9989-db8c-41b1-bfc1-42bb37ace91c",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+     "name": "Melamina DC Olivos",
+     "segments": [
+      {
+       "__segmentId": "8f67ee4e-d67a-439f-a265-73bd54b3e931",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "melamina desde cero",
+         "__conditionId": "4221a172-f74b-45ea-af7f-1f753def5f8a",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "olivos",
+         "__conditionId": "4eef91ed-630b-4448-a7ad-7ad7e605b6e7",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "080e2f99-b213-4921-834f-69ec12eb21b4",
+     "name": "Melamina DC Arequipa",
+     "segments": [
+      {
+       "__segmentId": "674c11c3-36a4-4bfc-966d-df0a3820b4a9",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "melamina desde cero",
+         "__conditionId": "ffb0c271-b496-4ea1-a5e2-888989952710",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "arequipa",
+         "__conditionId": "f613578b-c065-434e-b58b-dba755e48d0c",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+     "name": "Melamina Av Surco",
+     "segments": [
+      {
+       "__segmentId": "a17081db-f53f-472e-85d7-34a9b0522f3c",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "melamina avanzado",
+         "__conditionId": "ad6adf84-7ef3-4511-8453-d27a84524b46",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "surco",
+         "__conditionId": "8e08cafa-3c75-4b14-b7e7-03c7c9596585",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+     "name": "Melamina Av Olivos",
+     "segments": [
+      {
+       "__segmentId": "771e5f36-01c4-48ba-baf4-eb0f2c3a56b7",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "melamina avanzado",
+         "__conditionId": "478899e6-0cce-4b98-9ddf-2a1ab2bb4e1e",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "olivos",
+         "__conditionId": "4c7e1b62-f7db-42d7-a079-04e301f0a5de",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+     "name": "Melamina Av Arequipa",
+     "segments": [
+      {
+       "__segmentId": "54ea5310-a2a5-40ce-ae5c-c9c035ee713c",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "melamina avanzado",
+         "__conditionId": "c8e4e1bd-ba1d-4a7d-a26e-f85485f371b2",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "arequipa",
+         "__conditionId": "42a67776-971d-4024-8443-b94de375d90c",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+     "name": "Drywall DC Surco",
+     "segments": [
+      {
+       "__segmentId": "065a86fc-c0fe-477d-90b7-7dd574d18a9e",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "drywall desde cero",
+         "__conditionId": "76ede127-d414-492f-9969-d419841c46aa",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "surco",
+         "__conditionId": "cbcf4920-c013-4ef6-9d61-6ca48aa583fb",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+     "name": "Drywall DC Olivos",
+     "segments": [
+      {
+       "__segmentId": "8c5b0ba9-e3a3-436d-895f-0176093c60c7",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "drywall desde cero",
+         "__conditionId": "587e3a44-5f11-4e5d-a539-9c1df5e37886",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "olivos",
+         "__conditionId": "f6614fd2-a88a-49ac-bff6-fdd6af2c5871",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+     "name": "Drywall DC Arequipa",
+     "segments": [
+      {
+       "__segmentId": "01deb469-0e5e-4809-9dab-5ccb1a15bad5",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "drywall desde cero",
+         "__conditionId": "dc5d9cc9-59db-476c-a6c6-b5cb0901e25e",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "arequipa",
+         "__conditionId": "c2e933f9-5e23-48ab-868e-7ca6ba43b9fe",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "13b8e8e0-84d7-4447-8b11-5b7310016686",
+     "name": "Drywall Av Surco",
+     "segments": [
+      {
+       "__segmentId": "9f3e3ec9-81f9-4c5f-b145-78a7dfec0012",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "drywall avanzado",
+         "__conditionId": "668b5761-eb15-42ff-90c4-8b08ecaa3a76",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "surco",
+         "__conditionId": "5098d97b-7bbb-4041-a876-4c4844700550",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+     "name": "Drywall Av Olivos",
+     "segments": [
+      {
+       "__segmentId": "16627922-787c-4589-84f3-c9f3729a3179",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "drywall avanzado",
+         "__conditionId": "21308357-40c8-407c-aac8-63789d2f8515",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "olivos",
+         "__conditionId": "175cb652-69e4-4787-b640-7a77fc2fc150",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "158d52ef-edc3-4cdf-b52e-333a53805518",
+     "name": "Drywall Av Arequipa",
+     "segments": [
+      {
+       "__segmentId": "a03c96c3-bc67-40b7-950c-06d217468c50",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "drywall avanzado",
+         "__conditionId": "4fe0592d-27dd-4f6f-8b4e-66377219172b",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "arequipa",
+         "__conditionId": "19855c67-d4d8-4674-86de-b57d469c7c03",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+     "name": "Electricidad Surco",
+     "segments": [
+      {
+       "__segmentId": "289ba0da-a49c-4dbb-aa91-0335d20071b5",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "electricidad",
+         "__conditionId": "b61495b7-f352-4f66-9e70-2157d5e4621e",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "surco",
+         "__conditionId": "5ece518e-7b19-42b6-b63b-50294395c9cb",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "26158a73-f025-482c-9d0e-3375504c6393",
+     "name": "Electricidad Olivos",
+     "segments": [
+      {
+       "__segmentId": "d8d1a948-9374-4c8a-9ab7-b5179398971f",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "electricidad",
+         "__conditionId": "9532a51d-0079-4d46-a72c-75deaea08fd0",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "B2tnsFlAOp9kYWF9Ij4R",
+         "conditionOperator": "contain",
+         "conditionValue": "olivos",
+         "__conditionId": "f4f89096-004d-477c-bb03-e15909644c1e",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+     "name": "SketchUp Online",
+     "segments": [
+      {
+       "__segmentId": "fec45e6a-229d-45d8-b01f-9036f06f1847",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "sketchup",
+         "__conditionId": "4f3b6757-b6e2-4679-8d2d-77ce9a4d8f26",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "contain",
+         "conditionValue": "online",
+         "__conditionId": "7bb460df-3516-486f-9b7b-a233a37aaded",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b82ad757-236a-46b8-9753-2ae10aced8ff",
+     "name": "SketchUp Surco",
+     "segments": [
+      {
+       "__segmentId": "8502b8c7-de9e-424f-962e-0fce3bdffe5f",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "sketchup",
+         "__conditionId": "e0ef5818-8feb-4f02-8f09-899e069d8499",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "contain",
+         "conditionValue": "presencial",
+         "__conditionId": "3e9b30de-881f-41e7-868d-5616f193577e",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+     "name": "Revit Online",
+     "segments": [
+      {
+       "__segmentId": "1b3149f6-8bb2-4d54-81ec-1315b461ba39",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "revit",
+         "__conditionId": "4ba5092a-99a1-443f-a53c-8131b708fea0",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "contain",
+         "conditionValue": "online",
+         "__conditionId": "bccccfad-aced-4191-9d7a-ddeb189f917c",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+     "name": "Revit Surco",
+     "segments": [
+      {
+       "__segmentId": "d0755707-6920-4cbc-8075-d52af5ecb042",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "revit",
+         "__conditionId": "f6a7b10a-4de2-4e53-9810-ac875bcecb19",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "contain",
+         "conditionValue": "presencial",
+         "__conditionId": "1433b60c-1cc7-49e2-b469-1d1d053ea187",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "09b45282-2153-43bd-a45b-1f892e3ac413",
+     "name": "Mobiliario Online",
+     "segments": [
+      {
+       "__segmentId": "426c48e1-7803-4b28-bb31-6308e79db6c1",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "mobiliario",
+         "__conditionId": "cf9b51f0-57ff-4f4e-8100-7b0b716fab76",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "contain",
+         "conditionValue": "online",
+         "__conditionId": "40cfb26d-0dbf-4a80-a10a-4635488be6c6",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+     "name": "AutoCAD Online",
+     "segments": [
+      {
+       "__segmentId": "ae58ec9e-41a4-4fe9-b604-c9d0d0787c29",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "autocad",
+         "__conditionId": "6f213750-e332-4151-81a6-12db64e6cbb8",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        },
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "M2Ra6FDckxrylnFygVVH",
+         "conditionOperator": "contain",
+         "conditionValue": "online",
+         "__conditionId": "17baa091-10ae-4a80-bc77-d154ef0c384d",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+     "name": "Cocinas Online",
+     "segments": [
+      {
+       "__segmentId": "f6984b77-9341-43c5-8723-ba7aad197817",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "cocinas",
+         "__conditionId": "a18b817b-a9a2-4e43-9318-95fbb2342186",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "524b7d55-85f1-408b-b6ba-18291c25636c",
+     "name": "Obra Interiorista",
+     "segments": [
+      {
+       "__segmentId": "c398a37d-07b0-4b94-bdbb-c3af5fb0a01f",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "interiorista",
+         "__conditionId": "9aac47b3-f43b-401d-b619-936b57a7e6be",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+     "name": "Espacios Comerciales",
+     "segments": [
+      {
+       "__segmentId": "af0c9b2e-dd60-4d75-b5bb-fa2b472c9f0c",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "espacios comerciales",
+         "__conditionId": "974092b0-61ae-4162-ae52-9d5eba6e5140",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "811d3519-ad57-421e-90fb-8ad0b30d7168",
+     "name": "Supervisión Melamina",
+     "segments": [
+      {
+       "__segmentId": "445e53d4-000f-4946-961b-2e79734793ac",
+       "operator": "and",
+       "conditions": [
+        {
+         "conditionType": "contact_detail",
+         "conditionSubType": "bjDW7b9QoRiFWL5d578w",
+         "conditionOperator": "contain",
+         "conditionValue": "supervisi",
+         "__conditionId": "93285ef1-7f9e-44be-81ac-f42fa588f20a",
+         "ifElseNodeId": "",
+         "__customFieldType__": "standard",
+         "isWait": false,
+         "nestedDropdownTypes": [
+          "inboundWebhookRequest",
+          "sheet",
+          "datetime_formatter",
+          "custom_webhook",
+          "array_functions",
+          "ivr_gather",
+          "ivr_connect_call",
+          "custom_code",
+          "ai_agent",
+          "task-notification"
+         ],
+         "allowIsOperatorTypes": [
+          "contact_reply",
+          "inboundWebhookRequest",
+          "custom_webhook",
+          "custom_code",
+          "ai_agent",
+          "contact_detail",
+          "array_functions",
+          "appointment",
+          "service_booking",
+          "rental_booking"
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "operator": "and",
+   "if": true,
+   "conditionName": "Condition",
+   "version": 2,
+   "noneBranchName": "None"
+  },
+  "name": "yes",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "nodeType": "condition-node"
+ },
+ {
+  "id": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Melamina DC Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "ce30275c-61bd-4134-85d4-17abb5fec21a",
+  "sibling": [
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "ce30275c-61bd-4134-85d4-17abb5fec21a",
+  "parent": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0fed70834e617c689aa1.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Melamina DC Surco",
+  "type": "sms",
+  "parentKey": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+  "next": "faed6e75-a7ee-4e02-bb16-c4e13a63ada0"
+ },
+ {
+  "id": "faed6e75-a7ee-4e02-bb16-c4e13a63ada0",
+  "parent": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "ce30275c-61bd-4134-85d4-17abb5fec21a",
+  "next": "3d4e5f6b-effc-4718-9dd0-5b1e2b3e77f3"
+ },
+ {
+  "id": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Melamina DC Olivos",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "a5e46433-d8b0-4d2b-9c87-6b60e2988347",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "a5e46433-d8b0-4d2b-9c87-6b60e2988347",
+  "parent": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0fed70834e617c689aa1.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Melamina DC Olivos",
+  "type": "sms",
+  "parentKey": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+  "next": "47305551-6b91-4c87-86ba-bf7726eef4f4"
+ },
+ {
+  "id": "47305551-6b91-4c87-86ba-bf7726eef4f4",
+  "parent": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "a5e46433-d8b0-4d2b-9c87-6b60e2988347",
+  "next": "1573382d-d278-4032-a004-0cabc86343ab"
+ },
+ {
+  "id": "080e2f99-b213-4921-834f-69ec12eb21b4",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Melamina DC Arequipa",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "9abaa27a-d9ea-49d0-8a59-ce5e6ba430ac",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "9abaa27a-d9ea-49d0-8a59-ce5e6ba430ac",
+  "parent": "080e2f99-b213-4921-834f-69ec12eb21b4",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0fed70834e617c689aa1.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Melamina DC Arequipa",
+  "type": "sms",
+  "parentKey": "080e2f99-b213-4921-834f-69ec12eb21b4",
+  "next": "3adf8217-56e0-4e48-a654-4cfe841c22e4"
+ },
+ {
+  "id": "3adf8217-56e0-4e48-a654-4cfe841c22e4",
+  "parent": "080e2f99-b213-4921-834f-69ec12eb21b4",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "9abaa27a-d9ea-49d0-8a59-ce5e6ba430ac",
+  "next": "8fd2b1d3-79d4-42e3-afce-31ec2410abf7"
+ },
+ {
+  "id": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Melamina Av Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "6bfc1f85-2ee5-4be6-a0da-f4f15e229ba9",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "6bfc1f85-2ee5-4be6-a0da-f4f15e229ba9",
+  "parent": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0ffb6f5641e105b96f55.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Melamina Av Surco",
+  "type": "sms",
+  "parentKey": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+  "next": "985be9af-26ae-4dcd-b1ef-c86145e5d887"
+ },
+ {
+  "id": "985be9af-26ae-4dcd-b1ef-c86145e5d887",
+  "parent": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "6bfc1f85-2ee5-4be6-a0da-f4f15e229ba9",
+  "next": "5df8c879-763e-40bb-9b99-72b8b80b6568"
+ },
+ {
+  "id": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Melamina Av Olivos",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "5e50ebc5-5fb4-46ae-bfba-58f4a63995a6",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "5e50ebc5-5fb4-46ae-bfba-58f4a63995a6",
+  "parent": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0ffb6f5641e105b96f55.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Melamina Av Olivos",
+  "type": "sms",
+  "parentKey": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+  "next": "2100c0a9-a2ab-47b3-a7e3-5df2301ab3c3"
+ },
+ {
+  "id": "2100c0a9-a2ab-47b3-a7e3-5df2301ab3c3",
+  "parent": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "5e50ebc5-5fb4-46ae-bfba-58f4a63995a6",
+  "next": "85ed3b15-a3ac-4ef7-b979-1579f4ac1d27"
+ },
+ {
+  "id": "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Melamina Av Arequipa",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "ab7f549c-ddb6-43fd-b282-4a1dfe1f63f6",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "ab7f549c-ddb6-43fd-b282-4a1dfe1f63f6",
+  "parent": "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4b0ffb6f5641e105b96f55.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Melamina Av Arequipa",
+  "type": "sms",
+  "parentKey": "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+  "next": "48fb64a6-770f-4759-8883-45ff19b5f488"
+ },
+ {
+  "id": "48fb64a6-770f-4759-8883-45ff19b5f488",
+  "parent": "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "ab7f549c-ddb6-43fd-b282-4a1dfe1f63f6",
+  "next": "a1eacf8c-4bf9-469c-be6b-59151abf541f"
+ },
+ {
+  "id": "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Drywall DC Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "cf43c322-7450-44ad-997d-00f3a89b42c6",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "cf43c322-7450-44ad-997d-00f3a89b42c6",
+  "parent": "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4da7e82467f0ff08fed87d.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Drywall DC Surco",
+  "type": "sms",
+  "parentKey": "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+  "next": "18380d47-21bb-4878-950a-7955d8e633e2"
+ },
+ {
+  "id": "18380d47-21bb-4878-950a-7955d8e633e2",
+  "parent": "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "cf43c322-7450-44ad-997d-00f3a89b42c6",
+  "next": "a3dd2c1c-c177-408e-a66a-fdcc3ec5173b"
+ },
+ {
+  "id": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Drywall DC Olivos",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "cca8221a-6634-4c08-be27-4297268a6b5e",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "cca8221a-6634-4c08-be27-4297268a6b5e",
+  "parent": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4da7e82467f0ff08fed87d.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Drywall DC Olivos",
+  "type": "sms",
+  "parentKey": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+  "next": "2f5dac64-1b03-42ca-8463-8584efa89fb9"
+ },
+ {
+  "id": "2f5dac64-1b03-42ca-8463-8584efa89fb9",
+  "parent": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "cca8221a-6634-4c08-be27-4297268a6b5e",
+  "next": "474594d5-f4cb-4346-a146-448710380b73"
+ },
+ {
+  "id": "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Drywall DC Arequipa",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "362b8ca4-09bb-4dd4-8f82-d6122045f57b",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "362b8ca4-09bb-4dd4-8f82-d6122045f57b",
+  "parent": "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4da7e82467f0ff08fed87d.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Drywall DC Arequipa",
+  "type": "sms",
+  "parentKey": "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+  "next": "a511cbaa-315e-4aa6-b782-e19296a7b1c7"
+ },
+ {
+  "id": "a511cbaa-315e-4aa6-b782-e19296a7b1c7",
+  "parent": "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "362b8ca4-09bb-4dd4-8f82-d6122045f57b",
+  "next": "fda947af-4e0b-4c97-80d2-3aa7083b64f0"
+ },
+ {
+  "id": "13b8e8e0-84d7-4447-8b11-5b7310016686",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Drywall Av Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "49bc222e-e002-496d-ae30-8e489e67a3f4",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "49bc222e-e002-496d-ae30-8e489e67a3f4",
+  "parent": "13b8e8e0-84d7-4447-8b11-5b7310016686",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4dc1fa50dd270fd6aadf05.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Drywall Av Surco",
+  "type": "sms",
+  "parentKey": "13b8e8e0-84d7-4447-8b11-5b7310016686",
+  "next": "e318d574-b053-4dda-b0c2-949928dc3c19"
+ },
+ {
+  "id": "e318d574-b053-4dda-b0c2-949928dc3c19",
+  "parent": "13b8e8e0-84d7-4447-8b11-5b7310016686",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "49bc222e-e002-496d-ae30-8e489e67a3f4",
+  "next": "676ad93d-5a0a-4c5e-a42c-3bfdbab032a8"
+ },
+ {
+  "id": "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Drywall Av Olivos",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "4ff93841-2828-4df5-add4-7527f21c7a61",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "4ff93841-2828-4df5-add4-7527f21c7a61",
+  "parent": "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4dc1fa50dd270fd6aadf05.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Drywall Av Olivos",
+  "type": "sms",
+  "parentKey": "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+  "next": "c8ef32e5-24e2-44d7-b97e-9e7d86bd539b"
+ },
+ {
+  "id": "c8ef32e5-24e2-44d7-b97e-9e7d86bd539b",
+  "parent": "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "4ff93841-2828-4df5-add4-7527f21c7a61",
+  "next": "41ac5c03-97cb-4948-ba3a-9118a9fda477"
+ },
+ {
+  "id": "158d52ef-edc3-4cdf-b52e-333a53805518",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Drywall Av Arequipa",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "cb7e77ba-f685-4d39-98c9-806092339888",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "cb7e77ba-f685-4d39-98c9-806092339888",
+  "parent": "158d52ef-edc3-4cdf-b52e-333a53805518",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a4dc1fa50dd270fd6aadf05.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Drywall Av Arequipa",
+  "type": "sms",
+  "parentKey": "158d52ef-edc3-4cdf-b52e-333a53805518",
+  "next": "f80be4e9-fb61-49f1-9222-1c0359ad9f36"
+ },
+ {
+  "id": "f80be4e9-fb61-49f1-9222-1c0359ad9f36",
+  "parent": "158d52ef-edc3-4cdf-b52e-333a53805518",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "cb7e77ba-f685-4d39-98c9-806092339888",
+  "next": "815856fe-9e31-485a-ab90-c640d597d6ec"
+ },
+ {
+  "id": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Electricidad Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "86fbc674-5dee-4b0f-85bb-4b9762e9c964",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "86fbc674-5dee-4b0f-85bb-4b9762e9c964",
+  "parent": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a51b6b10e67afc013822d3f.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Electricidad Surco",
+  "type": "sms",
+  "parentKey": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+  "next": "3c5b3c96-9f80-4709-b0ad-9b955435a1d8"
+ },
+ {
+  "id": "3c5b3c96-9f80-4709-b0ad-9b955435a1d8",
+  "parent": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "86fbc674-5dee-4b0f-85bb-4b9762e9c964",
+  "next": "a25d3c37-788c-4c0b-b3d4-478a18e069ef"
+ },
+ {
+  "id": "26158a73-f025-482c-9d0e-3375504c6393",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Electricidad Olivos",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "60eeb3c0-0f90-433b-a9a9-98489258c25a",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "60eeb3c0-0f90-433b-a9a9-98489258c25a",
+  "parent": "26158a73-f025-482c-9d0e-3375504c6393",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇\n\nimage - https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/6a51b6b10e67afc013822d3f.jpeg",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Electricidad Olivos",
+  "type": "sms",
+  "parentKey": "26158a73-f025-482c-9d0e-3375504c6393",
+  "next": "5e90ddca-6d7d-49dd-9d90-a3a9d33bb1db"
+ },
+ {
+  "id": "5e90ddca-6d7d-49dd-9d90-a3a9d33bb1db",
+  "parent": "26158a73-f025-482c-9d0e-3375504c6393",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "60eeb3c0-0f90-433b-a9a9-98489258c25a",
+  "next": "3cc361b5-1233-435f-9f2a-068bf96fd4f3"
+ },
+ {
+  "id": "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "SketchUp Online",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "5e34e50e-8d58-43c7-a72a-ac835fe54d0b",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "5e34e50e-8d58-43c7-a72a-ac835fe54d0b",
+  "parent": "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: SketchUp Online",
+  "type": "sms",
+  "parentKey": "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+  "next": "f43c8192-98c8-4c37-aa21-ef8886f606c0"
+ },
+ {
+  "id": "f43c8192-98c8-4c37-aa21-ef8886f606c0",
+  "parent": "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "5e34e50e-8d58-43c7-a72a-ac835fe54d0b",
+  "next": "a2a4df9a-35a2-430a-8756-549de50558a1"
+ },
+ {
+  "id": "b82ad757-236a-46b8-9753-2ae10aced8ff",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "SketchUp Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "debd2f17-f51b-4488-8b9d-b825dc3f252f",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "debd2f17-f51b-4488-8b9d-b825dc3f252f",
+  "parent": "b82ad757-236a-46b8-9753-2ae10aced8ff",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: SketchUp Surco",
+  "type": "sms",
+  "parentKey": "b82ad757-236a-46b8-9753-2ae10aced8ff",
+  "next": "c90eab10-1375-40d4-803a-0d6301679ad9"
+ },
+ {
+  "id": "c90eab10-1375-40d4-803a-0d6301679ad9",
+  "parent": "b82ad757-236a-46b8-9753-2ae10aced8ff",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "debd2f17-f51b-4488-8b9d-b825dc3f252f",
+  "next": "bb53b7de-6793-4ff9-9eb4-7557f739fd2c"
+ },
+ {
+  "id": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Revit Online",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "b5fa2f18-879f-4444-85a8-fe52740c8392",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "b5fa2f18-879f-4444-85a8-fe52740c8392",
+  "parent": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Revit Online",
+  "type": "sms",
+  "parentKey": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+  "next": "16f2a9cc-c6e3-48d5-8ecc-85e1d7764dcd"
+ },
+ {
+  "id": "16f2a9cc-c6e3-48d5-8ecc-85e1d7764dcd",
+  "parent": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "b5fa2f18-879f-4444-85a8-fe52740c8392",
+  "next": "40fc576b-a361-4886-aaa4-5b8fc6793f93"
+ },
+ {
+  "id": "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Revit Surco",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "91ee8008-dd4a-4fdc-9b97-576fb0ae84f0",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "91ee8008-dd4a-4fdc-9b97-576fb0ae84f0",
+  "parent": "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Revit Surco",
+  "type": "sms",
+  "parentKey": "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+  "next": "c0f82e25-5937-404f-b207-797b3df758fd"
+ },
+ {
+  "id": "c0f82e25-5937-404f-b207-797b3df758fd",
+  "parent": "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "91ee8008-dd4a-4fdc-9b97-576fb0ae84f0",
+  "next": "50ab09bb-5f6b-47ca-a44a-9e8e26ea1c10"
+ },
+ {
+  "id": "09b45282-2153-43bd-a45b-1f892e3ac413",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Mobiliario Online",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "fe18ab98-4564-4d22-98a7-144164a3f68b",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "fe18ab98-4564-4d22-98a7-144164a3f68b",
+  "parent": "09b45282-2153-43bd-a45b-1f892e3ac413",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Mobiliario Online",
+  "type": "sms",
+  "parentKey": "09b45282-2153-43bd-a45b-1f892e3ac413",
+  "next": "b6ec24b5-1004-4f7c-b3d1-95eea29a77d1"
+ },
+ {
+  "id": "b6ec24b5-1004-4f7c-b3d1-95eea29a77d1",
+  "parent": "09b45282-2153-43bd-a45b-1f892e3ac413",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "fe18ab98-4564-4d22-98a7-144164a3f68b",
+  "next": "bbf21ac2-ab7f-485a-95f5-994d61f8e209"
+ },
+ {
+  "id": "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "AutoCAD Online",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "979e9290-7861-4483-844b-43e9fd4cb2b0",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "979e9290-7861-4483-844b-43e9fd4cb2b0",
+  "parent": "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: AutoCAD Online",
+  "type": "sms",
+  "parentKey": "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+  "next": "b3a2ed84-fb02-44b9-bc10-ccbf9340baab"
+ },
+ {
+  "id": "b3a2ed84-fb02-44b9-bc10-ccbf9340baab",
+  "parent": "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "979e9290-7861-4483-844b-43e9fd4cb2b0",
+  "next": "7d7306d1-609e-4a1e-b6af-d4717494d9d1"
+ },
+ {
+  "id": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Cocinas Online",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "35a92277-e80a-4f4c-aa98-3a402f427abf",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "35a92277-e80a-4f4c-aa98-3a402f427abf",
+  "parent": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Cocinas Online",
+  "type": "sms",
+  "parentKey": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+  "next": "1cdda997-f20b-4692-b730-1fdc878f0ed9"
+ },
+ {
+  "id": "1cdda997-f20b-4692-b730-1fdc878f0ed9",
+  "parent": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "35a92277-e80a-4f4c-aa98-3a402f427abf",
+  "next": "8f7c3f88-5b25-4c57-a0f9-ef8084de5a76"
+ },
+ {
+  "id": "524b7d55-85f1-408b-b6ba-18291c25636c",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Obra Interiorista",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "751785e4-2c5d-4696-bbb4-eacb61df69a3",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "751785e4-2c5d-4696-bbb4-eacb61df69a3",
+  "parent": "524b7d55-85f1-408b-b6ba-18291c25636c",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Obra Interiorista",
+  "type": "sms",
+  "parentKey": "524b7d55-85f1-408b-b6ba-18291c25636c",
+  "next": "f049dcf2-95a9-4ff5-ad02-b335e005fa24"
+ },
+ {
+  "id": "f049dcf2-95a9-4ff5-ad02-b335e005fa24",
+  "parent": "524b7d55-85f1-408b-b6ba-18291c25636c",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "751785e4-2c5d-4696-bbb4-eacb61df69a3",
+  "next": "22d0185a-fb8c-4d19-8c06-1c5c415a7fbb"
+ },
+ {
+  "id": "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Espacios Comerciales",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "fa2b7e65-f80b-4ec2-a26e-9ff599ae8867",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "fa2b7e65-f80b-4ec2-a26e-9ff599ae8867",
+  "parent": "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Espacios Comerciales",
+  "type": "sms",
+  "parentKey": "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+  "next": "f9a7ff45-ea3e-47bf-9dd0-5740cf542bc9"
+ },
+ {
+  "id": "f9a7ff45-ea3e-47bf-9dd0-5740cf542bc9",
+  "parent": "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "fa2b7e65-f80b-4ec2-a26e-9ff599ae8867",
+  "next": "8ecdafe3-89f8-46f1-8fb3-bd12ec886535"
+ },
+ {
+  "id": "811d3519-ad57-421e-90fb-8ad0b30d7168",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "if": false,
+   "conditionName": "Condition",
+   "operator": "and",
+   "branches": []
+  },
+  "name": "Supervisión Melamina",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "5e0e6871-ae0a-4f3b-b7d3-00d6baca0822",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+  ],
+  "comments": [],
+  "nodeType": "branch-yes",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "5e0e6871-ae0a-4f3b-b7d3-00d6baca0822",
+  "parent": "811d3519-ad57-421e-90fb-8ad0b30d7168",
+  "order": 0,
+  "attributes": {
+   "template_id": "",
+   "body": "¡Aquí tienes la información de tu curso! 👇",
+   "attachments": []
+  },
+  "name": "Ficha SMS: Supervisión Melamina",
+  "type": "sms",
+  "parentKey": "811d3519-ad57-421e-90fb-8ad0b30d7168",
+  "next": "cf9d82bd-03cc-45e2-aa35-85ecc0429da2"
+ },
+ {
+  "id": "cf9d82bd-03cc-45e2-aa35-85ecc0429da2",
+  "parent": "811d3519-ad57-421e-90fb-8ad0b30d7168",
+  "order": 1,
+  "attributes": {
+   "tags": [
+    "enviar-ficha"
+   ],
+   "type": "remove_contact_tag"
+  },
+  "name": "Remove Tag",
+  "type": "remove_contact_tag",
+  "parentKey": "5e0e6871-ae0a-4f3b-b7d3-00d6baca0822",
+  "next": "fd414f1e-3428-4209-b3d9-00c595345383"
+ },
+ {
+  "id": "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead",
+  "parent": "a9eef63b-1e23-4716-801d-ed2ee6162aed",
+  "order": 1,
+  "attributes": {
+   "else": true
+  },
+  "name": "None",
+  "type": "if_else",
+  "cat": "conditions",
+  "next": "9a04798d-3203-4224-8a1f-964dabcb3ed0",
+  "sibling": [
+   "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+   "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+   "080e2f99-b213-4921-834f-69ec12eb21b4",
+   "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+   "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+   "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+   "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+   "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+   "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+   "13b8e8e0-84d7-4447-8b11-5b7310016686",
+   "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+   "158d52ef-edc3-4cdf-b52e-333a53805518",
+   "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+   "26158a73-f025-482c-9d0e-3375504c6393",
+   "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+   "b82ad757-236a-46b8-9753-2ae10aced8ff",
+   "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+   "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+   "09b45282-2153-43bd-a45b-1f892e3ac413",
+   "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+   "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+   "524b7d55-85f1-408b-b6ba-18291c25636c",
+   "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+   "811d3519-ad57-421e-90fb-8ad0b30d7168"
+  ],
+  "comments": [],
+  "nodeType": "branch-no",
+  "parentKey": "a9eef63b-1e23-4716-801d-ed2ee6162aed"
+ },
+ {
+  "id": "9a04798d-3203-4224-8a1f-964dabcb3ed0",
+  "parent": "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead",
+  "order": 0,
+  "attributes": {
+   "type": "notification",
+   "notification": {
+    "type": "send_notification",
+    "body": "Ficha no encontrada para {{contact.name}} — curso '{{contact.curso_de_inters}}' / sede '{{contact.sede}}' / modalidad '{{contact.modalidad}}'. Revisar catálogo.",
+    "title": "⚠️ SP05: ficha sin match",
+    "redirectPage": "conversation",
+    "selectedUser": "mubBlotps59Jarh728fe",
+    "userType": "user"
+   }
+  },
+  "name": "Avisar (sin match)",
+  "type": "internal_notification",
+  "parentKey": "c6ce6305-dd0e-48f3-8a5c-560f83ea7ead"
+ },
+ {
+  "id": "3d4e5f6b-effc-4718-9dd0-5b1e2b3e77f3",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e",
+  "parentKey": "5cc27e53-7ba5-4000-adfc-64a28c7b2d6e"
+ },
+ {
+  "id": "1573382d-d278-4032-a004-0cabc86343ab",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989",
+  "parentKey": "b3c9a28e-c0aa-4935-93cb-8112a7ce0989"
+ },
+ {
+  "id": "8fd2b1d3-79d4-42e3-afce-31ec2410abf7",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "080e2f99-b213-4921-834f-69ec12eb21b4",
+  "parentKey": "080e2f99-b213-4921-834f-69ec12eb21b4"
+ },
+ {
+  "id": "5df8c879-763e-40bb-9b99-72b8b80b6568",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b",
+  "parentKey": "936e47f8-62b6-4aa8-b65b-bbe3e1d3dc0b"
+ },
+ {
+  "id": "85ed3b15-a3ac-4ef7-b979-1579f4ac1d27",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b",
+  "parentKey": "b5df90bb-e240-4fcd-b143-ea1b5b322e1b"
+ },
+ {
+  "id": "a1eacf8c-4bf9-469c-be6b-59151abf541f",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "b37eb213-33b4-495f-94a3-6cc3637b4efd",
+  "parentKey": "b37eb213-33b4-495f-94a3-6cc3637b4efd"
+ },
+ {
+  "id": "a3dd2c1c-c177-408e-a66a-fdcc3ec5173b",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "aaa626e1-8423-42ba-9a24-6b3132ca43ed",
+  "parentKey": "aaa626e1-8423-42ba-9a24-6b3132ca43ed"
+ },
+ {
+  "id": "474594d5-f4cb-4346-a146-448710380b73",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26",
+  "parentKey": "5d1d2a02-efdf-45fa-a956-0c9eb74bab26"
+ },
+ {
+  "id": "fda947af-4e0b-4c97-80d2-3aa7083b64f0",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "13aa751c-6aef-47e4-b60b-7b4013a00b50",
+  "parentKey": "13aa751c-6aef-47e4-b60b-7b4013a00b50"
+ },
+ {
+  "id": "676ad93d-5a0a-4c5e-a42c-3bfdbab032a8",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "13b8e8e0-84d7-4447-8b11-5b7310016686",
+  "parentKey": "13b8e8e0-84d7-4447-8b11-5b7310016686"
+ },
+ {
+  "id": "41ac5c03-97cb-4948-ba3a-9118a9fda477",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "4069de6b-222a-4da2-a22f-7652fff5eb3c",
+  "parentKey": "4069de6b-222a-4da2-a22f-7652fff5eb3c"
+ },
+ {
+  "id": "815856fe-9e31-485a-ab90-c640d597d6ec",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "158d52ef-edc3-4cdf-b52e-333a53805518",
+  "parentKey": "158d52ef-edc3-4cdf-b52e-333a53805518"
+ },
+ {
+  "id": "a25d3c37-788c-4c0b-b3d4-478a18e069ef",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e",
+  "parentKey": "28be1b9a-3b9a-48d3-b263-34f9ba0ffc1e"
+ },
+ {
+  "id": "3cc361b5-1233-435f-9f2a-068bf96fd4f3",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "26158a73-f025-482c-9d0e-3375504c6393",
+  "parentKey": "26158a73-f025-482c-9d0e-3375504c6393"
+ },
+ {
+  "id": "a2a4df9a-35a2-430a-8756-549de50558a1",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "1f841d2b-7756-403d-8152-0f8dc799f7f9",
+  "parentKey": "1f841d2b-7756-403d-8152-0f8dc799f7f9"
+ },
+ {
+  "id": "bb53b7de-6793-4ff9-9eb4-7557f739fd2c",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "b82ad757-236a-46b8-9753-2ae10aced8ff",
+  "parentKey": "b82ad757-236a-46b8-9753-2ae10aced8ff"
+ },
+ {
+  "id": "40fc576b-a361-4886-aaa4-5b8fc6793f93",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490",
+  "parentKey": "bbf8d4cd-c4fc-45c2-b810-8776d5b92490"
+ },
+ {
+  "id": "50ab09bb-5f6b-47ca-a44a-9e8e26ea1c10",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "3e20edd9-0fba-445d-8a66-dcd52e68a144",
+  "parentKey": "3e20edd9-0fba-445d-8a66-dcd52e68a144"
+ },
+ {
+  "id": "bbf21ac2-ab7f-485a-95f5-994d61f8e209",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "09b45282-2153-43bd-a45b-1f892e3ac413",
+  "parentKey": "09b45282-2153-43bd-a45b-1f892e3ac413"
+ },
+ {
+  "id": "7d7306d1-609e-4a1e-b6af-d4717494d9d1",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "13961c7d-867c-45c1-bcd5-cf7d01a733e2",
+  "parentKey": "13961c7d-867c-45c1-bcd5-cf7d01a733e2"
+ },
+ {
+  "id": "8f7c3f88-5b25-4c57-a0f9-ef8084de5a76",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd",
+  "parentKey": "6c2553fc-6fc9-4b08-9fef-5d603780c9fd"
+ },
+ {
+  "id": "22d0185a-fb8c-4d19-8c06-1c5c415a7fbb",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "524b7d55-85f1-408b-b6ba-18291c25636c",
+  "parentKey": "524b7d55-85f1-408b-b6ba-18291c25636c"
+ },
+ {
+  "id": "8ecdafe3-89f8-46f1-8fb3-bd12ec886535",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "14e59a3c-fc26-4b75-b6d2-dece8706c543",
+  "parentKey": "14e59a3c-fc26-4b75-b6d2-dece8706c543"
+ },
+ {
+  "id": "fd414f1e-3428-4209-b3d9-00c595345383",
+  "order": 0,
+  "attributes": {
+   "tags": [
+    "ficha-enviada"
+   ]
+  },
+  "name": "Marcar ficha enviada",
+  "type": "add_contact_tag",
+  "next": "",
+  "parent": "811d3519-ad57-421e-90fb-8ad0b30d7168",
+  "parentKey": "811d3519-ad57-421e-90fb-8ad0b30d7168"
+ }
+]

@@ -31,12 +31,12 @@ for l in (ROOT / ".env").read_text().splitlines():
         k, v = l.split("=", 1); os.environ.setdefault(k.strip(), v.strip())
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts_ghl"))
-from wf_lib import C, LOC, FID
+from wf_lib import C, LOC
 
 SP05 = "ae78625c-8f91-4af1-a7b0-3be0b2e4a667"
 SP06 = "84811c16-30d8-4c08-a05d-0c12fa46567d"
 BOT01 = "L9hj6kGF7Ie73EhRzgqD"          # BOT-01 Talleres
-CURSO = "curso_de_inters"                # fieldKey del campo Curso de interés
+CURSO_ID = "bjDW7b9QoRiFWL5d578w"        # ID del campo Curso de interés (el de los triggers)
 BACKUP = ROOT / "scripts_ghl" / "sp05_v1_backup.json"
 CDN = "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/%s.jpeg"
 
@@ -139,14 +139,12 @@ def clonar_ai_status():
         print("ABORT: no pude clonar los nodos de AI status (apagar=%s activar=%s)" % (bool(apagar), bool(activar)))
         print("  SP06 y LS01 deben tener sus nodos update_conversation_ai_status vivos.")
         sys.exit(1)
-    # el de activar debe apuntar a BOT-01
-    for k in ("botId", "bot_id", "conversationAIBotId", "selectedBot"):
-        if k in activar:
-            activar[k] = BOT01
+    # el de activar debe apuntar a BOT-01 (el bot va en assignedEmployeeId)
+    activar["assignedEmployeeId"] = BOT01
     return apagar, activar
 
 def cond_curso(valor):
-    return {"conditionType": "contact_detail", "conditionSubType": FID(CURSO).replace("contact.", ""),
+    return {"conditionType": "contact_detail", "conditionSubType": CURSO_ID,
             "conditionOperator": "contains", "conditionValue": valor,
             "__conditionId": nid(), "ifElseNodeId": "", "__customFieldType__": "standard", "isWait": False}
 
@@ -179,7 +177,7 @@ def main():
             {"conditionType": "contact_detail", "conditionSubType": "tags",
              "conditionOperator": "index-of-true", "conditionValue": ["ficha-enviada"],
              "__conditionId": nid(), "ifElseNodeId": "", "__customFieldType__": "standard", "isWait": False},
-            {"conditionType": "contact_detail", "conditionSubType": FID(CURSO).replace("contact.", ""),
+            {"conditionType": "contact_detail", "conditionSubType": CURSO_ID,
              "conditionOperator": "has_no_value",
              "__conditionId": nid(), "ifElseNodeId": "", "__customFieldType__": "standard", "isWait": False},
         ]}]}

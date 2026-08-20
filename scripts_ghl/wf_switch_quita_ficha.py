@@ -31,9 +31,10 @@ if rm:
     n["attributes"]["tags"] = tags + ["ficha-enviada"]
     print("añado 'ficha-enviada' al Remove Tag existente:", n["attributes"]["tags"])
 else:
-    limpiar = [n for n in tpl if n["type"] == "clear_field_data"]
+    limpiar = [n for n in tpl if n["type"] == "update_contact_field"
+               and n.get("attributes", {}).get("actionType") == "clear_field_data"]
     if not limpiar:
-        print("ABORT: no encuentro ni remove_contact_tag ni clear_field_data en WF-SWITCH"); sys.exit(1)
+        print("ABORT: no encuentro ni remove_contact_tag ni el nodo de vaciado en WF-SWITCH"); sys.exit(1)
     prev = limpiar[0]
     nuevo_id = str(uuid.uuid4())
     nuevo = {"id": nuevo_id, "order": 0, "attributes": {"tags": ["ficha-enviada"]},
