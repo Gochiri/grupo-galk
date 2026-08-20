@@ -61,8 +61,8 @@ MEDIA = {
 # Brochures PDF: se suben desde contenido-fichas/assets/ con subir_pdfs.py y aquí se pega
 # la tupla que imprime: ("<media_id>", "<nombre>", <bytes>, "<ext>").
 # Mientras una tupla sea None, SU rama no se construye (las demás sí).
-SKETCHUP_PDF = None   # G1-SketchUp-Brochure.pdf
-REVIT_PDF = None      # G4.2-Revit-Brochure.pdf
+SKETCHUP_PDF = ("e9d01350-f587-4268-a61a-c9175672ca2e", "G1-SketchUp-Brochure.pdf", 710633, "pdf")
+REVIT_PDF = ("567c5263-a487-4b33-ba03-3ad307948922", "G4.2-Revit-Brochure.pdf", 7759762, "pdf")
 
 def wa_texto_attrs(mensaje):
     """whatsapp_v2 free-form: claves del MOLDE TEXTO de la UI, multipath apagado como en v1."""
@@ -279,10 +279,13 @@ def main():
     if not BACKUP.exists():
         BACKUP.write_text(json.dumps(v1, ensure_ascii=False, indent=1))
         print(f"backup v1: {len(v1)} nodos -> {BACKUP.name}")
+    ramas_vivas = {n.get("name") for n in v1 if n.get("nodeType") == "branch-yes"}
+    ramas_esperadas = {r[0] for r in RAMAS}
     ya_v2 = (any(n["id"] == "84d3ebf4-7b4f-48d2-949f-697513061b01" for n in v1)
-             and any(n["type"] == "whatsapp_media" for n in v1)
-             and any(n["type"] == "wait" for n in v1)
-             and not any(n["type"] == "sms" for n in v1))
+             and not any(n["type"] == "sms" for n in v1)
+             and ramas_esperadas <= ramas_vivas)
+    if not ya_v2 and ramas_vivas:
+        print("ramas nuevas a construir:", sorted(ramas_esperadas - ramas_vivas))
     if ya_v2:
         print("SP05 ya es v2 (idempotencia §3). Nada que hacer."); return
 

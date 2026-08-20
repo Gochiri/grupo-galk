@@ -18,9 +18,8 @@
 
 ## ⬜ Pendiente de Oliver
 
-0. **⛔ URGENTE — pegarme el `GHL_API_KEY` (PIT `pit-abe35f6d-...`)**: el contenedor se
-   recicló y perdió el `.env`. Sin él no puedo subir los brochures ni activar las ramas de
-   SketchUp/Revit.
+0. ~~PIT~~ ✅ (20-ago: nuevo PIT recibido, .env recreado, brochures subidos, ramas
+   SketchUp y Revit ACTIVAS en SP05)
 0b. **Pegar el prompt v4 de BOT-02** (está en `PROMPTS-bots-v4.md`) — antes de probar
    cualquier curso de software.
 0c. **Aclarar 2 cosas de Revit**: ① los "2 PDFs" llegaron como el mismo archivo duplicado —
