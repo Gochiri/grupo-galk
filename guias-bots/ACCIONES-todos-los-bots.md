@@ -183,7 +183,7 @@ Te dejo las 3 áreas por si te ayuda a decidir 👇
 | **Qué campo de contacto se actualizará** | `Sede` |
 | **Qué actualizar en el campo** | `La sede donde quiere llevar el taller. Guarda exactamente una de estas: Surco, Los Olivos, Arequipa.` |
 | **Pregunta a formular** | `📍 ¿Qué sede te queda mejor?\n🔴 Lima: Surco o Los Olivos\n🔴 Arequipa` |
-| **Cuándo ejecutar** | `Después de saber qué taller quiere y antes de enviarle la ficha. Si el curso es Electricidad y Domótica, ofrece solo Surco y Los Olivos, nunca Arequipa.` |
+| **Cuándo ejecutar** | `Después de saber qué taller quiere y antes de enviarle la ficha.` |
 
 **Ejemplos:**
 ```

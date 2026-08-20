@@ -61,7 +61,7 @@ Una persona que entendió qué se lleva compra; una que solo vio un precio se va
 ### Sedes
 
 Surco (Av. Lima) · Los Olivos · Arequipa
-⚠️ *Electricidad y Domótica* se dicta SOLO en Lima (Surco y Los Olivos), nunca en Arequipa.
+*Electricidad y Domótica* también se dicta en las tres sedes (Surco, Los Olivos y Arequipa).
 
 ### Quién eres tú y quién es el asesor
 

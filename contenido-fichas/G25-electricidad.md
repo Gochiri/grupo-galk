@@ -27,16 +27,16 @@ Un curso *100% práctico*, ideal para comenzar desde cero y desarrollar competen
 
 ## Imágenes 2-5 · En este orden (numeración de Lucía)
 
-| # | Contenido | Archivo en `FICHAS WHATSAPP/Electricidad` (⚠️ confirmar mapeo) | URL CDN |
+| # | Contenido | Archivo en `FICHAS WHATSAPP/Electricidad` | URL CDN |
 |---|---|---|---|
-| 1 | Portada: nombre del taller, incluye herramientas+materiales, "5 días presenciales / 100% prácticas", respaldo Domótika CELSA, sedes | `Electricidad-1.jpeg` | `.../6a51b6b10e67afc013822d3f.jpeg` |
+| 1 | Portada: nombre del taller, incluye herramientas+materiales, "5 días presenciales / 100% prácticas", respaldo Domótika CELSA, sedes | `Electricidad-3.jpeg` | `.../6a51b6b1eada8c1f450813db.jpeg` |
 | 2 | Temario: dirigido a, 5 módulos del taller de 20 horas (fundamentos → proyecto final con Alexa), direcciones de sedes Lima, marcas que respaldan | `Electricidad-2.jpeg` | `.../6a51b6b19c9b37b5fd3f5d4a.jpeg` |
-| 3 | Motivacional: "aprende a instalar, automatizar y transformar tu hogar desde cero", G25, sin experiencia previa, "descuento disponible al llevar dos talleres" | `Electricidad-3.jpeg` | `.../6a51b6b1eada8c1f450813db.jpeg` |
+| 3 | Motivacional: "aprende a instalar, automatizar y transformar tu hogar desde cero", G25, sin experiencia previa, "descuento disponible al llevar dos talleres" | `Electricidad-1.jpeg` | `.../6a51b6b10e67afc013822d3f.jpeg` |
 | 4 | Reserva y pagos: reserva S/100 (2 talleres S/200 promo), resto hasta 2 días antes, políticas (sin devoluciones, mínimo 10 alumnos, reprogramación 1-3, sin cambio de curso), cuentas BCP/BBVA/Interbank/Yape o Plin | `Electricidad-4.jpeg` | `.../6a51b6b1eada8c1f450813d7.jpeg` |
 
-⚠️ El mapeo nombre-de-archivo ↔ contenido está ASUMIDO por el número (no puedo abrir el CDN
-desde este entorno). **Oliver debe confirmar de un vistazo en el media store** que
-Electricidad-1 es la portada, -2 el temario, -3 la motivacional y -4 la de pagos.
+✅ **Mapeo confirmado por Oliver el 20-ago mirando el media store.** Ojo: el número del
+archivo NO es el orden de envío — la portada es `Electricidad-3` y la motivacional es
+`Electricidad-1`. El orden de envío es el de esta tabla.
 
 ### Textos cortos por imagen (BORRADOR nuestro — pendiente de aprobar con Lucía)
 
@@ -72,13 +72,11 @@ reunión 19-ago, 39:13):
 5. **La apertura ya pide el nombre** y el mensaje final condiciona los horarios a confirmarlo.
    El BOT-00 deja de preguntar nombre en este camino; el bot de familia que se enciende tras
    la ficha debe capturar nombre + sede de la respuesta.
-6. ⚠️ **CONFLICTO ABIERTO — Arequipa:** la ficha G25 ofrece sede Arequipa (con dirección:
-   Calle José Santos Chocano 249, Umacollo) pero KB-01 dice "este taller se dicta ÚNICAMENTE
-   en Lima... NO se dicta en Arequipa. Nunca ofrezcas Arequipa para este curso". Si se deja
-   así, la ficha ofrece Arequipa y acto seguido el bot la niega — a diferencia del Plin, esto
-   choca de frente en la MISMA conversación (la pregunta final es "¿Surco, Los Olivos o
-   Provincia Arequipa?"). Pendiente decidir: actualizar KB-01 (ficha manda) o confirmar con
-   el cliente.
+6. **Arequipa — RESUELTO (20-ago): sí se ofrece.** La regla "electricidad solo Lima" la
+   habíamos DEDUCIDO de la plataforma de horarios (no fue afirmación del cliente, a
+   diferencia del Plin), y la ficha oficial trae Arequipa con dirección → la ficha manda.
+   Corregido en KB-01, PROMPTS-v3, PROMPTS-especialistas y ACCIONES. Oliver actualiza la
+   línea en el prompt del BOT-01 en la UI y re-sube KB-01.
 6. **Políticas nuevas para las KB** (salen de la imagen 4, el bot debe saberlas para responder
    dudas sin inventar): sin devoluciones de reserva; mínimo 10 alumnos (si no, se reprograma
    hasta en 1-3 oportunidades); no se permite cambio de curso tras confirmar inscripción;

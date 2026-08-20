@@ -5,27 +5,30 @@
 > cero a intermedio + G16 avanzado), enganchando el segundo nivel con el Pack — tal como
 > vende Lucía. Dato nuevo: el nivel básico tiene código **G13** (no estaba en la KB).
 
-## Mensaje 1 · Apertura
+## Mensaje 1 · Apertura (v2, recibida el 20-ago — REEMPLAZA a la primera versión)
 
-El original de Lucía decía "Soy Rosa, tu asesora académica" — nombre de vendedora.
-**Decisión 20-ago (Oliver): todas las fichas se firman con el nombre unificado del bot:
-Valeria.** Texto final a usar:
+Lucía mandó dos versiones el mismo día: la de "Rosa" (sin precios) y horas después esta de
+"Camila" **con precios y requisitos** — vale la segunda. Nombres de vendedora reemplazados
+por el nombre unificado del bot: **Valeria** (decisión Oliver 20-ago). Texto final a usar:
 
 ```
-💬 ¡Hola!😊
-Soy Valeria, tu asesora académica de GRUPO GALK ¡Un gusto saludarte! 🤝🎉
+💬 ¡Hola! ¿Cuál es tu nombre? 😊
+Soy Valeria del equipo de Grupo GALK, ¡un gusto saludarte! 🙌
+Me alegra mucho tu interés en nuestro Taller de Armado de Muebles en Melamina 🎉
 
-Nos complace conocer su interés en nuestro *Taller de Armado en Melamina - 100% PRESENCIAL*🪵* 🪚
+Este taller es una gran oportunidad para aprender desde cero a trabajar con melamina y fabricar tus propios muebles paso a paso, incluso si nunca antes lo has hecho 🪚✨
 
-Este taller ha sido *pensado para que los participantes aprendan desde cero el trabajo con melamina y el armado de muebles paso a paso hasta el nivel avanzado*, contando con acompañamiento y asesoría constante durante todo el proceso 💪✨
+📌 Ofertas vigentes hasta el 24 de agosto:
+✅ S/525 un taller (G13 – Taller desde Cero o G16 – Taller Avanzado 16 hrs cada uno) – separa tu vacante con S/100
+✅ S/890 el Pack Completo (G13 + G16 – Desde Cero + Avanzado 32 hrs) – separa con S/200
 
-📍Sedes: LIMA: Surco y Los Olivos - PROVINCIA: Arequipa
+📍*Sedes:* Lima-Surco (Calle Aldabas 559) o Los Olivos (Av. Antunes de Mayolo 822). Provincia-Arequipa (Calle José Santos Chocano 249)
+🧾 Incluye: certificación, materiales y asesorías personalizadas
+⚠️ Importante – Requisitos para el taller: Por temas de *seguridad e higiene*, los alumnos deberán asistir obligatoriamente con:
+🧤 Guantes con palma de nitrilo
+👓 Lentes de seguridad transparentes
 
-🧾 Incluye: certificación, materiales y asesoría personalizada
-
-Quedo atenta a cualquier consulta adicional y será un placer brindarle mayor información 😊📲
-
-📸 Te adjunto las imágenes de la información a detalle 👇
+📸 Te comparto las imágenes del taller con toda la información y beneficios. ¡Mira lo completo que está este programa! 👇
 ```
 
 ## Imágenes 2-5 · En este orden (numeración de Lucía)
@@ -61,8 +64,16 @@ cuáles 4 de las 8 son estas y en qué orden — Oliver quedó de responderlo).
    UNA rama de melamina, no dos. Ojo: la condición de la rama debe matchear tanto "melamina
    desde cero" como "melamina avanzado" en `Curso de interés`.
 2. **Código nuevo G13** para el nivel básico — añadirlo a KB-01 y prompts en la pasada v4.
-3. **Pack S/890 confirmado** (coincide con la KB) y reserva S/100 / S/200 el pack.
-4. "4 días presenciales" en la portada (misma nota que G25: el cliente decidió poner
-   calendario en sus imágenes; el bot sigue hablando en horas).
-5. La apertura NO menciona precio del taller (solo la ficha de reserva) — el precio por
-   sede lo sigue dando el bot/asesor. Menos mantenimiento mensual en esta plantilla.
+3. **Precio de G16 (avanzado) por fin confirmado: S/525 en promo** (la KB lo tenía POR
+   CONFIRMAR — actualizar en v4). Pack S/890 (32 hrs) y reservas S/100 / S/200 coinciden.
+4. "4 días presenciales" en la portada (misma nota que G25: imágenes del cliente, el bot
+   sigue hablando en horas).
+5. **Requisitos de seguridad nuevos** (guantes palma de nitrilo + lentes transparentes,
+   obligatorios): añadir a KB-01 en v4 para que el bot los sepa responder.
+6. ⚠️ **Inconsistencias del cliente detectadas — se dejan tal cual (regla del 20-ago),
+   solo registro:** (a) la apertura da S/525 parejo con las 3 sedes listadas, pero la KB
+   tiene Arequipa más barata (S/575 regular / S/400 promo, dato de la plataforma); (b) la
+   apertura ofrece el Pack sin restricción de sede, pero la KB dice que el Pack NO existe
+   en Arequipa. Cuando un lead de Arequipa pregunte precio, el bot dirá S/400 tras una
+   ficha que dijo S/525. Es info de la fuente del cliente contradiciéndose; si escala,
+   preguntar a Francisco/Lucía cuál vale.

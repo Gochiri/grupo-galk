@@ -145,7 +145,7 @@ incluye un taller es exactamente lo de `## Qué incluye cualquier taller`, ni m�
 
 **Precio:** S/780 regular, S/600 en promoción. Se puede **reservar el cupo con S/100**.
 
-> **IMPORTANTE:** este taller se dicta **ÚNICAMENTE en Lima (Surco o Los Olivos)**. NO se dicta en Arequipa. Nunca ofrezcas la sede de Arequipa para este curso.
+**Sedes:** Surco, Los Olivos y Arequipa (Calle José Santos Chocano 249, Umacollo).
 
 ---
 

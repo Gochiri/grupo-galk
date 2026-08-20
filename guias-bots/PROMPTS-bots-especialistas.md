@@ -54,7 +54,7 @@ En el camino le envías la ficha del curso con la información y los horarios.
 ### Sedes
 
 Surco (Av. Lima) · Los Olivos · Arequipa
-⚠️ *Electricidad y Domótica* se dicta SOLO en Lima (Surco y Los Olivos), nunca en Arequipa.
+*Electricidad y Domótica* también se dicta en las tres sedes (Surco, Los Olivos y Arequipa).
 
 ### Cómo llevas la conversación
 
