@@ -64,12 +64,23 @@ def wa_texto_attrs(mensaje):
             "__customInputs__": {}, "cat": "", "convertToMultipath": False,
             "transitions": [], "__name__": "WhatsApp"}
 
+CAPTIONS = False   # 20-ago (Oliver): imágenes limpias, sin texto abajo. Los captions siguen
+                   # en RAMAS por si tras las pruebas hiciera falta reactivarlos (poner True).
+
 def wa_media_attrs(media_id, caption):
     """whatsapp_media: claves del MOLDE IMAGEN de la UI, con la URL del propio storage."""
     nombre, size = MEDIA[media_id]
     return {"__dynamicAttachments__": {}, "from_number_id": WA_PHONE, "media_type": "image",
             "media_url": [{"name": nombre, "url": CDN % media_id, "size": size}],
-            "media_caption": caption, "type": "whatsapp_media", "__customInputs__": {}}
+            "media_caption": caption if CAPTIONS else "", "type": "whatsapp_media",
+            "__customInputs__": {}}
+
+def wait_attrs(segundos=3):
+    """Wait corto entre mensajes (forma clonada del Wait de 5s de SP06, hecho en la UI)."""
+    return {"type": "time", "startAfter": {"type": "seconds", "value": segundos, "when": "after"},
+            "name": "Wait", "cat": "", "timePeriodInputMode": "standard",
+            "unitInputMode": "standard", "isHybridAction": True, "hybridActionType": "wait",
+            "convertToMultipath": False, "transitions": []}
 
 def nid(): return str(uuid.uuid4())
 
@@ -199,6 +210,7 @@ def main():
         print(f"backup v1: {len(v1)} nodos -> {BACKUP.name}")
     ya_v2 = (any(n["id"] == "84d3ebf4-7b4f-48d2-949f-697513061b01" for n in v1)
              and any(n["type"] == "whatsapp_media" for n in v1)
+             and any(n["type"] == "wait" for n in v1)
              and not any(n["type"] == "sms" for n in v1))
     if ya_v2:
         print("SP05 ya es v2 (idempotencia §3). Nada que hacer."); return
@@ -249,29 +261,34 @@ def main():
             "parent": tree_hdr["id"], "parentKey": tree_hdr["id"], "next": ""}
         if apertura is None:      # rama atrapadora (Supervisión): sale sin enviar nada
             nodes.append(rama); continue
-        ids = [nid() for _ in range(9)]
+        N = 14                    # pausa · apertura · (wait·img)x4 · wait · pregunta · tag · activar
+        ids = [nid() for _ in range(N)]
         rama["next"] = ids[0]
         nodes.append(rama)
         def chain(idx, nodo):     # convención v1: parent = LA RAMA, encadenado por next
             nodo.update({"id": ids[idx], "order": 0, "parent": bid, "parentKey": bid,
-                         "next": ids[idx + 1] if idx < 8 else ""})
+                         "next": ids[idx + 1] if idx < N - 1 else ""})
             nodes.append(nodo)
+        def espera(idx):
+            chain(idx, {"attributes": wait_attrs(3), "name": "Pausa 3s", "type": "wait"})
         chain(0, {"attributes": json.loads(json.dumps(apagar_attrs)),
                   "name": "Bot en pausa (secuencia)", "type": "update_conversation_ai_status",
                   "workflowsActionType": "INTERNAL"})
         chain(1, {"attributes": wa_texto_attrs(apertura), "name": f"Secuencia ficha: {nombre}",
                   "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
         for i, (cap, mid) in enumerate(imgs):
-            chain(2 + i, {"attributes": wa_media_attrs(mid, cap),
-                          "name": f"Imagen {i+1}: {nombre}", "type": "whatsapp_media",
-                          "workflowsActionType": "INTERNAL"})
-        chain(6, {"attributes": wa_texto_attrs(FINAL_MSG), "name": f"Pregunta de sede: {nombre}",
-                  "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
-        chain(7, {"attributes": {"tags": ["ficha-enviada"]}, "name": "Marcar ficha-enviada",
-                  "type": "add_contact_tag"})
-        chain(8, {"attributes": json.loads(json.dumps(activar_attrs)),
-                  "name": "Activar BOT-01 Talleres", "type": "update_conversation_ai_status",
-                  "workflowsActionType": "INTERNAL"})
+            espera(2 + 2 * i)
+            chain(3 + 2 * i, {"attributes": wa_media_attrs(mid, cap),
+                              "name": f"Imagen {i+1}: {nombre}", "type": "whatsapp_media",
+                              "workflowsActionType": "INTERNAL"})
+        espera(10)
+        chain(11, {"attributes": wa_texto_attrs(FINAL_MSG), "name": f"Pregunta de sede: {nombre}",
+                   "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
+        chain(12, {"attributes": {"tags": ["ficha-enviada"]}, "name": "Marcar ficha-enviada",
+                   "type": "add_contact_tag"})
+        chain(13, {"attributes": json.loads(json.dumps(activar_attrs)),
+                   "name": "Activar BOT-01 Talleres", "type": "update_conversation_ai_status",
+                   "workflowsActionType": "INTERNAL"})
 
     hdr_id = guard_hdr["id"]      # los triggers ya apuntan aquí
     tpl = [guard_hdr, g_yes, g_no, tree_hdr, none_nd] + nodes
