@@ -58,9 +58,11 @@ MEDIA = {
  "6a51b6b1eada8c1f450813d7": ("Electricidad-4.jpeg", 232372),
 }
 
-# PDF del brochure de SketchUp: se sube desde contenido-fichas/assets/ con subir_pdf_g1.py
-# y aquí se pone su media id + tamaño. Mientras sea None, la rama SketchUp NO se construye.
-SKETCHUP_PDF = None   # ("<media_id>", "G1-SketchUp-Brochure.pdf", <bytes>, "<ext>")
+# Brochures PDF: se suben desde contenido-fichas/assets/ con subir_pdfs.py y aquí se pega
+# la tupla que imprime: ("<media_id>", "<nombre>", <bytes>, "<ext>").
+# Mientras una tupla sea None, SU rama no se construye (las demás sí).
+SKETCHUP_PDF = None   # G1-SketchUp-Brochure.pdf
+REVIT_PDF = None      # G4.2-Revit-Brochure.pdf
 
 def wa_texto_attrs(mensaje):
     """whatsapp_v2 free-form: claves del MOLDE TEXTO de la UI, multipath apagado como en v1."""
@@ -199,13 +201,40 @@ RAMAS = [
     ]),
 ]
 
-# SketchUp entra al árbol solo cuando el PDF ya esté subido al media store
+# Las ramas de software entran al árbol solo cuando su PDF ya esté en el media store
 if SKETCHUP_PDF:
     RAMAS.append(("SketchUp", ["sketch"], BOT02, [
         ("texto", APERTURA_SKP),
         ("doc", SKETCHUP_PDF, "Brochure G1 SketchUp"),
         ("texto", RESERVA_SKP),
         ("texto", FINAL_SKP),
+    ]))
+
+APERTURA_RVT = """💬 ¡Hola! ¿Cuál es tu nombre? 😊
+Soy *Valeria del equipo de Grupo GALK*, ¡un gusto saludarte! 🙌
+Te escribo porque tenemos una oferta especial en nuestro curso *"BIM desde Cero – Revit + Render IA + Lumion (G4.2)"*, ideal para arquitectos, diseñadores e ingenieros que desean profesionalizar sus proyectos en 3D y renderizado ✨
+
+📌 Modalidad: Virtual – En vivo por Zoom y Presencial Lima, Surco (Calle Aldabas 559)
+
+🎁 *📌 Ofertas vigentes por tiempo limitado:
+✅ S/370 modalidad virtual (reserva con S/100)
+✅ S/550 modalidad presencial (reserva con S/100)
+
+🧾 Incluye: certificación, clases en vivo, asesorías personalizadas y acceso a biblioteca de familias Revit GALK 💻
+
+📸 Te comparto el brochure con toda la información sobre el contenido, duración y beneficios del curso. ¡Mira lo completo que está este programa! 👇"""
+
+DURACION_RVT = """🕓 Duración: 28 horas académicas (24 horas en vivo O presenciales + 4 grabadas)
+_Reserva tu vacante con S/100 y cancela el saldo hasta 2 días antes del inicio de clases._"""
+
+# ⚠️ Orden del cierre según lo recibido (pregunta ANTES de duración) — pendiente de
+# confirmar con Oliver si la pregunta va al final; ver contenido-fichas/G4.2-revit.md
+if REVIT_PDF:
+    RAMAS.append(("Revit", ["revit", "bim"], BOT02, [
+        ("texto", APERTURA_RVT),
+        ("doc", REVIT_PDF, "Brochure G4.2 Revit"),
+        ("texto", FINAL_SKP),
+        ("texto", DURACION_RVT),
     ]))
 
 # ---------- clonar formas vivas (regla de oro) ----------

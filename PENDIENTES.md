@@ -18,8 +18,16 @@
 
 ## ⬜ Pendiente de Oliver
 
-1. **Re-subir las 3 Bases de Conocimiento** a sus bots y verificar que cada una quede
-   **asociada** (no solo subida). KB-01 ya está en v4 en el repo; KB-02/03 sin cambios nuevos.
+0. **⛔ URGENTE — pegarme el `GHL_API_KEY` (PIT `pit-abe35f6d-...`)**: el contenedor se
+   recicló y perdió el `.env`. Sin él no puedo subir los brochures ni activar las ramas de
+   SketchUp/Revit.
+0b. **Pegar el prompt v4 de BOT-02** (está en `PROMPTS-bots-v4.md`) — antes de probar
+   cualquier curso de software.
+0c. **Aclarar 2 cosas de Revit**: ① los "2 PDFs" llegaron como el mismo archivo duplicado —
+   ¿hay un segundo PDF distinto o es uno solo? · ② ¿la pregunta de modalidad va antes del
+   mensaje de duración (como llegó) o al final?
+1. ~~**Re-subir las 3 Bases de Conocimiento**~~ ✅ (20-ago: KB-01 v4 subida 3:20 PM;
+   KB-02/03 ya estaban al día — confirmado por Oliver)
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
