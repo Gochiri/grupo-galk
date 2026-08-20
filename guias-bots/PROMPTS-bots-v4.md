@@ -182,6 +182,31 @@ Contact Info · Modalidad (bot) ✓ · Contact Info · Sede (bot) (escribe Surco
 
 ---
 
+## Transfer Bot del BOT-00 — condiciones v4 (las 3, en la UI)
+
+> Corrigen el bug del 20-ago (pruebas de SketchUp): las condiciones viejas ("transfiere
+> apenas tengas identificada la familia") disparaban la transferencia EN el primer mensaje,
+> robándole el turno a BOT-00 antes de que capturara `Curso de interés` — y sin curso no hay
+> secuencia. Con estas, BOT-00 responde el primer turno (como en las pruebas exitosas de
+> melamina) y la transferencia real la hace la secuencia al activar el bot de familia.
+
+**Transfer a Talleres** (308 caracteres ✓):
+```
+La persona YA recibió antes la información de su curso y ahora hace preguntas específicas sobre talleres prácticos (melamina, drywall, electricidad), o cambió su interés hacia esa área. NUNCA transfieras en el primer mensaje ni apenas identifiques el interés: el sistema envía la información automáticamente.
+```
+
+**Transfer a Software** (319 caracteres ✓):
+```
+La persona YA recibió antes la información de su curso y ahora hace preguntas específicas sobre programas de modelado 3D (SketchUp, Revit, AutoCAD, mobiliario), o cambió su interés hacia esa área. NUNCA transfieras en el primer mensaje ni apenas identifiques el interés: el sistema envía la información automáticamente.
+```
+
+**Transfer a Gestión** (335 caracteres ✓):
+```
+La persona YA recibió antes la información de su curso y ahora hace preguntas específicas sobre gestión de proyectos (cocinas, interiorismo, espacios comerciales, supervisión), o cambió su interés hacia esa área. NUNCA transfieras en el primer mensaje ni apenas identifiques el interés: el sistema envía la información automáticamente.
+```
+
+---
+
 ## Nota de diseño: por qué NO se pregunta el nivel antes de la ficha
 
 La ficha de cada taller es UNA sola y cubre los dos niveles a propósito — así vende Lucía
