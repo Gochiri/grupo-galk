@@ -36,6 +36,7 @@ from wf_lib import C, LOC
 SP05 = "ae78625c-8f91-4af1-a7b0-3be0b2e4a667"
 SP06 = "84811c16-30d8-4c08-a05d-0c12fa46567d"
 BOT01 = "L9hj6kGF7Ie73EhRzgqD"          # BOT-01 Talleres
+BOT02 = "6vDo80qswCZgzWEIxXRC"          # BOT-02 Software
 CURSO_ID = "bjDW7b9QoRiFWL5d578w"        # ID del campo Curso de interés (el de los triggers)
 BACKUP = ROOT / "scripts_ghl" / "sp05_v1_backup.json"
 CDN = "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/%s.jpeg"
@@ -57,6 +58,10 @@ MEDIA = {
  "6a51b6b1eada8c1f450813d7": ("Electricidad-4.jpeg", 232372),
 }
 
+# PDF del brochure de SketchUp: se sube desde contenido-fichas/assets/ con subir_pdf_g1.py
+# y aquí se pone su media id + tamaño. Mientras sea None, la rama SketchUp NO se construye.
+SKETCHUP_PDF = None   # ("<media_id>", "G1-SketchUp-Brochure.pdf", <bytes>, "<ext>")
+
 def wa_texto_attrs(mensaje):
     """whatsapp_v2 free-form: claves del MOLDE TEXTO de la UI, multipath apagado como en v1."""
     return {"template_id": "0", "toggle_branch": False, "from_phone_number": WA_PHONE,
@@ -67,11 +72,14 @@ def wa_texto_attrs(mensaje):
 CAPTIONS = False   # 20-ago (Oliver): imágenes limpias, sin texto abajo. Los captions siguen
                    # en RAMAS por si tras las pruebas hiciera falta reactivarlos (poner True).
 
-def wa_media_attrs(media_id, caption):
-    """whatsapp_media: claves del MOLDE IMAGEN de la UI, con la URL del propio storage."""
-    nombre, size = MEDIA[media_id]
-    return {"__dynamicAttachments__": {}, "from_number_id": WA_PHONE, "media_type": "image",
-            "media_url": [{"name": nombre, "url": CDN % media_id, "size": size}],
+def wa_media_attrs(media_id, caption, media_type="image", nombre=None, size=None, ext="jpeg"):
+    """whatsapp_media: claves del MOLDE IMAGEN de la UI, con la URL del propio storage.
+    media_type "document" (PDF) usa la misma forma — pendiente de validar en ejecución."""
+    if nombre is None:
+        nombre, size = MEDIA[media_id]
+    url = f"https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/{media_id}.{ext}"
+    return {"__dynamicAttachments__": {}, "from_number_id": WA_PHONE, "media_type": media_type,
+            "media_url": [{"name": nombre, "url": url, "size": size}],
             "media_caption": caption if CAPTIONS else "", "type": "whatsapp_media",
             "__customInputs__": {}}
 
@@ -139,31 +147,66 @@ Ideal si buscas capacitarte profesionalmente o emprender en el rubro de la const
 FINAL_MSG = """✨ Una vez que me confirmes tu nombre, te envío los horarios y fechas disponibles en la sede que te quede más cerca.
 ¿Te interesa en Surco, Los Olivos o Provincia Arequipa? 😊"""
 
+APERTURA_SKP = """📢 ¡Hola! ¿Cuál es tu nombre? 😊
+Soy Valeria de Grupo GALK ✨ y quiero compartirte la información de nuestro Curso G1 | SketchUp 2025 + V-Ray 7 + PSD + twinmotion + IA 🎨💻. Aprenderás a crear renders profesionales y potenciar tus proyectos con herramientas de última tecnología. 🚀
+
+🚀 Curso 100% práctico – Aprende desde cero con expertos.
+📌 Modalidad: Virtual – En vivo por Zoom y Presencial Surco (Calle Aldabas 559)
+
+🎁 *📌 Ofertas vigentes por tiempo limitado:
+✅ S/370 modalidad online en vivo– Separa tu vacante con S/100
+✅ S/550 modalidad presencial – Separa tu vacante con S/100
+🛠️ Incluye certificación y asesoría personalizada
+
+📸 Te comparto el brochure con toda la información sobre el contenido, duración y beneficios del curso. ¡Mira lo completo que está este programa! 👇"""
+
+RESERVA_SKP = "Reserva tu vacante con S/100 y cancela el saldo hasta 2 días antes del inicio de clases."
+
+FINAL_SKP = """✨ Para confirmarte el grupo ideal, cuéntame:
+¿Deseas llevarlo en modalidad presencial en Surco o prefieres virtual en vivo? 😊"""
+
 # (nombre, condiciones "contains" sobre Curso de interés, apertura, [(caption, media_id) x4])
 # La rama Supervisión va PRIMERA y sin nodos: "Gestión y Supervisión de Melamina" contiene
 # "melamina" y sin esta atrapadora se llevaría la ficha del taller. Sale sin enviar nada
 # (su ficha de gestión llega después).
 RAMAS = [
+    # (nombre, condiciones "contains" en Curso de interés, bot que se activa al final,
+    #  mensajes: ("texto", str) | ("img", media_id, caption) | ("doc", SKETCHUP_PDF, caption))
     ("Supervision (gestion, sin ficha aun)", ["supervisi"], None, []),
-    ("Melamina", ["melamina"], APERTURA_MELA, [
-        ("🪚 Así se vive el taller — 100% práctico y presencial", "6a4b0fed70834e617c689aa1"),
-        ("📚 Temario completo: las 16 horas, paso a paso",          "6a4b0fed1bf938e5479bed61"),
-        ("💪 Dos niveles: G13 desde cero a intermedio · G16 avanzado", "6a4b0fed8a69aa2441919a1a"),
-        ("📝 Reserva tu vacante con S/100 — medios de pago",        "6a4b0fed8a69aa2441919a14"),
+    ("Melamina", ["melamina"], BOT01, [
+        ("texto", APERTURA_MELA),
+        ("img", "6a4b0fed70834e617c689aa1", "🪚 Así se vive el taller — 100% práctico y presencial"),
+        ("img", "6a4b0fed1bf938e5479bed61", "📚 Temario completo: las 16 horas, paso a paso"),
+        ("img", "6a4b0fed8a69aa2441919a1a", "💪 Dos niveles: G13 desde cero a intermedio · G16 avanzado"),
+        ("img", "6a4b0fed8a69aa2441919a14", "📝 Reserva tu vacante con S/100 — medios de pago"),
+        ("texto", FINAL_MSG),
     ]),
-    ("Drywall", ["drywall"], APERTURA_DRY, [
-        ("🧱 Así se vive el taller — 100% práctico y presencial",   "6a4da7e82467f0ff08fed87d"),
-        ("📚 Temario completo: las 16 horas, paso a paso",          "6a4da7f02467f0ff08ff12a5"),
-        ("💪 Dos niveles: G24 desde cero a intermedio · G28 avanzado", "6a4da7f01e3d535c0821a6ae"),
-        ("📝 Reserva tu vacante con S/100 — medios de pago",        "6a4da7f02d9cf805155950d4"),
+    ("Drywall", ["drywall"], BOT01, [
+        ("texto", APERTURA_DRY),
+        ("img", "6a4da7e82467f0ff08fed87d", "🧱 Así se vive el taller — 100% práctico y presencial"),
+        ("img", "6a4da7f02467f0ff08ff12a5", "📚 Temario completo: las 16 horas, paso a paso"),
+        ("img", "6a4da7f01e3d535c0821a6ae", "💪 Dos niveles: G24 desde cero a intermedio · G28 avanzado"),
+        ("img", "6a4da7f02d9cf805155950d4", "📝 Reserva tu vacante con S/100 — medios de pago"),
+        ("texto", FINAL_MSG),
     ]),
-    ("Electricidad", ["electricidad"], APERTURA_ELEC, [
-        ("⚡ Así se vive el taller — 100% práctico y presencial",   "6a51b6b1eada8c1f450813db"),
-        ("📚 Temario completo: las 20 horas, paso a paso",          "6a51b6b19c9b37b5fd3f5d4a"),
-        ("💪 Empiezas desde cero, sales instalando y automatizando", "6a51b6b10e67afc013822d3f"),
-        ("📝 Reserva tu vacante con S/100 — medios de pago",        "6a51b6b1eada8c1f450813d7"),
+    ("Electricidad", ["electricidad"], BOT01, [
+        ("texto", APERTURA_ELEC),
+        ("img", "6a51b6b1eada8c1f450813db", "⚡ Así se vive el taller — 100% práctico y presencial"),
+        ("img", "6a51b6b19c9b37b5fd3f5d4a", "📚 Temario completo: las 20 horas, paso a paso"),
+        ("img", "6a51b6b10e67afc013822d3f", "💪 Empiezas desde cero, sales instalando y automatizando"),
+        ("img", "6a51b6b1eada8c1f450813d7", "📝 Reserva tu vacante con S/100 — medios de pago"),
+        ("texto", FINAL_MSG),
     ]),
 ]
+
+# SketchUp entra al árbol solo cuando el PDF ya esté subido al media store
+if SKETCHUP_PDF:
+    RAMAS.append(("SketchUp", ["sketch"], BOT02, [
+        ("texto", APERTURA_SKP),
+        ("doc", SKETCHUP_PDF, "Brochure G1 SketchUp"),
+        ("texto", RESERVA_SKP),
+        ("texto", FINAL_SKP),
+    ]))
 
 # ---------- clonar formas vivas (regla de oro) ----------
 def clonar_ai_status():
@@ -185,8 +228,7 @@ def clonar_ai_status():
         print("ABORT: no pude clonar los nodos de AI status (apagar=%s activar=%s)" % (bool(apagar), bool(activar)))
         print("  SP06 y LS01 deben tener sus nodos update_conversation_ai_status vivos.")
         sys.exit(1)
-    # el de activar debe apuntar a BOT-01 (el bot va en assignedEmployeeId)
-    activar["assignedEmployeeId"] = BOT01
+    # el bot destino se fija POR RAMA en el bucle de construcción
     return apagar, activar
 
 def cond_curso(valor):
@@ -252,16 +294,17 @@ def main():
 
     nodes = []
     grupo = list(branch_ids.values()) + [none_nd["id"]]
-    for nombre, conds, apertura, imgs in RAMAS:
+    for nombre, conds, bot_destino, mensajes in RAMAS:
         bid = branch_ids[nombre]
         sib = [x for x in grupo if x != bid]
         rama = {"id": bid, "order": 0, "attributes": {"if": False, "conditionName": "Condition",
             "operator": "and", "branches": []}, "name": nombre, "type": "if_else",
             "nodeType": "branch-yes", "cat": "conditions", "sibling": sib,
             "parent": tree_hdr["id"], "parentKey": tree_hdr["id"], "next": ""}
-        if apertura is None:      # rama atrapadora (Supervisión): sale sin enviar nada
+        if not mensajes:          # rama atrapadora (Supervisión): sale sin enviar nada
             nodes.append(rama); continue
-        N = 14                    # pausa · apertura · (wait·img)x4 · wait · pregunta · tag · activar
+        # pausa-bot + [msg, wait, msg, wait, ...] + tag + activar
+        N = 1 + (2 * len(mensajes) - 1) + 2
         ids = [nid() for _ in range(N)]
         rama["next"] = ids[0]
         nodes.append(rama)
@@ -269,26 +312,36 @@ def main():
             nodo.update({"id": ids[idx], "order": 0, "parent": bid, "parentKey": bid,
                          "next": ids[idx + 1] if idx < N - 1 else ""})
             nodes.append(nodo)
-        def espera(idx):
-            chain(idx, {"attributes": wait_attrs(3), "name": "Pausa 3s", "type": "wait"})
         chain(0, {"attributes": json.loads(json.dumps(apagar_attrs)),
                   "name": "Bot en pausa (secuencia)", "type": "update_conversation_ai_status",
                   "workflowsActionType": "INTERNAL"})
-        chain(1, {"attributes": wa_texto_attrs(apertura), "name": f"Secuencia ficha: {nombre}",
-                  "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
-        for i, (cap, mid) in enumerate(imgs):
-            espera(2 + 2 * i)
-            chain(3 + 2 * i, {"attributes": wa_media_attrs(mid, cap),
-                              "name": f"Imagen {i+1}: {nombre}", "type": "whatsapp_media",
-                              "workflowsActionType": "INTERNAL"})
-        espera(10)
-        chain(11, {"attributes": wa_texto_attrs(FINAL_MSG), "name": f"Pregunta de sede: {nombre}",
-                   "type": "whatsapp_v2", "workflowsActionType": "INTERNAL"})
-        chain(12, {"attributes": {"tags": ["ficha-enviada"]}, "name": "Marcar ficha-enviada",
-                   "type": "add_contact_tag"})
-        chain(13, {"attributes": json.loads(json.dumps(activar_attrs)),
-                   "name": "Activar BOT-01 Talleres", "type": "update_conversation_ai_status",
-                   "workflowsActionType": "INTERNAL"})
+        idx = 1
+        for j, m in enumerate(mensajes):
+            if j > 0:
+                chain(idx, {"attributes": wait_attrs(3), "name": "Pausa 3s", "type": "wait"})
+                idx += 1
+            tipo = m[0]
+            if tipo == "texto":
+                chain(idx, {"attributes": wa_texto_attrs(m[1]),
+                            "name": f"Mensaje {j+1}: {nombre}", "type": "whatsapp_v2",
+                            "workflowsActionType": "INTERNAL"})
+            elif tipo == "img":
+                chain(idx, {"attributes": wa_media_attrs(m[1], m[2]),
+                            "name": f"Imagen: {nombre} ({j+1})", "type": "whatsapp_media",
+                            "workflowsActionType": "INTERNAL"})
+            elif tipo == "doc":
+                mid, fname, size, ext = m[1]
+                chain(idx, {"attributes": wa_media_attrs(mid, m[2], media_type="document",
+                                                         nombre=fname, size=size, ext=ext),
+                            "name": f"PDF: {nombre}", "type": "whatsapp_media",
+                            "workflowsActionType": "INTERNAL"})
+            idx += 1
+        chain(idx, {"attributes": {"tags": ["ficha-enviada"]}, "name": "Marcar ficha-enviada",
+                    "type": "add_contact_tag"})
+        act = json.loads(json.dumps(activar_attrs))
+        act["assignedEmployeeId"] = bot_destino
+        chain(idx + 1, {"attributes": act, "name": f"Activar bot destino",
+                        "type": "update_conversation_ai_status", "workflowsActionType": "INTERNAL"})
 
     hdr_id = guard_hdr["id"]      # los triggers ya apuntan aquí
     tpl = [guard_hdr, g_yes, g_no, tree_hdr, none_nd] + nodes
