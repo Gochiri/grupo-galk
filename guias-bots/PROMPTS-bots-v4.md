@@ -182,6 +182,27 @@ Contact Info · Modalidad (bot) ✓ · Contact Info · Sede (bot) (escribe Surco
 
 ---
 
+## Captura de Curso del BOT-00 — descripción v4.1 (fix del 20-ago, prueba SketchUp)
+
+> La descripción anterior estaba anclada en talleres ("si no dijo el nivel guarda solo la
+> familia: Melamina o Drywall") y con cursos de software el modelo se quedaba sin regla y
+> no escribía nada. Esta versión cubre las 3 áreas.
+
+**BOT-00 → Contact Info · Curso de interés → "Qué actualizar en el campo"** (464 caracteres ✓):
+```
+Guarda el curso que la persona quiere apenas lo mencione, con su nombre oficial: SketchUp, Revit BIM, AutoCAD, Diseño de Mobiliario, Electricidad y Domótica, Cocinas, Obra Interiorista, Espacios Comerciales, Gestión y Supervisión de Melamina. Para los talleres de melamina o drywall guarda solo la palabra Melamina o Drywall (su nivel se pregunta después). Aplica a cualquier curso de las 3 áreas, no solo a talleres. Si no mencionó ningún curso, no escribas nada.
+```
+
+**Ejemplos de Salida** (agregar estos 4 si el panel los pide):
+```
+"quiero información del curso de sketchup" → SketchUp
+"me interesa revit" → Revit BIM
+"quiero el taller de melamina" → Melamina
+"info del curso de cocinas" → Cocinas
+```
+
+---
+
 ## Transfer Bot del BOT-00 — condiciones v4 (las 3, en la UI)
 
 > Corrigen el bug del 20-ago (pruebas de SketchUp): las condiciones viejas ("transfiere
