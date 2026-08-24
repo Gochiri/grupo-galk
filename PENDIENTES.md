@@ -29,15 +29,21 @@
    (tal como llegó). ¿La pregunta debería ir al final?
 1. ~~**Re-subir las 3 Bases de Conocimiento**~~ ✅ (20-ago: KB-01 v4 subida 3:20 PM;
    KB-02/03 ya estaban al día — confirmado por Oliver)
-1b. **Prueba Revit 24-ago: FALLÓ la captura de Curso (bug real, 3ª vez con software).**
-   Corrección al primer diagnóstico: el "Revit" del campo lo escribió OLIVER a mano tras
-   esperar ~7 min, y ESO disparó SP05 — la captura del BOT-00 no escribió nada. Misma firma
-   que las 2 fallas de SketchUp del 20-ago (Familia sí, Curso no). Lo que SÍ quedó validado:
-   la rama Revit de SP05 entregó bien apertura + PDF + pregunta de modalidad + duración una
-   vez disparada; triggers SP05/SP06 sanos; `asesor-notificado` lo puso WF3 de Francisco
-   (ruido conocido). → Fix: **pegar descripción v4.2 de la captura de Curso** (con mapeo
-   minúsculas → nombre oficial) y re-probar Revit con contacto nuevo. Pendiente confirmar
-   con Oliver si `Familia de interés (bot) = Software` la escribió el bot o también él.
+1b. **Prueba Revit 24-ago: el BOT-00 no ejecutó NINGUNA captura (bug nuevo, firma distinta
+   a las fallas de SketchUp).** Verificado por API campo por campo: TODO lo que tiene valor
+   lo escribió Oliver a mano (Curso, Familia dropdown, Fuente, UTM, fecha); los 3 campos
+   del bot (`Familia de interés (bot)`, `Curso de interés` vía bot, `Nivel`) quedaron
+   vírgenes. El bot SÍ respondió sus 2 turnos con la línea v4 correcta y NO hay rastro de
+   "Agente Transferido" en los mensajes de la API (la actividad de oportunidad sí aparece,
+   así que las actividades sí se ven). Es decir: no fue el Transfer ni la descripción — las
+   acciones de Contact Info no corrieron en absoluto. En las fallas del 20-ago al menos
+   Familia se escribía. Lo que SÍ quedó validado: la rama Revit de SP05 entregó bien
+   apertura + PDF + pregunta + duración al disparar (por la escritura manual); triggers
+   SP05/SP06 sanos; `asesor-notificado` = WF3 de Francisco (ruido conocido).
+   → Plan A/B: re-probar con contacto nuevo diciendo "melamina" (caso que siempre funcionó).
+   Si melamina TAMPOCO escribe → las capturas están rotas globalmente (config del bot o
+   plataforma): revisar en la UI las acciones Contact Info del BOT-00. Si melamina SÍ
+   escribe → es específico de software: pegar v4.2 y re-probar Revit.
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
