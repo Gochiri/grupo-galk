@@ -49,6 +49,12 @@
    cero** con la descripción v4.2 + los 4 ejemplos, y re-probar melamina y luego Revit.
    Si ni recreada escribe → es fallo de plataforma GHL (ticket a soporte) y armamos plan B
    (extracción por workflow con acción de IA, fuera del bot).
+   · 24-ago ~10:07 AM: Oliver **recreó la acción de cero con la v4.2 y TAMPOCO escribe**
+   (Familia sí, otra vez). Hipótesis vigente: GHL ahora ejecuta solo la PRIMERA acción de
+   Contact Info del bot por turno (cambio de plataforma entre el 20 y el 24). Experimento:
+   mover "Capturar curso" ARRIBA de "Capturar familia" y re-probar — si Curso escribe y
+   Familia no, confirmado → fix: fusionar Familia+Curso+Nivel en UNA sola acción Contact
+   Info con sus 3 campos. Si tampoco → plan B (workflow con acción de IA).
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
