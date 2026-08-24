@@ -117,6 +117,19 @@
    publicación): SP04.3 → [electri, domotic, g25] · SP04.0 → [supervisi, superbisi,
    gestion de proyec] — verificado por lectura. Falta: re-publicar ambos por UI y
    prueba doble (electricidad + drywall con typo) para aislar la causa.
+   · 24-ago ~1:10 PM: prueba doble hecha — **NINGÚN SP04 dispara desde el ciclo de las
+   12:31** (ni electricidad con keywords limpias ni drywall re-probado; la única
+   ejecución de la historia sigue siendo drywall 12:12:57, previa al ciclo). CAUSA
+   PROBABLE: GHL compila los triggers a un "bucket" aparte (`triggersFilePath` /
+   `isTriggerBucketMigrated` en los metadatos) que es lo que consulta el evaluador de
+   mensajes; el churn de triggers por API lo desincronizó y ni republicar el workflow
+   lo reconstruye — solo GUARDAR EL TRIGGER desde el editor de la UI. Los cuerpos de
+   los workflows están sanos (la ejecución de drywall corrió perfecta).
+   → FIX EN CURSO (manual, UI): borrar el trigger de cada SP04 y recrearlo a mano
+   ("El cliente ha respondido" + Cuerpo del mensaje Contiene <keywords sin tildes> +
+   Tiene etiqueta pruebas demo), guardar trigger y publicar. Primero SP04.3 como
+   piloto; criterio de éxito = aparece una fila en su Historial de inscripciones
+   (aunque salga por la guarda). REGLA NUEVA: triggers NUNCA más por API — solo UI.
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
    bloqueante para replicar la secuencia a las otras áreas.
