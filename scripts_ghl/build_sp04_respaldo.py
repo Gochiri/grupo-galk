@@ -52,6 +52,16 @@ DETALLES QUE IMPORTAN
   string-contains-any-of) + LS01 (has-tag) + guarda de SP06 (has_value, sin
   conditionValue) + esqueleto arbol() de WF-MOD.
 
+RECETA DE TRIGGERS POR API QUE SÍ FUNCIONA (24-ago, validada dos veces):
+  1. DELETE de triggers viejos → PAUSA ~25 s (el compilador del bucket es asíncrono;
+     borrar y crear en ráfaga deja el evaluador desincronizado — ese fue el bug).
+  2. POST del trigger fresco → pausa ~10 s.
+  3. Transición GENUINA de publicación: GET fresco → PUT status draft → pausa →
+     GET fresco → PUT status publish → pausa.
+  4. Verificar que `active` del trigger quedó True COMO RESULTADO del publish (esa es
+     la firma del publish real). Confirmar en la LISTA de la UI (Publicado verde) y
+     con una prueba de mensaje + fila en Historial de inscripciones.
+
 Uso:  build_sp04_respaldo.py [--aplicar]     (sin flag = dry-run)
 """
 import sys, pathlib, argparse, time, os
@@ -69,17 +79,15 @@ TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en
 #
 # Las keywords son RAÍCES: `string-contains-any-of` matchea subcadena, así que
 # "melamin" atrapa melamina/melamine/melaminas y "electri" atrapa electricidad/
-# electricista/electrico. ⚠️ SIN TILDES EN LAS KEYWORDS: los SP04 con é/ó en la lista
-# (electricidad, supervisión) fueron los únicos que no disparaban (24-ago, bajo
-# sospecha fuerte de que un valor acentuado rompe la evaluación de la condición
-# entera). Las raíces sin acento cubren lo importante: "electricidad" no lleva tilde
-# y en "supervisión" la tilde cae después de la raíz "supervisi".
+# electricista/electrico. Tildes: raíz con y sin acento (la hipótesis del 24-ago de
+# que un valor acentuado rompía la condición quedó DESCARTADA — el culpable era el
+# estado de publicación, no el contenido de las keywords).
 # Todo en minúsculas (el matcheo es case-insensitive — los CAMPOS de Francisco
 # funcionan así desde julio). Los códigos g## van completos para no ser subcadena
 # unos de otros (g1 matchearía g13 — por eso no hay códigos de 2 caracteres).
 CURSOS = [
     ("SP04.0 | Respaldo curso — Supervisión",
-     ["supervisi", "superbisi", "gestion de proyec"],
+     ["supervisi", "superbisi", "gestion de proyec", "gestión de proyec"],
      "Gestión y Supervisión de Melamina", 5),
     ("SP04.1 | Respaldo curso — Melamina",
      ["melamin", "melanina", "malamina", "melamima", "g13", "g16"], "Melamina", 20),
@@ -87,7 +95,7 @@ CURSOS = [
      ["drywal", "dry wall", "draywall", "driwall", "dryw", "tabiquer", "g24", "g28"],
      "Drywall", 20),
     ("SP04.3 | Respaldo curso — Electricidad",
-     ["electri", "domotic", "g25"], "Electricidad y Domótica", 20),
+     ["electri", "eléctri", "domotic", "domótic", "g25"], "Electricidad y Domótica", 20),
     ("SP04.4 | Respaldo curso — SketchUp",
      ["sketch", "skech", "scketch", "sketsh", "skp"], "SketchUp", 20),
     ("SP04.5 | Respaldo curso — Revit",
