@@ -58,6 +58,16 @@
    corrió de punta a punta sin intervención manual. La acción de Curso quedó con la
    descripción v4.2 y PRIMERA en el orden (dejarla así). Gotcha documentado en el
    playbook del CLI v2.
+   · 24-ago 10:28 AM: **PRUEBA REVIT: PASÓ — APROBADA POR OLIVER.** Curso = 'Revit BIM'
+   (nombre oficial vía v4.2), Familia = Software, secuencia con PDF + pregunta de
+   modalidad + duración entregada completa.
+   · 24-ago 10:33 AM: **prueba drywall: CERO capturas otra vez** (verificado por API,
+   contacto rG6ClkSaa0E5H19avcvb — ni Familia ni Curso a los 3+ min; misma firma que la
+   Revit de las 9:09). Conclusión del día: la ejecución de acciones de Conversation AI
+   está INTERMITENTE del lado de GHL (~50% de los turnos hoy); cuando corre, nuestra
+   config escribe perfecto. Propuesta en evaluación: workflow de respaldo determinístico
+   por palabras clave que escriba Curso si el bot no lo hizo (sin IA, solo triggers con
+   filtro de texto + update de campo — todo con piezas ya validadas).
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
