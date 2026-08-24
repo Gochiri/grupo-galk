@@ -42,10 +42,12 @@ DETALLES QUE IMPORTAN
   menos los códigos cortos ambiguos (g1..g8, que son subcadena de g13/g16/g24/g25/g28).
 - Valores escritos = nombres oficiales v4.2, que matchean las conds `contains` del
   árbol de SP05.
-- Todo queda en DRAFT con triggers inactivos. Publicar tras revisión humana (§3):
-  PUT del WORKFLOW con status:"publish" (literal — "published" se guarda pero no
-  publica de verdad y los triggers se quedan active:false para siempre). El `active`
-  del trigger sigue al publish real; no se enciende por PUT/POST propio.
+- Todo queda en DRAFT. ⚠️ PUBLICAR: SOLO con el toggle de la UI (Borrador→Publicar,
+  una persona). La publicación por API resultó RULETA (24-ago): status:"published" es
+  inerte, status:"publish" a veces publica de verdad y a veces deja el workflow en
+  Borrador real mientras la API responde publish/active=true — la lectura por API del
+  estado de publicación NO es confiable. La verdad: la lista de la UI + el Historial
+  de inscripciones.
 - Formas clonadas de moldes vivos: trigger de "CAMPOS 01 - Melamina" (message-body
   string-contains-any-of) + LS01 (has-tag) + guarda de SP06 (has_value, sin
   conditionValue) + esqueleto arbol() de WF-MOD.

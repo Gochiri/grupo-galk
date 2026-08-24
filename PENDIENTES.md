@@ -92,16 +92,22 @@
    duplicar. El sistema completo bot+respaldo funciona en armonía.)
    Falta: **probar electricidad** (1 contacto) + 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
-   · 24-ago 12:22 PM: 1ª prueba de electricidad — el bot capturó solo Familia (la
-   inconstancia conocida) y **SP04.3 NO disparó pese a trigger sano**. Diagnóstico por
-   API con el historial de versiones: el flujo VIVO estaba desalineado — su última
-   publicación real era v11 y encima quedó una v13 con el status inerte "published"
-   (residuo de los ciclos de activación). Fix: ciclo limpio draft→publish en LOS 6
-   (ahora v14-v15, publish real, triggers activos). Gotcha de "versión viva" documentado
-   en el playbook. Pendiente: re-probar electricidad — puede ser en la MISMA
-   conversación (curso vacío y sin ficha-enviada): mandar otro mensaje con la palabra
-   "electricidad". Esa prueba además valida por primera vez el camino de ESCRITURA del
-   SP04 (hasta ahora solo se validó en vivo el camino de salida por guarda).
+   · 24-ago 12:22 PM: 1ª prueba de electricidad — el bot capturó solo Familia y SP04.3
+   no disparó. 2ª prueba (~11:44 AM MX): **el bot capturó Curso = Electricidad y
+   Domótica y la ficha salió completa → RAMA ELECTRICIDAD VALIDADA** (las 5 ramas con
+   contenido quedan probadas). Pero SP04.3 tampoco enroló.
+   · CAUSA RAÍZ (hallada por Oliver en la lista de la UI): **los intentos de publicar
+   por API dejaron los 6 SP04 en Borrador REAL** aunque la API respondiera
+   publish/active=true — la publicación por API es ruleta y la lectura del estado por
+   API NO es confiable (drywall 12:12 corrió porque su publicación real previa aún
+   estaba viva; el ciclo de las 12:31 los tumbó todos). Playbook enmendado con la
+   regla definitiva: **publicar SIEMPRE con el toggle de la UI**; por API solo
+   ediciones de contenido.
+   → Oliver: abrir SP04.0-.5 y toggle Borrador→Publicar (verificar "Publicado" verde
+   en la lista). Después, para validar el camino de ESCRITURA del respaldo (único no
+   visto en vivo): contacto nuevo con mensaje "quiero información del g25" — el bot no
+   conoce los códigos g## (no están en su captura) pero SP04.3 sí, así que forzará la
+   escritura del respaldo.
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
    bloqueante para replicar la secuencia a las otras áreas.

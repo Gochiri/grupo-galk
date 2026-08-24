@@ -46,22 +46,21 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
    `active == true` **y** target válido **y** condiciones bien formadas.
 6. **Mandar `active: true` en el PUT de un trigger PUBLICA el workflow.** Cuidado al
    editar triggers de borradores.
-7. **Publicar por API: el `status` que actúa es `"publish"`, NO `"published"`** (24-ago).
-   Un PUT con `status:"published"` se guarda tal cual pero NO ejecuta la lógica de
-   publicación: el workflow aparenta publicado y sus triggers se quedan en
-   `active:false` — y ningún PUT/POST del trigger logra encenderlos (ni recrearlos con
-   `active:true`). Con `status:"publish"` el trigger enciende SOLO. El `active` del
-   trigger sigue al publish real del workflow — y el flip ocurre en la TRANSICIÓN de
-   estado: si ya está en "publish", re-mandar "publish" no activa un trigger nuevo;
-   hay que ciclar draft → publish. Además cada PUT incrementa `version` y un PUT con
-   `version` vieja se IGNORA EN SILENCIO (responde OK y no cambia nada): re-GET antes
-   de cada PUT, nunca dos PUT seguidos con el mismo GET. Y ojo con la VERSIÓN VIVA:
-   el motor ejecuta la última versión cuyo status del historial sea "publish" real —
-   si después de esa quedó guardada una versión con el status inerte "published", el
-   flujo vivo queda DESALINEADO: los triggers aparentan activos pero no disparan
-   (visto 24-ago: SP04.3 con v11 publish + v13 published no disparaba; sus gemelos
-   con v11 live sí). Chequeo: GET /workflow/{loc}/{wid}/history — la versión más
-   alta debe decir "publish". Arreglo: ciclo limpio GET→draft→GET→publish.
+7. **PUBLICAR POR API ES RULETA: la publicación confiable es SOLO el toggle de la UI**
+   (24-ago, aprendido a golpes). Lo observado: `status:"published"` en el PUT es un
+   string inerte (se guarda, no publica, triggers en active:false para siempre);
+   `status:"publish"` a veces dispara la publicación real (una tanda funcionó: el
+   trigger encendió solo y el workflow ejecutó) y a veces NO (la tanda siguiente,
+   con la misma secuencia draft→publish, dejó los workflows que la UI lista como
+   "Borrador", sin enrolar a nadie — mientras la API seguía respondiendo
+   status=publish y active=true, O SEA: LA LECTURA POR API DEL ESTADO DE PUBLICACIÓN
+   NO ES CONFIABLE). La verdad está en la LISTA de workflows de la UI (Publicado
+   verde / Borrador) y en el Historial de inscripciones (si no enrola, no está vivo).
+   REGLA: por API solo ediciones de contenido preservando el status leído; publicar
+   y activar, siempre una persona con el toggle de la UI. Gotchas de PUT que sí
+   siguen vigentes: cada PUT incrementa `version` y un PUT con version vieja se
+   ignora en silencio (re-GET antes de cada PUT); el publish de la UI es además el
+   único validador de estructura fiable.
 8. **El validador de publish exige `parent`/`parentKey` en cadenas RAÍZ**: un nodo
    colgado del `next` de otro nodo raíz (p.ej. wait → if_else) debe llevar
    parent/parentKey del que lo referencia — distinto de los if ANIDADOS en ramas, que
