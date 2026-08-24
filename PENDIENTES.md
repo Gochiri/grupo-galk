@@ -125,11 +125,23 @@
    mensajes; el churn de triggers por API lo desincronizó y ni republicar el workflow
    lo reconstruye — solo GUARDAR EL TRIGGER desde el editor de la UI. Los cuerpos de
    los workflows están sanos (la ejecución de drywall corrió perfecta).
-   → FIX EN CURSO (manual, UI): borrar el trigger de cada SP04 y recrearlo a mano
-   ("El cliente ha respondido" + Cuerpo del mensaje Contiene <keywords sin tildes> +
-   Tiene etiqueta pruebas demo), guardar trigger y publicar. Primero SP04.3 como
-   piloto; criterio de éxito = aparece una fila en su Historial de inscripciones
-   (aunque salga por la guarda). REGLA NUEVA: triggers NUNCA más por API — solo UI.
+   · 24-ago tarde: Oliver probó recrear el trigger de SP04.2 A MANO en la UI y tampoco
+   enroló — PERO esas pruebas fueron con el contacto que YA pasó por el flujo y ya
+   tenía ficha-enviada (variable de reingreso contaminando el experimento). A pedido
+   de Oliver: **BORRÓN Y CUENTA NUEVA — los 6 SP04 borrados y RECREADOS desde cero
+   por API** con todo lo aprendido: creación pausada (compilador de triggers
+   asíncrono: pausas de 5-10 s entre crear contenido / POST trigger / publicar),
+   transición genuina draft→publish con GET fresco (flip de `active` verificado como
+   resultado del publish), keywords completas CON tildes restauradas (hipótesis de
+   acentos descartada), estructura con parentKey, reingreso activado. Verificación
+   paranoica final: 6/6 ✅ (publish, trigger activo, target OK, keywords, valores,
+   waits 20/5).
+   **IDs NUEVOS**: SP04.0 8323a0db · SP04.1 726a5a6c · SP04.2 c530ad8a · SP04.3
+   0bb558b0 · SP04.4 1152f05e · SP04.5 84c41076.
+   → Veredicto pendiente de Oliver: ① lista de la UI = ¿6 en "Publicado" verde?
+   ② prueba con CONTACTO NUEVO (no reusar contactos ya enrolados/con ficha-enviada):
+   "quiero info del taller de electricidad" → ¿fila en Historial de inscripciones del
+   SP04.3 nuevo?
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
    bloqueante para replicar la secuencia a las otras áreas.
