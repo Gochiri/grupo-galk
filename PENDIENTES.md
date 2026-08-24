@@ -29,14 +29,15 @@
    (tal como llegó). ¿La pregunta debería ir al final?
 1. ~~**Re-subir las 3 Bases de Conocimiento**~~ ✅ (20-ago: KB-01 v4 subida 3:20 PM;
    KB-02/03 ya estaban al día — confirmado por Oliver)
-1b. **Dar visto bueno a la prueba de Revit del 24-ago** — diagnóstico por API: NO hubo bug.
-   La captura del curso tardó ~7 min en escribirse (las acciones de Contact Info corren en
-   diferido); el panel se miró antes de que escribiera. A las 9:17-9:18 AM SP05 entregó la
-   secuencia COMPLETA de Revit: apertura + PDF + pregunta de modalidad + duración/reserva,
-   con tag `ficha-enviada`. Triggers de SP05/SP06 verificados sanos. El tag
-   `asesor-notificado` lo puso WF3 de Francisco (ruido conocido, inofensivo).
-   **Regla de protocolo nueva: tras la línea del bot, esperar hasta 10 min antes de juzgar
-   una prueba — la extracción es asíncrona y a veces tarda varios minutos.**
+1b. **Prueba Revit 24-ago: FALLÓ la captura de Curso (bug real, 3ª vez con software).**
+   Corrección al primer diagnóstico: el "Revit" del campo lo escribió OLIVER a mano tras
+   esperar ~7 min, y ESO disparó SP05 — la captura del BOT-00 no escribió nada. Misma firma
+   que las 2 fallas de SketchUp del 20-ago (Familia sí, Curso no). Lo que SÍ quedó validado:
+   la rama Revit de SP05 entregó bien apertura + PDF + pregunta de modalidad + duración una
+   vez disparada; triggers SP05/SP06 sanos; `asesor-notificado` lo puso WF3 de Francisco
+   (ruido conocido). → Fix: **pegar descripción v4.2 de la captura de Curso** (con mapeo
+   minúsculas → nombre oficial) y re-probar Revit con contacto nuevo. Pendiente confirmar
+   con Oliver si `Familia de interés (bot) = Software` la escribió el bot o también él.
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").

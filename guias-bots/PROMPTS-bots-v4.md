@@ -203,6 +203,28 @@ Guarda el curso que la persona quiere apenas lo mencione, con su nombre oficial:
 
 ---
 
+## Captura de Curso del BOT-00 — descripción v4.2 (fix del 24-ago, prueba Revit) ← VIGENTE
+
+> En la prueba de Revit del 24-ago la v4.1 volvió a fallar con software: el bot escribió
+> Familia pero NO Curso ("quiero info del curso de revit" → campo vacío; Oliver tuvo que
+> ponerlo a mano y eso fue lo que disparó SP05). Misma firma que las 2 fallas de SketchUp.
+> La v4.2 agrega el mapeo explícito minúsculas → nombre oficial, que es donde el modelo
+> titubea con los cursos de software.
+
+**BOT-00 → Contact Info · Curso de interés → "Qué actualizar en el campo"** (496 caracteres ✓ — al filo del límite de 500):
+```
+Guarda SIEMPRE el curso que la persona menciona, con su nombre oficial: SketchUp, Revit BIM, AutoCAD, Diseño de Mobiliario, Electricidad y Domótica, Cocinas, Obra Interiorista, Espacios Comerciales, Gestión y Supervisión de Melamina. Aunque lo diga incompleto o en minúsculas: revit = Revit BIM, sketchup = SketchUp, autocad = AutoCAD. Para los talleres de melamina o drywall guarda solo Melamina o Drywall. Aplica a las 3 áreas, no solo a talleres. Si no mencionó ningún curso, no escribas nada.
+```
+
+**Versión corta de respaldo** por si GHL rechazara la de arriba (453 caracteres ✓):
+```
+Guarda SIEMPRE el curso que la persona menciona, con su nombre oficial: SketchUp, Revit BIM, AutoCAD, Diseño de Mobiliario, Electricidad y Domótica, Cocinas, Obra Interiorista, Espacios Comerciales, Gestión y Supervisión de Melamina. Aunque lo diga incompleto o en minúsculas: revit = Revit BIM, sketchup = SketchUp. Para talleres de melamina o drywall guarda solo Melamina o Drywall. Aplica a las 3 áreas. Si no mencionó ningún curso, no escribas nada.
+```
+
+Los **Ejemplos de Salida** no cambian (los 4 de la v4.1 siguen).
+
+---
+
 ## Transfer Bot del BOT-00 — condiciones v4 (las 3, en la UI)
 
 > Corrigen el bug del 20-ago (pruebas de SketchUp): las condiciones viejas ("transfiere
