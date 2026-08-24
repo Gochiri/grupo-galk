@@ -138,10 +138,15 @@
    waits 20/5).
    **IDs NUEVOS**: SP04.0 8323a0db · SP04.1 726a5a6c · SP04.2 c530ad8a · SP04.3
    0bb558b0 · SP04.4 1152f05e · SP04.5 84c41076.
-   → Veredicto pendiente de Oliver: ① lista de la UI = ¿6 en "Publicado" verde?
-   ② prueba con CONTACTO NUEVO (no reusar contactos ya enrolados/con ficha-enviada):
-   "quiero info del taller de electricidad" → ¿fila en Historial de inscripciones del
-   SP04.3 nuevo?
+   → Veredicto ①: la lista muestra los 6 nuevos en BORRADOR — **confirmado
+   definitivamente: el publish por API nunca es real** (la lectura API del estado
+   miente siempre). Regla final grabada: SE CONSTRUYE POR API, SE PUBLICA POR UI.
+   → Pasos restantes: Oliver publica los 6 con el toggle (workflows vírgenes esta
+   vez) y prueba con CONTACTO NUEVO "quiero info del taller de electricidad" →
+   ¿fila en Historial de inscripciones del SP04.3 (id 0bb558b0)? Si con workflow
+   virgen + publish por UI + trigger válido + prueba válida NO enrola: prueba
+   diferencial con un SP04.3 hecho 100% a mano en la UI; si ese tampoco → ticket a
+   soporte GHL (expediente del día completo en este registro).
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
    bloqueante para replicar la secuencia a las otras áreas.
