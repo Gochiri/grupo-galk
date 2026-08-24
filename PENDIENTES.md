@@ -40,10 +40,15 @@
    Familia se escribía. Lo que SÍ quedó validado: la rama Revit de SP05 entregó bien
    apertura + PDF + pregunta + duración al disparar (por la escritura manual); triggers
    SP05/SP06 sanos; `asesor-notificado` = WF3 de Francisco (ruido conocido).
-   → Plan A/B: re-probar con contacto nuevo diciendo "melamina" (caso que siempre funcionó).
-   Si melamina TAMPOCO escribe → las capturas están rotas globalmente (config del bot o
-   plataforma): revisar en la UI las acciones Contact Info del BOT-00. Si melamina SÍ
-   escribe → es específico de software: pegar v4.2 y re-probar Revit.
+   → Prueba A/B melamina (24-ago 9:39 AM, contacto yd5vTVuDqi3y6tpH2HIb): **la acción de
+   Familia SÍ escribió** (evento "Campo de contacto actualizado" → Familia (bot) = Talleres,
+   normalizador al dropdown OK) pero **la acción de Curso NO escribió — ni con melamina,
+   que siempre funcionó**. Diagnóstico final: la acción Contact Info "Capturar curso de
+   interés" del BOT-00 dejó de ejecutar sola entre el 20 y el 24 de agosto, sin que nadie
+   tocara nada (las demás acciones corren bien). → Fix: **borrar esa acción y recrearla de
+   cero** con la descripción v4.2 + los 4 ejemplos, y re-probar melamina y luego Revit.
+   Si ni recreada escribe → es fallo de plataforma GHL (ticket a soporte) y armamos plan B
+   (extracción por workflow con acción de IA, fuera del bot).
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
