@@ -73,8 +73,14 @@
    guarda (sale si ya hay curso o ficha-enviada) → escribe el nombre oficial en Curso.
    IDs: SP04.0 Supervisión 71865893 · SP04.1 Melamina 958eb984 · SP04.2 Drywall
    50d6c0ac · SP04.3 Electricidad e965d90b · SP04.4 SketchUp e1908cf9 · SP04.5 Revit
-   b5bfbfb1 (carpeta GALK 2.0 · 04 Sales Pipeline). Falta: revisión de Oliver en la UI
-   → activar triggers (los 6 PUT active:true publican) → probar drywall de nuevo.
+   b5bfbfb1 (carpeta GALK 2.0 · 04 Sales Pipeline).
+   · 24-ago ~11:30 AM: **SP04 PUBLICADOS Y ACTIVOS los 6** (revisados por Oliver en la
+   UI; waits bajados a 45 s / 15 s Supervisión a su pedido — los datos muestran que la
+   captura del bot, cuando corre, escribe en el mismo minuto). Verificado por API:
+   status publish, triggers active=True, targets OK, reingreso True. De la batalla
+   salieron 2 gotchas nuevos al playbook: publicar por API es status:"publish" (no
+   "published", que deja los triggers apagados para siempre) y el validador de publish
+   exige parentKey en cadenas raíz (wait → if_else).
    En go-live: quitar el filtro `pruebas demo` de los 6 triggers (junto con LS01/canales).
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",

@@ -46,6 +46,18 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
    `active == true` **y** target válido **y** condiciones bien formadas.
 6. **Mandar `active: true` en el PUT de un trigger PUBLICA el workflow.** Cuidado al
    editar triggers de borradores.
+7. **Publicar por API: el `status` que actúa es `"publish"`, NO `"published"`** (24-ago).
+   Un PUT con `status:"published"` se guarda tal cual pero NO ejecuta la lógica de
+   publicación: el workflow aparenta publicado y sus triggers se quedan en
+   `active:false` — y ningún PUT/POST del trigger logra encenderlos (ni recrearlos con
+   `active:true`). Con `status:"publish"` el trigger enciende SOLO. El `active` del
+   trigger sigue al publish real del workflow.
+8. **El validador de publish exige `parent`/`parentKey` en cadenas RAÍZ**: un nodo
+   colgado del `next` de otro nodo raíz (p.ej. wait → if_else) debe llevar
+   parent/parentKey del que lo referencia — distinto de los if ANIDADOS en ramas, que
+   van sin parent. El PUT lo guarda sin queja; el publish lo rechaza con
+   `"next" contains X but that node has no parentKey`. El publish es además el único
+   momento en que GHL valida estructura: publica por API para enterarte de los errores.
 
 ## 3 · Convención de nodos que el canvas renderiza (y ejecuta)
 

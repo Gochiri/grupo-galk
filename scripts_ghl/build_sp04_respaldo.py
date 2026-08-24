@@ -27,16 +27,23 @@ El bot queda igual: esto solo atrapa los turnos en que GHL no ejecuta sus captur
 DETALLES QUE IMPORTAN
 ---------------------
 - El Wait ANTES de la guarda serializa contra el bot: si la captura sí corrió, la
-  guarda ve el campo lleno y sale — sin carreras ni dobles envíos.
-- Supervisión espera 60 s y los demás 90: "supervisión de melamina" contiene
+  guarda ve el campo lleno y sale — sin carreras ni dobles envíos. La carrera inversa
+  también es benigna: si el respaldo escribe primero, Contact Info solo llena campos
+  vacíos y el bot simplemente salta. Por eso el wait puede ser corto: los datos del
+  24-ago muestran que cuando la captura del bot corre, escribe en el mismo minuto
+  (y cuando no, no escribe ni en 7). Ajustado de 90/60 a 45/15 a pedido de Oliver.
+- Supervisión espera 15 s y los demás 45: "supervisión de melamina" contiene
   "melamina" y dispara ambos triggers; el de Supervisión escribe primero y la guarda
-  del de Melamina lo respeta. (Mismo problema que resuelve la rama atrapadora de SP05.)
+  del de Melamina lo respeta. (Mismo problema que resuelve la rama atrapadora de SP05.
+  El escalón de ~30 s absorbe el jitter del motor de waits.)
 - Palabras clave: heredadas de los CAMPOS de Francisco (en producción desde julio),
   menos los códigos cortos ambiguos (g1..g8, que son subcadena de g13/g16/g24/g25/g28).
 - Valores escritos = nombres oficiales v4.2, que matchean las conds `contains` del
   árbol de SP05.
-- Todo queda en DRAFT con triggers inactivos. Publicar = PUT del trigger con
-  active:true, tras revisión humana (política §3).
+- Todo queda en DRAFT con triggers inactivos. Publicar tras revisión humana (§3):
+  PUT del WORKFLOW con status:"publish" (literal — "published" se guarda pero no
+  publica de verdad y los triggers se quedan active:false para siempre). El `active`
+  del trigger sigue al publish real; no se enciende por PUT/POST propio.
 - Formas clonadas de moldes vivos: trigger de "CAMPOS 01 - Melamina" (message-body
   string-contains-any-of) + LS01 (has-tag) + guarda de SP06 (has_value, sin
   conditionValue) + esqueleto arbol() de WF-MOD.
@@ -58,18 +65,18 @@ TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en
 CURSOS = [
     ("SP04.0 | Respaldo curso — Supervisión",
      ["supervision", "supervisión", "gestion de proyectos", "gestión de proyectos"],
-     "Gestión y Supervisión de Melamina", 60),
+     "Gestión y Supervisión de Melamina", 15),
     ("SP04.1 | Respaldo curso — Melamina",
-     ["melamina", "melamine", "g13", "g16"], "Melamina", 90),
+     ["melamina", "melamine", "g13", "g16"], "Melamina", 45),
     ("SP04.2 | Respaldo curso — Drywall",
-     ["drywall", "g24", "g28"], "Drywall", 90),
+     ["drywall", "g24", "g28"], "Drywall", 45),
     ("SP04.3 | Respaldo curso — Electricidad",
      ["g25", "electricidad", "domotica", "domótica", "electricista"],
-     "Electricidad y Domótica", 90),
+     "Electricidad y Domótica", 45),
     ("SP04.4 | Respaldo curso — SketchUp",
-     ["sketchup", "sketch up", "skp"], "SketchUp", 90),
+     ["sketchup", "sketch up", "skp"], "SketchUp", 45),
     ("SP04.5 | Respaldo curso — Revit",
-     ["revit", "bim", "lumion"], "Revit BIM", 90),
+     ["revit", "bim", "lumion"], "Revit BIM", 45),
 ]
 
 
@@ -90,6 +97,13 @@ def plantillas(valor, espera):
     ], none_next=[upd])
     wait_id = nid()
     w = n_wait(wait_id, espera, unidad="seconds", nxt=t[0]["id"])
+    # ⚠️ Validador de publicación (24-ago): en una cadena RAÍZ, el nodo colgado del
+    # `next` de otro nodo debe llevar parent/parentKey del que lo referencia. (Distinto
+    # de los if anidados en ramas, que van SIN parent — ver PLAYBOOK §3.) Sin esto el
+    # PUT guarda pero el publish rechaza con "next contains X but that node has no
+    # parentKey".
+    t[0]["parent"] = wait_id
+    t[0]["parentKey"] = wait_id
     return [w] + t, wait_id
 
 
@@ -145,7 +159,7 @@ def main():
         d = C.request("GET", f"/workflow/{LOC}/{wid}") or {}
         r = C.request("PUT", f"/workflow/{LOC}/{wid}",
                       {"name": nombre, "version": d.get("version", 1), "parentId": CARPETA,
-                       "status": "draft", "allowMultiple": True,
+                       "status": d.get("status") or "draft", "allowMultiple": True,
                        "workflowData": {"templates": temps}})
         if isinstance(r, dict) and r.get("_error"):
             print(f"ERROR PUT {nombre}: {r}"); continue
