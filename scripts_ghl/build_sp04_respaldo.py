@@ -69,13 +69,17 @@ TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en
 #
 # Las keywords son RAÍCES: `string-contains-any-of` matchea subcadena, así que
 # "melamin" atrapa melamina/melamine/melaminas y "electri" atrapa electricidad/
-# electricista/electrico. Los acentos NO se normalizan: raíz con y sin tilde.
+# electricista/electrico. ⚠️ SIN TILDES EN LAS KEYWORDS: los SP04 con é/ó en la lista
+# (electricidad, supervisión) fueron los únicos que no disparaban (24-ago, bajo
+# sospecha fuerte de que un valor acentuado rompe la evaluación de la condición
+# entera). Las raíces sin acento cubren lo importante: "electricidad" no lleva tilde
+# y en "supervisión" la tilde cae después de la raíz "supervisi".
 # Todo en minúsculas (el matcheo es case-insensitive — los CAMPOS de Francisco
 # funcionan así desde julio). Los códigos g## van completos para no ser subcadena
 # unos de otros (g1 matchearía g13 — por eso no hay códigos de 2 caracteres).
 CURSOS = [
     ("SP04.0 | Respaldo curso — Supervisión",
-     ["supervisi", "superbisi", "gestion de proyec", "gestión de proyec"],
+     ["supervisi", "superbisi", "gestion de proyec"],
      "Gestión y Supervisión de Melamina", 5),
     ("SP04.1 | Respaldo curso — Melamina",
      ["melamin", "melanina", "malamina", "melamima", "g13", "g16"], "Melamina", 20),
@@ -83,7 +87,7 @@ CURSOS = [
      ["drywal", "dry wall", "draywall", "driwall", "dryw", "tabiquer", "g24", "g28"],
      "Drywall", 20),
     ("SP04.3 | Respaldo curso — Electricidad",
-     ["electri", "eléctri", "domotic", "domótic", "g25"], "Electricidad y Domótica", 20),
+     ["electri", "domotic", "g25"], "Electricidad y Domótica", 20),
     ("SP04.4 | Respaldo curso — SketchUp",
      ["sketch", "skech", "scketch", "sketsh", "skp"], "SketchUp", 20),
     ("SP04.5 | Respaldo curso — Revit",

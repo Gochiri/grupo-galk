@@ -108,6 +108,15 @@
    visto en vivo): contacto nuevo con mensaje "quiero información del g25" — el bot no
    conoce los códigos g## (no están en su captura) pero SP04.3 sí, así que forzará la
    escritura del respaldo.
+   · 24-ago ~1 PM: Oliver publicó los 6 por UI y probó electricidad de nuevo — bot
+   capturó solo Familia (escenario perfecto para el respaldo) y **SP04.3 siguió sin
+   enrolar**. Nueva pista: drywall (el único SP04 que ha disparado) es el único de
+   lista de keywords 100% ASCII; electricidad y supervisión eran los únicos CON
+   TILDES (`eléctri`, `domótic`) → **hipótesis: un valor acentuado rompe la evaluación
+   de toda la condición message-body**. Fix aplicado por API (solo condiciones, no
+   publicación): SP04.3 → [electri, domotic, g25] · SP04.0 → [supervisi, superbisi,
+   gestion de proyec] — verificado por lectura. Falta: re-publicar ambos por UI y
+   prueba doble (electricidad + drywall con typo) para aislar la causa.
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
    bloqueante para replicar la secuencia a las otras áreas.
