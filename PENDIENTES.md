@@ -138,7 +138,16 @@
    waits 20/5).
    **IDs NUEVOS**: SP04.0 8323a0db · SP04.1 726a5a6c · SP04.2 c530ad8a · SP04.3
    0bb558b0 · SP04.4 1152f05e · SP04.5 84c41076.
-   → Veredicto ①: la lista muestra los 6 nuevos en BORRADOR — **confirmado
+   · 24-ago ~2 PM: Oliver publicó los 6 recreados por UI y TAMPOCO enrolan. DECISIÓN
+   de Oliver: **reconstruir los 6 SP04 él mismo desde cero en la UI** (trigger primero,
+   probar enrolamiento, luego agregar nodos). Los 6 creados por API fueron BORRADOS
+   para dejarle el campo libre. Se le entregó la tabla completa: keywords por curso
+   (raíces + typos + tildes + códigos g##), filtro de etiqueta pruebas demo, waits
+   (20 s / 5 s Supervisión), estructura de guarda (2 ramas de salida + None→update) y
+   valores oficiales exactos para el update. Recordatorios claves entregados:
+   reingreso ON en cada flujo, valores del update EXACTOS (matchean el árbol de SP05),
+   Supervisión con wait corto a propósito.
+   → Veredicto ① (histórico): la lista mostraba los 6 nuevos en BORRADOR — **confirmado
    definitivamente: el publish por API nunca es real** (la lectura API del estado
    miente siempre). Regla final grabada: SE CONSTRUYE POR API, SE PUBLICA POR UI.
    → Pasos restantes: Oliver publica los 6 con el toggle (workflows vírgenes esta
