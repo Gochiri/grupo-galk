@@ -85,8 +85,12 @@
    draft→publish; PUT con `version` vieja se ignora en silencio; el validador de
    publish exige parentKey en cadenas raíz (wait → if_else).
    En go-live: quitar el filtro `pruebas demo` de los 6 triggers (junto con LS01/canales).
-2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
-   mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
+2. ~~Probar drywall~~ ✅ (24-ago 12:13 PM: **PRUEBA DRYWALL PASÓ** — contacto
+   gEku4HkOC2Gdd9nLkWh1: bot capturó Curso=Drywall y Familia, normalización y modalidad
+   derivada OK, ficha entregada, tag puesto. **Y la guarda del SP04.2 quedó validada en
+   vivo**: entró al respaldo, vio el curso ya capturado y salió por "Ya hay curso" sin
+   duplicar. El sistema completo bot+respaldo funciona en armonía.)
+   Falta: **probar electricidad** (1 contacto) + 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
