@@ -101,6 +101,14 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
   resuelve con filtros de etiqueta complementarios ("Has tags: X" en uno, "Doesn't have
   tags: X" en el otro). Es la base del aislamiento de pruebas.
 - KB "subida" ≠ KB "asociada al bot" (dos pasos). Reemplaza el archivo, no lo dupliques.
+- **Una acción de Contact Info puede dejar de ejecutar SOLA, con la config intacta** (visto
+  24-ago-2026: "Capturar curso" dejó de escribir en todos los turnos mientras "Capturar
+  familia" seguía bien; nadie tocó nada entre el día que funcionaba y el que no). Ni
+  re-guardar ni borrar-y-recrear la acción lo arregló. Lo que la destrabó: **REORDENAR las
+  acciones** (arrastrar la muerta al primer lugar y guardar) — fuerza a GHL a reconstruir
+  la lista completa del lado del servidor y todas vuelven a ejecutar. Síntoma para
+  detectarlo: en el evento "Campo de contacto actualizado" de la conversación solo aparece
+  una de las capturas esperadas, siempre la misma.
 
 ## 6 · Arquitectura probada: "secuencia de ficha"
 
