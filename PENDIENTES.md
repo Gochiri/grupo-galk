@@ -75,12 +75,15 @@
    50d6c0ac · SP04.3 Electricidad e965d90b · SP04.4 SketchUp e1908cf9 · SP04.5 Revit
    b5bfbfb1 (carpeta GALK 2.0 · 04 Sales Pipeline).
    · 24-ago ~11:30 AM: **SP04 PUBLICADOS Y ACTIVOS los 6** (revisados por Oliver en la
-   UI; waits bajados a 45 s / 15 s Supervisión a su pedido — los datos muestran que la
-   captura del bot, cuando corre, escribe en el mismo minuto). Verificado por API:
-   status publish, triggers active=True, targets OK, reingreso True. De la batalla
-   salieron 2 gotchas nuevos al playbook: publicar por API es status:"publish" (no
-   "published", que deja los triggers apagados para siempre) y el validador de publish
-   exige parentKey en cadenas raíz (wait → if_else).
+   UI). Ajuste final a pedido de Oliver: **waits 20 s (5 s Supervisión)** y **keywords
+   reforzadas como RAÍCES con errores de tipeo** (melamin/melanina/malamina · drywal/
+   draywall/driwall/tabiquer · electri/eléctri/domotic · sketch/skech/skp · revit/
+   rebit/rvt/bim · supervisi + códigos g13/g16/g24/g25/g28). Verificado por API campo
+   por campo: status publish, triggers active=True, targets OK, reingreso True,
+   valores oficiales correctos. Gotchas nuevos al playbook: publicar por API es
+   status:"publish" (no "published"); el flip de triggers ocurre en la TRANSICIÓN
+   draft→publish; PUT con `version` vieja se ignora en silencio; el validador de
+   publish exige parentKey en cadenas raíz (wait → if_else).
    En go-live: quitar el filtro `pruebas demo` de los 6 triggers (junto con LS01/canales).
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",

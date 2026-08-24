@@ -51,7 +51,11 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
    publicación: el workflow aparenta publicado y sus triggers se quedan en
    `active:false` — y ningún PUT/POST del trigger logra encenderlos (ni recrearlos con
    `active:true`). Con `status:"publish"` el trigger enciende SOLO. El `active` del
-   trigger sigue al publish real del workflow.
+   trigger sigue al publish real del workflow — y el flip ocurre en la TRANSICIÓN de
+   estado: si ya está en "publish", re-mandar "publish" no activa un trigger nuevo;
+   hay que ciclar draft → publish. Además cada PUT incrementa `version` y un PUT con
+   `version` vieja se IGNORA EN SILENCIO (responde OK y no cambia nada): re-GET antes
+   de cada PUT, nunca dos PUT seguidos con el mismo GET.
 8. **El validador de publish exige `parent`/`parentKey` en cadenas RAÍZ**: un nodo
    colgado del `next` de otro nodo raíz (p.ej. wait → if_else) debe llevar
    parent/parentKey del que lo referencia — distinto de los if ANIDADOS en ramas, que

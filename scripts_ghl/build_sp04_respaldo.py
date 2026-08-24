@@ -15,7 +15,7 @@ QUÉ HACE
 
     trigger `customer_reply` (message.body contiene alguna palabra clave del curso,
                               contacto con etiqueta `pruebas demo`)
-    → Wait (90 s; 60 s el de Supervisión)        ← le da el primer turno al bot
+    → Wait (20 s; 5 s el de Supervisión)         ← escalón anti-colisión
     → if/else:  "Ya hay curso"      (Curso de interés has_value)   → salir
                 "Ficha ya enviada"  (tag ficha-enviada)            → salir
                 None                                               → escribir el
@@ -31,11 +31,13 @@ DETALLES QUE IMPORTAN
   también es benigna: si el respaldo escribe primero, Contact Info solo llena campos
   vacíos y el bot simplemente salta. Por eso el wait puede ser corto: los datos del
   24-ago muestran que cuando la captura del bot corre, escribe en el mismo minuto
-  (y cuando no, no escribe ni en 7). Ajustado de 90/60 a 45/15 a pedido de Oliver.
-- Supervisión espera 15 s y los demás 45: "supervisión de melamina" contiene
+  (y cuando no, no escribe ni en 7). Ajustado de 90/60 a 45/15 y luego a 20/5 a pedido de Oliver (con 20 s el
+  respaldo suele ganarle al bot — da igual: escriben el mismo nombre oficial y el
+  que llega segundo respeta al primero).
+- Supervisión espera 5 s y los demás 20: "supervisión de melamina" contiene
   "melamina" y dispara ambos triggers; el de Supervisión escribe primero y la guarda
   del de Melamina lo respeta. (Mismo problema que resuelve la rama atrapadora de SP05.
-  El escalón de ~30 s absorbe el jitter del motor de waits.)
+  El escalón de ~15 s absorbe el jitter del motor de waits.)
 - Palabras clave: heredadas de los CAMPOS de Francisco (en producción desde julio),
   menos los códigos cortos ambiguos (g1..g8, que son subcadena de g13/g16/g24/g25/g28).
 - Valores escritos = nombres oficiales v4.2, que matchean las conds `contains` del
@@ -62,21 +64,28 @@ TAG_MARCADOR = "ficha-enviada"
 TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en LS01
 
 # (nombre workflow, keywords message.body, valor oficial a escribir, espera en seg)
+#
+# Las keywords son RAÍCES: `string-contains-any-of` matchea subcadena, así que
+# "melamin" atrapa melamina/melamine/melaminas y "electri" atrapa electricidad/
+# electricista/electrico. Los acentos NO se normalizan: raíz con y sin tilde.
+# Todo en minúsculas (el matcheo es case-insensitive — los CAMPOS de Francisco
+# funcionan así desde julio). Los códigos g## van completos para no ser subcadena
+# unos de otros (g1 matchearía g13 — por eso no hay códigos de 2 caracteres).
 CURSOS = [
     ("SP04.0 | Respaldo curso — Supervisión",
-     ["supervision", "supervisión", "gestion de proyectos", "gestión de proyectos"],
-     "Gestión y Supervisión de Melamina", 15),
+     ["supervisi", "superbisi", "gestion de proyec", "gestión de proyec"],
+     "Gestión y Supervisión de Melamina", 5),
     ("SP04.1 | Respaldo curso — Melamina",
-     ["melamina", "melamine", "g13", "g16"], "Melamina", 45),
+     ["melamin", "melanina", "malamina", "melamima", "g13", "g16"], "Melamina", 20),
     ("SP04.2 | Respaldo curso — Drywall",
-     ["drywall", "g24", "g28"], "Drywall", 45),
+     ["drywal", "dry wall", "draywall", "driwall", "dryw", "tabiquer", "g24", "g28"],
+     "Drywall", 20),
     ("SP04.3 | Respaldo curso — Electricidad",
-     ["g25", "electricidad", "domotica", "domótica", "electricista"],
-     "Electricidad y Domótica", 45),
+     ["electri", "eléctri", "domotic", "domótic", "g25"], "Electricidad y Domótica", 20),
     ("SP04.4 | Respaldo curso — SketchUp",
-     ["sketchup", "sketch up", "skp"], "SketchUp", 45),
+     ["sketch", "skech", "scketch", "sketsh", "skp"], "SketchUp", 20),
     ("SP04.5 | Respaldo curso — Revit",
-     ["revit", "bim", "lumion"], "Revit BIM", 45),
+     ["revit", "rebit", "revid", "rvt", "bim", "lumion"], "Revit BIM", 20),
 ]
 
 
