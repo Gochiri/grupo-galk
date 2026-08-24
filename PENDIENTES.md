@@ -65,9 +65,17 @@
    contacto rG6ClkSaa0E5H19avcvb — ni Familia ni Curso a los 3+ min; misma firma que la
    Revit de las 9:09). Conclusión del día: la ejecución de acciones de Conversation AI
    está INTERMITENTE del lado de GHL (~50% de los turnos hoy); cuando corre, nuestra
-   config escribe perfecto. Propuesta en evaluación: workflow de respaldo determinístico
-   por palabras clave que escriba Curso si el bot no lo hizo (sin IA, solo triggers con
-   filtro de texto + update de campo — todo con piezas ya validadas).
+   config escribe perfecto.
+   · 24-ago ~11 AM: **SP04 CONSTRUIDO (aprobado por Oliver)** — 6 mini-workflows de
+   respaldo determinístico en DRAFT con triggers inactivos, verificados por API
+   (`scripts_ghl/build_sp04_respaldo.py`): customer_reply por palabras clave (listas de
+   los CAMPOS de Francisco) + etiqueta `pruebas demo` → wait 90 s (60 s Supervisión) →
+   guarda (sale si ya hay curso o ficha-enviada) → escribe el nombre oficial en Curso.
+   IDs: SP04.0 Supervisión 71865893 · SP04.1 Melamina 958eb984 · SP04.2 Drywall
+   50d6c0ac · SP04.3 Electricidad e965d90b · SP04.4 SketchUp e1908cf9 · SP04.5 Revit
+   b5bfbfb1 (carpeta GALK 2.0 · 04 Sales Pipeline). Falta: revisión de Oliver en la UI
+   → activar triggers (los 6 PUT active:true publican) → probar drywall de nuevo.
+   En go-live: quitar el filtro `pruebas demo` de los 6 triggers (junto con LS01/canales).
 2. **Probar las otras 2 ramas de talleres** (1 contacto cada una): drywall y electricidad —
    mismo guion que melamina. Tras subir KB, probar también 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
