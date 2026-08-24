@@ -55,7 +55,13 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
    estado: si ya está en "publish", re-mandar "publish" no activa un trigger nuevo;
    hay que ciclar draft → publish. Además cada PUT incrementa `version` y un PUT con
    `version` vieja se IGNORA EN SILENCIO (responde OK y no cambia nada): re-GET antes
-   de cada PUT, nunca dos PUT seguidos con el mismo GET.
+   de cada PUT, nunca dos PUT seguidos con el mismo GET. Y ojo con la VERSIÓN VIVA:
+   el motor ejecuta la última versión cuyo status del historial sea "publish" real —
+   si después de esa quedó guardada una versión con el status inerte "published", el
+   flujo vivo queda DESALINEADO: los triggers aparentan activos pero no disparan
+   (visto 24-ago: SP04.3 con v11 publish + v13 published no disparaba; sus gemelos
+   con v11 live sí). Chequeo: GET /workflow/{loc}/{wid}/history — la versión más
+   alta debe decir "publish". Arreglo: ciclo limpio GET→draft→GET→publish.
 8. **El validador de publish exige `parent`/`parentKey` en cadenas RAÍZ**: un nodo
    colgado del `next` de otro nodo raíz (p.ej. wait → if_else) debe llevar
    parent/parentKey del que lo referencia — distinto de los if ANIDADOS en ramas, que

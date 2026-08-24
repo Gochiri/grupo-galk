@@ -92,6 +92,16 @@
    duplicar. El sistema completo bot+respaldo funciona en armonía.)
    Falta: **probar electricidad** (1 contacto) + 1-2 dudas ("¿aceptan Plin?",
    "¿cuánto dura?").
+   · 24-ago 12:22 PM: 1ª prueba de electricidad — el bot capturó solo Familia (la
+   inconstancia conocida) y **SP04.3 NO disparó pese a trigger sano**. Diagnóstico por
+   API con el historial de versiones: el flujo VIVO estaba desalineado — su última
+   publicación real era v11 y encima quedó una v13 con el status inerte "published"
+   (residuo de los ciclos de activación). Fix: ciclo limpio draft→publish en LOS 6
+   (ahora v14-v15, publish real, triggers activos). Gotcha de "versión viva" documentado
+   en el playbook. Pendiente: re-probar electricidad — puede ser en la MISMA
+   conversación (curso vacío y sin ficha-enviada): mandar otro mensaje con la palabra
+   "electricidad". Esa prueba además valida por primera vez el camino de ESCRITURA del
+   SP04 (hasta ahora solo se validó en vivo el camino de salida por guarda).
 3. **Pedir a Lucía/Francisco el contenido de software y gestión**: por cada curso, texto de
    apertura + 4 imágenes en orden + texto final (mismo formato que talleres). Es EL
    bloqueante para replicar la secuencia a las otras áreas.
