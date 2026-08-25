@@ -180,6 +180,21 @@
    en su flujo de test, y decide: A) terminar la reconstrucción manual con la tabla
    corregida, o B) Claude reconstruye por API y Oliver solo publica con el toggle.
 
+1d. **24-ago cierre del día:** incluso el flujo de prueba hecho 100% a mano por Oliver
+   enrola de forma intermitente (misma keyword exacta, a veces sí a veces no) →
+   **veredicto final: problema de plataforma GHL**; Oliver llama a soporte mañana.
+   Ticket listo para copiar/pegar (ES/EN, con IDs y timestamps):
+   `soporte-ghl-ticket-24ago.md`. Los **6 SP04 quedaron RECREADOS EN BORRADOR** con
+   las keywords de palabras completas, reingreso ON, triggers inactivos — Oliver los
+   activa manualmente con el toggle cuando decida (probablemente tras hablar con
+   soporte). El flujo "test electricidad" de Oliver puede borrarse cuando ya no sirva
+   de evidencia para el ticket.
+   **SIGUIENTE FASE (retomando el proyecto):** Oliver va a pasar las fichas de los
+   cursos restantes que el cliente ya envió → Claude construye el cascarón completo
+   como con los 5 anteriores: ramas nuevas en SP05 v2 (RAMAS + re-run + subir
+   imágenes/PDFs al media store), entradas nuevas en el catálogo SP04 (CURSOS),
+   ajustes a WF-MOD si aplica, prompts/KB v4 de BOT-03 cuando entren los de gestión.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
