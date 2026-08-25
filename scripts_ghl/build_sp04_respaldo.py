@@ -84,7 +84,7 @@ TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en
 # son seguros por tokens (g1 ≠ g13). Case-insensitive; tildes = carácter distinto.
 CURSOS = [
     ("SP04.0 | Respaldo curso — Supervisión",
-     ["supervision", "supervisión", "gestion de proyectos", "gestión de proyectos"],
+     ["supervision", "supervisión", "gestion de proyectos", "gestión de proyectos", "g2"],
      "Gestión y Supervisión de Melamina", 5),
     ("SP04.1 | Respaldo curso — Melamina",
      ["melamina", "melaminas", "melamine", "melanina", "malamina", "g13", "g16"],

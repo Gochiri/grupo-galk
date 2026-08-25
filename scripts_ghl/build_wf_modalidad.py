@@ -34,7 +34,10 @@ CARPETA = "af354b55-6cf2-44e8-a062-da45855f7175"      # GALK 2.0 · 01 Setup y N
 # (texto a buscar en Curso de interés, modalidad resultante)
 # El orden es el de evaluación. Supervisión antes que Melamina, a propósito.
 MAPEO = [
-    ("Supervisión",         "Online"),      # G2 es gestión, NO el taller de melamina
+    # G2 resultó de DOBLE modalidad (24-ago): ya no se deriva Online, pero la rama debe
+    # seguir existiendo como ATRAPADORA sin acción — su valor contiene "Melamina" y sin
+    # ella caería en la rama del taller (→ Presencial, incorrecto).
+    ("Supervisión",         None),          # atrapadora: no escribe nada
     ("Melamina",            "Presencial"),
     ("Drywall",             "Presencial"),
     ("Electricidad",        "Presencial"),
@@ -53,6 +56,10 @@ def main():
 
     ramas = []
     for texto, modalidad in MAPEO:
+        if modalidad is None:               # atrapadora: matchea y sale sin escribir
+            ramas.append((f"{texto} (atrapadora, sin acción)",
+                          [cond_field("contact.curso_de_inters", texto, "contain")], []))
+            continue
         u = nid()
         ramas.append((f"{texto} → {modalidad}",
                       [cond_field("contact.curso_de_inters", texto, "contain")],
