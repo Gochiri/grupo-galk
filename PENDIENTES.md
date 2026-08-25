@@ -228,6 +228,16 @@
    texto de apertura y cierre para armar esa rama (hoy la atrapadora Supervisión sale
    sin enviar nada).
 
+1g. **24-ago — G7 AutoCAD construido**: registro en `contenido-fichas/G7-autocad.md`
+   (apertura Valeria + texto de temario + brochure PDF 6a8ce4af + cierre con pregunta
+   de modalidad). Rama en SP05 v2 aplicada (8 ramas que envían; triggers OK).
+   **SP04.8 AutoCAD en DRAFT** (id 984c6662, keywords autocad/auto cad/g7).
+   **FIX IMPORTANTE en WF-MOD**: Mobiliario y AutoCAD estaban mapeados → Online desde
+   la planeación de julio, pero ambos resultaron de DOBLE modalidad — se les quitó la
+   rama del derivador (quedan 7: Supervisión/Cocinas/Interiorista/Comerciales → Online,
+   talleres → Presencial) para que no le pisen la elección al lead ni SP06 califique
+   antes de tiempo. WF-MOD re-publicado con trigger reapuntado, reingreso preservado.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
