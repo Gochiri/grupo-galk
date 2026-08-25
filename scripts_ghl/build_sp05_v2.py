@@ -304,6 +304,40 @@ Incluye sesiones online en vivo, clases grabadas y acompañamiento personalizado
 
 FINAL_COC = """¿Deseas que te guie con los horarios disponibles? 😊"""
 
+# --- G7 AutoCAD desde Cero (24-ago; ver contenido-fichas/G7-autocad.md) — doble
+# modalidad (virtual/presencial Surco): BOT-02 captura; SIN rama en WF-MOD (fix 24-ago).
+AUTOCAD_PDF = ("6a8ce4af67bb7ac351f3d644", "G7 AutoCAD desde Cero.pdf", 1236240, "pdf")
+
+APERTURA_CAD = """💬 ¡Hola! ¿Cuál es tu nombre? 😊
+
+Soy _Valeria del equipo de Grupo GALK_, ¡un gusto saludarte! 🙌
+
+Te brindo información en *"AutoCAD desde Cero (G7)"*, ideal para estudiantes, técnicos, arquitectos, diseñadores e ingenieros que desean aprender a desarrollar planos profesionales desde cero ✨
+
+📌 Modalidad: Virtual – En vivo por Zoom y Presencial Lima, Surco (Calle Aldabas 559)
+📌 Ofertas vigentes por tiempo limitado:
+✅ S/370 modalidad virtual (reserva con S/100)
+✅ S/490 modalidad presencial (reserva con S/100)
+
+🧾 Incluye: certificación, clases en vivo, instaladores de programas, asesorías personalizadas y grupo de WhatsApp 💻
+
+📸 Te comparto el brochure con toda la información sobre el contenido, duración y beneficios del curso. ¡Mira lo completo que está este programa! 👇"""
+
+INFO_CAD = """💡 En este programa aprenderás desde la interfaz y comandos básicos de AutoCAD hasta la elaboración completa de planos, cortes, elevaciones, bloques dinámicos e impresión profesional de proyectos 📐✨
+
+Además, trabajarás con herramientas como cotas, hatch, layouts, escalas y configuración de planos para presentación profesional 💯"""
+
+FINAL_CAD = """Reserva tu vacante con S/100 y cancela el saldo hasta 2 días antes del inicio de clases 🙌
+
+✨ ¿Te gustaría aprender en modalidad virtual o prefieres la experiencia presencial? 😊"""
+
+RAMAS.append(("AutoCAD", ["autocad"], BOT02, [
+    ("texto", APERTURA_CAD),
+    ("texto", INFO_CAD),
+    ("doc", AUTOCAD_PDF, "Brochure G7 AutoCAD"),
+    ("texto", FINAL_CAD),
+]))
+
 RAMAS.append(("Cocinas", ["cocina"], BOT02, [
     ("texto", APERTURA_COC),
     ("doc", COCINAS_PDF, "Brochure G5 Cocinas"),

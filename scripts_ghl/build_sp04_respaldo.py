@@ -103,6 +103,8 @@ CURSOS = [
      ["mobiliario", "mobiliarios", "g8"], "Diseño de Mobiliario", 20),
     ("SP04.7 | Respaldo curso — Cocinas",
      ["cocina", "cocinas", "g5"], "Cocinas", 20),
+    ("SP04.8 | Respaldo curso — AutoCAD",
+     ["autocad", "auto cad", "g7"], "AutoCAD", 20),
 ]
 
 

@@ -41,8 +41,8 @@ MAPEO = [
     ("Cocinas",             "Online"),
     ("Obra Interiorista",   "Online"),
     ("Espacios Comerciales", "Online"),
-    ("Mobiliario",          "Online"),
-    ("AutoCAD",             "Online"),
+    # Mobiliario y AutoCAD: QUITADOS el 24-ago — resultaron de doble modalidad
+    # (virtual + presencial); el lead elige y captura BOT-02, como SketchUp/Revit.
     # SketchUp y Revit: sin rama. El lead elige y lo captura el bot.
 ]
 
@@ -68,7 +68,9 @@ def main():
     d = C.request("GET", f"/workflow/{LOC}/{wid}") or {}
     C.request("PUT", f"/workflow/{LOC}/{wid}",
               {"name": NOMBRE, "version": d.get("version", 1), "parentId": CARPETA,
-               "status": "draft", "workflowData": {"templates": templates}})
+               "status": d.get("status") or "draft",
+               "allowMultiple": d.get("allowMultiple", False),
+               "workflowData": {"templates": templates}})
 
     if not (C.request("GET", f"/workflow/{LOC}/trigger?workflowId={wid}") or []):
         v = C.request("GET", f"/workflow/{LOC}/{wid}") or {}
