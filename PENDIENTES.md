@@ -301,6 +301,19 @@
    custom values viejos, (c) go-live (quitar pruebas demo de LS01+canales+9 SP04,
    pauta al 645, agente default).
 
+1l. **25-ago — barrido de acuerdos del 19-ago vs lo construido** (a pedido de Oliver):
+   todo el cambio grande y los menores están cubiertos, salvo 3 temas de CONVERSACIÓN
+   que se suman a la agenda de la reunión: ① textos cortos por imagen — Lucía los
+   aprobó y hoy van limpias por decisión nuestra; borradores guardados/desactivados
+   en el builder (CAPTIONS): que el cliente decida; ② cerrar formalmente lo de las
+   plantillas WABA — el acuerdo decía "aprobadas el viernes" y nuestro descubrimiento
+   es que NO hacen falta con lead-inicia (sesión 24h); avisar para que Francisco no
+   las espere — solo se necesitarán para remarketing/matriculados; ③ P1 matriculados
+   sigue bloqueada desde el 19 — pedirla (destranca AP01-04 y el diseño de la
+   reactivación del bot, min 26:00). AGENDA COMPLETA de reunión: demo (guía) + G3/G6
+   + orden Revit + Pack 850/890 + los 3 puntos anteriores + fecha tentativa de pauta
+   de prueba.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
