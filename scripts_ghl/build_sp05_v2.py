@@ -283,6 +283,33 @@ Y en caso sea presencial, ¿prefieres Lima Surco o Provincia Arequipa? 😊
 
 Así puedo brindarte los horarios y promociones 🙌🏻"""
 
+# --- G5 Cocinas (24-ago; ver contenido-fichas/G5-cocinas.md) — solo virtual (Zoom):
+# la Modalidad la deriva WF-MOD (Cocinas → Online); el cierre solo ofrece horarios.
+COCINAS_PDF = ("6a8ce4541ef6960779f37f9f",
+               "G5 Direccion y Ejecucion de tu Primer Proyecto en Cocinas.pdf",
+               900081, "pdf")
+
+APERTURA_COC = """💬 ¡Hola! ¿Cuál es tu nombre? 😊
+
+Soy Valeria del equipo de Grupo GALK y me alegra mucho que te intereses en nuestro curso G5 – Dirección y Ejecución de tu Primer Proyecto en Cocinas 👩🏻‍🎨✨
+
+Este programa es ideal si quieres aprender a diseñar, modelar y ejecutar proyectos de cocinas reales, desde los criterios de diseño hasta la supervisión de obra.
+Incluye sesiones online en vivo, clases grabadas y acompañamiento personalizado.
+
+📌 Modalidad: Virtual – En vivo por Zoom
+📌 Ofertas vigentes por tiempo limitado:
+✅ S/420 modalidad virtual (reserva con S/100)
+
+📸 *Te comparto el brochure con todos los detalles para que lo revises con calma.*👇"""
+
+FINAL_COC = """¿Deseas que te guie con los horarios disponibles? 😊"""
+
+RAMAS.append(("Cocinas", ["cocina"], BOT02, [
+    ("texto", APERTURA_COC),
+    ("doc", COCINAS_PDF, "Brochure G5 Cocinas"),
+    ("texto", FINAL_COC),
+]))
+
 RAMAS.append(("Mobiliario", ["mobiliario"], BOT02, [
     ("texto", APERTURA_MOB),
     ("img", "6a8ce3aa67f8d8c86b334c59", "🪑 Diseño de Mobiliario Profesional — IA, 3D y planimetría"),

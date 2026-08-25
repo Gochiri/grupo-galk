@@ -101,6 +101,8 @@ CURSOS = [
      ["revit", "rebit", "bim", "lumion", "rvt", "g4", "g4.2"], "Revit BIM", 20),
     ("SP04.6 | Respaldo curso — Mobiliario",
      ["mobiliario", "mobiliarios", "g8"], "Diseño de Mobiliario", 20),
+    ("SP04.7 | Respaldo curso — Cocinas",
+     ["cocina", "cocinas", "g5"], "Cocinas", 20),
 ]
 
 
