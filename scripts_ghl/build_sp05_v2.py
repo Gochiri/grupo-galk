@@ -56,6 +56,11 @@ MEDIA = {
  "6a51b6b19c9b37b5fd3f5d4a": ("Electricidad-2.jpeg", 260773),
  "6a51b6b10e67afc013822d3f": ("Electricidad-1.jpeg", 258571),
  "6a51b6b1eada8c1f450813d7": ("Electricidad-4.jpeg", 232372),
+ # G8 Diseño de Mobiliario (subidas por Oliver 24-ago, carpeta "Diseño de mobiliario profesional")
+ "6a8ce3aa67f8d8c86b334c59": ("mob 1.jpeg", 430883),
+ "6a8ce3aa45707028764608a3": ("mob 2.jpeg", 427939),
+ "6a8ce3aa45707028764608b4": ("mob 3.jpeg", 547949),
+ "6a8ce3aa1ef6960779f26c36": ("mob 4.jpeg", 372682),
 }
 
 # Brochures PDF: se suben desde contenido-fichas/assets/ con subir_pdfs.py y aquí se pega
@@ -236,6 +241,57 @@ if REVIT_PDF:
         ("texto", FINAL_SKP),
         ("texto", DURACION_RVT),
     ]))
+
+# --- G8 Diseño de Mobiliario Profesional (24-ago; ver contenido-fichas/G8-mobiliario.md)
+# 4 imágenes (sin PDF), 2 mensajes finales SEPARADOS. Cierre pide modalidad Y sede →
+# BOT-02 captura ambas; sin rama en WF-MOD (curso de doble modalidad).
+APERTURA_MOB = """💬 ¡Hola! ¿Cuál es tu nombre? 😊
+Soy Valeria del equipo de Grupo GALK 🙌
+
+Te escribo porque tenemos abierta la preventa de nuestro nuevo curso:
+
+✨ DISEÑO DE MOBILIARIO PROFESIONAL – IA, Modelado 3D y Planimetría ✨
+
+Ideal para quienes desean aprender a diseñar muebles modernos y presentar proyectos con acabado profesional 🪵📐
+📌 Importante: el curso requiere conocimientos de SketchUp a nivel básico-intermedio.
+
+📌 ¿Qué aprenderás?
+✅ Diseño funcional de mobiliario
+✅ Modelado 3D profesional
+✅ Planimetría técnica
+✅ Renderizado y presentación para clientes
+✅ Uso de IA aplicada al diseño
+✅ Optimización y despiece para fabricación real"""
+
+FINAL_MOB_1 = """🎁 Además, incluye:
+✔️ Instaladores de programas
+✔️ Clases en vivo
+✔️ Asesorías personalizadas
+✔️ Grupo de WhatsApp
+✔️ Certificación a nombre de Grupo GALK
+
+💰 PREVENTA DISPONIBLE:
+🔹 Virtual en vivo: S/370
+🔹 Presencial: desde S/380 (varia según la sede)
+
+📍 Contamos con sedes en:
+* Surco Lima: Calle aldabas 559
+* Arequipa Provinvia: Calle José Santos Chocano 249 – Umacollo"""
+
+FINAL_MOB_2 = """✨ Cuéntame, ¿te gustaría llevarlo en modalidad virtual o presencial?
+Y en caso sea presencial, ¿prefieres Lima Surco o Provincia Arequipa? 😊
+
+Así puedo brindarte los horarios y promociones 🙌🏻"""
+
+RAMAS.append(("Mobiliario", ["mobiliario"], BOT02, [
+    ("texto", APERTURA_MOB),
+    ("img", "6a8ce3aa67f8d8c86b334c59", "🪑 Diseño de Mobiliario Profesional — IA, 3D y planimetría"),
+    ("img", "6a8ce3aa45707028764608a3", "📚 Temario completo: los 4 módulos del curso"),
+    ("img", "6a8ce3aa45707028764608b4", "💪 Domina el diseño de mobiliario como profesional"),
+    ("img", "6a8ce3aa1ef6960779f26c36", "📝 Reserva tu curso — políticas y medios de pago"),
+    ("texto", FINAL_MOB_1),
+    ("texto", FINAL_MOB_2),
+]))
 
 # ---------- clonar formas vivas (regla de oro) ----------
 def clonar_ai_status():

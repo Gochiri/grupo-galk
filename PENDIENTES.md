@@ -201,9 +201,21 @@
    registradas — incluida la sede Los Olivos que aparece en imagen pero no en el texto).
    Curso área software → BOT-02; valor oficial "Diseño de Mobiliario"; rama SP05
    contains "mobiliario"; SP04.6 con keywords mobiliario/mobiliarios/g8.
-   → BLOQUEANTE para armar la rama: las 4 imágenes deben estar en el media store
-   (carpeta FICHAS WHATSAPP), nombres sugeridos G8-1-portada … G8-4-reserva. Oliver
-   las sube → Claude lee los IDs por API y corre la rama.
+   · Oliver subió las 4 imágenes (carpeta "Diseño de mobiliario profesional",
+   mob 1-4.jpeg) → **RAMA MOBILIARIO CONSTRUIDA EN SP05 v2** (PUT OK, triggers
+   reapuntados y activos, reingreso preservado; ahora 6 ramas que envían: 18 medias,
+   6 tags). Secuencia: apertura Valeria → 4 imágenes → final 1 → final 2 (nodos
+   separados) → activa BOT-02. **SP04.6 Mobiliario creado en DRAFT**
+   (id 2415bf55-4e78-4f90-a4eb-b50c947df038, keywords mobiliario/mobiliarios/g8 →
+   escribe "Diseño de Mobiliario"), para activar junto con los demás.
+   → Prueba de Oliver: ① abrir SP05 en la UI, confirmar que el canvas muestra la rama
+   Mobiliario (y si marca cambios sin publicar, darle Publicar); ② contacto nuevo →
+   "quiero info del curso de diseño de mobiliario" → si el bot captura, llega la
+   secuencia completa; si el bot falla (la intermitencia conocida), escribir a mano
+   Curso de interés = "Diseño de Mobiliario" para validar el contenido de la rama.
+   → Para el lote final (cuando estén todos los cursos): sumar G8 a KB-02 (precios
+   S/370-380, sedes Surco/Arequipa, prerrequisito SketchUp básico-intermedio,
+   incluye) y prompt v4 BOT-02 si hiciera falta.
 
 ## ⬜ Pendiente de Claude
 

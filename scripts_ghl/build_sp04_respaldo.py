@@ -99,6 +99,8 @@ CURSOS = [
      ["sketchup", "sketch", "sketch up", "skechup", "skp", "g1"], "SketchUp", 20),
     ("SP04.5 | Respaldo curso — Revit",
      ["revit", "rebit", "bim", "lumion", "rvt", "g4", "g4.2"], "Revit BIM", 20),
+    ("SP04.6 | Respaldo curso — Mobiliario",
+     ["mobiliario", "mobiliarios", "g8"], "Diseño de Mobiliario", 20),
 ]
 
 
