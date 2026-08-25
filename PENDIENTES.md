@@ -238,6 +238,19 @@
    talleres → Presencial) para que no le pisen la elección al lead ni SP06 califique
    antes de tiempo. WF-MOD re-publicado con trigger reapuntado, reingreso preservado.
 
+1h. **24-ago — G2 Gestión (primer curso del área) recibido y procesado**: registro en
+   `contenido-fichas/G2-gestion.md`. Cambios que arrastra, ya aplicados: WF-MOD →
+   Supervisión pasó de "→ Online" a ATRAPADORA sin acción (G2 resultó dual: S/299
+   virtual · S/450 presencial Surco) — re-publicado, trigger reapuntado; SP04.0 →
+   token `g2` agregado y trigger recreado en draft. Entregados en PROMPTS-bots-v4.md:
+   **prompt v4 del BOT-03** (estreno del área) + checklist de sus acciones + **2
+   correcciones al prompt del BOT-02** (Mobiliario y AutoCAD ya no son "solo online";
+   bloque de precios con G8/G7/G5). Inconsistencia registrada: el título dice
+   "Gestión y EJECUCIÓN" y el PDF "Gestión y SUPERVISIÓN" (va tal cual; el valor
+   oficial del campo sigue siendo Gestión y Supervisión de Melamina).
+   → BLOQUEANTE para construir la rama en SP05: **falta el ID del BOT-03** (Oliver:
+   abrir el bot en Agentes de IA y copiar el ID de la URL).
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
