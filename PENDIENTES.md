@@ -248,8 +248,17 @@
    bloque de precios con G8/G7/G5). Inconsistencia registrada: el título dice
    "Gestión y EJECUCIÓN" y el PDF "Gestión y SUPERVISIÓN" (va tal cual; el valor
    oficial del campo sigue siendo Gestión y Supervisión de Melamina).
-   → BLOQUEANTE para construir la rama en SP05: **falta el ID del BOT-03** (Oliver:
-   abrir el bot en Agentes de IA y copiar el ID de la URL).
+   · BOT-03 ID recibido: XgOF49jSPGEI7tqRvM0k → **RAMA G2 CONSTRUIDA EN SP05 v2**:
+   apertura → brochure PDF (6.6 MB) → incluye/inversión → pregunta de modalidad →
+   activa BOT-03. Verificado por API: Supervisión sigue PRIMERA en el árbol (9 ramas:
+   Supervisión, Melamina, Drywall, Electricidad, SketchUp, Revit, AutoCAD, Cocinas,
+   Mobiliario), cadena con pausa de bot + activación BOT-03 correcta, triggers
+   reapuntados y activos, reingreso True. También entregada la spec campo por campo
+   de la acción "Capturar modalidad" del BOT-03 (texto 332 chars, Ejemplo "Presencial";
+   valor Online aunque el cliente diga "virtual" — es lo que matchea WF-NORM) y la
+   aclaración del Nombre (campo estándar del contacto en Contact Info).
+   **EL CATÁLOGO QUEDA A 2 CURSOS DEL CIERRE: Obra Interiorista y Espacios
+   Comerciales.**
 
 ## ⬜ Pendiente de Claude
 

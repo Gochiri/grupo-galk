@@ -37,6 +37,7 @@ SP05 = "ae78625c-8f91-4af1-a7b0-3be0b2e4a667"
 SP06 = "84811c16-30d8-4c08-a05d-0c12fa46567d"
 BOT01 = "L9hj6kGF7Ie73EhRzgqD"          # BOT-01 Talleres
 BOT02 = "6vDo80qswCZgzWEIxXRC"          # BOT-02 Software
+BOT03 = "XgOF49jSPGEI7tqRvM0k"          # BOT-03 Gestión (ID de Oliver, 24-ago)
 CURSO_ID = "bjDW7b9QoRiFWL5d578w"        # ID del campo Curso de interés (el de los triggers)
 BACKUP = ROOT / "scripts_ghl" / "sp05_v1_backup.json"
 CDN = "https://assets.cdn.filesafe.space/YN2uRSDcNeBdTWm3UPCU/media/%s.jpeg"
@@ -172,6 +173,48 @@ RESERVA_SKP = "Reserva tu vacante con S/100 y cancela el saldo hasta 2 días ant
 FINAL_SKP = """✨ Para confirmarte el grupo ideal, cuéntame:
 ¿Deseas llevarlo en modalidad presencial en Surco o prefieres virtual en vivo? 😊"""
 
+# --- G2 Gestión y Supervisión (24-ago) ---
+G2_PDF = ("6a8ce4dc67ecc8731d30e2be",
+          "G2 - Gestion y Supervision de tu Primer Proyecto en Melamina.pdf",
+          6607397, "pdf")
+
+APERTURA_G2 = """💬 ¡Hola! *¿Cuál es tu nombre?*😊
+Soy Valeria del equipo de Grupo GALK, ¡un gusto saludarte! 🙌
+
+Te comparto la información del *Curso G2 – Gestión y Ejecución de tu Primer Proyecto en Melamina*, ideal si deseas aprender a desarrollar, supervisar y gestionar proyectos de mobiliario con un enfoque profesional 🪚✨
+
+📌 ¿Qué aprenderás?
+
+✅ Introducción a la melamina y elaboración de hojas de despiece
+✅ Diseño de mobiliario, medidas y ergonomía
+✅ Bisagras, correderas, sistemas de apertura y accesorios
+✅ Diseño y modelado de muebles en SketchUp
+✅ Presentación de proyectos con V-Ray y Layout
+✅ Despiece mediante OpenCutList
+✅ Presupuestos, contratos y atención al cliente
+✅ Supervisión del corte, armado, instalación y control de calidad
+
+⏱️ Duración total: 19 horas
+🔴 12 horas de clases en vivo o presencial
+🎥 7 horas de contenido grabado"""
+
+INCLUYE_G2 = """🎁 Incluye:
+✔️ Instaladores de los programas
+✔️ Asesorías personalizadas
+✔️ Grupo de WhatsApp
+✔️ Grabaciones
+✔️ Certificación a nombre de Grupo GALK
+
+💰 Inversión:
+🖥️ Modalidad Virtual (en vivo): S/299
+🏫 Modalidad Presencial (Surco - Calle Aldabas 559): S/450
+
+🔸 Reserva tu vacante con S/100 y paga el saldo hasta 2 días antes del inicio.
+🔸 Incluye material, grabaciones, asesorías y certificación."""
+
+FINAL_G2 = """✨ Para confirmarte el grupo ideal, cuéntame:
+¿Deseas llevarlo en modalidad presencial en Surco o prefieres virtual en vivo? 😊"""
+
 # (nombre, condiciones "contains" sobre Curso de interés, apertura, [(caption, media_id) x4])
 # La rama Supervisión va PRIMERA y sin nodos: "Gestión y Supervisión de Melamina" contiene
 # "melamina" y sin esta atrapadora se llevaría la ficha del taller. Sale sin enviar nada
@@ -179,7 +222,14 @@ FINAL_SKP = """✨ Para confirmarte el grupo ideal, cuéntame:
 RAMAS = [
     # (nombre, condiciones "contains" en Curso de interés, bot que se activa al final,
     #  mensajes: ("texto", str) | ("img", media_id, caption) | ("doc", SKETCHUP_PDF, caption))
-    ("Supervision (gestion, sin ficha aun)", ["supervisi"], None, []),
+    # G2 Gestión (24-ago; ver contenido-fichas/G2-gestion.md). Sigue PRIMERA: su valor
+    # contiene "melamina" y sin prioridad se llevaría la ficha del taller.
+    ("Supervision (gestion G2)", ["supervisi"], BOT03, [
+        ("texto", APERTURA_G2),
+        ("doc", G2_PDF, "Brochure G2 Gestión y Supervisión"),
+        ("texto", INCLUYE_G2),
+        ("texto", FINAL_G2),
+    ]),
     ("Melamina", ["melamina"], BOT01, [
         ("texto", APERTURA_MELA),
         ("img", "6a4b0fed70834e617c689aa1", "🪚 Así se vive el taller — 100% práctico y presencial"),
