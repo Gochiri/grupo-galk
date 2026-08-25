@@ -195,6 +195,16 @@
    imágenes/PDFs al media store), entradas nuevas en el catálogo SP04 (CURSOS),
    ajustes a WF-MOD si aplica, prompts/KB v4 de BOT-03 cuando entren los de gestión.
 
+1e. **24-ago — FASE DE CONTENIDO reabierta: paquete G8 Diseño de Mobiliario recibido**
+   y registrado completo en `contenido-fichas/G8-mobiliario.md` (apertura con cambio
+   Camila→Valeria, mapeo de 4 imágenes, 2 mensajes finales separados, 6 inconsistencias
+   registradas — incluida la sede Los Olivos que aparece en imagen pero no en el texto).
+   Curso área software → BOT-02; valor oficial "Diseño de Mobiliario"; rama SP05
+   contains "mobiliario"; SP04.6 con keywords mobiliario/mobiliarios/g8.
+   → BLOQUEANTE para armar la rama: las 4 imágenes deben estar en el media store
+   (carpeta FICHAS WHATSAPP), nombres sugeridos G8-1-portada … G8-4-reserva. Oliver
+   las sube → Claude lee los IDs por API y corre la rama.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
