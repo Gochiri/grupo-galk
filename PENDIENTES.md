@@ -162,6 +162,24 @@
 4. Corregir con **Francisco** el Pack de drywall: texto dice S/850, imagen de reserva dice
    S/890.
 
+1c. **🎯 24-ago ~6 PM — CAUSA RAÍZ DE TODO EL DÍA ENCONTRADA (experimento de Oliver):
+   el filtro "Cuerpo del mensaje Contiene" matchea PALABRAS COMPLETAS (tokens), NO
+   subcadenas.** Prueba controlada en su flujo manual "test electricidad" con keywords
+   [electricidad, elec]: "elec" dispara, "electricidad" dispara, "elect" NO (si fuera
+   subcadena, "elect" contiene "elec"). Eso explica TODO: las keywords "raíces" de las
+   11:30 (electri, drywal, melamin) no podían matchear nunca — por eso murieron los
+   SP04 después de esa hora, con cualquier publicación; drywall disparó a las 12:12
+   porque su versión viva aún tenía la palabra completa "drywall"; y los CAMPOS de
+   Francisco funcionan porque todas sus keywords son palabras completas. Ni bucket, ni
+   tildes, ni publicación eran el problema de los triggers (el display Borrador de la
+   publicación por API sigue siendo real, pero secundario). Gotcha documentado en el
+   playbook (§2b) y catálogo del script corregido a PALABRAS COMPLETAS (tabla
+   entregada a Oliver: melamina/melaminas/melanina/g13... electricidad/electricista/
+   domótica/g25... sketchup+sketch+skp+g1... revit/bim/lumion/g4...).
+   → Siguiente: Oliver confirma con la frase "quiero info del taller de electricidad"
+   en su flujo de test, y decide: A) terminar la reconstrucción manual con la tabla
+   corregida, o B) Claude reconstruye por API y Oliver solo publica con el toggle.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a

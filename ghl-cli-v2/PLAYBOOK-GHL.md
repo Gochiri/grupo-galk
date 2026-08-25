@@ -68,6 +68,21 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
    `"next" contains X but that node has no parentKey`. El publish es además el único
    momento en que GHL valida estructura: publica por API para enterarte de los errores.
 
+## 2b · Triggers `customer_reply` con filtro de texto: TOKENS, no subcadenas
+
+**"Message body contains any of" matchea PALABRAS COMPLETAS (tokens), NO subcadenas**
+(descubierto 24-ago con experimento controlado: con keywords ["electricidad","elec"],
+el mensaje "elec" dispara, "electricidad" dispara, y "elect" NO — si fuera subcadena,
+"elect" contendría "elec"). Consecuencias:
+- Las keywords deben ser las PALABRAS COMPLETAS que el lead escribiría, con variantes
+  y typos también completos ("sketch" NO atrapa "sketchup": van ambas).
+- Frases multi-palabra funcionan como secuencia ("gestion de proyectos").
+- Códigos cortos son seguros por tokens ("g1" no matchea "g13").
+- Case-insensitive; las tildes cuentan como carácter distinto (poner ambas variantes).
+- Una lista de "raíces" estilo substring (electri, drywal, melamin) NO dispara NUNCA y
+  falla en silencio — costó un día entero de depuración fantasma persiguiendo
+  publicación, buckets y tildes que nunca fueron el problema.
+
 ## 3 · Convención de nodos que el canvas renderiza (y ejecuta)
 
 - **Header if/else**: `nodeType: "condition-node"`, SIN `parent`, `next` = **LISTA** con

@@ -77,29 +77,28 @@ TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en
 
 # (nombre workflow, keywords message.body, valor oficial a escribir, espera en seg)
 #
-# Las keywords son RAÍCES: `string-contains-any-of` matchea subcadena, así que
-# "melamin" atrapa melamina/melamine/melaminas y "electri" atrapa electricidad/
-# electricista/electrico. Tildes: raíz con y sin acento (la hipótesis del 24-ago de
-# que un valor acentuado rompía la condición quedó DESCARTADA — el culpable era el
-# estado de publicación, no el contenido de las keywords).
-# Todo en minúsculas (el matcheo es case-insensitive — los CAMPOS de Francisco
-# funcionan así desde julio). Los códigos g## van completos para no ser subcadena
-# unos de otros (g1 matchearía g13 — por eso no hay códigos de 2 caracteres).
+# ⚠️ LAS KEYWORDS SON PALABRAS COMPLETAS (TOKENS), NO RAÍCES. El operador
+# string-contains-any-of matchea tokens exactos dentro del mensaje, NO subcadenas
+# (experimento del 24-ago: "elect" no matchea la keyword "elec"). Cada variante y typo
+# va como palabra completa; "sketch" no atrapa "sketchup" (van ambas); los códigos g#
+# son seguros por tokens (g1 ≠ g13). Case-insensitive; tildes = carácter distinto.
 CURSOS = [
     ("SP04.0 | Respaldo curso — Supervisión",
-     ["supervisi", "superbisi", "gestion de proyec", "gestión de proyec"],
+     ["supervision", "supervisión", "gestion de proyectos", "gestión de proyectos"],
      "Gestión y Supervisión de Melamina", 5),
     ("SP04.1 | Respaldo curso — Melamina",
-     ["melamin", "melanina", "malamina", "melamima", "g13", "g16"], "Melamina", 20),
+     ["melamina", "melaminas", "melamine", "melanina", "malamina", "g13", "g16"],
+     "Melamina", 20),
     ("SP04.2 | Respaldo curso — Drywall",
-     ["drywal", "dry wall", "draywall", "driwall", "dryw", "tabiquer", "g24", "g28"],
-     "Drywall", 20),
+     ["drywall", "draywall", "driwall", "drywal", "dry wall", "tabiqueria",
+      "tabiquería", "g24", "g28"], "Drywall", 20),
     ("SP04.3 | Respaldo curso — Electricidad",
-     ["electri", "eléctri", "domotic", "domótic", "g25"], "Electricidad y Domótica", 20),
+     ["electricidad", "electricista", "electrica", "eléctrica", "electrico",
+      "eléctrico", "domotica", "domótica", "g25"], "Electricidad y Domótica", 20),
     ("SP04.4 | Respaldo curso — SketchUp",
-     ["sketch", "skech", "scketch", "sketsh", "skp"], "SketchUp", 20),
+     ["sketchup", "sketch", "sketch up", "skechup", "skp", "g1"], "SketchUp", 20),
     ("SP04.5 | Respaldo curso — Revit",
-     ["revit", "rebit", "revid", "rvt", "bim", "lumion"], "Revit BIM", 20),
+     ["revit", "rebit", "bim", "lumion", "rvt", "g4", "g4.2"], "Revit BIM", 20),
 ]
 
 
