@@ -61,12 +61,16 @@ el body del SMS invisible, los attachments en [null], el canvas colapsado. Por e
    siguen vigentes: cada PUT incrementa `version` y un PUT con version vieja se
    ignora en silencio (re-GET antes de cada PUT); el publish de la UI es además el
    único validador de estructura fiable.
-8. **El validador de publish exige `parent`/`parentKey` en cadenas RAÍZ**: un nodo
-   colgado del `next` de otro nodo raíz (p.ej. wait → if_else) debe llevar
-   parent/parentKey del que lo referencia — distinto de los if ANIDADOS en ramas, que
-   van sin parent. El PUT lo guarda sin queja; el publish lo rechaza con
-   `"next" contains X but that node has no parentKey`. El publish es además el único
-   momento en que GHL valida estructura: publica por API para enterarte de los errores.
+8. **El validador exige `parentKey` = EL NODO QUE TE REFERENCIA por `next`** (regla
+   general, confirmada 25-ago): en cadenas raíz (wait → if_else) el header lleva
+   parentKey del wait; en cadenas de RAMA, el 1er nodo lleva parentKey de la rama (que
+   lo referencia) y **del 2º nodo en adelante parentKey = el nodo ANTERIOR**, no la
+   rama. La convención "parent = id de la rama para toda la cadena" (leída de
+   workflows viejos) solo pasa el validador con cadenas de UN nodo — con 2+, rechaza
+   con `parentKey is <rama> instead of <predecesor>`. Ojo: la validación es
+   INCONSISTENTE (la misma estructura pasó en 8 PUTs y falló en el 9º) — cumple la
+   regla estricta siempre y no dependas de que un PUT aceptado signifique estructura
+   válida.
 
 ## 2b · Triggers `customer_reply` con filtro de texto: TOKENS, no subcadenas
 

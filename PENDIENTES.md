@@ -273,6 +273,23 @@
    con su nombre oficial) · ④ activar los 9 SP04 con el toggle cuando decida ·
    ⑤ pasar los paquetes G3/G6 a Claude al recibirlos.
 
+1j. **25-ago — DÍA BUENO: todo jala.** Oliver confirma que los flujos y palabras clave
+   funcionan para todos los cursos dados de alta (activó y probó 3-4 SP04) — el caos
+   del 24 fue un incidente de plataforma GHL que se resolvió solo. Con su OK se
+   implementó el **CONMUTADOR DE CURSO v2 en los 9 SP04** (+ waits subidos a 30 s /
+   10 s Supervisión a su pedido): guarda nueva "¿ya tiene ESTE curso?" (contains el
+   propio) → si tiene OTRO curso o ninguno: quitar `ficha-enviada` → limpiar
+   Modalidad/Sede/Nivel (bot y dropdown) → escribir el curso nuevo → SP05 envía la
+   ficha nueva. Resuelve: cambio de curso en la misma conversación, sin spam de
+   re-envíos por mencionar el mismo curso. Verificado 9/9 por API (estructura,
+   triggers reapuntados, reingreso). Gotcha nuevo al playbook: parentKey = nodo que
+   te referencia (en cadenas 2+, el predecesor, no la rama; validación inconsistente).
+   → Oliver: RE-PUBLICAR los 9 con el toggle (los cambios están guardados pero la
+   versión viva es la anterior) y probar el conmutador: contacto CON ficha de un curso
+   → mensaje pidiendo OTRO curso → a los ~30-35 s debe llegar la ficha nueva.
+   Caso límite documentado: lead calificado/asignado que pide otro curso se re-inicia
+   el embudo (v2 futura: notificar al asesor en vez de re-enviar, si molesta).
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a

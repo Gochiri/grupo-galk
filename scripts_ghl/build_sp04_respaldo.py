@@ -15,11 +15,11 @@ QUÉ HACE
 
     trigger `customer_reply` (message.body contiene alguna palabra clave del curso,
                               contacto con etiqueta `pruebas demo`)
-    → Wait (20 s; 5 s el de Supervisión)         ← escalón anti-colisión
-    → if/else:  "Ya hay curso"      (Curso de interés has_value)   → salir
-                "Ficha ya enviada"  (tag ficha-enviada)            → salir
-                None                                               → escribir el
-                                                     nombre oficial en Curso de interés
+    → Wait (30 s; 10 s el de Supervisión)        ← escalón anti-colisión
+    → if/else:  "Ya tiene ESTE curso" (Curso CONTIENE el propio)   → salir
+                None (vacío u OTRO curso — CONMUTADOR, 25-ago):
+                    quitar tag ficha-enviada → limpiar modalidad/sede/nivel →
+                    escribir el curso nuevo → SP05 envía la ficha nueva
 
 Con eso el trigger `contact_changed(Curso)` de SP05 dispara la secuencia como siempre.
 El bot queda igual: esto solo atrapa los turnos en que GHL no ejecuta sus capturas.
@@ -83,28 +83,32 @@ TAG_PRUEBAS = "pruebas demo"                        # quitar en go-live, como en
 # va como palabra completa; "sketch" no atrapa "sketchup" (van ambas); los códigos g#
 # son seguros por tokens (g1 ≠ g13). Case-insensitive; tildes = carácter distinto.
 CURSOS = [
+    # (nombre, keywords, valor oficial, espera seg, "propio": si Curso de interés ya
+    #  CONTIENE esto, el flujo sale sin actuar — es el mismo curso, no se re-envía)
     ("SP04.0 | Respaldo curso — Supervisión",
      ["supervision", "supervisión", "gestion de proyectos", "gestión de proyectos", "g2"],
-     "Gestión y Supervisión de Melamina", 5),
+     "Gestión y Supervisión de Melamina", 10, "Supervisi"),
     ("SP04.1 | Respaldo curso — Melamina",
      ["melamina", "melaminas", "melamine", "melanina", "malamina", "g13", "g16"],
-     "Melamina", 20),
+     "Melamina", 30, "Melamina"),
     ("SP04.2 | Respaldo curso — Drywall",
      ["drywall", "draywall", "driwall", "drywal", "dry wall", "tabiqueria",
-      "tabiquería", "g24", "g28"], "Drywall", 20),
+      "tabiquería", "g24", "g28"], "Drywall", 30, "Drywall"),
     ("SP04.3 | Respaldo curso — Electricidad",
      ["electricidad", "electricista", "electrica", "eléctrica", "electrico",
-      "eléctrico", "domotica", "domótica", "g25"], "Electricidad y Domótica", 20),
+      "eléctrico", "domotica", "domótica", "g25"], "Electricidad y Domótica", 30,
+     "Electricidad"),
     ("SP04.4 | Respaldo curso — SketchUp",
-     ["sketchup", "sketch", "sketch up", "skechup", "skp", "g1"], "SketchUp", 20),
+     ["sketchup", "sketch", "sketch up", "skechup", "skp", "g1"], "SketchUp", 30,
+     "SketchUp"),
     ("SP04.5 | Respaldo curso — Revit",
-     ["revit", "rebit", "bim", "lumion", "rvt", "g4", "g4.2"], "Revit BIM", 20),
+     ["revit", "rebit", "bim", "lumion", "rvt", "g4", "g4.2"], "Revit BIM", 30, "Revit"),
     ("SP04.6 | Respaldo curso — Mobiliario",
-     ["mobiliario", "mobiliarios", "g8"], "Diseño de Mobiliario", 20),
+     ["mobiliario", "mobiliarios", "g8"], "Diseño de Mobiliario", 30, "Mobiliario"),
     ("SP04.7 | Respaldo curso — Cocinas",
-     ["cocina", "cocinas", "g5"], "Cocinas", 20),
+     ["cocina", "cocinas", "g5"], "Cocinas", 30, "Cocinas"),
     ("SP04.8 | Respaldo curso — AutoCAD",
-     ["autocad", "auto cad", "g7"], "AutoCAD", 20),
+     ["autocad", "auto cad", "g7"], "AutoCAD", 30, "AutoCAD"),
 ]
 
 
@@ -116,20 +120,49 @@ def cond_curso_tiene_valor():
             "nestedDropdownTypes": NESTED, "allowIsOperatorTypes": ALLOWIS}
 
 
-def plantillas(valor, espera):
-    u = nid()
-    upd = n_update(u, [(CURSO_KEY, valor)], name=f"Curso = {valor}")
+# Campos que se LIMPIAN al conmutar de curso (los datos del curso anterior no valen)
+CAMPOS_LIMPIAR = [
+    ("8oOOHVIItH65BSpNZPSq", "Modalidad (bot)", "string"),
+    ("M2Ra6FDckxrylnFygVVH", "Modalidad", "select"),
+    ("eEiZLOsgrVD8MPl16pOV", "Sede (bot)", "string"),
+    ("B2tnsFlAOp9kYWF9Ij4R", "Sede", "select"),
+    ("onMkfwvy1HsFUBZH13CJ", "Nivel de interés (bot)", "string"),
+]
+
+def n_limpiar(nodo_id, nxt=""):
+    """Forma validada de clear_field_data (playbook §4: sin value/date/type correcto
+    ejecuta customFields:[] — no-op silencioso)."""
+    fs = [{"field": fid, "value": "", "title": titulo, "type": tipo, "date": ""}
+          for fid, titulo, tipo in CAMPOS_LIMPIAR]
+    return {"id": nodo_id, "order": 0,
+            "attributes": {"actionType": "clear_field_data",
+                           "type": "update_contact_field", "fields": fs},
+            "name": "Limpiar datos del curso anterior",
+            "type": "update_contact_field", "next": nxt}
+
+
+def plantillas(valor, espera, propio):
+    """CONMUTADOR DE CURSO (v2, 25-ago a pedido de Oliver):
+    wait → ¿Curso ya CONTIENE el curso propio? → salir (no re-enviar la misma ficha)
+         → None (campo vacío U OTRO curso): quitar ficha-enviada → limpiar modalidad/
+           sede/nivel → escribir el curso nuevo → (el cambio dispara SP05, que ya sin
+           el tag envía la ficha nueva y activa el bot de la familia nueva)."""
+    q_id, l_id, u_id = nid(), nid(), nid()
+    q = wf_lib.n_tag(q_id, ["ficha-enviada"], nxt=l_id, quitar=True)
+    # ⚠️ Validador (25-ago): en cadenas, parentKey = el nodo que te REFERENCIA por next
+    # (el predecesor), no la rama. El 1er nodo lo referencia la rama (arbol se lo pone);
+    # del 2º en adelante hay que ponerlo explícito o el PUT rechaza con
+    # "parentKey is <rama> instead of <predecesor>".
+    l = n_limpiar(l_id, nxt=u_id); l["parent"] = q_id; l["parentKey"] = q_id
+    u = n_update(u_id, [(CURSO_KEY, valor)], name=f"Curso = {valor}",
+                 parent=l_id)
     t = arbol([
-        ("Ya hay curso (el bot sí capturó)", [cond_curso_tiene_valor()], []),
-        ("Ficha ya enviada", [cond_tag(TAG_MARCADOR)], []),
-    ], none_next=[upd])
+        ("Ya tiene ESTE curso (no re-enviar)",
+         [wf_lib.cond_field(CURSO_KEY, propio, "contain")], []),
+    ], none_next=[q, l, u])
     wait_id = nid()
     w = n_wait(wait_id, espera, unidad="seconds", nxt=t[0]["id"])
-    # ⚠️ Validador de publicación (24-ago): en una cadena RAÍZ, el nodo colgado del
-    # `next` de otro nodo debe llevar parent/parentKey del que lo referencia. (Distinto
-    # de los if anidados en ramas, que van SIN parent — ver PLAYBOOK §3.) Sin esto el
-    # PUT guarda pero el publish rechaza con "next contains X but that node has no
-    # parentKey".
+    # Validador de publicación: cadena raíz exige parent/parentKey del que referencia.
     t[0]["parent"] = wait_id
     t[0]["parentKey"] = wait_id
     return [w] + t, wait_id
@@ -167,13 +200,13 @@ def main():
 
     existentes = {w.get("name"): w["id"] for w in (C.request("GET", f"/workflow/{LOC}") or [])}
 
-    for nombre, keywords, valor, espera in CURSOS:
+    for nombre, keywords, valor, espera, propio in CURSOS:
         corto = nombre.split("—")[-1].strip()
         if nombre in existentes and not args.aplicar:
             print(f"YA EXISTE  {nombre}")
             continue
         if not args.aplicar:
-            print(f"DRY-RUN    {nombre}: keywords={keywords} → Curso='{valor}' (wait {espera}s)")
+            print(f"DRY-RUN    {nombre}: keywords={keywords} → Curso='{valor}' (wait {espera}s, propio={propio})")
             continue
 
         wid = existentes.get(nombre)
@@ -183,7 +216,7 @@ def main():
             if not wid:
                 print(f"ERROR creando {nombre}: {wf}"); continue
 
-        temps, wait_id = plantillas(valor, espera)
+        temps, wait_id = plantillas(valor, espera, propio)
         d = C.request("GET", f"/workflow/{LOC}/{wid}") or {}
         r = C.request("PUT", f"/workflow/{LOC}/{wid}",
                       {"name": nombre, "version": d.get("version", 1), "parentId": CARPETA,
