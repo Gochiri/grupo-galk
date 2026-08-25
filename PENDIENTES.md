@@ -217,6 +217,17 @@
    S/370-380, sedes Surco/Arequipa, prerrequisito SketchUp básico-intermedio,
    incluye) y prompt v4 BOT-02 si hiciera falta.
 
+1f. **24-ago — G5 Cocinas construido**: registro en `contenido-fichas/G5-cocinas.md`
+   (apertura Camila→Valeria, brochure PDF 6a8ce454, cierre "¿Deseas que te guíe con
+   los horarios?"). Curso SOLO virtual → Modalidad la deriva WF-MOD (rama Cocinas →
+   Online ya existía). Rama en SP05 v2 aplicada y verificada (7 ramas que envían;
+   triggers reapuntados y activos). **SP04.7 Cocinas en DRAFT**
+   (id 06181c1b-53f8-4796-ba17-6a060195ba54, keywords cocina/cocinas/g5).
+   · Detectado en el media store: Oliver ya subió también el **brochure de G2 Gestión
+   y Supervisión de Melamina** (6a8ce4dc67ecc8731d30e2be, 6.6 MB) — falta que pase su
+   texto de apertura y cierre para armar esa rama (hoy la atrapadora Supervisión sale
+   sin enviar nada).
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
