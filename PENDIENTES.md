@@ -260,6 +260,19 @@
    **EL CATÁLOGO QUEDA A 2 CURSOS DEL CIERRE: Obra Interiorista y Espacios
    Comerciales.**
 
+1i. **24-ago cierre de jornada** — confirmado por Oliver: ✅ BOT-03 con acción
+   "Capturar modalidad" y "Curso de interés" creadas (Nombre no aplica: se actualiza
+   solo — no volver a pedir) · ✅ prompt v4 BOT-03 pegado · correcciones BOT-02 en
+   proceso (las re-aplica). Obra Interiorista (G3) y Espacios Comerciales (G6):
+   Francisco NO los ha enviado — Oliver los pide mañana en/tras la reunión.
+   **PLAN DE MAÑANA (25-ago)**: ① reunión con Francisco → pedir G3 y G6 (+ confirmar
+   orden del cierre de Revit y Pack drywall 850/890) · ② llamar a soporte GHL con
+   `soporte-ghl-ticket-24ago.md` (conservar el flujo "test electricidad" como
+   evidencia) · ③ pruebas de las 4 ramas nuevas: mobiliario, cocinas, autocad y G2
+   supervisión (contacto nuevo c/u; si el bot no captura, escribir el Curso a mano
+   con su nombre oficial) · ④ activar los 9 SP04 con el toggle cuando decida ·
+   ⑤ pasar los paquetes G3/G6 a Claude al recibirlos.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
