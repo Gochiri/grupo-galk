@@ -290,6 +290,17 @@
    Caso límite documentado: lead calificado/asignado que pide otro curso se re-inicia
    el embudo (v2 futura: notificar al asesor en vez de re-enviar, si molesta).
 
+1k. **25-ago — CONMUTADOR VALIDADO EN VIVO (captura de Oliver)**: los 9 republicados
+   por él; mismo contacto pidió electricidad a las 8:26 (ficha de electricidad
+   entregada) y gestión ~11:09 (conmutador limpió y escribió "Gestión y Supervisión
+   de Melamina", ficha G2 entregada) — cambio de curso funcionando en ambas
+   direcciones. Bonus: Familia vacía en ese contacto = el bot no capturó y el respaldo
+   sostuvo el flujo solo. Falta la contra-prueba (mismo curso → no re-enviar).
+   G3/G6: Oliver los pide tras la reunión. Pendiente 3 (cierres de lote) explicado:
+   (a) KB-02/03 v4 cuando estén todos los cursos, (b) limpieza final SP05 v1 +
+   custom values viejos, (c) go-live (quitar pruebas demo de LS01+canales+9 SP04,
+   pauta al 645, agente default).
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
