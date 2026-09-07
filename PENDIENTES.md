@@ -314,6 +314,29 @@
    + orden Revit + Pack 850/890 + los 3 puntos anteriores + fecha tentativa de pauta
    de prueba.
 
+1m. **7-sep — GO-LIVE DE EMERGENCIA.** Francisco reporta leads reales sin respuesta.
+   Diagnóstico por API: la pauta ya apuntaba al 645 (wamid = API oficial) con los
+   filtros de `pruebas demo` aún puestos → 3+ leads de WhatsApp del día sin atender
+   (12:28 Bartoloanderson "instalaciones", 12:37 Luz R "taller de melamina", 13:06
+   Gladis — lead viejo de julio), todos sin tags; el agente v2 de Francisco tampoco
+   respondió (presumiblemente desconectado al mover la pauta).
+   ACCIONES: ① Oliver quitó el filtro `pruebas demo` del canal del BOT-00 (Valeria ya
+   atiende el 645 completo). ② Claude por API: en los triggers de LS01 + los 9 SP04 se
+   REEMPLAZÓ la condición de etiqueta por **"Canal de respuesta = WhatsApp"**
+   (message.type == 19, molde clonado del trigger UI de Oliver) — LS01 había quedado
+   SIN condiciones (disparaba con Instagram/TikTok también); corregido. Verificado por
+   lectura 10/10.
+   → FALTA (Oliver): RE-PUBLICAR los 10 workflows con el toggle (LS01 + SP04.0-.8)
+   para que los cambios de trigger compilen al evaluador · rescatar a los 3 leads del
+   día (melamina: escribir Curso de interés = Melamina dispara la ficha; los otros 2,
+   respuesta manual o esperar su próximo mensaje ya con el canal abierto) · coordinar
+   con Francisco que su agente v2 quede FUERA del canal 645 · monitorear el primer
+   lead real completo (Claude verifica por API).
+   Nota go-live pendiente aún: decidir agente default del 645 y confirmar el resto del
+   checklist. Los contactos de prueba internos ya no son necesarios para los flujos
+   (el filtro era de entrada; `equipo-interno` sigue excluyendo de los flujos de
+   Francisco).
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
