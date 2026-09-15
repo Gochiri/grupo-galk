@@ -337,6 +337,26 @@
    (el filtro era de entrada; `equipo-interno` sigue excluyendo de los flujos de
    Francisco).
 
+1n. **14/15-sep — RECLAMO DE FRANCISCO: "la asignación no se hace automática" → SP07.**
+   Auditoría por API de los 329 leads de 3 días (11-14 sep): **cero fallas de SP06** —
+   todos los que calificaron (curso+modalidad+sede) fueron asignados; el round robin
+   nunca falló (0 tags `asignacion-fallida`). El problema real es de diseño: 145 leads
+   recibieron ficha, se quedaron callados, nunca calificaron → jamás llegaron a asesor
+   (solo 27/329 = 8% asignados). Oliver eligió la opción A con 15 minutos.
+   CONSTRUIDO (15-sep): **SP07 | Rescate 15 min — ficha sin respuesta**
+   (`a22aa87f-1c4c-4f4f-b01f-b4a6acbd4251`, draft, 14 nodos, reingreso=true, carpeta
+   04 Sales Pipeline, script `scripts_ghl/build_sp07_rescate.py`). Trigger: tag
+   `ficha-enviada` puesto (allowMultiple=yes, entrada verificada OK). Lógica: espera
+   15 min → si `Asesor asignado` tiene valor sale sin efecto; si no → round robin
+   (nodo clonado de SP06, `only_unassigned_contact=true` ⇒ SP06 nunca lo pisa) →
+   1 min → escribe Asesor+Fecha → notifica al dueño "hacer seguimiento" + tag
+   `rescate-15min`; si el round robin falla → notifica a Lucía + `asignacion-fallida`.
+   SIN bot-silenciado (el bot sigue vivo; si el lead vuelve y califica, SP06 cierra).
+   Tag nuevo creado: `rescate-15min`.
+   → FALTA (Oliver): abrir SP07 en la UI, "Guardar trigger" y PUBLICAR. Los 145
+   huérfanos históricos NO entran solos (el trigger solo ve tags nuevos) — backfill
+   aparte si Francisco lo pide.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
