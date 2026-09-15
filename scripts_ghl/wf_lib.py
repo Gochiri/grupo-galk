@@ -56,6 +56,20 @@ def cond_trigger_campo(key, operador="has-changed"):
     return {"operator": operador, "field": f"contact.{f['id']}", "title": f["name"],
             "type": _TIPO_TRIGGER.get(f["dataType"], "text"), "id": f["id"]}
 
+def cond_assigned_to(op="has_value"):
+    """Condición if/else sobre el ASSIGNED USER NATIVO de GHL (no un campo custom).
+
+    Molde capturado el 15-sep del SP07 tras elegirlo Oliver en la UI: es la misma
+    forma que un campo custom pero con conditionSubType="assigned_to" literal.
+    has_value/has_no_value van sin conditionValue, como siempre.
+    ⚠️ No confundir con los campos custom que se le parecen: "Asesor Asignado"
+    (heredado de Francisco, nadie del ecosistema nuevo lo escribe) y
+    "Asesor asignado (nuevo)" (el que escriben SP06/SP07)."""
+    return {"conditionType":"contact_detail","conditionSubType":"assigned_to",
+            "conditionOperator":op,"__conditionId":nid(),"ifElseNodeId":"",
+            "__customFieldType__":"standard","isWait":False,
+            "nestedDropdownTypes":NESTED,"allowIsOperatorTypes":ALLOWIS}
+
 def cond_tag(tag):
     return {"conditionType":"contact_detail","conditionSubType":"tags","conditionOperator":"index-of-true",
             "conditionValue":[tag],"__conditionId":nid(),"ifElseNodeId":"","__customFieldType__":"standard",

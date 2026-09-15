@@ -353,9 +353,13 @@
    `rescate-15min`; si el round robin falla → notifica a Lucía + `asignacion-fallida`.
    SIN bot-silenciado (el bot sigue vivo; si el lead vuelve y califica, SP06 cierra).
    Tag nuevo creado: `rescate-15min`.
-   → FALTA (Oliver): abrir SP07 en la UI, "Guardar trigger" y PUBLICAR. Los 145
-   huérfanos históricos NO entran solos (el trigger solo ve tags nuevos) — backfill
-   aparte si Francisco lo pide.
+   PUBLICADO por Oliver el 15-sep. Antes de publicar cambió (bien) la guarda de
+   entrada al ASSIGNED USER NATIVO — primer intento cayó en el custom heredado
+   "Asesor Asignado" de Francisco (trampa: 3 campos casi homónimos), corregido a
+   "Assigned user". Verificado por API: subType=assigned_to, cadena OK 14/14,
+   published, trigger active. Molde nuevo capturado: `wf_lib.cond_assigned_to()`.
+   Los 145 huérfanos históricos NO entran solos (el trigger solo ve tags nuevos) —
+   backfill aparte si Francisco lo pide.
 
 ## ⬜ Pendiente de Claude
 
