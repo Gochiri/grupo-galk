@@ -442,8 +442,18 @@
    de pendientes. Total tocado: 210 contactos.
    ⚠️ Secuela: esos 210 tienen el owner NATIVO puesto pero `Asesor asignado (nuevo)` y
    `Fecha de asignación` VACÍOS → cualquier reporte que lea nuestros campos los subcuenta.
-   Propuesta (pendiente de OK, escribe sobre 210 contactos reales): script idempotente que
-   copie el owner nativo a esos dos campos donde estén vacíos.
+   ✅ **RESUELTO 21-sep** con OK de Oliver: `scripts_ghl/rellenar_asesor_manual.py`
+   (idempotente, ventana 8-sep → 15-sep 14:21, solo toca contactos con propietario nativo
+   y campo vacío; nunca asigna a nadie). Formato clonado de lo que escriben SP06/SP07:
+   `Asesor asignado (nuevo)` = nombre del propietario · `Fecha de asignación` = fecha de
+   `dateUpdated` a medianoche UTC (aproximación: 178 quedaron con 19-sep, 8 con el 20 y
+   22 con el 21). Probado primero en 1 contacto verificando que el PUT no borra nada
+   (6 → 8 campos custom, propietario y tags intactos) y después el lote: **210 escritos,
+   0 errores**. Verificación final: 254/254 contactos con propietario de esa cohorte
+   tienen ambos campos llenos, 0 pendientes.
+   ⚠️ QUEDA FUERA, sin tocar: **161 contactos anteriores al 8-sep** con el mismo síntoma
+   (propietario nativo, campo vacío) — son de la era de Francisco. El script los cuenta
+   pero no los escribe; si se quisieran, basta mover `DESDE`.
    ✅ De paso VALIDA la corrección de Oliver: con la guarda en el campo custom, esos 190
    asignados a mano habrían sido re-rescatados y re-notificados por SP07. Con `assigned_to`
    nativo, el sistema los respeta. El molde `cond_assigned_to` se gana su lugar.
