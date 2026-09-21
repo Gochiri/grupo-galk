@@ -26,10 +26,14 @@ SEGURIDAD
 ---------
 · Idempotente (§3): si el campo ya tiene valor, salta. Correr dos veces no duplica.
 · Solo toca contactos con propietario nativo puesto — nunca asigna a nadie.
-· Ventana acotada a la cohorte medida (8-sep → 15-sep 14:21 UTC, la anterior al
-  go-live de SP07). Informa de lo que hay fuera de la ventana, pero NO lo toca.
+· Ventana acotada por --desde/--hasta (por defecto 8-sep → 15-sep 14:21 UTC, la
+  cohorte anterior al go-live de SP07). Informa de lo que hay fuera, pero NO lo toca.
 · Sin --aplicar solo simula. Con --aplicar N limita a los primeros N (para probar
   en uno y verificar que el PUT no se lleve por delante otros campos custom).
+· `--sin-fecha` escribe SOLO el asesor. Es lo correcto para cohortes viejas, donde
+  `dateUpdated` ya no dice cuándo se asignó el lead (en la era de Francisco, 1410 de
+  1416 contactos tienen dateUpdated != dateAdded): una fecha inventada ensucia el
+  reporte de "tiempo hasta asignación" más de lo que ayuda. Se deja vacía.
 """
 import os, sys, time, pathlib, collections
 
@@ -72,8 +76,14 @@ def valor(c, fid):
             return f.get("value")
 
 
+def arg(nombre, defecto):
+    return sys.argv[sys.argv.index(nombre) + 1] if nombre in sys.argv else defecto
+
+
 def main():
     aplicar = "--aplicar" in sys.argv
+    sin_fecha = "--sin-fecha" in sys.argv
+    desde, hasta = arg("--desde", DESDE), arg("--hasta", HASTA)
     limite = None
     if aplicar:
         i = sys.argv.index("--aplicar")
@@ -84,24 +94,23 @@ def main():
     users = {u["id"]: u for u in api.get(f"/users/?locationId={LOC}").get("users", [])}
 
     objetivo, sin_usuario = [], []
-    for c in buscar(DESDE, HASTA):
+    for c in buscar(desde, hasta):
         tags = [t.lower() for t in (c.get("tags") or [])]
         if not c.get("assignedTo") or valor(c, ASE) or any(t in tags for t in SIN_RASTRO):
             continue
         u = users.get(c["assignedTo"])
         (objetivo if u and u.get("name") else sin_usuario).append(c)
 
-    # informativo: mismo síntoma fuera de la ventana acordada — NO se toca
-    fuera = sum(1 for c in buscar("2026-08-01T00:00:00Z", DESDE)
-                if c.get("assignedTo") and not valor(c, ASE))
-
-    print(f"ventana {DESDE[:10]} → {HASTA[:10]} · a rellenar: {len(objetivo)}")
+    print(f"ventana {desde[:10]} → {hasta[:10]} · a rellenar: {len(objetivo)}"
+          + ("  [SOLO ASESOR, sin fecha]" if sin_fecha else ""))
     if sin_usuario:
         print(f"  (saltados: {len(sin_usuario)} con propietario que no resuelve a un usuario)")
     print(f"  reparto: {dict(collections.Counter(users[c['assignedTo']]['name'] for c in objetivo))}")
-    fechas = collections.Counter(str(c.get("dateUpdated"))[:10] for c in objetivo)
-    print(f"  fechas que se escribirán: {dict(sorted(fechas.items()))}")
-    print(f"  FUERA de la ventana, mismo síntoma (NO se tocan): {fuera} contactos anteriores al 8-sep")
+    if sin_fecha:
+        print("  fecha: NO se escribe (dateUpdated no es fiable en esta cohorte)")
+    else:
+        fechas = collections.Counter(str(c.get("dateUpdated"))[:10] for c in objetivo)
+        print(f"  fechas que se escribirán: {dict(sorted(fechas.items()))}")
 
     if not aplicar:
         print("\n(simulación; --aplicar para escribir, --aplicar N para limitar a N)")
@@ -114,10 +123,11 @@ def main():
     print(f"\nescribiendo {len(lote)}…")
     ok = err = 0
     for n, c in enumerate(lote, 1):
-        fecha = str(c.get("dateUpdated"))[:10] + "T00:00:00.000Z"
-        r = api.put(f"/contacts/{c['id']}", {"customFields": [
-            {"id": ASE, "value": users[c["assignedTo"]]["name"]},
-            {"id": FAS, "value": fecha}]})
+        campos_a_escribir = [{"id": ASE, "value": users[c["assignedTo"]]["name"]}]
+        if not sin_fecha:
+            campos_a_escribir.append(
+                {"id": FAS, "value": str(c.get("dateUpdated"))[:10] + "T00:00:00.000Z"})
+        r = api.put(f"/contacts/{c['id']}", {"customFields": campos_a_escribir})
         if isinstance(r, dict) and (r.get("contact") or r.get("succeded") or r.get("id")):
             ok += 1
         else:

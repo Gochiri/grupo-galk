@@ -451,9 +451,18 @@
    (6 → 8 campos custom, propietario y tags intactos) y después el lote: **210 escritos,
    0 errores**. Verificación final: 254/254 contactos con propietario de esa cohorte
    tienen ambos campos llenos, 0 pendientes.
-   ⚠️ QUEDA FUERA, sin tocar: **161 contactos anteriores al 8-sep** con el mismo síntoma
-   (propietario nativo, campo vacío) — son de la era de Francisco. El script los cuenta
-   pero no los escribe; si se quisieran, basta mover `DESDE`.
+   ✅ **SEGUNDA TANDA 21-sep**, con OK de Oliver: los **161 de ago→7-sep** también
+   normalizados (161 escritos, 0 errores; verificado 162/162 con el campo lleno).
+   El script ganó `--desde/--hasta` y **`--sin-fecha`**: en esa cohorte se escribió SOLO
+   el asesor y la fecha se dejó VACÍA a propósito, porque `dateUpdated` ya no dice cuándo
+   se asignó el lead (1410 de 1416 contactos viejos tienen dateUpdated != dateAdded) y una
+   fecha inventada ensucia el reporte de "tiempo hasta asignación" más de lo que ayuda.
+   ⚠️ **SIN TOCAR, PENDIENTE DE DECISIÓN: la era de Francisco (julio y anteriores).**
+   Al escanear se ven **~2.129 contactos con propietario y el campo vacío**, y el escaneo
+   topa en 3.000 de los ~10.900 de la subcuenta, así que pueden ser más. Lo que Oliver
+   aprobó era "161"; 2.000+ es otra escala y otra decisión (son leads que el equipo de
+   Francisco asignó hace meses, no leads que nuestro sistema dejó pasar). Si se quisiera:
+   mismo script con `--desde` anterior y `--sin-fecha`, por lotes y verificando.
    ✅ De paso VALIDA la corrección de Oliver: con la guarda en el campo custom, esos 190
    asignados a mano habrían sido re-rescatados y re-notificados por SP07. Con `assigned_to`
    nativo, el sistema los respeta. El molde `cond_assigned_to` se gana su lugar.
