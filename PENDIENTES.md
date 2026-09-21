@@ -361,6 +361,29 @@
    Los 145 huérfanos históricos NO entran solos (el trigger solo ve tags nuevos) —
    backfill aparte si Francisco lo pide.
 
+1o. **21-sep — LEADS DE CAMPAÑA QUE NO NOMBRAN CURSO: prompt v5 + hueco abierto.**
+   Oliver trae 2 casos reales (10-sep "Dirección en los olivos…", 16-sep "Taller de
+   surco"): la persona edita el mensaje predeterminado de Meta y escribe una SEDE, no
+   un curso. Valeria respondió el Caso 1 ("en un momentito te comparto toda la
+   información") y **nunca llegó nada** — sin `Curso de interés` no hay SP05. La
+   captura v4.2 actuó bien (campo vacío); el fallo fue del prompt: lista
+   "taller/presencial/instalaciones" como palabras clave y con eso daba el curso por
+   identificado.
+   HECHO (Claude): **prompt v5 de BOT-00** en `guias-bots/PROMPTS-bots-v4.md` — regla
+   de oro (solo prometer si puede nombrar 1 de los 11 cursos), lista de lo que NO es
+   curso (sedes, palabras sueltas, bloque del anuncio Headline/Source URL/fb.me),
+   Caso 2 propio para sede/dirección, y las palabras clave degradadas a "pistas de
+   área". La captura de curso NO se toca.
+   → FALTA (Oliver): pegar el prompt v5 en BOT-00 (reemplaza todo el prompt).
+   ⚠️ **HUECO ESTRUCTURAL ABIERTO:** estos leads no los atrapa NINGUNA red — sin curso
+   → sin ficha → sin tag `ficha-enviada` → SP07 no dispara. Quedan prometidos y
+   abandonados. Propuesta pendiente de OK: **SP08 | Rescate sin curso** — trigger tag
+   `origen-meta` (lo pone LS01 al entrar) → esperar ~20 min → si `Curso de interés`
+   sigue vacío Y no hay `ficha-enviada` → round robin + notificación "lead sin curso
+   detectado, atender manual" + tag `rescate-sin-curso`. Mismo molde que SP07.
+   ⚠️ El contenedor se recicló: **falta el `.env`** (PIT, location, refresh token de
+   Firebase) para cualquier trabajo por API. Pedírselo a Oliver antes de construir SP08.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
