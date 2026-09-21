@@ -387,6 +387,13 @@
    (Oliver, 21-sep; tag `recuperacion-enviada`), y SP09-SP12 son la cadena de pago y
    cierres del roadmap. El único número libre de la familia de rescates es el sufijo -B
    sobre SP07 (convención ya usada en SP10-B y PS01-B).
+   SP08 NO interfiere con SP07-B: sigue **inerte, 0 inscritos desde el 6-ago** (captura de
+   Oliver del 21-sep; ya constaba en el handoff §"Al 15-ago hay dos publicados con el
+   trigger inactivo": SP08 y SP12). Consultar el repo antes de preguntarle a Oliver.
+   EVIDENCIA EN VIVO (lista de workflows, 21-sep): SP05 585 inscritos · SP06 1196 ·
+   SP06.1 CAPI 114 · **SP07 252 desde el 15-sep** (la red de rescate está trabajando) ·
+   SP08 0. Pendiente al recuperar API: desglosar esos 252 entre "ya tenía asesor" y
+   `rescate-15min` — ese es el número para Francisco.
 
 ## ⬜ Pendiente de Claude
 
