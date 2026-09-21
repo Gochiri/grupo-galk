@@ -428,8 +428,22 @@
    `bot-silenciado`, con `Asesor asignado (nuevo)` VACÍO y `Fecha de asignación` en None,
    todos actualizados el 19-sep en una ventana de ~1 hora (14:49-15:55). Alguien los asignó
    a mano desde la UI. Esto explica por qué el "antes" da 99% y contradice la auditoría del
-   15-sep (145 huérfanos). → Preguntar a Oliver/Francisco quién lo hizo; esos 190 NO quedan
-   registrados en nuestros campos y descuadran los reportes.
+   15-sep (145 huérfanos).
+   **RESUELTO 21-sep.** Oliver confirma que NO fue nuestro equipo. Escaneados los 79
+   workflows de la subcuenta: solo 5 tienen nodo `assign_user` y los dos ajenos —
+   `WF2 | Round Robin → Asignar Asesor` (5406a987) y `WF5 | Reasignación Automática`
+   (337a0282)— están en **draft**, así que ninguna automatización pudo hacerlo. El patrón
+   confirma trabajo humano: reparto DESIGUAL (Rosa Araujo 69 · Camila Borrero 57 ·
+   Gabriela Montañez 28 · Pablo Chavez 22 · Alejandra Díaz 20 · Diana Burgos 14 — nada que
+   ver con el 34/34/34/33/33/32 de un round robin) y **136 en una sola hora** el 19-sep
+   16:00 UTC (11 AM Lima), más goteo el 20 y 21. Conclusión: el lado de Francisco hizo una
+   asignación masiva a mano para limpiar el backlog de huérfanos.
+   ⇒ **El "backfill de los 145 huérfanos" ya está hecho** (manualmente, por ellos): sacarlo
+   de pendientes. Total tocado: 210 contactos.
+   ⚠️ Secuela: esos 210 tienen el owner NATIVO puesto pero `Asesor asignado (nuevo)` y
+   `Fecha de asignación` VACÍOS → cualquier reporte que lea nuestros campos los subcuenta.
+   Propuesta (pendiente de OK, escribe sobre 210 contactos reales): script idempotente que
+   copie el owner nativo a esos dos campos donde estén vacíos.
    ✅ De paso VALIDA la corrección de Oliver: con la guarda en el campo custom, esos 190
    asignados a mano habrían sido re-rescatados y re-notificados por SP07. Con `assigned_to`
    nativo, el sistema los respeta. El molde `cond_assigned_to` se gana su lugar.
