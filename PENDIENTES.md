@@ -415,6 +415,25 @@
    SP08 0. Pendiente al recuperar API: desglosar esos 252 entre "ya tenía asesor" y
    `rescate-15min` — ese es el número para Francisco.
 
+1p. **21-sep — DESGLOSE DE SP07 PARA FRANCISCO (6 días en vivo) + asignación manual en lote.**
+   Medido por API sobre los contactos creados desde el 15-sep 14:21 UTC (go-live de SP07):
+   **240 fichas enviadas** (~40/día) → **43 (17%)** respondieron y calificaron solos por
+   SP06 (`bot-silenciado`) · **200 (83%)** no respondieron a los 15 min y los asignó SP07
+   (`rescate-15min`), ~33/día. Round robin parejo: 34/34/34/33/33/32 entre los 6 asesores.
+   Los 200 tienen el campo `Asesor asignado (nuevo)` escrito (trazabilidad 200/200).
+   Solo **4 de los 200** respondieron después por su cuenta → el rescate sí atrapa gente
+   que se quedaría en silencio.
+   ⚠️ **ASIGNACIÓN MANUAL EN LOTE EL 19-SEP:** la cohorte 8→15-sep aparece hoy con 234/236
+   asignados, pero **190 de ellos sin rastro de automatización**: sin `rescate-15min`, sin
+   `bot-silenciado`, con `Asesor asignado (nuevo)` VACÍO y `Fecha de asignación` en None,
+   todos actualizados el 19-sep en una ventana de ~1 hora (14:49-15:55). Alguien los asignó
+   a mano desde la UI. Esto explica por qué el "antes" da 99% y contradice la auditoría del
+   15-sep (145 huérfanos). → Preguntar a Oliver/Francisco quién lo hizo; esos 190 NO quedan
+   registrados en nuestros campos y descuadran los reportes.
+   ✅ De paso VALIDA la corrección de Oliver: con la guarda en el campo custom, esos 190
+   asignados a mano habrían sido re-rescatados y re-notificados por SP07. Con `assigned_to`
+   nativo, el sistema los respeta. El molde `cond_assigned_to` se gana su lugar.
+
 ## ⬜ Pendiente de Claude
 
 1. Al llegar el contenido de software/gestión: ramas nuevas en SP05 v2 (agregar entradas a
