@@ -377,12 +377,16 @@
    → FALTA (Oliver): pegar el prompt v5 en BOT-00 (reemplaza todo el prompt).
    ⚠️ **HUECO ESTRUCTURAL ABIERTO:** estos leads no los atrapa NINGUNA red — sin curso
    → sin ficha → sin tag `ficha-enviada` → SP07 no dispara. Quedan prometidos y
-   abandonados. Propuesta pendiente de OK: **SP08 | Rescate sin curso** — trigger tag
+   abandonados. Propuesta pendiente de OK: **SP07-B | Rescate sin curso** — trigger tag
    `origen-meta` (lo pone LS01 al entrar) → esperar ~20 min → si `Curso de interés`
    sigue vacío Y no hay `ficha-enviada` → round robin + notificación "lead sin curso
    detectado, atender manual" + tag `rescate-sin-curso`. Mismo molde que SP07.
    ⚠️ El contenedor se recicló: **falta el `.env`** (PIT, location, refresh token de
-   Firebase) para cualquier trabajo por API. Pedírselo a Oliver antes de construir SP08.
+   Firebase) para cualquier trabajo por API. Pedírselo a Oliver antes de construir SP07-B.
+   Nota de nomenclatura: **SP08 está ocupado** por "SP08 | Recuperación fuera de ventana"
+   (Oliver, 21-sep; tag `recuperacion-enviada`), y SP09-SP12 son la cadena de pago y
+   cierres del roadmap. El único número libre de la familia de rescates es el sufijo -B
+   sobre SP07 (convención ya usada en SP10-B y PS01-B).
 
 ## ⬜ Pendiente de Claude
 
