@@ -381,6 +381,26 @@
    `origen-meta` (lo pone LS01 al entrar) → esperar ~20 min → si `Curso de interés`
    sigue vacío Y no hay `ficha-enviada` → round robin + notificación "lead sin curso
    detectado, atender manual" + tag `rescate-sin-curso`. Mismo molde que SP07.
+   HECHO 21-sep: **SP07-B | Rescate sin curso — lead de campaña sin ficha**
+   (`17743c2c-9771-4a54-bb9b-2339590887ab`, draft, 15 nodos, reingreso=true, script
+   `scripts_ghl/build_sp07b_sin_curso.py`). Trigger: tag `origen-meta` (LS01 lo pone al
+   entrar) · espera 20 min · dos guardas: sale si `Curso de interés` tiene valor (subType
+   bjDW7b9…) o si hay asesor NATIVO (`assigned_to`) → si no, round robin de SP06
+   (only_unassigned=true) → 1 min → Asesor+Fecha → notifica "lead sin curso, preguntarle
+   qué le interesa" + tag `rescate-sin-curso`; si el RR falla → Lucía + `asignacion-fallida`.
+   Sin `bot-silenciado` (Valeria sigue viva; si el lead nombra su curso, SP05 cierra solo).
+   Verificado por API: cadena 15/15 OK, waits 20 y 1 min, guardas correctas.
+   → FALTA (Oliver): abrir SP07-B en la UI, "Guardar trigger" y PUBLICAR.
+   MEDICIÓN DEL HUECO (630 leads de 7 días, 21-sep): 333 sin curso · 303 además sin ficha
+   y sin dueño — pero **275 de esos (91%) no tienen teléfono NI `origen-meta`**: son
+   handles de redes (puntillo14, davreyes2012…) que nunca pasaron por LS01, otro problema.
+   Los leads REALES en el hueco son 24 en 7 días (~3-4/día), justo los que el trigger
+   `origen-meta` aísla. Volumen de alertas esperado: 3-4 diarias, no 43.
+   OTRO HALLAZGO PARA REVISAR: ~275 contactos/semana creados sin teléfono, sin tags y sin
+   pasar por LS01 (44% de todo lo creado). Averiguar de dónde salen (¿comentarios/DM de
+   Instagram?) y si deberían crear contacto siquiera.
+   CONTADORES EN VIVO 21-sep: `rescate-15min` = **201 en 7 días** (~29/día) — SP07 está
+   rescatando de verdad · `ficha-enviada` 299 · `origen-meta` 342 · `bot-silenciado` 52.
    ⚠️ El contenedor se recicló: **falta el `.env`** (PIT, location, refresh token de
    Firebase) para cualquier trabajo por API. Pedírselo a Oliver antes de construir SP07-B.
    Nota de nomenclatura: **SP08 está ocupado** por "SP08 | Recuperación fuera de ventana"
